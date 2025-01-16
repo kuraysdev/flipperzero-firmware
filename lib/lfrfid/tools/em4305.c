@@ -37,7 +37,7 @@ static uint64_t em4305_prepare_data(uint32_t data) {
         for(j = 0; j < 8; j++) {
             data_with_parity = (data_with_parity << 1) | ((data >> (i * 8 + j)) & 1);
         }
-        data_with_parity = (data_with_parity << 1) | em4305_line_parity(data >> (i * 8));
+        data_with_parity = (data_with_parity << 1) | (uint64_t)em4305_line_parity(data >> (i * 8));
     }
 
     // column parity
