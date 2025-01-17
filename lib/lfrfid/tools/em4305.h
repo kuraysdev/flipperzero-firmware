@@ -47,7 +47,7 @@ extern "C" {
 
 typedef struct {
     uint32_t word[EM4x05_WORD_COUNT];
-    uint8_t mask;
+    uint16_t mask;
 } LFRFIDEM4305;
 
 /** Write EM4305 tag data to tag
