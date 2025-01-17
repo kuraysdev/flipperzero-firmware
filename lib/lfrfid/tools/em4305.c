@@ -149,8 +149,7 @@ void em4305_write(LFRFIDEM4305* data) {
     em4305_stop();
 }
 
-void em4305_write_with_mask(LFRFIDEM4305* data, uint8_t word) {
-    UNUSED(word);
+void em4305_write_with_mask(LFRFIDEM4305* data) {
     furi_check(data);
 
     em4305_start();

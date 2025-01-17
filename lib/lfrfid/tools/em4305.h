@@ -58,10 +58,9 @@ void em4305_write(LFRFIDEM4305* data);
 
 /** Write EM4305 tag data to tag
  *
- * @param      data  The data to write
- * @param[in]  word  The word ?
+ * @param      data  The data to write (mask is taken from that data)
  */
-void em4305_write_with_mask(LFRFIDEM4305* data, uint8_t word);
+void em4305_write_with_mask(LFRFIDEM4305* data);
 
 #ifdef __cplusplus
 }
