@@ -51,7 +51,7 @@ static void infrared_progress_view_draw_callback(Canvas* canvas, void* _model) {
         snprintf(
             progress_string,
             sizeof(progress_string),
-            "%d/%d",
+            "%zu/%zu",
             model->progress,
             model->progress_total);
     } else {
