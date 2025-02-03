@@ -4,7 +4,11 @@ void lfrfid_scene_select_key_on_enter(void* context) {
     LfRfid* app = context;
 
     if(lfrfid_load_key_from_file_select(app)) {
-        scene_manager_next_scene(app->scene_manager, LfRfidSceneSavedKeyMenu);
+        if(app->t5577_password_task != LfRfidT5577PasswordTaskInactive) {
+            scene_manager_next_scene(app->scene_manager, LfRfidSceneT5577PasswordInput);
+        } else {
+            scene_manager_next_scene(app->scene_manager, LfRfidSceneSavedKeyMenu);
+        }
     } else {
         // Always select "Saved" menu item when returning from this scene
         scene_manager_set_scene_state(app->scene_manager, LfRfidSceneStart, LfRfidMenuIndexSaved);

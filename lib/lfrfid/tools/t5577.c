@@ -99,8 +99,9 @@ static void t5577_write_block_simple(uint8_t block, bool lock_bit, uint32_t data
 void t5577_write(LFRFIDT5577* data) {
     t5577_start();
     FURI_CRITICAL_ENTER();
-    for(size_t i = 0; i < data->blocks_to_write; i++) {
-        t5577_write_block_simple(i, false, data->block[i]);
+    // writing backwards to avoid locking the card before writing the password itself
+    for(size_t i = data->blocks_to_write; i > 0; i--) {
+        t5577_write_block_simple(i - 1, false, data->block[i - 1]);
     }
     t5577_write_reset();
     FURI_CRITICAL_EXIT();
@@ -112,6 +113,18 @@ void t5577_write_with_pass(LFRFIDT5577* data, uint32_t password) {
     FURI_CRITICAL_ENTER();
     for(size_t i = 0; i < data->blocks_to_write; i++) {
         t5577_write_block_pass(0, i, false, data->block[i], true, password);
+    }
+    t5577_write_reset();
+    FURI_CRITICAL_EXIT();
+    t5577_stop();
+}
+
+void t5577_write_block_0_with_pass(LFRFIDT5577* data, uint32_t password) {
+    t5577_start();
+    FURI_CRITICAL_ENTER();
+    t5577_write_block_pass(0, 0, false, data->block[0], true, password);
+    for(size_t i = 1; i < data->blocks_to_write; i++) {
+        t5577_write_block_simple(i, false, data->block[i]);
     }
     t5577_write_reset();
     FURI_CRITICAL_EXIT();

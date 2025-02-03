@@ -502,6 +502,12 @@ static void lfrfid_worker_mode_write_process(LFRFIDWorker* worker) {
     request->write_type = LFRFIDWriteTypeT5577;
 
     bool can_be_written = protocol_dict_get_write_data(worker->protocols, protocol, request);
+    if(worker->write_mode == LFRFIDWorkerWriteModeT5577SetPassword ||
+       worker->write_mode == LFRFIDWorkerWriteModeT5577WithPassword) {
+        request->t5577.block[0] |= LFRFID_T5577_PWD;
+        request->t5577.block[7] = worker->t5577_new_password;
+        request->t5577.blocks_to_write = 8;
+    }
 
     uint32_t write_start_time = furi_get_tick();
     bool too_long = false;
@@ -515,7 +521,13 @@ static void lfrfid_worker_mode_write_process(LFRFIDWorker* worker) {
     if(can_be_written) {
         while(!lfrfid_worker_check_for_stop(worker)) {
             FURI_LOG_D(TAG, "Data write");
-            t5577_write(&request->t5577);
+            if(worker->write_mode == LFRFIDWorkerWriteModeT5577WithPassword) {
+                t5577_write_with_pass(&request->t5577, worker->t5577_current_password);
+            } else if(worker->write_mode == LFRFIDWorkerWriteModeT5577RemovePassword) {
+                t5577_write_block_0_with_pass(&request->t5577, worker->t5577_current_password);
+            } else {
+                t5577_write(&request->t5577);
+            }
 
             ProtocolId read_result = PROTOCOL_NO;
             LFRFIDWorkerReadState state = lfrfid_worker_read_internal(

@@ -31,6 +31,7 @@ struct LFRFIDWorker {
     char* raw_filename;
 
     LFRFIDWorkerMode mode_index;
+    LFRFIDWorkerWriteMode write_mode;
     void* mode_storage;
 
     FuriEventFlag* events;
@@ -47,6 +48,9 @@ struct LFRFIDWorker {
 
     ProtocolDict* protocols;
     LFRFIDProtocol protocol;
+
+    uint32_t t5577_current_password;
+    uint32_t t5577_new_password;
 };
 
 extern const LFRFIDWorkerModeType lfrfid_worker_modes[];

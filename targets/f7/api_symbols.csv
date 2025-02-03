@@ -1,5 +1,5 @@
 entry,status,name,type,params
-Version,+,79.2,,
+Version,+,79.5,,
 Header,+,applications/drivers/subghz/cc1101_ext/cc1101_ext_interconnect.h,,
 Header,+,applications/services/bt/bt_service/bt.h,,
 Header,+,applications/services/bt/bt_service/bt_keys_storage.h,,
@@ -2249,6 +2249,9 @@ Function,+,lfrfid_worker_emulate_start,void,"LFRFIDWorker*, LFRFIDProtocol"
 Function,+,lfrfid_worker_free,void,LFRFIDWorker*
 Function,+,lfrfid_worker_read_raw_start,void,"LFRFIDWorker*, const char*, LFRFIDWorkerReadType, LFRFIDWorkerReadRawCallback, void*"
 Function,+,lfrfid_worker_read_start,void,"LFRFIDWorker*, LFRFIDWorkerReadType, LFRFIDWorkerReadCallback, void*"
+Function,+,lfrfid_worker_set_current_t5577_password,void,"LFRFIDWorker*, uint32_t"
+Function,+,lfrfid_worker_set_new_t5577_password,void,"LFRFIDWorker*, uint32_t"
+Function,+,lfrfid_worker_set_write_mode,void,"LFRFIDWorker*, LFRFIDWorkerWriteMode"
 Function,+,lfrfid_worker_start_thread,void,LFRFIDWorker*
 Function,+,lfrfid_worker_stop,void,LFRFIDWorker*
 Function,+,lfrfid_worker_stop_thread,void,LFRFIDWorker*
@@ -2938,9 +2941,9 @@ Function,+,pipe_install_as_stdio,void,PipeSide*
 Function,+,pipe_receive,size_t,"PipeSide*, void*, size_t, FuriWait"
 Function,+,pipe_role,PipeRole,PipeSide*
 Function,+,pipe_send,size_t,"PipeSide*, const void*, size_t, FuriWait"
+Function,+,pipe_set_broken_callback,void,"PipeSide*, PipeSideBrokenCallback, FuriEventLoopEvent"
 Function,+,pipe_set_callback_context,void,"PipeSide*, void*"
 Function,+,pipe_set_data_arrived_callback,void,"PipeSide*, PipeSideDataArrivedCallback, FuriEventLoopEvent"
-Function,+,pipe_set_broken_callback,void,"PipeSide*, PipeSideBrokenCallback, FuriEventLoopEvent"
 Function,+,pipe_set_space_freed_callback,void,"PipeSide*, PipeSideSpaceFreedCallback, FuriEventLoopEvent"
 Function,+,pipe_spaces_available,size_t,PipeSide*
 Function,+,pipe_state,PipeState,PipeSide*
@@ -3533,6 +3536,7 @@ Function,+,submenu_set_header,void,"Submenu*, const char*"
 Function,+,submenu_set_selected_item,void,"Submenu*, uint32_t"
 Function,-,system,int,const char*
 Function,+,t5577_write,void,LFRFIDT5577*
+Function,+,t5577_write_block_0_with_pass,void,"LFRFIDT5577*, uint32_t"
 Function,+,t5577_write_with_mask,void,"LFRFIDT5577*, uint8_t, _Bool, uint32_t"
 Function,+,t5577_write_with_pass,void,"LFRFIDT5577*, uint32_t"
 Function,-,tan,double,double

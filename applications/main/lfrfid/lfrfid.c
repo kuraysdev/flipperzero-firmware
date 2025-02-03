@@ -100,6 +100,12 @@ static LfRfid* lfrfid_alloc(void) {
     view_dispatcher_add_view(
         lfrfid->view_dispatcher, LfRfidViewRead, lfrfid_view_read_get_view(lfrfid->read_view));
 
+    // T5577 password management
+    lfrfid->t5577_password_task = LfRfidT5577PasswordTaskInactive;
+    lfrfid->current_password_set = false;
+    lfrfid->t5577_current_password = malloc(T5577_PASSWORD_SIZE);
+    lfrfid->t5577_new_password = malloc(T5577_PASSWORD_SIZE);
+
     return lfrfid;
 } //-V773
 
@@ -162,6 +168,10 @@ static void lfrfid_free(LfRfid* lfrfid) {
     // Notifications
     furi_record_close(RECORD_NOTIFICATION);
     lfrfid->notifications = NULL;
+
+    // T5577 password management
+    free(lfrfid->t5577_current_password);
+    free(lfrfid->t5577_new_password);
 
     furi_record_close(RECORD_STORAGE);
     furi_record_close(RECORD_DIALOGS);

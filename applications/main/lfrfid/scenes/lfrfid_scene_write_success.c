@@ -3,6 +3,7 @@
 void lfrfid_scene_write_success_on_enter(void* context) {
     LfRfid* app = context;
     Popup* popup = app->popup;
+    app->t5577_password_task = LfRfidT5577PasswordTaskInactive;
 
     popup_set_header(popup, "Success!", 75, 10, AlignLeft, AlignTop);
     popup_set_icon(popup, 0, 9, &I_DolphinSuccess_91x55);
@@ -20,8 +21,11 @@ bool lfrfid_scene_write_success_on_event(void* context, SceneManagerEvent event)
     bool consumed = false;
 
     if(event.type == SceneManagerEventTypeBack || event.type == SceneManagerEventTypeCustom) {
-        if(!scene_manager_search_and_switch_to_previous_scene(
-               app->scene_manager, LfRfidSceneReadKeyMenu)) {
+        if(scene_manager_has_previous_scene(app->scene_manager, LfRfidSceneT5577Passwords)) {
+            scene_manager_search_and_switch_to_previous_scene(
+                app->scene_manager, LfRfidSceneT5577Passwords);
+        } else if(!scene_manager_search_and_switch_to_previous_scene(
+                      app->scene_manager, LfRfidSceneReadKeyMenu)) {
             scene_manager_search_and_switch_to_another_scene(
                 app->scene_manager, LfRfidSceneSelectKey);
         }

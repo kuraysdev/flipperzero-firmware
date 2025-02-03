@@ -9,6 +9,7 @@ extern "C" {
 #define LFRFID_T5577_BLOCK_COUNT 8
 #define T5577_BLOCKS_IN_PAGE_0   8
 #define T5577_BLOCKS_IN_PAGE_1   4
+#define T5577_PASSWORD_SIZE      4
 
 // T5577 block 0 definitions, thanks proxmark3!
 #define LFRFID_T5577_POR_DELAY             0x00000001
@@ -41,6 +42,12 @@ extern "C" {
 #define LFRFID_T5577_BITRATE_RF_128        0x001C0000
 #define LFRFID_T5577_TESTMODE_DISABLED     0x60000000
 
+typedef enum {
+    T5577WriteTypeSimple,
+    T5577WriteTypeWithPassword,
+    T5577WriteTypeRemovePassword,
+} T5577WriteType;
+
 typedef struct {
     uint32_t block[LFRFID_T5577_BLOCK_COUNT];
     uint32_t blocks_to_write;
@@ -55,6 +62,9 @@ typedef struct {
 void t5577_write(LFRFIDT5577* data);
 
 void t5577_write_with_pass(LFRFIDT5577* data, uint32_t password);
+
+// For removing the password, otherwise you can brick the card
+void t5577_write_block_0_with_pass(LFRFIDT5577* data, uint32_t password);
 
 void t5577_write_with_mask(LFRFIDT5577* data, uint8_t page, bool with_pass, uint32_t password);
 

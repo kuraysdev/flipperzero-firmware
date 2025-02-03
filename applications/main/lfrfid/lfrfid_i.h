@@ -73,6 +73,13 @@ typedef enum {
     LfRfidRpcStateEmulating,
 } LfRfidRpcState;
 
+typedef enum {
+    LfRfidT5577PasswordTaskInactive,
+    LfRfidT5577PasswordTaskSet,
+    LfRfidT5577PasswordTaskWrite,
+    LfRfidT5577PasswordTaskRemove,
+} LfRfidT5577PasswordTask;
+
 typedef struct LfRfid LfRfid;
 
 struct LfRfid {
@@ -110,6 +117,12 @@ struct LfRfid {
 
     // Custom views
     LfRfidReadView* read_view;
+
+    // T5577 password management
+    LfRfidT5577PasswordTask t5577_password_task;
+    bool current_password_set;
+    uint8_t* t5577_current_password;
+    uint8_t* t5577_new_password;
 };
 
 typedef enum {

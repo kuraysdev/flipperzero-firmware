@@ -44,6 +44,13 @@ typedef enum {
     LFRFIDWorkerEmulateRawOverrun,
 } LFRFIDWorkerEmulateRawResult;
 
+typedef enum {
+    LFRFIDWorkerWriteModeDefault,
+    LFRFIDWorkerWriteModeT5577SetPassword,
+    LFRFIDWorkerWriteModeT5577WithPassword,
+    LFRFIDWorkerWriteModeT5577RemovePassword,
+} LFRFIDWorkerWriteMode;
+
 typedef void (
     *LFRFIDWorkerReadCallback)(LFRFIDWorkerReadResult result, ProtocolId protocol, void* context);
 typedef void (*LFRFIDWorkerWriteCallback)(LFRFIDWorkerWriteResult result, void* context);
@@ -143,6 +150,26 @@ void lfrfid_worker_emulate_raw_start(
  */
 void lfrfid_worker_stop(LFRFIDWorker* worker);
 
+/** Set the T5577 write password for the worker
+ * 
+ * @param      worker    The worker
+ * @param[in]  password  The password
+ */
+void lfrfid_worker_set_current_t5577_password(LFRFIDWorker* worker, uint32_t password);
+
+/** Set the T5577 new password for the worker
+ * 
+ * @param      worker    The worker
+ * @param[in]  password  The password
+ */
+void lfrfid_worker_set_new_t5577_password(LFRFIDWorker* worker, uint32_t password);
+
+/** Set the worker write mode
+ * 
+ * @param      worker  The worker
+ * @param[in]  mode    The mode
+ */
+void lfrfid_worker_set_write_mode(LFRFIDWorker* worker, LFRFIDWorkerWriteMode mode);
 #ifdef __cplusplus
 }
 #endif

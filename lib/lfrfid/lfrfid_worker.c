@@ -177,3 +177,18 @@ static int32_t lfrfid_worker_thread(void* thread_context) {
 
     return 0;
 }
+
+void lfrfid_worker_set_current_t5577_password(LFRFIDWorker* worker, uint32_t password) {
+    furi_check(worker);
+    worker->t5577_current_password = password;
+}
+
+void lfrfid_worker_set_new_t5577_password(LFRFIDWorker* worker, uint32_t password) {
+    furi_check(worker);
+    worker->t5577_new_password = password;
+}
+
+void lfrfid_worker_set_write_mode(LFRFIDWorker* worker, LFRFIDWorkerWriteMode mode) {
+    furi_check(worker);
+    worker->write_mode = mode;
+}
