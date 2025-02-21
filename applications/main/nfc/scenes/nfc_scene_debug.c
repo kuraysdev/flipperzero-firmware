@@ -44,7 +44,6 @@ void nfc_scene_debug_on_enter(void* context) {
 
     variable_item_list_add(nfc->var_item_list, "Field", 1, NULL, NULL);
 
-
     item = variable_item_list_add(
         nfc->var_item_list,
         "Parser debug",
