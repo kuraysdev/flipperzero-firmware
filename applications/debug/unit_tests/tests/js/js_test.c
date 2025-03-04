@@ -323,6 +323,38 @@ static void js_value_test_default(struct mjs* mjs) {
     mu_assert_int_eq(123, result_int);
 }
 
+static void js_value_test_args_fn(struct mjs* mjs) {
+    static const JsValueDeclaration args[] = {
+        {.type = JsValueTypeInt32},
+        {.type = JsValueTypeInt32},
+        {.type = JsValueTypeInt32},
+    };
+    static const JsValueDeclaration declaration = {
+        .type = JsValueTypeArgs,
+        JS_VALUE_CHILDREN(args),
+    };
+
+    int32_t a, b, c;
+    JS_VALUE_PARSE_ARGS_OR_RETURN(mjs, &declaration, &a, &b, &c);
+
+    // mjs_apply reverses argument order
+    mu_assert_int_eq(-420, a);
+    mu_assert_int_eq(123, b);
+    mu_assert_int_eq(456, c);
+}
+
+static void js_value_test_args(struct mjs* mjs) {
+    mjs_val_t function = MJS_MK_FN(js_value_test_args_fn);
+
+    mjs_val_t result;
+    mjs_val_t args[] = {
+        mjs_mk_number(mjs, 123),
+        mjs_mk_number(mjs, 456),
+        mjs_mk_number(mjs, -420),
+    };
+    mu_assert_int_eq(MJS_OK, mjs_apply(mjs, &result, function, MJS_UNDEFINED, COUNT_OF(args), args));
+}
+
 MU_TEST(js_value_test) {
     struct mjs* mjs = mjs_create(NULL);
 
@@ -332,6 +364,7 @@ MU_TEST(js_value_test) {
     js_value_test_enums(mjs);
     js_value_test_object(mjs);
     js_value_test_default(mjs);
+    js_value_test_args(mjs);
 
     mjs_destroy(mjs);
 }

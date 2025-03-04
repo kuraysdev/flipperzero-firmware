@@ -188,8 +188,9 @@ static JsValueParseStatus js_value_parse_va(
         size_t args_provided = mjs_nargs(mjs);
         for(size_t i = 0; i < declaration->n_children; i++) {
             mjs_val_t arg = (i < args_provided) ? mjs_arg(mjs, i) : MJS_UNDEFINED;
+            const JsValueDeclaration* child = &declaration->children[i];
             JsValueParseStatus status = js_value_parse_va(
-                mjs, declaration, flags, &arg, buffer, buffer_index, out_pointers);
+                mjs, child, flags, &arg, buffer, buffer_index, out_pointers);
             if(status != JsValueParseStatusOk)
                 PREPEND_JS_ERROR_AND_RETURN(mjs, flags, "argument %zu: ", i);
         }
