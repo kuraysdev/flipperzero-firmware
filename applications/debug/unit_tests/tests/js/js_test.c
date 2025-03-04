@@ -352,7 +352,8 @@ static void js_value_test_args(struct mjs* mjs) {
         mjs_mk_number(mjs, 456),
         mjs_mk_number(mjs, -420),
     };
-    mu_assert_int_eq(MJS_OK, mjs_apply(mjs, &result, function, MJS_UNDEFINED, COUNT_OF(args), args));
+    mu_assert_int_eq(
+        MJS_OK, mjs_apply(mjs, &result, function, MJS_UNDEFINED, COUNT_OF(args), args));
 }
 
 MU_TEST(js_value_test) {
