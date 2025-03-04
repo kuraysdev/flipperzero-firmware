@@ -123,7 +123,7 @@ static JsValueParseStatus js_value_parse_va(
     // fetch out pointer
     void* destination = NULL;
     if(declaration->type != JsValueTypeEnum && declaration->type != JsValueTypeObject)
-        declaration = va_arg(*out_pointers, void*);
+        destination = va_arg(*out_pointers, void*);
 
     switch(declaration->type) {
     // Literal terms
