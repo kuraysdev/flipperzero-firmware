@@ -186,6 +186,7 @@ typedef enum {
     NfcProtocolMfClassic,
     NfcProtocolMfPlus,
     NfcProtocolMfDesfire,
+    NfcProtocolEmv,
     NfcProtocolSlix,
     NfcProtocolSt25tb,
     /* Add new protocols here */

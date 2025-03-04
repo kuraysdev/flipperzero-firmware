@@ -10,6 +10,7 @@
 #include <nfc/protocols/mf_classic/mf_classic_poller_defs.h>
 #include <nfc/protocols/mf_plus/mf_plus_poller_defs.h>
 #include <nfc/protocols/mf_desfire/mf_desfire_poller_defs.h>
+#include <nfc/protocols/emv/emv_poller_defs.h>
 #include <nfc/protocols/slix/slix_poller_defs.h>
 #include <nfc/protocols/st25tb/st25tb_poller_defs.h>
 
@@ -24,6 +25,7 @@ const NfcPollerBase* nfc_pollers_api[NfcProtocolNum] = {
     [NfcProtocolMfClassic] = &mf_classic_poller,
     [NfcProtocolMfPlus] = &mf_plus_poller,
     [NfcProtocolMfDesfire] = &mf_desfire_poller,
+    [NfcProtocolEmv] = &emv_poller,
     [NfcProtocolSlix] = &nfc_poller_slix,
     /* Add new pollers here */
     [NfcProtocolSt25tb] = &nfc_poller_st25tb,
