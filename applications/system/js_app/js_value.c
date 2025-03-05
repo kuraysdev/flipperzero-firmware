@@ -94,7 +94,13 @@ static bool js_value_maybe_assign_default(
 
 typedef int (*MjsTypecheckFn)(mjs_val_t value);
 
-static JsValueParseStatus js_value_parse_literal(struct mjs* mjs, JsValueParseFlag flags, mjs_val_t* destination, mjs_val_t* source, MjsTypecheckFn typecheck, const char* type_name) {
+static JsValueParseStatus js_value_parse_literal(
+    struct mjs* mjs,
+    JsValueParseFlag flags,
+    mjs_val_t* destination,
+    mjs_val_t* source,
+    MjsTypecheckFn typecheck,
+    const char* type_name) {
     if(!typecheck(*source)) PREPEND_JS_EXPECTED_ERROR_AND_RETURN(mjs, flags, type_name);
     *destination = *source;
     return JsValueParseStatusOk;
@@ -146,7 +152,8 @@ static JsValueParseStatus js_value_parse_va(
     case JsValueTypeAnyObject:
         return js_value_parse_literal(mjs, flags, destination, source, mjs_is_object, "array");
     case JsValueTypeFunction:
-        return js_value_parse_literal(mjs, flags, destination, source, mjs_is_function, "function");
+        return js_value_parse_literal(
+            mjs, flags, destination, source, mjs_is_function, "function");
 
     // Primitive types
     case JsValueTypeRawPointer: {
