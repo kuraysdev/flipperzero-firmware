@@ -17,9 +17,6 @@ App(
         "modules/js_flipper.c",
         "modules/js_tests.c",
     ],
-    sdk_headers=[
-        "js_value.h",
-    ],
 )
 
 App(
