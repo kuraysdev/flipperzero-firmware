@@ -63,6 +63,9 @@ static size_t js_value_resulting_c_values_count(const JsValueParseDeclaration de
         return JsValueParseStatusJsError;                               \
     } while(0)
 
+#define PREPEND_JS_EXPECTED_ERROR_AND_RETURN(mjs, flags, type) \
+    PREPEND_JS_ERROR_AND_RETURN(mjs, flags, "expected %s", type)
+
 static void js_value_assign_enum_val(void* destination, JsValueType type_w_flags, uint32_t value) {
     if(type_w_flags & JsValueTypeEnumSize1) {
         *(uint8_t*)destination = value;
@@ -132,17 +135,17 @@ static JsValueParseStatus js_value_parse_va(
         break;
     }
     case JsValueTypeAnyArray: {
-        if(!mjs_is_array(*source)) PREPEND_JS_ERROR_AND_RETURN(mjs, flags, "expected array");
+        if(!mjs_is_array(*source)) PREPEND_JS_EXPECTED_ERROR_AND_RETURN(mjs, flags, "array");
         *(mjs_val_t*)destination = *source;
         break;
     }
     case JsValueTypeAnyObject: {
-        if(!mjs_is_object(*source)) PREPEND_JS_ERROR_AND_RETURN(mjs, flags, "expected object");
+        if(!mjs_is_object(*source)) PREPEND_JS_EXPECTED_ERROR_AND_RETURN(mjs, flags, "object");
         *(mjs_val_t*)destination = *source;
         break;
     }
     case JsValueTypeFunction: {
-        if(!mjs_is_function(*source)) PREPEND_JS_ERROR_AND_RETURN(mjs, flags, "expected function");
+        if(!mjs_is_function(*source)) PREPEND_JS_EXPECTED_ERROR_AND_RETURN(mjs, flags, "function");
         *(mjs_val_t*)destination = *source;
         break;
     }
@@ -150,32 +153,32 @@ static JsValueParseStatus js_value_parse_va(
     // Primitive types
     case JsValueTypeRawPointer: {
         if(js_value_maybe_assign_default(value_decl, source, destination, sizeof(void*))) break;
-        if(!mjs_is_foreign(*source)) PREPEND_JS_ERROR_AND_RETURN(mjs, flags, "expected pointer");
+        if(!mjs_is_foreign(*source)) PREPEND_JS_EXPECTED_ERROR_AND_RETURN(mjs, flags, "pointer");
         *(void**)destination = mjs_get_ptr(mjs, *source);
         break;
     }
     case JsValueTypeInt32: {
         if(js_value_maybe_assign_default(value_decl, source, destination, sizeof(int32_t))) break;
-        if(!mjs_is_number(*source)) PREPEND_JS_ERROR_AND_RETURN(mjs, flags, "expected number");
+        if(!mjs_is_number(*source)) PREPEND_JS_EXPECTED_ERROR_AND_RETURN(mjs, flags, "number");
         *(int32_t*)destination = mjs_get_int32(mjs, *source);
         break;
     }
     case JsValueTypeDouble: {
         if(js_value_maybe_assign_default(value_decl, source, destination, sizeof(double))) break;
-        if(!mjs_is_number(*source)) PREPEND_JS_ERROR_AND_RETURN(mjs, flags, "expected number");
+        if(!mjs_is_number(*source)) PREPEND_JS_EXPECTED_ERROR_AND_RETURN(mjs, flags, "number");
         *(double*)destination = mjs_get_double(mjs, *source);
         break;
     }
     case JsValueTypeBool: {
         if(js_value_maybe_assign_default(value_decl, source, destination, sizeof(bool))) break;
-        if(!mjs_is_boolean(*source)) PREPEND_JS_ERROR_AND_RETURN(mjs, flags, "expected bool");
+        if(!mjs_is_boolean(*source)) PREPEND_JS_EXPECTED_ERROR_AND_RETURN(mjs, flags, "bool");
         *(bool*)destination = mjs_get_bool(mjs, *source);
         break;
     }
     case JsValueTypeString: {
         if(js_value_maybe_assign_default(value_decl, source, destination, sizeof(const char*)))
             break;
-        if(!mjs_is_string(*source)) PREPEND_JS_ERROR_AND_RETURN(mjs, flags, "expected string");
+        if(!mjs_is_string(*source)) PREPEND_JS_EXPECTED_ERROR_AND_RETURN(mjs, flags, "string");
         buffer[*buffer_index] = *source;
         *(const char**)destination = mjs_get_string(mjs, &buffer[*buffer_index], NULL);
         (*buffer_index)++;
@@ -203,17 +206,17 @@ static JsValueParseStatus js_value_parse_va(
             }
 
             if(!match_found)
-                PREPEND_JS_ERROR_AND_RETURN(mjs, flags, "expected one of permitted strings");
+                PREPEND_JS_EXPECTED_ERROR_AND_RETURN(mjs, flags, "one of permitted strings");
 
         } else {
-            PREPEND_JS_ERROR_AND_RETURN(mjs, flags, "expected string");
+            PREPEND_JS_EXPECTED_ERROR_AND_RETURN(mjs, flags, "string");
         }
         break;
     }
 
     case JsValueTypeObject: {
         if(!(is_null_but_allowed || mjs_is_object(*source)))
-            PREPEND_JS_ERROR_AND_RETURN(mjs, flags, "expected object");
+            PREPEND_JS_EXPECTED_ERROR_AND_RETURN(mjs, flags, "object");
         for(size_t i = 0; i < value_decl->n_children; i++) {
             const JsValueObjectField* field = &value_decl->object_fields[i];
             mjs_val_t field_val = mjs_get(mjs, *source, field->field_name, ~0);
