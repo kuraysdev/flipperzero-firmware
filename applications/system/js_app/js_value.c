@@ -92,7 +92,7 @@ static bool js_value_maybe_assign_default(
     return false;
 }
 
-typedef bool (*MjsTypecheckFn)(mjs_val_t value);
+typedef int (*MjsTypecheckFn)(mjs_val_t value);
 
 static JsValueParseStatus js_value_parse_literal(struct mjs* mjs, JsValueParseFlag flags, mjs_val_t* destination, mjs_val_t* source, MjsTypecheckFn typecheck, const char* type_name) {
     if(!typecheck(*source)) PREPEND_JS_EXPECTED_ERROR_AND_RETURN(mjs, flags, type_name);
