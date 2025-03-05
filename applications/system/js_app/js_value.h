@@ -36,7 +36,7 @@ typedef enum {
     JsValueTypePermitNull = (1 << 16), //<! If the value is absent, assign default value
 } JsValueType;
 
-#define JS_VALUE_TYPE_ENUM_SIZE(x) (x << 8)
+#define JS_VALUE_TYPE_ENUM_SIZE(x) ((x) << 8)
 
 typedef struct {
     const char* string_value;
@@ -108,7 +108,7 @@ typedef struct {
 #define JS_VALUE_SIMPLE(t) {.type = t}
 
 #define JS_VALUE_SIMPLE_W_DEFAULT(t, name, val) \
-    {.type = t | JsValueTypePermitNull, .default_value.name = val}
+    {.type = t | JsValueTypePermitNull, .default_value.name = (val)}
 
 #define JS_VALUE_ARGS(args)           \
     {                                 \
