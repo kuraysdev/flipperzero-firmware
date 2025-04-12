@@ -265,6 +265,7 @@ void cli_shell_completions_render(
         }
 
     } else if(action == CliShellCompletionsActionSelectNoClose) {
+        if(!CommandCompletions_size(completions->variants)) return;
         // insert selection into prompt
         CliShellCompletionSegment segment = cli_shell_completions_segment(completions);
         FuriString* input = cli_shell_line_get_selected(completions->line);
