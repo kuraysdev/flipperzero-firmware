@@ -85,6 +85,7 @@ bool furi_hal_bt_check_profile_type(
 FURI_WARN_UNUSED FuriHalBleProfileBase* furi_hal_bt_start_app(
     const FuriHalBleProfileTemplate* profile_template,
     FuriHalBleProfileParams params,
+    const GapRootSecurityKeys* root_keys,
     GapEventCallback event_cb,
     void* context);
 
@@ -107,6 +108,7 @@ void furi_hal_bt_reinit(void);
 FURI_WARN_UNUSED FuriHalBleProfileBase* furi_hal_bt_change_app(
     const FuriHalBleProfileTemplate* profile_template,
     FuriHalBleProfileParams profile_params,
+    const GapRootSecurityKeys* root_keys,
     GapEventCallback event_cb,
     void* context);
 
