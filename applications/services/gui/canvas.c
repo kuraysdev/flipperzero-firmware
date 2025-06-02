@@ -155,14 +155,19 @@ void canvas_invert_color(Canvas* canvas) {
 void canvas_set_font(Canvas* canvas, Font font) {
     furi_check(canvas);
     u8g2_SetFontMode(&canvas->fb, 1);
+    //Надо найти шрифты нормальные под каждое
     if(font == FontPrimary) {
-        u8g2_SetFont(&canvas->fb, u8g2_font_helvB08_tr);
+        //u8g2_SetFont(&canvas->fb, u8g2_font_helvB08_tr);
+        u8g2_SetFont(&canvas->fb, u8g2_font_6x12_t_cyrillic);
     } else if(font == FontSecondary) {
-        u8g2_SetFont(&canvas->fb, u8g2_font_haxrcorp4089_tr);
+        //u8g2_SetFont(&canvas->fb, u8g2_font_haxrcorp4089_tr);
+        u8g2_SetFont(&canvas->fb, u8g2_font_6x12_t_cyrillic);
     } else if(font == FontKeyboard) {
-        u8g2_SetFont(&canvas->fb, u8g2_font_profont11_mr);
+        //u8g2_SetFont(&canvas->fb, u8g2_font_profont11_mr);
+        u8g2_SetFont(&canvas->fb, u8g2_font_6x12_t_cyrillic);
     } else if(font == FontBigNumbers) {
-        u8g2_SetFont(&canvas->fb, u8g2_font_profont22_tn);
+        //u8g2_SetFont(&canvas->fb, u8g2_font_profont22_tn);
+        u8g2_SetFont(&canvas->fb, u8g2_font_6x12_t_cyrillic);
     } else {
         furi_crash();
     }
@@ -174,12 +179,64 @@ void canvas_set_custom_u8g2_font(Canvas* canvas, const uint8_t* font) {
     u8g2_SetFont(&canvas->fb, font);
 }
 
+// Ориг функции комментнул возможно будут проблемы с мерджем новых версий
+// void canvas_draw_str(Canvas* canvas, int32_t x, int32_t y, const char* str) {
+//     furi_check(canvas);
+//     if(!str) return;
+//     x += canvas->offset_x;
+//     y += canvas->offset_y;
+//     u8g2_DrawUTF8(&canvas->fb, x, y, str);
+// }
+
+// void canvas_draw_str_aligned(
+//     Canvas* canvas,
+//     int32_t x,
+//     int32_t y,
+//     Align horizontal,
+//     Align vertical,
+//     const char* str) {
+//     furi_check(canvas);
+//     if(!str) return;
+//     x += canvas->offset_x;
+//     y += canvas->offset_y;
+
+//     switch(horizontal) {
+//     case AlignLeft:
+//         break;
+//     case AlignRight:
+//         x -= u8g2_GetUTF8Width(&canvas->fb, str);
+//         break;
+//     case AlignCenter:
+//         x -= (u8g2_GetUTF8Width(&canvas->fb, str) / 2);
+//         break;
+//     default:
+//         furi_crash();
+//         break;
+//     }
+
+//     switch(vertical) {
+//     case AlignTop:
+//         y += u8g2_GetAscent(&canvas->fb);
+//         break;
+//     case AlignBottom:
+//         break;
+//     case AlignCenter:
+//         y += (u8g2_GetAscent(&canvas->fb) / 2);
+//         break;
+//     default:
+//         furi_crash();
+//         break;
+//     }
+
+//     u8g2_DrawUTF8(&canvas->fb, x, y, str);
+// }
+
 void canvas_draw_str(Canvas* canvas, int32_t x, int32_t y, const char* str) {
-    furi_check(canvas);
-    if(!str) return;
-    x += canvas->offset_x;
-    y += canvas->offset_y;
-    u8g2_DrawUTF8(&canvas->fb, x, y, str);
+    if(canvas->fb.font == u8g2_font_6x12_t_cyrillic) {
+        canvas_draw_utf8_str(canvas, x, y, str);
+    } else {
+        u8g2_DrawUTF8(&canvas->fb, x + canvas->offset_x, y + canvas->offset_y, str);
+    }
 }
 
 void canvas_draw_str_aligned(
@@ -198,10 +255,10 @@ void canvas_draw_str_aligned(
     case AlignLeft:
         break;
     case AlignRight:
-        x -= u8g2_GetUTF8Width(&canvas->fb, str);
+        x -= canvas_string_width(canvas, str);
         break;
     case AlignCenter:
-        x -= (u8g2_GetUTF8Width(&canvas->fb, str) / 2);
+        x -= (canvas_string_width(canvas, str) / 2);
         break;
     default:
         furi_crash();
@@ -210,19 +267,96 @@ void canvas_draw_str_aligned(
 
     switch(vertical) {
     case AlignTop:
-        y += u8g2_GetAscent(&canvas->fb);
+        y += canvas_current_font_height(canvas);
         break;
     case AlignBottom:
         break;
     case AlignCenter:
-        y += (u8g2_GetAscent(&canvas->fb) / 2);
+        y += (canvas_current_font_height(canvas) / 2);
         break;
     default:
         furi_crash();
         break;
     }
 
-    u8g2_DrawUTF8(&canvas->fb, x, y, str);
+    if(canvas->fb.font == u8g2_font_6x12_t_cyrillic) {
+        canvas_draw_utf8_str(canvas, x, y, str);
+    } else {
+        u8g2_DrawUTF8(&canvas->fb, x + canvas->offset_x, y + canvas->offset_y, str);
+    }
+}
+
+void canvas_draw_utf8_str(Canvas* canvas, int32_t x, int32_t y, const char* str) {
+    FuriStringUTF8State state = FuriStringUTF8StateStarting;
+    FuriStringUnicodeValue value = 0;
+
+    for(; *str; str++) {
+        furi_string_utf8_decode(*str, &state, &value);
+        if(state == FuriStringUTF8StateError) furi_crash(NULL);
+
+        if(state == FuriStringUTF8StateStarting) {
+            //ну что вы ещё ожидали
+            switch(value) {
+                case 'A': value = 0x0410; break; // А
+                case 'B': value = 0x0411; break; // Б
+                case 'C': value = 0x0421; break; // С
+                case 'D': value = 0x0414; break; // Д
+                case 'E': value = 0x0415; break; // Е
+                case 'F': value = 0x0424; break; // Ф
+                case 'G': value = 0x0413; break; // Г
+                case 'H': value = 0x0425; break; // Х
+                case 'I': value = 0x0418; break; // И
+                case 'J': value = 0x0419; break; // Й
+                case 'K': value = 0x041A; break; // К
+                case 'L': value = 0x041B; break; // Л
+                case 'M': value = 0x041C; break; // М
+                case 'N': value = 0x041D; break; // Н
+                case 'O': value = 0x041E; break; // О
+                case 'P': value = 0x041F; break; // П
+                case 'Q': value = 0x042F; break; // Я
+                case 'R': value = 0x0420; break; // Р
+                case 'S': value = 0x0421; break; // С
+                case 'T': value = 0x0422; break; // Т
+                case 'U': value = 0x0423; break; // У
+                case 'V': value = 0x0412; break; // В
+                case 'W': value = 0x0428; break; // Ш
+                case 'X': value = 0x0425; break; // Х
+                case 'Y': value = 0x042B; break; // Ы
+                case 'Z': value = 0x0417; break; // З
+                case 'a': value = 0x0430; break; // а
+                case 'b': value = 0x0431; break; // б
+                case 'c': value = 0x0441; break; // с
+                case 'd': value = 0x0434; break; // д
+                case 'e': value = 0x0435; break; // е
+                case 'f': value = 0x0444; break; // ф
+                case 'g': value = 0x0433; break; // г
+                case 'h': value = 0x0445; break; // х
+                case 'i': value = 0x0438; break; // и
+                case 'j': value = 0x0439; break; // й
+                case 'k': value = 0x043A; break; // к
+                case 'l': value = 0x043B; break; // л
+                case 'm': value = 0x043C; break; // м
+                case 'n': value = 0x043D; break; // н
+                case 'o': value = 0x043E; break; // о
+                case 'p': value = 0x043F; break; // п
+                case 'q': value = 0x044F; break; // я
+                case 'r': value = 0x0440; break; // р
+                case 's': value = 0x0441; break; // с
+                case 't': value = 0x0442; break; // т
+                case 'u': value = 0x0443; break; // у
+                case 'v': value = 0x0432; break; // в
+                case 'w': value = 0x0448; break; // ш
+                case 'x': value = 0x0445; break; // х
+                case 'y': value = 0x044B; break; // ы
+                case 'z': value = 0x0437; break; // з
+            }
+            canvas_draw_glyph(canvas, x, y, value);
+
+            // Only one-byte glyphs supported by canvas_glyph_width
+            x += value <= 0xFF ? canvas_glyph_width(canvas, value) :
+                                 canvas_glyph_width(canvas, ' ');
+        }
+    }
 }
 
 uint16_t canvas_string_width(Canvas* canvas, const char* str) {

@@ -178,6 +178,15 @@ void canvas_set_custom_u8g2_font(Canvas* canvas, const uint8_t* font);
  */
 void canvas_draw_str(Canvas* canvas, int32_t x, int32_t y, const char* str);
 
+/** Draw string но на русском
+ *
+ * @param      canvas  Canvas instance
+ * @param      x       anchor point x coordinate
+ * @param      y       anchor point y coordinate
+ * @param      str     C-string
+ */
+void canvas_draw_utf8_str(Canvas* canvas, int32_t x, int32_t y, const char* str);
+
 /** Draw aligned string defined by x, y.
  *
  * Align calculated from position of baseline, string width and ascent (height
