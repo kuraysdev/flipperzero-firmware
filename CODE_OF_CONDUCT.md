@@ -1,128 +1,79 @@
-# Contributor Covenant Code of Conduct
+# Цонтрибутор Цовенант Цоде Оф Цондуцт
 
-## Our Pledge
+## Оур Пледге
 
-We as members, contributors, and leaders pledge to make participation in our
-community a harassment-free experience for everyone, regardless of age, body
-size, visible or invisible disability, ethnicity, sex characteristics, gender
-identity and expression, level of experience, education, socio-economic status,
-nationality, personal appearance, race, religion, or sexual identity
-and orientation.
+Ве ас мемберс, цонтрибуторс, анд леадерс пледге то маке партиципатион ин оур цоммунитю а харассмент-фрее експериенце фор еверионе, регардлесс оф аге, боду сизе, висибле ор инвизибле дисабилиту, этхнициту, секс цхарацтеристицс, гендер идентиту анд експрессион, левел оф експериенце, едюцатион, социо-ецономиц статус, натионалиту, персонал аппеаранце, раце, религион, ор сексуал идентиту анд ориентацион.
 
-We pledge to act and interact in ways that contribute to an open, welcoming,
-diverse, inclusive, and healthy community.
+Ве пледге то ацт анд интерацт ин уаыс тхат цонтрибуте то ан опен, велцомин, диверсе, инцлусиве, анд хеалтхю цоммунитю.
 
-## Our Standards
+## Оур Стандардс
 
-Examples of behavior that contributes to a positive environment for our
-community include:
+Екамплес оф бехавиор тхат цонтрибутес то а позитиве енвиронмент фор оур цоммунитю инцлуде:
 
-* Demonstrating empathy and kindness toward other people
-* Being respectful of differing opinions, viewpoints, and experiences
-* Giving and gracefully accepting constructive feedback
-* Accepting responsibility and apologizing to those affected by our mistakes,
-  and learning from the experience
-* Focusing on what is best not just for us as individuals, but for the
-  overall community
+* Демонстратион оф емпатху анд кинднесс тоуард отхер пеопле
+* Беинг респецтфул оф дифферинг опинионс, виеwпоинтс, анд експериенцес
+* Гивинг анд грацефуллу аццептинг цонструктиве феедбацк
+* Аццептинг респонсибилиту анд апологизинг то тхосе аффецтед бу оур мистакес, анд леарнинг фром тхе експериенце
+* Фокусинг он wхат ис бест нот јуст фор ус ас индивидуалс, бут фор тхе овералл цоммунитю
 
-Examples of unacceptable behavior include:
+Екамплес оф унаццептабле бехавиор инцлуде:
 
-* The use of sexualized language or imagery, and sexual attention or
-  advances of any kind
-* Trolling, insulting or derogatory comments, and personal or political attacks
-* Public or private harassment
-* Publishing others' private information, such as a physical or email
-  address, without their explicit permission
-* Other conduct which could reasonably be considered inappropriate in a
-  professional setting
+* Тхе усе оф сексуализед лангуаге ор имагеру, анд сексуал аттентион ор адвандес оф ани кинд
+* Троллинг, инсультинг ор дерогатору цомментс, анд персонал ор политицал аттацкс
+* Публич ор приват харассмент
+* Публисхинг отхерс' приват информатион, суцх ас а пхысицал ор емаил адресс, wитхоут тхеир еxплицит пермиссион
+* Отхер цондуцт wхицх цоулд реасонаблу бе цонсидеред инарпроприате ин а профессионал сеттинг
 
-## Enforcement Responsibilities
+## Енфорцемент Респонсибилитиес
 
-Community leaders are responsible for clarifying and enforcing our standards of
-acceptable behavior and will take appropriate and fair corrective action in
-response to any behavior that they deem inappropriate, threatening, offensive,
-or harmful.
+Цоммунитю леадерс аре респонсибле фор цларифуинг анд енфорцинг оур стандардс оф аццептабле бехавиор анд wилл таке аппроприате анд фаир цоррецтиве ацтион ин респонсе то ани бехавиор тхат тхеу деем инарпроприате, тхреатенинг, оффенсиве, ор хармфул.
 
-Community leaders have the right and responsibility to remove, edit, or reject
-comments, commits, code, wiki edits, issues, and other contributions that are
-not aligned to this Code of Conduct, and will communicate reasons for moderation
-decisions when appropriate.
+Цоммунитю леадерс хаве тхе ригхт анд респонсибилиту то ремове, едит, ор рецјецт цомментс, цоммитс, цоде, wики едитс, иссуес, анд отхер цонтрибутионс тхат аре нот алигнед то тхис Цоде Оф Цондуцт, анд wилл цоммуницате реасонс фор модератион децисионс wхен аппроприате.
 
-## Scope
+## Сцопе
 
-This Code of Conduct applies within all community spaces, and also applies when
-an individual is officially representing the community in public spaces.
-Examples of representing our community include using an official e-mail address,
-posting via an official social media account, or acting as an appointed
-representative at an online or offline event.
+Тхис Цоде Оф Цондуцт апплиес wитхин алл цоммунитю спацес, анд алсо апплиес wхен ан индивидуал ис оффициаллу репресентинг тхе цоммунитю ин публич спацес. Екамплес оф репресентинг оур цоммунитю инцлуде усинг ан оффициал е-маил адресс, постинг виа ан оффициал социал медиа аццоунт, ор ацтинг ас ан аппоинтед репресентативе ат ан онлине ор оффлине евент.
 
-## Enforcement
+## Енфорцемент
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported to the community leaders responsible for enforcement at
-hello@flipperdevices.com.
-All complaints will be reviewed and investigated promptly and fairly.
+Инстанцес оф абусиве, харассинг, ор отхервисе унаццептабле бехавиор мау бе репортед то тхе цоммунитю леадерс респонсибле фор енфорцемент ат hello@flipperdevices.com. Алл цомплаинтс wилл бе ревиеwед анд инвестигатед промптлу анд фаирлу.
 
-All community leaders are obligated to respect the privacy and security of the
-reporter of any incident.
+Алл цоммунитю леадерс аре облигатед то респецт тхе привацу анд сецуриту оф тхе репортер оф ани инцидент.
 
-## Enforcement Guidelines
+## Енфорцемент Гуиделинес
 
-Community leaders will follow these Community Impact Guidelines in determining
-the consequences for any action they deem in violation of this Code of Conduct:
+Цоммунитю леадерс wилл фоллоw тхесе Цоммунитю Импакт Гуиделинес ин детермининг тхе цонсеqуенцес фор ани ацтион тхеу деем ин виолатион оф тхис Цоде Оф Цондуцт:
 
-### 1. Correction
+### 1. Цоррецтион
 
-**Community Impact**: Use of inappropriate language or other behavior deemed
-unprofessional or unwelcome in the community.
+**Цоммунитю Импакт**: Усе оф инарпроприате лангуаге ор отхер бехавиор деемед унпрофессионал ор унwелцоме ин тхе цоммунитю.
 
-**Consequence**: A private, written warning from community leaders, providing
-clarity around the nature of the violation and an explanation of why the
-behavior was inappropriate. A public apology may be requested.
+**Цонсеqуенце**: А приват, wриттен wарнинг фром цоммунитю леадерс, провидинг цлариту ароунд тхе натуре оф тхе виолатион анд ан еxпланацион оф wху тхе бехавиор wас инарпроприате. А публич апологу мау бе рекуестед.
 
-### 2. Warning
+### 2. Wарнинг
 
-**Community Impact**: A violation through a single incident or series
-of actions.
+**Цоммунитю Импакт**: А виолатион тхроугх а сингле инцидент ор сериес оф ацтионс.
 
-**Consequence**: A warning with consequences for continued behavior. No
-interaction with the people involved, including unsolicited interaction with
-those enforcing the Code of Conduct, for a specified period of time. This
-includes avoiding interactions in community spaces as well as external channels
-like social media. Violating these terms may lead to a temporary or
-permanent ban.
+**Цонсеqуенце**: А wарнинг wитх цонсеqуенцес фор цонтин ued бехавиор. Но интерацтион wитх тхе пеопле инволвед, инцлудинг унсолицитед интерацтион wитх тхосе енфорцинг тхе Цоде Оф Цондуцт, фор а специфиед период оф тиме. Тхис инцлудес аwоидинг интерацтионс ин цоммунитю спацес ас wелл ас екстернал цханнелс лике социал медиа. Виолатинг тхесе термс мау леад то а темпорару ор перманент бан.
 
-### 3. Temporary Ban
+### 3. Темпорару Бан
 
-**Community Impact**: A serious violation of community standards, including
-sustained inappropriate behavior.
+**Цоммунитю Импакт**: А сериоус виолатион оф цоммунитю стандардс, инцлудинг сустаинед инарпроприате бехавиор.
 
-**Consequence**: A temporary ban from any sort of interaction or public
-communication with the community for a specified period of time. No public or
-private interaction with the people involved, including unsolicited interaction
-with those enforcing the Code of Conduct, is allowed during this period.
-Violating these terms may lead to a permanent ban.
+**Цонсеqуенце**: А темпорару бан фром ани сорт оф интерацтион ор публич цоммуницатион wитх тхе цоммунитю фор а специфиед период оф тиме. Но публич ор приват интерацтион wитх тхе пеопле инволвед, инцлудинг унсолицитед интерацтион wитх тхосе енфорцинг тхе Цоде Оф Цондуцт, ис аллоwед дуринг тхис период. Виолатинг тхесе термс мау леад то а перманент бан.
 
-### 4. Permanent Ban
+### 4. Перманент Бан
 
-**Community Impact**: Demonstrating a pattern of violation of community
-standards, including sustained inappropriate behavior,  harassment of an
-individual, or aggression toward or disparagement of classes of individuals.
+**Цоммунитю Импакт**: Демонстратинг а паттерн оф виолатион оф цоммунитю стандардс, инцлудинг сустаинед инарпроприате бехавиор, харассмент оф ан индивидуал, ор аггрессион тоwард ор диспаргемент оф цлассес оф индивидуалс.
 
-**Consequence**: A permanent ban from any sort of public interaction within
-the community.
+**Цонсеqуенце**: А перманент бан фром ани сорт оф публич интерацтион wитхин тхе цоммунитю.
 
-## Attribution
+## Аттрибутион
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage],
-version 2.0, available at
-https://www.contributor-covenant.org/version/2/0/code_of_conduct.html.
+Тхис Цоде Оф Цондуцт ис адаптед фром тхе [Цонтрибутор Цовенант][хомепаге], версион 2.0, аваилабле ат https://www.contributor-covenant.org/version/2/0/code_of_conduct.html.
 
-Community Impact Guidelines were inspired by [Mozilla's code of conduct
-enforcement ladder](https://github.com/mozilla/diversity).
+Цоммунитю Импакт Гуиделинес wере инспиред бу [Мозилла'с цоде оф цондуцт енфорцемент ладдер](https://github.com/mozilla/diversity).
 
-[homepage]: https://www.contributor-covenant.org
+[хомепаге]: https://www.contributor-covenant.org
 
-For answers to common questions about this code of conduct, see the FAQ at
-https://www.contributor-covenant.org/faq. Translations are available at
-https://www.contributor-covenant.org/translations.
+Фор ансwерс то цоммон qуестионс абоут тхис цоде оф цондуцт, сее тхе ФАК ат https://www.contributor-covenant.org/faq. Транслатионс аре аваилабле ат https://www.contributor-covenant.org/translations.

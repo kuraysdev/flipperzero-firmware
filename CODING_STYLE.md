@@ -1,101 +1,102 @@
-# Intro
+# Интро
 
-Nice to see you reading this document, we really appreciate it.
+Нице то си юу реадинг тхис документ, ве реалли апприсиате ит.
 
-As all documents of this kind it's unable to cover everything.
-But it will cover general rules that we are enforcing on PR review.
+Ас алл докуменц оф тхис кинд ит'с унэйбл то цовер еверитхинг.
+Бут ит вилл цовер генерал рулес тхат ве ар енфорсинг он ПР ревиев.
 
-Also, we already have automatic rules checking and formatting,
-but it got its limitations and this guide is still mandatory.
+Алсо, ве алреади хаве аутоматик рулес чеккинг анд форматтинг,
+бут ит гот итс лимитатионс анд тхис гуиде ис стилл мандаторй.
 
-Some part of this project do have its own naming and coding guides.
-For example: assets. Take a look into `ReadMe.md` in assets folder for more details.
+Соме парт оф тхис проект до хаве итс оун наиминг анд кодинг гуидес.
+Фор екзампле: ассетс. Таке а лук инто `ReadMe.md` ин ассетс фолдер фор море детаилс.
 
-Also, 3rd party libraries are none of our concern.
+Алсо, 3рд парти либрарис ар ноне оф оур концерн.
 
-And yes, this set is not final and we are open to discussion.
-If you want to add/remove/change something here please feel free to open new ticket.
+Анд йес, тхис сет ис нот финал анд ве ар опен то дискусион.
+Иф юу вант то адд/ремове/чанге сометхинг хере плеасе феел фрее то опен нев тикет.
 
-# Inspiration
+# Инспиратион
 
-Our guide is inspired by, but not claiming to be compatible with:
+Оур гуиде ис инспиред би, бут нот цлаиминг то бе цомпатибле витх:
 
 - https://www.kernel.org/doc/html/v4.10/process/coding-style.html
 - https://docs.unrealengine.com/en-US/Programming/Development/CodingStandard
 - https://webkit.org/code-style-guidelines/
 
-# General rules
+# Генерал рулес
 
-## Readability and Simplicity first
+## Реадабилити анд Симплисити ферст
 
-Code we write is intended to be public.
-Avoid one-liners from hell and keep code complexity under control.
-Try to make code self-explanatory and add comments if needed.
-Leave references to standards that you are implementing.
-Use project wiki to document new/reverse engineered standards.
+Коде ве врит ис интендед то бе паблик.
+Авойд оне-линерс фром хелл анд кееп коде цомплексити ундер цонтрол.
+Тры то маке коде селф-експланаторй анд адд цомментс иф неедед.
+Леаве референцес то стандартс тхат юу ар имплементинг.
+Усе проект вики то документ нев/реверсе енгинееред стандартс.
 
-## Variable and function names must clearly define what it's doing
+## Вариабле анд функтион наимс муст клеарли дефине ват ит'с доинг
 
-It's ok if it will be long, but it should clearly state what it's doing, without need to dive into code.
-This also applies to function/method's code.
-Try to avoid one letter variables.
+Ит'с ок иф ит вилл бе лонг, бут ит шоулд клеарли стате ват ит'с доинг, витхоут неед то диве инто коде.
+Тхис алсо аплиес то функтион/метход'с коде.
+Тры то авойд он леттер вариаблес.
 
-## Encapsulation
+## Енкапсулацион
 
-Don't expose raw data, provide methods to work with it.
-Almost everything in flipper firmware is built around this concept.
+Дон'т експозе рав дата, провиде методс то ворк витх ит.
+Алмост еверитхинг ин флиппер фирмваре ис буилт ароунд тхис концепт.
 
-# C coding style
+# Ц кодинг стайл
 
-- Tab is 4 spaces
-- Use `./fbt format` to reformat source code and check style guide before commit
+- Таб ис 4 спацес
+- Усе `./fbt format` то реформат соурце коде анд чек стайл гуиде бефор цоммит
 
-## Naming
+## Наиминг
 
-### Type names are PascalCase
+### Типе наимс ар ПасцалЦасе
 
-Examples:
+Екзамплес:
 
-	FuriHalUsb
-	Gui
-	SubGhzKeystore
+	ФуриХалУсб
+	Гуи
+	СубГхзКейсторе
 
 
-### Functions are snake_case
+### Функтионс ар снэйк_цасе
 
-	furi_hal_usb_init
-	gui_add_view_port
-	subghz_keystore_read
+	фури_хал_усб_инит
+	гуи_адд_виев_порт
+	субгхз_кейсторе_реад
 
-### File and Package name is a prefix for it's content
+### Филе анд Пацкаге наме ис а префикс фор ит'с контент
 
-This rule makes easier to locate types, functions and sources.
+Тхис руле макес еасиер то локате типес, функтионс анд соурцес.
 
-For example:
+Фор екзампле:
 
-We have abstraction that we call `SubGhz Keystore`, so there will be:
-file `subghz_keystore.h` we have type `SubGhzKeystore` and function `subghz_keystore_read`.
+Ве хаве абстрацтион тхат ве цалл `СубГхз кейсторе`, со тхере вилл бе:
+филе `subghz_keystore.h` ве хаве типе `СубГхзейсторе` анд функтион `subghz_keystore_read`.
 
-### File names
+### Филе наимс
 
-- Directories: `^[0-9A-Za-z_]+$`
-- File names: `^[0-9A-Za-z_]+\.[a-z]+$`
-- File extensions: `[ ".h", ".c", ".cpp", ".cxx", ".hpp" ]`
+- Дирецториес: `^[0-9A-Za-z_]+$`
+- Филе наимс: `^[0-9A-Za-z_]+\.[a-z]+$`
+- Филе екстенсионс: `[ ".h", ".c", ".cpp", ".cxx", ".hpp" ]`
 
-Enforced by linter.
+Енфорцед би линтер.
 
-### Standard function/method names
+### Стандарт функтион/метход наимс
 
-Suffixes:
+Суффиксес:
 
-- `alloc` - allocate and init instance. C style constructor. Returns pointer to instance.
-- `free` - de-init and release instance. C style destructor. Takes pointer to instance.
+- `аллоц` - аллоцате анд инит инстанце. Ц стайл цонструктор. Ретурнс поинтер то инстанце.
+- `фрее` - де-инит анд релесе инстанце. Ц стайл деструктор. Такес поинтер то инстанце.
 
-# C++ coding style
+# Ц++ кодинг стайл
 
-Work In Progress. Use C style guide as a base.
+Ворк Ин Прогресс. Усе Ц стайл гуиде ас а басе.
 
-# Python coding style
+# Питхон кодинг стайл
 
-- Tab is 4 spaces
-- Use [black](https://pypi.org/project/black/) to reformat source code before commit
+- Таб ис 4 спацес
+- Усе [блацк](https://pypi.org/project/black/) то реформат соурце коде бефор цоммит
+

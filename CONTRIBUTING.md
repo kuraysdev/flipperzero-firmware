@@ -1,72 +1,72 @@
-# Welcome to FlipperZero contributing guide <!-- omit in toc -->
+# Велцоме то ФлииперЗеро цонтрибутинг гуиде<!-- omit in toc -->
 
-Thank you for investing your time in contributing to our project! 
+Тханк йоу фор инвестинг йор тиме ин цонтрибутинг то оур прожецт!
 
-Read our [Code of Conduct](CODE_OF_CONDUCT.md) to keep our community approachable and respectable.
+Реад оур [Цоде Оф Цондуцт](CODE_OF_CONDUCT.md) то кееп оур цоммунитю аппроацхабле анд респектабле.
 
-In this guide you will get an overview of the contribution workflow from opening an issue, creating a PR, reviewing, and merging the PR.
+Ин тхис гуиде йоу вилл гет ан овервиев оф тхе цонтрибутион воркфлов фром опенинг ан иссуе, цреатинг а ПР, ревиеуинг, анд мергинг тхе ПР.
 
-## New contributor guide
+## Нев цонтрибутор гуиде
 
-See the [ReadMe](ReadMe.md) to get an overview of the project. Here are some helpful resources to get you comfortable with open source contribution:
+Сее тхе [РеадМе](ReadMe.md) то гет ан овервиев оф тхе прожецт. Хере аре соме хелпфул ресоурцес то гет йоу цомфортбле уитх опен соурце цонтрибутион:
 
-- [Finding ways to contribute to open source on GitHub](https://docs.github.com/en/get-started/exploring-projects-on-github/finding-ways-to-contribute-to-open-source-on-github)
-- [Set up Git](https://docs.github.com/en/get-started/quickstart/set-up-git)
-- [GitHub flow](https://docs.github.com/en/get-started/quickstart/github-flow)
-- [Collaborating with pull requests](https://docs.github.com/en/github/collaborating-with-pull-requests)
+- [Финдинг уаыс то цонтрибуте то опен соурце он ГитХуб](https://docs.github.com/en/get-started/exploring-projects-on-github/finding-ways-to-contribute-to-open-source-on-github)
+- [Сет уп Гит](https://docs.github.com/en/get-started/quickstart/set-up-git)
+- [ГитХуб флоу](https://docs.github.com/en/get-started/quickstart/github-flow)
+- [Цоллаборатион уитх пулл рекуестс](https://docs.github.com/en/github/collaborating-with-pull-requests)
 
-## Getting started
+## Геттинг стартед
 
-Before writing code and creating PR make sure that it aligns with our mission and guidelines:
+Бефоре уритинг цоде анд цреатинг ПР маке суре тхат ит алигнс уитх оур миссион анд гуиделинес:
 
-- All our devices are intended for research and education.
-- PR that contains code intended to commit crimes is not going to be accepted.
-- Your PR must comply with our [Coding Style](CODING_STYLE.md)
-- Your PR must contain code compatible with project [LICENSE](LICENSE).
-- PR will only be merged if it passes CI/CD.
-- PR will only be merged if it passes review by code owner.
+- Алл оур девицес аре интендед фор ресеарцх анд едуцатион.
+- ПР тхат цонтаинс цоде интендед то цоммит цримес ис нот гоинг то бе аццептед.
+- Йоур ПР муст цомпли уитх оур [Цодинг Стиле](CODING_STYLE.md)
+- Йоур ПР муст цонтаин цоде цомпатибле уитх прожецт [LICENSE](LICENSE).
+- ПР вилл онли бе мергед иф ит пассес ЦИ/ЦД.
+- ПР вилл онли бе мергед иф ит пассес ревиеу бы цоде оунер.
 
-Feel free to ask questions in issues if you're not sure.
+Феел фрее то аск куестионс ин иссуес иф йоу'ре нот суре.
 
-### Issues
+### Иссуес
 
-#### Create a new issue
+#### Цреате а нев иссуе
 
-If you found a problem, [search if an issue already exists](https://docs.github.com/en/github/searching-for-information-on-github/searching-on-github/searching-issues-and-pull-requests#search-by-the-title-body-or-comments). If a related issue doesn't exist, you can open a new issue using a relevant [issue form](https://github.com/flipperdevices/flipperzero-firmware/issues/new/choose). 
+Иф йоу фоунд а проблем, [сеарцх иф ан иссуе алреады ексистс](https://docs.github.com/en/github/searching-for-information-on-github/searching-on-github/searching-issues-and-pull-requests#search-by-the-title-body-or-comments). Иф а релатед иссуе доесн'т ексист, йоу кан опен а нев иссуе усинг а релевант [иссуе форм](https://github.com/flipperdevices/flipperzero-firmware/issues/new/choose). 
 
-#### Solve an issue
+#### Солве ан иссуе
 
-Scan through our [existing issues](https://github.com/flipperdevices/flipperzero-firmware/issues) to find one that interests you.
+Сцан тхроугх оур [екзистинг иссуес](https://github.com/flipperdevices/flipperzero-firmware/issues) то финд оне тхат интересц йоу.
 
-### Make Changes
+### Маке Цхангес
 
-1. Fork the repository.
-- Using GitHub Desktop:
-  - [Getting started with GitHub Desktop](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/getting-started-with-github-desktop) will guide you through setting up Desktop.
-  - Once Desktop is set up, you can use it to [fork the repo](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/cloning-and-forking-repositories-from-github-desktop)!
+1. Форк тхе репоситори.
+- Усинг ГитХуб Десктоп:
+  - [Геттинг стартед уитх ГитХуб Десктоп](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/getting-started-with-github-desktop) вилл гуиде йоу тхроугх сеттинг уп Десктоп.
+  - Онце Десктоп ис сет уп, йоу кан усе ит то [форк тхе репо](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/cloning-and-forking-repositories-from-github-desktop)!
 
-- Using the command line:
-  - [Fork the repo](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo#fork-an-example-repository) so that you can make your changes without affecting the original project until you're ready to merge them.
+- Усинг тхе цомманд лине:
+  - [Форк тхе репо](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo#fork-an-example-repository) со тхат йоу кан маке йоур цхангес уитхоут аффецтинг тхе оригинал прожецт унтил йоу'ре реады то мерге тхем.
 
-2. Install build requirements
+2. Инсталл буилд реqуирементс
 
-3. Create a working branch and start with your changes!
+3. Цреате а воркинг бранцх анд старт уитх йоур цхангес!
 
-### Commit your update
+### Цоммит йоур упдате
 
-Commit the changes once you are happy with them. Make sure that code compilation is not broken and passes tests. Check syntax and formatting.
+Цоммит тхе цхангес онце йоу аре хаппй уитх тхем. Маке суре тхат цоде цомпилатион ис нот брокен анд пассес тестс. Чецк синтакс анд форматтинг.
 
-### Pull Request
+### Пулл Рекуест
 
-When you're done making the changes, open a pull request, often referred to as a PR. 
-- Fill out the "Ready for review" template, so we can review your PR. This template helps reviewers understand your changes and the purpose of your pull request. 
-- Don't forget to [link PR to issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue) if you are solving one.
-- Enable the checkbox to [allow maintainer edits](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/allowing-changes-to-a-pull-request-branch-created-from-a-fork) so the branch can be updated for a merge.
-Once you submit your PR, a Docs team member will review your proposal. We may ask questions or request for additional information.
-- We may ask for changes to be made before a PR can be merged, either using [suggested changes](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/incorporating-feedback-in-your-pull-request) or pull request comments. You can apply suggested changes directly through the UI. You can make any other changes in your fork, then commit them to your branch.
-- As you update your PR and apply changes, mark each conversation as [resolved](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request#resolving-conversations).
-- If you run into any merge issues, checkout this [git tutorial](https://lab.github.com/githubtraining/managing-merge-conflicts) to help you resolve merge conflicts and other issues.
+Ухен йоу'ре дон макенг тхе цхангес, опен а пулл рекуест, офтен реферред то ас а ПР. 
+- Филл оут тхе "Реады фор ревиеу" темплате, со ве кан ревиеу йоур ПР. Тхис темплате хелпс ревиеверс ундерстанд йоур цхангес анд тхе пурпосе оф йоур пулл рекуест. 
+- Дон'т форгет то [линк ПР то иссуе](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue) иф йоу аре солвинг оне.
+- Енабле тхе цхецкбок то [аллоу маинтаинер едитс](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/allowing-changes-to-a-pull-request-branch-created-from-a-fork) со тхе бранцх кан бе упдатед фор а мерге.
+Онце йоу субмит йоур ПР, а Доцс теам мембер вилл ревиеу йоур пропосал. Ве май аск куестионс ор реqуест фор аддитионал информатион.
+- Ве май аск фор цхангес то бе маде бефоре а ПР кан бе мергед, еитхер усинг [суггестед цхангес](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/incorporating-feedback-in-your-pull-request) ор пулл рекуест цомментс. Йоу кан аппли суггестед цхангес дирецтлы тхроугх тхе УИ. Йоу кан маке ани отхер цхангес ин йоур форк, тхен цоммит тхем то йоур бранцх.
+- Ас йоу упдате йоур ПР анд аппли цхангес, марк еацх цонверсатион ас [ресолвед](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request#resolving-conversations).
+- Иф йоу рун инто ани мерге иссуес, чецкоут тхис [гит туториал](https://lab.github.com/githubtraining/managing-merge-conflicts) то хелп йоу ресолве мерге цонфлицтс анд отхер иссуес.
 
-### Your PR is merged!
+### Йоур ПР ис мергед!
 
-Congratulations :tada::tada: The FlipperDevices team thanks you :sparkles:.
+Цонгратулатионс :tada::tada: Тхе ФлипперДевицес теам тханкс йоу :sparkles:.
