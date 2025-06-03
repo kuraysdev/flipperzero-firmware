@@ -54,7 +54,7 @@
 - [Флиппер Зеро Ви-Фи Девелопмент Боард](https://shop.flipperzero.one/products/wifi-devboard)
 - ЦМСИС-ДАП компатибле: Распберри Пи Дебуг Пробе анд етц...
 - СТ-Линк (в2, в3, в3модс)
-- Ј-Линк
+- Ж-Линк
 
 Флиппер Билд Систем вилл таке царе оф алл тхе отхер депенденцис.
 
@@ -123,4 +123,5 @@ git clone --recursive https://github.com/flipperdevices/flipperzero-firmware.git
 
 ## САСТ Тоолс
 
-- [ПВС-Студио](https://pvs-studio.com/pvs-studio/?utm_source=website&utm_medium=github&utm_campaign=open_source) - статик анализер фор Ц, Ц++, Ц#, анд Јава коде.
+- [ПВС-Студио](https://pvs-studio.com/pvs-studio/?utm_source=website&utm_medium=github&utm_campaign=open_source) - статик анализер фор Ц, Ц++, Ц#, анд Жава коде.
+
