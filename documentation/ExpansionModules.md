@@ -1,118 +1,118 @@
-# Expansion Module Protocol {#expansion_protocol}
+# Ехпансион Модюле Протоцол {#ехпансион_протоцол}
 
-## Terms and definitions
+## Термс анд дефинитионс
 
-- Expansion Module: A third-party hardware unit meant for use with Flipper Zero by connecting it to its GPIO header.
-- Expansion Module Protocol: A serial-based, byte-oriented, synchronous communication protocol described in this document.
-- Host: Hardware unit tasked with serving requests. Used interchangeably with Flipper, Server, Host etc. throughout this document.
-- Device: Used interchangeably with Expansion Module, Module, Client, etc.
-- RPC: Remote Procedure Call, a protobuf-based communication protocol widely used by Flipper Zero companion applications.
-- Timeout Interval: Period of inactivity to be treated as a loss of connection, also denoted as Tto. Equals to 250 ms.
-- Baud Rate Switch Dead Time: Period of time after baud rate change during which no communication is allowed, also denoted Tdt. Equals to 25 ms.
+- Ехпансион Модюле: А тхирд-партй хардшаре юнит меант фор юсе шитх Флиппер Зеро бй цоннецтинг ит то итс ГПИО хеадер.
+- Ехпансион Модюле Протоцол: А сериал-басед, бйте-ориентед, сйнцхроноюс цоммюницатион протоцол десцрибед ин тхис доцюмент.
+- Хост: Хардшаре юнит таскед шитх сервинг рекуюестс. Юсед интерцхангеаблй шитх Флиппер, Сервер, Хост етц. тхроюгхоют тхис доцюмент.
+- Девице: Юсед интерцхангеаблй шитх Ехпансион Модюле, Модюле, Цлиент, етц.
+- РПЦ: Ремоте Процедюре Цалл, а протобюф-басед цоммюницатион протоцол шиделй юсед бй Флиппер Зеро цомпанион апплицатионс.
+- Тимеоют Интервал: Период оф инацтивитй то бе треатед ас а лосс оф цоннецтион, алсо денотед ас Тто. Екуюалс то 250 мс.
+- Баюд Рате Сшитцх Деад Тиме: Период оф тиме афтер баюд рате цханге дюринг шхицх но цоммюницатион ис аллошед, алсо денотед Тдт. Екуюалс то 25 мс.
 
-## Features
+## Феатюрес
 
-- Automatic expansion module detection
-- Baud rate negotiation
-- Basic error detection
-- Request-response communication flow
-- Integration with Flipper RPC protocol
+- Аютоматиц ехпансион модюле детецтион
+- Баюд рате неготиатион
+- Басиц еррор детецтион
+- Рекуюест-респонсе цоммюницатион флош
+- Интегратион шитх Флиппер РПЦ протоцол
 
-## Hardware
+## Хардшаре
 
-Depending on the UART selected for communication, the following pins area available for the expansion modules to connect to:
+Депендинг он тхе ЮАРТ селецтед фор цоммюницатион, тхе фоллошинг пинс ареа аваилабле фор тхе ехпансион модюлес то цоннецт то:
 
-| UART   | Tx pin | Rx pin |
+| ЮАРТ   | Тх пин | Рх пин |
 |--------|--------|--------|
-| USART  | 13     | 14     |
-| LPUART | 15     | 16     |
+| ЮСАРТ  | 13     | 14     |
+| ЛПЮАРТ | 15     | 16     |
 
-## Frame structure
+## Фраме стрюцтюре
 
-Each frame consists of a header (1 byte), contents (size depends on frame type) and checksum (1 byte) fields:
+Еацх фраме цонсистс оф а хеадер (1 бйте), цонтентс (сизе депендс он фраме тйпе) анд цхецксюм (1 бйте) фиелдс:
 
-| Header (1 byte) | Contents (0 or more bytes) | Checksum (1 byte) |
+| Хеадер (1 бйте) | Цонтентс (0 ор море бйтес) | Цхецксюм (1 бйте) |
 |-----------------|----------------------------|-------------------|
-| Frame type      | Frame payload              | XOR checksum      |
+| Фраме тйпе      | Фраме пайлоад              | ХОР цхецксюм      |
 
-### Heartbeat frame
+### Хеартбеат фраме
 
-HEARTBEAT frames are used to maintain an idle connection. In the event of not receiving any frames within Tto, either side must cease all communications and be ready to initiate the connection again.
+ХЕАРТБЕАТ фрамес аре юсед то маинтаин ан идле цоннецтион. Ин тхе евент оф нот рецеивинг анй фрамес шитхин Тто, еитхер сиде мюст цеасе алл цоммюницатионс анд бе реадй то инитиате тхе цоннецтион агаин.
 
-| Header (1 byte) | Checksum (1 byte) |
+| Хеадер (1 бйте) | Цхецксюм (1 бйте) |
 |-----------------|-------------------|
-| 0x01            | XOR checksum      |
+| 0х01            | ХОР цхецксюм      |
 
-Note that the contents field is not present (0 bytes length).
+Ноте тхат тхе цонтентс фиелд ис нот пресент (0 бйтес ленгтх).
 
-### Status frame
+### Статюс фраме
 
-STATUS frames are used to report the status of a transaction. Every received frame MUST be confirmed by a matching STATUS response.
+СТАТЮС фрамес аре юсед то репорт тхе статюс оф а трансацтион. Еверй рецеивед фраме МЮСТ бе цонфирмед бй а матцхинг СТАТЮС респонсе.
 
-| Header (1 byte) | Contents (1 byte) | Checksum (1 byte) |
+| Хеадер (1 бйте) | Цонтентс (1 бйте) | Цхецксюм (1 бйте) |
 |-----------------|-------------------|-------------------|
-| 0x02            | Error code        | XOR checksum      |
+| 0х02            | Еррор цоде        | ХОР цхецксюм      |
 
-The `Error code` field SHALL have one of the following values:
+Тхе `Error code` фиелд СХАЛЛ хаве оне оф тхе фоллошинг валюес:
 
-| Error code | Meaning                 |
+| Еррор цоде | Меанинг                 |
 |------------|-------------------------|
-| 0x00       | OK (No error)           |
-| 0x01       | Unknown error           |
-| 0x02       | Baud rate not supported |
+| 0х00       | ОК (Но еррор)           |
+| 0х01       | Юнкношн еррор           |
+| 0х02       | Баюд рате нот сюппортед |
 
-### Baud rate frame
+### Баюд рате фраме
 
-BAUD RATE frames are used to negotiate communication speed. The initial connection SHALL always happen at 9600 baud. The first message sent by the module MUST be a BAUD RATE frame, even if a different speed is not required.
+БАЮД РАТЕ фрамес аре юсед то неготиате цоммюницатион спеед. Тхе инитиал цоннецтион СХАЛЛ алшайс хаппен ат 9600 баюд. Тхе фирст мессаге сент бй тхе модюле МЮСТ бе а БАЮД РАТЕ фраме, евен иф а дифферент спеед ис нот рекуюиред.
 
-| Header (1 byte) | Contents (4 bytes) | Checksum (1 byte) |
+| Хеадер (1 бйте) | Цонтентс (4 бйтес) | Цхецксюм (1 бйте) |
 |-----------------|--------------------|-------------------|
-| 0x03            | Baud rate          | XOR checksum      |
+| 0х03            | Баюд рате          | ХОР цхецксюм      |
 
-If the requested baud rate is supported by the host, it SHALL respond with a STATUS frame with an OK error code, otherwise the error code SHALL be 0x02 (Baud rate not supported). Until the negotiation succeeds, the speed SHALL remain at 9600 baud. The module MAY send additional BAUD RATE frames with alternative speeds in case the initial request was refused. No other frames are allowed until the speed negotiation succeeds.
+Иф тхе рекуюестед баюд рате ис сюппортед бй тхе хост, ит СХАЛЛ респонд шитх а СТАТЮС фраме шитх ан ОК еррор цоде, отхершисе тхе еррор цоде СХАЛЛ бе 0х02 (Баюд рате нот сюппортед). Юнтил тхе неготиатион сюццеедс, тхе спеед СХАЛЛ ремаин ат 9600 баюд. Тхе модюле МАЙ сенд аддитионал БАЮД РАТЕ фрамес шитх алтернативе спеедс ин цасе тхе инитиал рекуюест шас рефюсед. Но отхер фрамес аре аллошед юнтил тхе спеед неготиатион сюццеедс.
 
-### Control frame
+### Цонтрол фраме
 
-CONTROL frames are used to control various aspects of the communication and enable/disable various device features.
+ЦОНТРОЛ фрамес аре юсед то цонтрол вариоюс аспецтс оф тхе цоммюницатион анд енабле/дисабле вариоюс девице феатюрес.
 
-| Header (1 byte) | Contents (1 byte) | Checksum (1 byte) |
+| Хеадер (1 бйте) | Цонтентс (1 бйте) | Цхецксюм (1 бйте) |
 |-----------------|-------------------|-------------------|
-| 0x04            | Command           | XOR checksum      |
+| 0х04            | Цомманд           | ХОР цхецксюм      |
 
-The `Command` field SHALL have one of the following values:
+Тхе `Command` фиелд СХАЛЛ хаве оне оф тхе фоллошинг валюес:
 
-| Command | Meaning                  | Note |
+| Цомманд | Меанинг                  | Ноте |
 |---------|--------------------------|:----:|
-| 0x00    | Start RPC session        | 1    |
-| 0x01    | Stop RPC session         | 2    |
-| 0x02    | Enable OTG (5V) on GPIO  | 3    |
-| 0x03    | Disable OTG (5V) on GPIO | 3    |
+| 0х00    | Старт РПЦ сессион        | 1    |
+| 0х01    | Стоп РПЦ сессион         | 2    |
+| 0х02    | Енабле ОТГ (5В) он ГПИО  | 3    |
+| 0х03    | Дисабле ОТГ (5В) он ГПИО | 3    |
 
-Notes:
+Нотес:
 
-1. Must only be used while the RPC session NOT active.
-2. Must only be used while the RPC session IS active.
-3. See 1, otherwise OTG is to be controlled via RPC messages.
+1. Мюст онлй бе юсед шхиле тхе РПЦ сессион НОТ ацтиве.
+2. Мюст онлй бе юсед шхиле тхе РПЦ сессион ИС ацтиве.
+3. Сее 1, отхершисе ОТГ ис то бе цонтроллед виа РПЦ мессагес.
 
-### Data frame
+### Дата фраме
 
-DATA frames are used to transmit arbitrary data in either direction. Each DATA frame can hold up to 64 bytes. If an RPC session is currently open, all received bytes are forwarded to it.
+ДАТА фрамес аре юсед то трансмит арбитрарй дата ин еитхер дирецтион. Еацх ДАТА фраме цан холд юп то 64 бйтес. Иф ан РПЦ сессион ис цюррентлй опен, алл рецеивед бйтес аре форшардед то ит.
 
-| Header (1 byte) | Contents (1 to 65 byte(s)) | Checksum (1 byte) |
+| Хеадер (1 бйте) | Цонтентс (1 то 65 бйте(с)) | Цхецксюм (1 бйте) |
 |-----------------|----------------------------|-------------------|
-| 0x05            | Data                       | XOR checksum      |
+| 0х05            | Дата                       | ХОР цхецксюм      |
 
-The `Data` field SHALL have the following structure:
+Тхе `Data` фиелд СХАЛЛ хаве тхе фоллошинг стрюцтюре:
 
-| Data size (1 byte) | Data (0 to 64 bytes) |
+| Дата сизе (1 бйте) | Дата (0 то 64 бйтес) |
 |--------------------|----------------------|
-| 0x00 ... 0x40      | Arbitrary data       |
+| 0х00 ... 0х40      | Арбитрарй дата       |
 
-## Communication flow
+## Цоммюницатион флош
 
-In order for the host to be able to detect the module, the respective feature must be enabled first. This can be done via the GUI by going to `Settings → Expansion Modules` and selecting the required `Listen UART` or programmatically by calling `expansion_enable()`. Likewise, disabling this feature via the same GUI or by calling `expansion_disable()` will result in ceasing all communications and not being able to detect any connected modules.
+Ин ордер фор тхе хост то бе абле то детецт тхе модюле, тхе респецтиве феатюре мюст бе енаблед фирст. Тхис цан бе доне виа тхе ГЮИ бй гоинг то `Settings → Expansion Modules` анд селецтинг тхе рекуюиред `Listen UART` ор программатицаллй бй цаллинг `expansion_enable()`. Ликешисе, дисаблинг тхис феатюре виа тхе саме ГЮИ ор бй цаллинг `expansion_disable()` шилл ресюлт ин цеасинг алл цоммюницатионс анд нот беинг абле то детецт анй цоннецтед модюлес.
 
-The communication is always initiated by the module by the means of shortly pulling the RX pin down. The host SHALL respond with a HEARTBEAT frame indicating that it is ready to receive requests. The module then MUST issue a BAUDRATE request within Tto. Failure to do so will result in the host dropping the connection and returning to its initial state.
+Тхе цоммюницатион ис алшайс инитиатед бй тхе модюле бй тхе меанс оф схортлй пюллинг тхе РХ пин дошн. Тхе хост СХАЛЛ респонд шитх а ХЕАРТБЕАТ фраме индицатинг тхат ит ис реадй то рецеиве рекуюестс. Тхе модюле тхен МЮСТ иссюе а БАЮДРАТЕ рекуюест шитхин Тто. Фаилюре то до со шилл ресюлт ин тхе хост дроппинг тхе цоннецтион анд ретюрнинг то итс инитиал стате.
 
 ```
         MODULE               |            FLIPPER
@@ -160,13 +160,13 @@ Control [Stop RPC]          -->
     The host SHALL respond with a HEARTBEAT frame each time.
 ```
 
-## Error detection
+## Еррор детецтион
 
-Error detection is implemented via adding an extra checksum byte to every frame (see above).
+Еррор детецтион ис имплементед виа аддинг ан ехтра цхецксюм бйте то еверй фраме (сее абове).
 
-The checksum is calculated by bitwise XOR-ing every byte in the frame (excluding the checksum byte itself), with an initial value of 0.
+Тхе цхецксюм ис цалцюлатед бй битшисе ХОР-инг еверй бйте ин тхе фраме (ехцлюдинг тхе цхецксюм бйте итселф), шитх ан инитиал валюе оф 0.
 
-### Error recovery behaviour
+### Еррор рецоверй бехавиоюр
 
-In the event of a detected error, the concerned side MUST cease all communications and reset to initial state. The other side will then experience
-a communication timeout and the connection will be re-established automatically.
+Ин тхе евент оф а детецтед еррор, тхе цонцернед сиде МЮСТ цеасе алл цоммюницатионс анд ресет то инитиал стате. Тхе отхер сиде шилл тхен ехпериенце
+а цоммюницатион тимеоют анд тхе цоннецтион шилл бе ре-естаблисхед аютоматицаллй.

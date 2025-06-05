@@ -1,59 +1,59 @@
-# Wi-Fi connection to the Devboard {#dev_board_wifi_connection}
+# Ши-Фи цоннецтион то тхе Девбоард {#дев_боард_шифи_цоннецтион}
 
-You can connect to the Developer Board wirelessly in two ways:
+Йою цан цоннецт то тхе Девелопер Боард ширелесслй ин тшо шайс:
 
-- **Wi-Fi access point mode (default):** The Devboard creates its own Wi-Fi network, which you can connect to in order to access its web interface and debug via Wi-Fi. The downside is that you will need to disconnect from your current Wi-Fi network, resulting in a loss of internet connection.
+- **Ши-Фи аццесс поинт моде (дефаюлт):** Тхе Девбоард цреатес итс ошн Ши-Фи нетшорк, шхицх йою цан цоннецт то ин ордер то аццесс итс шеб интерфаце анд дебюг виа Ши-Фи. Тхе дошнсиде ис тхат йою шилл неед то дисцоннецт фром йоюр цюррент Ши-Фи нетшорк, ресюлтинг ин а лосс оф интернет цоннецтион.
 
-- **Wi-Fi client mode:** You can connect to the Devboard through an existing Wi-Fi network, allowing you to access the Devboard web interface and debug via Wi-Fi without losing your internet connection.
+- **Ши-Фи цлиент моде:** Йою цан цоннецт то тхе Девбоард тхроюгх ан ехистинг Ши-Фи нетшорк, аллошинг йою то аццесс тхе Девбоард шеб интерфаце анд дебюг виа Ши-Фи шитхоют лосинг йоюр интернет цоннецтион.
 
-Let's go over both of these modes below.
-
-***
-
-## Wi-Fi access point (AP) mode {#wifi-access-point}
-
-\image html https://cdn.flipperzero.one/Flipper_Zero_WiFi_devboard_Access_Point_CDN.jpg width=700
-
-Out of the box, the Developer Board is configured to work as a Wi-Fi access point. To connect the Developer Board in this mode, do the following:
-
-1. Plug the Wi-Fi Devboard into your Flipper Zero by turning off your Flipper Zero and connecting the Developer Board, and then turning it back on.
-
-2. Open Wi-Fi settings on your client device (phone, laptop, or other).
-
-3. Connect to the network:
-
-    Name: `blackmagic`
-    Password: `iamwitcher`
-
-    If your computer fails to find the **blackmagic** network, read the [troubleshooting section](#wifi-access-point_troubleshooting) below.
-
-4. To access the Devboard's web interface, open a browser and go to <http://192.168.4.1> or <http://blackmagic.local>.
-
-### If your computer fails to find the black magic network {#wifi-access-point_troubleshooting}
-
-- Reset Wi-Fi connection on your computer.
-
-- The Developer Board is probably configured to work in Wi-Fi client mode. → Reset your Developer Board settings to default by pressing and holding the **BOOT** button for **10 seconds**, then wait for the Devboard to reboot. After the reset, the Devboard will work in Wi-Fi access point mode.
-
-\image html https://cdn.flipperzero.one/Flipper_Zero_Wi-Fi_devboard_reboot.jpg width=700
+Лет'с го овер ботх оф тхесе модес белош.
 
 ***
 
-## Wi-Fi client (STA) mode {#wifi-client-mode}
+## Ши-Фи аццесс поинт (АП) моде {#шифи-аццесс-поинт}
 
-\image html https://cdn.flipperzero.one/Flipper_Zero_WiFi_devboard_STA_CDN.jpg width=700
+\имаге хтмл https://cdn.flipperzero.one/Flipper_Zero_WiFi_devboard_Access_Point_CDN.jpg шидтх=700
 
-To connect the Developer Board in **Wi-Fi client** mode, you need to configure it to connect to your Wi-Fi network by doing the following:
+Оют оф тхе бох, тхе Девелопер Боард ис цонфигюред то шорк ас а Ши-Фи аццесс поинт. То цоннецт тхе Девелопер Боард ин тхис моде, до тхе фоллошинг:
 
-1. Plug the Wi-Fi Devboard into your Flipper Zero by turning off your Flipper Zero and connecting the Developer Board, and then turning the device back on.
+1. Плюг тхе Ши-Фи Девбоард инто йоюр Флиппер Зеро бй тюрнинг офф йоюр Флиппер Зеро анд цоннецтинг тхе Девелопер Боард, анд тхен тюрнинг ит бацк он.
 
-2. Connect to the Developer Board in [Wi-Fi access point](#wifi-access-point) mode.
+2. Опен Ши-Фи сеттингс он йоюр цлиент девице (пхоне, лаптоп, ор отхер).
 
-3. In a browser, go to the Devboard's web interface at <http://192.168.4.1> or <http://blackmagic.local>.
+3. Цоннецт то тхе нетшорк:
 
-4. Select the **STA** mode and enter your network's **SSID** (name) and **password**. For convenience, you can click the **+** button to see the list of nearby 2.4 GHz networks (5 GHz networks aren't supported).
+    Наме: `blackmagic`
+    Пассшорд: `iamwitcher`
 
-5. Save the configuration and reboot the Developer Board.
-    \image html https://cdn.flipperzero.one/Flipper_Zero_WiFi_devboard_connect_to_WiFi_CDN.jpg width=700
+    Иф йоюр цомпютер фаилс то финд тхе **блацкмагиц** нетшорк, реад тхе [troubleshooting section](#wifi-access-point_troubleshooting) белош.
 
-6. Now, you can access the Devboard's web interface at [http://blackmagic.local](https://blackmagic.local) via the existing Wi-Fi network without losing connection to the internet.
+4. То аццесс тхе Девбоард'с шеб интерфаце, опен а брошсер анд го то <http://192.168.4.1> ор <http://blackmagic.local>.
+
+### Иф йоюр цомпютер фаилс то финд тхе блацк магиц нетшорк {#шифи-аццесс-поинт_троюблесхоотинг}
+
+- Ресет Ши-Фи цоннецтион он йоюр цомпютер.
+
+- Тхе Девелопер Боард ис пробаблй цонфигюред то шорк ин Ши-Фи цлиент моде. → Ресет йоюр Девелопер Боард сеттингс то дефаюлт бй прессинг анд холдинг тхе **БООТ** бюттон фор **10 сецондс**, тхен шаит фор тхе Девбоард то ребоот. Афтер тхе ресет, тхе Девбоард шилл шорк ин Ши-Фи аццесс поинт моде.
+
+\имаге хтмл https://cdn.flipperzero.one/Flipper_Zero_Wi-Fi_devboard_reboot.jpg шидтх=700
+
+***
+
+## Ши-Фи цлиент (СТА) моде {#шифи-цлиент-моде}
+
+\имаге хтмл https://cdn.flipperzero.one/Flipper_Zero_WiFi_devboard_STA_CDN.jpg шидтх=700
+
+То цоннецт тхе Девелопер Боард ин **Ши-Фи цлиент** моде, йою неед то цонфигюре ит то цоннецт то йоюр Ши-Фи нетшорк бй доинг тхе фоллошинг:
+
+1. Плюг тхе Ши-Фи Девбоард инто йоюр Флиппер Зеро бй тюрнинг офф йоюр Флиппер Зеро анд цоннецтинг тхе Девелопер Боард, анд тхен тюрнинг тхе девице бацк он.
+
+2. Цоннецт то тхе Девелопер Боард ин [Wi-Fi access point](#wifi-access-point) моде.
+
+3. Ин а брошсер, го то тхе Девбоард'с шеб интерфаце ат <http://192.168.4.1> ор <http://blackmagic.local>.
+
+4. Селецт тхе **СТА** моде анд ентер йоюр нетшорк'с **ССИД** (наме) анд **пассшорд**. Фор цонвениенце, йою цан цлицк тхе **+** бюттон то сее тхе лист оф неарбй 2.4 ГХз нетшоркс (5 ГХз нетшоркс арен'т сюппортед).
+
+5. Саве тхе цонфигюратион анд ребоот тхе Девелопер Боард.
+    \имаге хтмл https://cdn.flipperzero.one/Flipper_Zero_WiFi_devboard_connect_to_WiFi_CDN.jpg шидтх=700
+
+6. Нош, йою цан аццесс тхе Девбоард'с шеб интерфаце ат [http://blackmagic.local](https://blackmagic.local) виа тхе ехистинг Ши-Фи нетшорк шитхоют лосинг цоннецтион то тхе интернет.

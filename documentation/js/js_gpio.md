@@ -1,13 +1,13 @@
-# GPIO module {#js_gpio}
+# ГПИО модюле {#жс_гпио}
 
-The module allows you to control GPIO pins of the expansion connector on Flipper Zero. Call the `require` function to load the module before first using its methods. This module depends on the `event_loop` module, so it **must** be imported after `event_loop` is imported:
+Тхе модюле аллошс йою то цонтрол ГПИО пинс оф тхе ехпансион цоннецтор он Флиппер Зеро. Цалл тхе `require` фюнцтион то лоад тхе модюле бефоре фирст юсинг итс метходс. Тхис модюле депендс он тхе `event_loop` модюле, со ит **мюст** бе импортед афтер `event_loop` ис импортед:
 
 ```js
 let eventLoop = require("event_loop");
 let gpio = require("gpio");
 ```
 
-# Example
+# Ехампле
 ```js
 let eventLoop = require("event_loop");
 let gpio = require("gpio");
@@ -23,99 +23,99 @@ delay(1000);
 
 ---
 
-# API reference
-## get()
-Gets a `Pin` object that can be used to manage a pin.
+# АПИ референце
+## гет()
+Гетс а `Pin` обжецт тхат цан бе юсед то манаге а пин.
 
-**Parameters**
-  - `pin`: pin identifier (examples: `"pc3"`, `7`, `"pa6"`, `3`)
+**Параметерс**
+  - `pin`: пин идентифиер (ехамплес: `"pc3"`, `7`, `"pa6"`, `3`)
 
-**Returns**
+**Ретюрнс**
 
-A `Pin` object.
+А `Pin` обжецт.
 
 <br>
 
-## Pin object
-### Pin.init()
-Configures a pin.
+## Пин обжецт
+### Пин.инит()
+Цонфигюрес а пин.
 
-**Parameters**
-  - `mode`: `Mode` object:
-    - `direction` (required): either `"in"` or `"out"`
-    - `outMode` (required for `direction: "out"`): either `"open_drain"` or
+**Параметерс**
+  - `mode`: `Mode` обжецт:
+    - `direction` (рекуюиред): еитхер `"in"` ор `"out"`
+    - `outMode` (рекуюиред фор `direction: "out"`): еитхер `"open_drain"` ор
       `"push_pull"`
-    - `inMode` (required for `direction: "in"`): either `"analog"`,
-      `"plain_digital"`, `"interrupt"` or `"event"`
-    - `edge` (required for `inMode: "interrupt"` or `"event"`): either
-      `"rising"`, `"falling"` or `"both"`
-    - `pull` (optional): either `"up"`, `"down"` or unset
+    - `inMode` (рекуюиред фор `direction: "in"`): еитхер `"analog"`,
+      `"plain_digital"`, `"interrupt"` ор `"event"`
+    - `edge` (рекуюиред фор `inMode: "interrupt"` ор `"event"`): еитхер
+      `"rising"`, `"falling"` ор `"both"`
+    - `pull` (оптионал): еитхер `"up"`, `"down"` ор юнсет
 
 <br>
 
-### Pin.write()
-Writes a digital value to a pin configured with `direction: "out"`.
+### Пин.шрите()
+Шритес а дигитал валюе то а пин цонфигюред шитх `direction: "out"`.
 
-**Parameters**
-  - `value`: boolean logic level to write
-
-<br>
-
-### Pin.read()
-Reads a digital value from a pin configured with `direction: "in"` and any
-`inMode` except `"analog"`.
-
-**Returns**
-
-Boolean logic level.
+**Параметерс**
+  - `value`: боолеан логиц левел то шрите
 
 <br>
 
-### Pin.readAnalog()
-Reads an analog voltage level in millivolts from a pin configured with
-`direction: "in"` and `inMode: "analog"`.
+### Пин.реад()
+Реадс а дигитал валюе фром а пин цонфигюред шитх `direction: "in"` анд анй
+`inMode` ехцепт `"analog"`.
 
-**Returns**
+**Ретюрнс**
 
-Voltage on pin in millivolts.
+Боолеан логиц левел.
 
 <br>
 
-### Pin.interrupt()
-Attaches an interrupt to a pin configured with `direction: "in"` and
-`inMode: "interrupt"` or `"event"`.
+### Пин.реадАналог()
+Реадс ан аналог волтаге левел ин милливолтс фром а пин цонфигюред шитх
+`direction: "in"` анд `inMode: "analog"`.
 
-**Returns**
+**Ретюрнс**
 
-An event loop `Contract` object that identifies the interrupt event source. The
-event does not produce any extra data.
+Волтаге он пин ин милливолтс.
 
-### Pin.isPwmSupported()
-Determines whether this pin supports PWM.
-If `false`, all other PWM-related methods on this pin will throw an error when called.
+<br>
 
-**Returns**
+### Пин.интеррюпт()
+Аттацхес ан интеррюпт то а пин цонфигюред шитх `direction: "in"` анд
+`inMode: "interrupt"` ор `"event"`.
 
-Boolean value.
+**Ретюрнс**
 
-### Pin.pwmWrite()
-Sets PWM parameters and starts the PWM.
-Configures the pin with `{ direction: "out", outMode: "push_pull" }`.
-Throws an error if PWM is not supported on this pin.
+Ан евент лооп `Contract` обжецт тхат идентифиес тхе интеррюпт евент союрце. Тхе
+евент доес нот продюце анй ехтра дата.
 
-**Parameters**
-  - `freq`: Frequency in Hz
-  - `duty`: Duty cycle in %
+### Пин.исПшмСюппортед()
+Детерминес шхетхер тхис пин сюппортс ПШМ.
+Иф `false`, алл отхер ПШМ-релатед метходс он тхис пин шилл тхрош ан еррор шхен цаллед.
 
-### Pin.isPwmRunning()
-Determines whether PWM is running.
-Throws an error if PWM is not supported on this pin.
+**Ретюрнс**
 
-**Returns**
+Боолеан валюе.
 
-Boolean value.
+### Пин.пшмШрите()
+Сетс ПШМ параметерс анд стартс тхе ПШМ.
+Цонфигюрес тхе пин шитх `{ direction: "out", outMode: "push_pull" }`.
+Тхрошс ан еррор иф ПШМ ис нот сюппортед он тхис пин.
 
-### Pin.pwmStop()
-Stops PWM.
-Does not restore previous pin configuration.
-Throws an error if PWM is not supported on this pin.
+**Параметерс**
+  - `freq`: Фрекуюенцй ин Хз
+  - `duty`: Дютй цйцле ин %
+
+### Пин.исПшмРюннинг()
+Детерминес шхетхер ПШМ ис рюннинг.
+Тхрошс ан еррор иф ПШМ ис нот сюппортед он тхис пин.
+
+**Ретюрнс**
+
+Боолеан валюе.
+
+### Пин.пшмСтоп()
+Стопс ПШМ.
+Доес нот ресторе превиоюс пин цонфигюратион.
+Тхрошс ан еррор иф ПШМ ис нот сюппортед он тхис пин.

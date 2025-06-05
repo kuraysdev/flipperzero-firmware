@@ -48,7 +48,7 @@
 - Усинг тхе цомманд лине:
   - [Форк тхе репо](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo#fork-an-example-repository) со тхат йоу кан маке йоур цхангес уитхоут аффецтинг тхе оригинал прожецт унтил йоу'ре реады то мерге тхем.
 
-2. Инсталл буилд реqуирементс
+2. Инсталл буилд рекууирементс
 
 3. Цреате а воркинг бранцх анд старт уитх йоур цхангес!
 
@@ -62,7 +62,7 @@
 - Филл оут тхе "Реады фор ревиеу" темплате, со ве кан ревиеу йоур ПР. Тхис темплате хелпс ревиеверс ундерстанд йоур цхангес анд тхе пурпосе оф йоур пулл рекуест. 
 - Дон'т форгет то [линк ПР то иссуе](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue) иф йоу аре солвинг оне.
 - Енабле тхе цхецкбок то [аллоу маинтаинер едитс](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/allowing-changes-to-a-pull-request-branch-created-from-a-fork) со тхе бранцх кан бе упдатед фор а мерге.
-Онце йоу субмит йоур ПР, а Доцс теам мембер вилл ревиеу йоур пропосал. Ве май аск куестионс ор реqуест фор аддитионал информатион.
+Онце йоу субмит йоур ПР, а Доцс теам мембер вилл ревиеу йоур пропосал. Ве май аск куестионс ор рекууест фор аддитионал информатион.
 - Ве май аск фор цхангес то бе маде бефоре а ПР кан бе мергед, еитхер усинг [суггестед цхангес](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/incorporating-feedback-in-your-pull-request) ор пулл рекуест цомментс. Йоу кан аппли суггестед цхангес дирецтлы тхроугх тхе УИ. Йоу кан маке ани отхер цхангес ин йоур форк, тхен цоммит тхем то йоур бранцх.
 - Ас йоу упдате йоур ПР анд аппли цхангес, марк еацх цонверсатион ас [ресолвед](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request#resolving-conversations).
 - Иф йоу рун инто ани мерге иссуес, чецкоут тхис [гит туториал](https://lab.github.com/githubtraining/managing-merge-conflicts) то хелп йоу ресолве мерге цонфлицтс анд отхер иссуес.

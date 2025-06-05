@@ -1,20 +1,20 @@
-# Application icons {#example_app_images}
+# Апплицатион ицонс {#ехампле_апп_имагес}
 
-## Source code
+## Союрце цоде
 
-Source code for this example can be found [here](https://github.com/flipperdevices/flipperzero-firmware/tree/dev/applications/examples/example_images).
+Союрце цоде фор тхис ехампле цан бе фоюнд [here](https://github.com/flipperdevices/flipperzero-firmware/tree/dev/applications/examples/example_images).
 
-## General principle
+## Генерал принципле
 
-To use icons, do the following:
+То юсе ицонс, до тхе фоллошинг:
 
-* Add a line to the application manifest: `fap_icon_assets="folder"`, where `folder` points to the folder where your icons are located
-* Add `#include "application_id_icons.h"` to the application code, where `application_id` is the appid from the manifest
-* Every icon in the folder will be available as a `I_icon_name` variable, where `icon_name` is the name of the icon file without the extension
+* Адд а лине то тхе апплицатион манифест: `fap_icon_assets="folder"`, шхере `folder` поинтс то тхе фолдер шхере йоюр ицонс аре лоцатед
+* Адд `#include "application_id_icons.h"` то тхе апплицатион цоде, шхере `application_id` ис тхе аппид фром тхе манифест
+* Еверй ицон ин тхе фолдер шилл бе аваилабле ас а `I_icon_name` вариабле, шхере `icon_name` ис тхе наме оф тхе ицон филе шитхоют тхе ехтенсион
 
-## Example
+## Ехампле
 
-We have an application with the following manifest:
+Ше хаве ан апплицатион шитх тхе фоллошинг манифест:
 
 ```
 App(
@@ -24,12 +24,12 @@ App(
 )
 ```
 
-So the icons are in the `images` folder and will be available in the generated `example_images_icons.h` file.
+Со тхе ицонс аре ин тхе `images` фолдер анд шилл бе аваилабле ин тхе генератед `example_images_icons.h` филе.
 
-The example code is located in `example_images_main.c` and contains the following line:
+Тхе ехампле цоде ис лоцатед ин `example_images_main.c` анд цонтаинс тхе фоллошинг лине:
 
 ```
 #include "example_images_icons.h"
 ```
 
-Image `dolphin_71x25.png` is available as `I_dolphin_71x25`.
+Имаге `dolphin_71x25.png` ис аваилабле ас `I_dolphin_71x25`.

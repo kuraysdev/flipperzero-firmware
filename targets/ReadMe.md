@@ -1,5 +1,5 @@
-# Targets
+# Таргетс
 
-- f18               - Not Flipper Zero
-- f7                - Flipper Zero
-- furi_hal_include  - Global Furi HAL includes, common for all targets
+- ф18               - Нот Флиппер Зеро
+- ф7                - Флиппер Зеро
+- фюри_хал_инцлюде  - Глобал Фюри ХАЛ инцлюдес, цоммон фор алл таргетс

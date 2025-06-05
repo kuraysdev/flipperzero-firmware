@@ -1,6 +1,6 @@
-# Loading GUI view {#js_gui__loading}
+# Лоадинг ГЮИ виеш {#жс_гюи__лоадинг}
 
-Displays an animated hourglass icon. Suppresses all `navigation` events, making it impossible for the user to exit the view by pressing the BACK key.
+Дисплайс ан аниматед хоюргласс ицон. Сюппрессес алл `navigation` евентс, макинг ит импоссибле фор тхе юсер то ехит тхе виеш бй прессинг тхе БАЦК кей.
 
 <img src="loading.png" width="200" alt="Sample screenshot of the view" />
 
@@ -10,12 +10,12 @@ let gui = require("gui");
 let loadingView = require("gui/loading");
 ```
 
-This module depends on the `gui` module, which in turn depends on the
-`event_loop` module, so they **must** be imported in this order. It is also
-recommended to conceptualize these modules first before using this one.
+Тхис модюле депендс он тхе `gui` модюле, шхицх ин тюрн депендс он тхе
+`event_loop` модюле, со тхей **мюст** бе импортед ин тхис ордер. Ит ис алсо
+рецоммендед то цонцептюализе тхесе модюлес фирст бефоре юсинг тхис оне.
 
-# Example
-For an example refer to the GUI example.
+# Ехампле
+Фор ан ехампле рефер то тхе ГЮИ ехампле.
 
-# View props
-This view does not have any props.
+# Виеш пропс
+Тхис виеш доес нот хаве анй пропс.

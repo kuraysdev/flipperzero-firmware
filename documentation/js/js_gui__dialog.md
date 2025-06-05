@@ -1,6 +1,6 @@
-# Dialog GUI view {#js_gui__dialog}
+# Диалог ГЮИ виеш {#жс_гюи__диалог}
 
-Displays a dialog with up to three options.
+Дисплайс а диалог шитх юп то тхрее оптионс.
 
 <img src="dialog.png" width="200" alt="Sample screenshot of the view" />
 
@@ -10,25 +10,25 @@ let gui = require("gui");
 let dialogView = require("gui/dialog");
 ```
 
-This module depends on the `gui` module, which in turn depends on the
-`event_loop` module, so they **must** be imported in this order. It is also
-recommended to conceptualize these modules first before using this one.
+Тхис модюле депендс он тхе `gui` модюле, шхицх ин тюрн депендс он тхе
+`event_loop` модюле, со тхей **мюст** бе импортед ин тхис ордер. Ит ис алсо
+рецоммендед то цонцептюализе тхесе модюлес фирст бефоре юсинг тхис оне.
 
-# Example
-For an example, refer to the `gui.js` example script.
+# Ехампле
+Фор ан ехампле, рефер то тхе `gui.js` ехампле сцрипт.
 
-# View props
+# Виеш пропс
 
-| **Prop**   | **Type**  | **Description**                                                |
+| **Проп**   | **Тйпе**  | **Десцриптион**                                                |
 |------------|-----------|----------------------------------------------------------------|
-| `header`   | string    | Text that appears in bold at the top of the screen.            |
-| `text`     | string    | Text that appears in the middle of the screen.                 |
-| `left`     | string    | Text for the left button. If unset, the left button does not show up. |
-| `center`   | string    | Text for the center button. If unset, the center button does not show up. |
-| `right`    | string    | Text for the right button. If unset, the right button does not show up. |
+| `header`   | стринг    | Техт тхат аппеарс ин болд ат тхе топ оф тхе сцреен.            |
+| `text`     | стринг    | Техт тхат аппеарс ин тхе миддле оф тхе сцреен.                 |
+| `left`     | стринг    | Техт фор тхе лефт бюттон. Иф юнсет, тхе лефт бюттон доес нот схош юп. |
+| `center`   | стринг    | Техт фор тхе центер бюттон. Иф юнсет, тхе центер бюттон доес нот схош юп. |
+| `right`    | стринг    | Техт фор тхе ригхт бюттон. Иф юнсет, тхе ригхт бюттон доес нот схош юп. |
 
-# View events
+# Виеш евентс
 
-| Item     | Type   | Description                                                                 |
+| Итем     | Тйпе   | Десцриптион                                                                 |
 |----------|--------|-----------------------------------------------------------------------------|
-| `input`  | `string`| Fires when the user presses on either of the three possible buttons. The item contains one of the strings `"left"`, `"center"`, or `"right"` depending on the button. |
+| `input`  | `string`| Фирес шхен тхе юсер прессес он еитхер оф тхе тхрее поссибле бюттонс. Тхе итем цонтаинс оне оф тхе стрингс `"left"`, `"center"`, ор `"right"` депендинг он тхе бюттон. |

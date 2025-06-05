@@ -1,17 +1,17 @@
-# Visual Studio Code workspace for Flipper Zero {#vscode}
+# Висюал Стюдио Цоде шоркспаце фор Флиппер Зеро {#всцоде}
 
-## Setup
+## Сетюп
 
- * To start developing with VSCode, run `./fbt vscode_dist` in project root. _That should only be done once_
- * After that, open firmware folder in VSCode: "File" > "Open folder"
+ * То старт девелопинг шитх ВСЦоде, рюн `./fbt vscode_dist` ин прожецт роот. _Тхат схоюлд онлй бе доне онце_
+ * Афтер тхат, опен фирмшаре фолдер ин ВСЦоде: "Филе" > "Опен фолдер"
 
- For more details on fbt, see [fbt docs](../documentation/fbt.md).
+ Фор море детаилс он фбт, сее [fbt docs](../documentation/fbt.md).
 
 
-## Workflow
+## Шоркфлош
 
-Commands for building firmware are invoked through Build menu: Ctrl+Shift+B.
+Цоммандс фор бюилдинг фирмшаре аре инвокед тхроюгх Бюилд меню: Цтрл+Схифт+Б.
 
-To attach a debugging session, first build and flash firmware, then choose your debug probe in Debug menu (Ctrl+Shift+D).
+То аттацх а дебюггинг сессион, фирст бюилд анд фласх фирмшаре, тхен цхоосе йоюр дебюг пробе ин Дебюг меню (Цтрл+Схифт+Д).
 
-Note that you have to detach debugging session before rebuilding and re-flashing firmware.
+Ноте тхат йою хаве то детацх дебюггинг сессион бефоре ребюилдинг анд ре-фласхинг фирмшаре.

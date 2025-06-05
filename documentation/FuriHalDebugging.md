@@ -1,30 +1,30 @@
-# Furi HAL Debugging {#furi_hal_debugging}
+# Фюри ХАЛ Дебюггинг {#фюри_хал_дебюггинг}
 
-Some Furi subsystems have additional debugging features that can be enabled by adding additional defines to firmware compilation.
-Usually, they are used for low level tracing and profiling or signal redirection/duplication.
-
-
-## FuriHalOs
-
-`--extra-define=FURI_HAL_OS_DEBUG` enables tick, tick suppression, idle and time flow.
-
-There are 3 signals that will be exposed to external GPIO pins:
-
-- `AWAKE`   — `PA7` — High when system is busy with computations, low when sleeping. Can be used to track transitions to sleep mode.
-- `TICK`    — `PA6` — Flipped on system tick, only flips when no tick suppression in progress. Can be used to track tick skew and abnormal task scheduling.
-- `SECOND`  — `PA4` — Flipped each second. Can be used for tracing RT issue: time flow disturbance means system doesn't conform Hard RT.
+Соме Фюри сюбсйстемс хаве аддитионал дебюггинг феатюрес тхат цан бе енаблед бй аддинг аддитионал дефинес то фирмшаре цомпилатион.
+Юсюаллй, тхей аре юсед фор лош левел трацинг анд профилинг ор сигнал редирецтион/дюплицатион.
 
 
+## ФюриХалОс
 
-## FuriHalPower
+`--extra-define=FURI_HAL_OS_DEBUG` енаблес тицк, тицк сюппрессион, идле анд тиме флош.
 
-`--extra-define=FURI_HAL_POWER_DEBUG` enables power subsystem mode transitions tracing.
+Тхере аре 3 сигналс тхат шилл бе ехпосед то ехтернал ГПИО пинс:
 
-There are 2 signals that will be exposed to external GPIO pins:
+- `AWAKE`   — `PA7` — Хигх шхен сйстем ис бюсй шитх цомпютатионс, лош шхен слеепинг. Цан бе юсед то трацк транситионс то слееп моде.
+- `TICK`    — `PA6` — Флиппед он сйстем тицк, онлй флипс шхен но тицк сюппрессион ин прогресс. Цан бе юсед то трацк тицк скеш анд абнормал таск сцхедюлинг.
+- `SECOND`  — `PA4` — Флиппед еацх сецонд. Цан бе юсед фор трацинг РТ иссюе: тиме флош дистюрбанце меанс сйстем доесн'т цонформ Хард РТ.
 
-- `WFI`     — `PB2` — Light sleep (wait for interrupt) used. Basically, this is the lightest and most non-breaking things power save mode. All functions and debug should work correctly in this mode.
-- `STOP`    — `PC3` — STOP mode used. Platform deep sleep mode. Extremely fragile mode where most of the silicon is disabled or in unusable state. Debugging MCU in this mode is nearly impossible.
 
-## FuriHalSD
 
-`--extra-define=FURI_HAL_SD_SPI_DEBUG` enables SD card SPI bus logging.
+## ФюриХалПошер
+
+`--extra-define=FURI_HAL_POWER_DEBUG` енаблес пошер сюбсйстем моде транситионс трацинг.
+
+Тхере аре 2 сигналс тхат шилл бе ехпосед то ехтернал ГПИО пинс:
+
+- `WFI`     — `PB2` — Лигхт слееп (шаит фор интеррюпт) юсед. Басицаллй, тхис ис тхе лигхтест анд мост нон-бреакинг тхингс пошер саве моде. Алл фюнцтионс анд дебюг схоюлд шорк цоррецтлй ин тхис моде.
+- `STOP`    — `PC3` — СТОП моде юсед. Платформ дееп слееп моде. Ехтремелй фрагиле моде шхере мост оф тхе силицон ис дисаблед ор ин юнюсабле стате. Дебюггинг МЦЮ ин тхис моде ис неарлй импоссибле.
+
+## ФюриХалСД
+
+`--extra-define=FURI_HAL_SD_SPI_DEBUG` енаблес СД цард СПИ бюс логгинг.

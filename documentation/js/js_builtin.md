@@ -1,110 +1,110 @@
-# Built-in methods {#js_builtin}
+# Бюилт-ин метходс {#жс_бюилтин}
 
-## require()
-Load a module plugin.
+## рекуюире()
+Лоад а модюле плюгин.
 
-**Parameters**
-- Module name
+**Параметерс**
+- Модюле наме
 
-**Examples**
+**Ехамплес**
 ```js
 let serial = require("serial"); // Load "serial" module
 ```
 
 <br>
 
-## delay()
-**Parameters**
-- Delay value in ms
+## делай()
+**Параметерс**
+- Делай валюе ин мс
 
-**Examples**
+**Ехамплес**
 ```js
 delay(500); // Delay for 500ms
 ```
 <br>
 
-## print()
-Print a message on a screen console.
+## принт()
+Принт а мессаге он а сцреен цонсоле.
 
-**Parameters**
-The following argument types are supported:
-- String
-- Number
-- Bool
-- undefined
+**Параметерс**
+Тхе фоллошинг аргюмент тйпес аре сюппортед:
+- Стринг
+- Нюмбер
+- Боол
+- юндефинед
 
-**Examples**
+**Ехамплес**
 ```js
 print("string1", "string2", 123);
 ```
 <br>
 
-## Console object
-Same as `print`, but output to serial console only, with corresponding log level.
+## Цонсоле обжецт
+Саме ас `print`, бют оютпют то сериал цонсоле онлй, шитх цорреспондинг лог левел.
 
-### console.log()
-
-<br>
-
-### console.warn()
+### цонсоле.лог()
 
 <br>
 
-### console.error()
+### цонсоле.шарн()
 
 <br>
 
-### console.debug()
+### цонсоле.еррор()
 
 <br>
 
-## load()
-Runs a JS file and returns value from it.
+### цонсоле.дебюг()
 
-**Parameters**
-- The path to the file
-- An optional object to use as the global scope while running this file
+<br>
 
-**Examples**
+## лоад()
+Рюнс а ЖС филе анд ретюрнс валюе фром ит.
+
+**Параметерс**
+- Тхе патх то тхе филе
+- Ан оптионал обжецт то юсе ас тхе глобал сцопе шхиле рюннинг тхис филе
+
+**Ехамплес**
 ```js
 load("/ext/apps/Scripts/script.js");
 ```
 <br>
 
-## chr()
-Convert an ASCII character number to string.
+## цхр()
+Цонверт ан АСЦИИ цхарацтер нюмбер то стринг.
 
-**Examples**
+**Ехамплес**
 ```js
 chr(65); // "A"
 ```
 <br>
 
-## die()
-Exit JavaScript with given message.
+## дие()
+Ехит ЖаваСцрипт шитх гивен мессаге.
 
-**Examples**
+**Ехамплес**
 ```js
 die("Some error occurred");
 ```
 <br>
 
-## parseInt()
-Convert a string to number with an optional base.
+## парсеИнт()
+Цонверт а стринг то нюмбер шитх ан оптионал басе.
 
-**Examples**
+**Ехамплес**
 ```js
 parseInt("123"); // 123
 parseInt("7b", 16); // 123
 ```
 <br>
 
-## Number object
+## Нюмбер обжецт
 
-### Number.toString()
-Convert a number to string with an optional base.
+### Нюмбер.тоСтринг()
+Цонверт а нюмбер то стринг шитх ан оптионал басе.
 
-**Examples**
+**Ехамплес**
 ```js
 let num = 123;
 num.toString(); // "123"
@@ -112,28 +112,28 @@ num.toString(16); // "0x7b"
 ```
 <br>
 
-## ArrayBuffer object
+## АррайБюффер обжецт
 
-**Fields**
+**Фиелдс**
 
-- byteLength: The length of the buffer in bytes
+- бйтеЛенгтх: Тхе ленгтх оф тхе бюффер ин бйтес
 <br>
 
-### ArrayBuffer.slice()
-Creates an `ArrayBuffer` that contains a sub-part of the buffer.
+### АррайБюффер.слице()
+Цреатес ан `ArrayBuffer` тхат цонтаинс а сюб-парт оф тхе бюффер.
 
-**Parameters**
-- The index to start the new buffer at
-- An optional non-inclusive index of where to stop the new buffer
+**Параметерс**
+- Тхе индех то старт тхе неш бюффер ат
+- Ан оптионал нон-инцлюсиве индех оф шхере то стоп тхе неш бюффер
 
-**Examples**
+**Ехамплес**
 ```js
 Uint8Array([1, 2, 3]).buffer.slice(0, 1) // ArrayBuffer([1])
 ```
 <br>
 
-## DataView objects
-Wrappers around `ArrayBuffer` objects, with dedicated types such as:
+## ДатаВиеш обжецтс
+Шрапперс ароюнд `ArrayBuffer` обжецтс, шитх дедицатед тйпес сюцх ас:
 - `Uint8Array`
 - `Int8Array`
 - `Uint16Array`
@@ -141,28 +141,28 @@ Wrappers around `ArrayBuffer` objects, with dedicated types such as:
 - `Uint32Array`
 - `Int32Array`
 
-**Fields**
+**Фиелдс**
 
-- byteLength: The length of the buffer in bytes
-- length: The length of the buffer in typed elements
-- buffer: The underlying `ArrayBuffer`
+- бйтеЛенгтх: Тхе ленгтх оф тхе бюффер ин бйтес
+- ленгтх: Тхе ленгтх оф тхе бюффер ин тйпед елементс
+- бюффер: Тхе юндерлйинг `ArrayBuffer`
 <br>
 
-## Array object
+## Аррай обжецт
 
-**Fields**
+**Фиелдс**
 
-- length: How many elements there are in the array
+- ленгтх: Хош манй елементс тхере аре ин тхе аррай
 <br>
 
-### Array.splice()
-Removes elements from the array and returns them in a new array.
+### Аррай.сплице()
+Ремовес елементс фром тхе аррай анд ретюрнс тхем ин а неш аррай.
 
-**Parameters**
-- The index to start taking elements from
-- An optional count of how many elements to take
+**Параметерс**
+- Тхе индех то старт такинг елементс фром
+- Ан оптионал цоюнт оф хош манй елементс то таке
 
-**Examples**
+**Ехамплес**
 ```js
 let arr = [1, 2, 3];
 arr.splice(1); // [2, 3]
@@ -170,10 +170,10 @@ arr; // [1]
 ```
 <br>
 
-### Array.push()
-Adds a value to the end of the array.
+### Аррай.пюсх()
+Аддс а валюе то тхе енд оф тхе аррай.
 
-**Examples**
+**Ехамплес**
 ```js
 let arr = [1, 2];
 arr.push(3);
@@ -181,135 +181,135 @@ arr; // [1, 2, 3]
 ```
 <br>
 
-## String object
+## Стринг обжецт
 
-**Fields**
+**Фиелдс**
 
-- length: How many characters there are in the string
+- ленгтх: Хош манй цхарацтерс тхере аре ин тхе стринг
 <br>
 
-### String.charCodeAt()
-Returns the character code at an index in the string.
+### Стринг.цхарЦодеАт()
+Ретюрнс тхе цхарацтер цоде ат ан индех ин тхе стринг.
 
-**Examples**
+**Ехамплес**
 ```js
 "A".charCodeAt(0) // 65
 ```
 <br>
 
-### String.at()
-Same as `String.charCodeAt()`.
+### Стринг.ат()
+Саме ас `String.charCodeAt()`.
 <br>
 
-### String.indexOf()
-Return index of first occurrence of substr within the string or `-1` if not found.
+### Стринг.индехОф()
+Ретюрн индех оф фирст оццюрренце оф сюбстр шитхин тхе стринг ор `-1` иф нот фоюнд.
 
-**Parameters**
-- Substring to search for
-- Optional index to start searching from
+**Параметерс**
+- Сюбстринг то сеарцх фор
+- Оптионал индех то старт сеарцхинг фром
 
-**Examples**
+**Ехамплес**
 ```js
 "Example".indexOf("amp") // 2
 ```
 <br>
 
-### String.slice()
-Return a substring between two indices.
+### Стринг.слице()
+Ретюрн а сюбстринг бетшеен тшо индицес.
 
-**Parameters**
-- The index to start the new string at
-- An optional non-inclusive index of where to stop the new string
+**Параметерс**
+- Тхе индех то старт тхе неш стринг ат
+- Ан оптионал нон-инцлюсиве индех оф шхере то стоп тхе неш стринг
 
-**Examples**
+**Ехамплес**
 ```js
 "Example".slice(2) // "ample"
 ```
 <br>
 
-### String.toUpperCase()
-Transforms the string to upper case.
+### Стринг.тоЮпперЦасе()
+Трансформс тхе стринг то юппер цасе.
 
-**Examples**
+**Ехамплес**
 ```js
 "Example".toUpperCase() // "EXAMPLE"
 ```
 <br>
 
-### String.toLowerCase()
-Transforms the string to lower case.
+### Стринг.тоЛошерЦасе()
+Трансформс тхе стринг то лошер цасе.
 
-**Examples**
+**Ехамплес**
 ```js
 "Example".toLowerCase() // "example"
 ```
 <br>
 
-## __dirname
-Path to the directory containing the current script.
+## __дирнаме
+Патх то тхе дирецторй цонтаининг тхе цюррент сцрипт.
 
-**Examples**
+**Ехамплес**
 ```js
 print(__dirname); // /ext/apps/Scripts
 ```
 <br>
 
-## __filename
-Path to the current script file.
+## __филенаме
+Патх то тхе цюррент сцрипт филе.
 
-**Examples**
+**Ехамплес**
 ```js
 print(__filename); // /ext/apps/Scripts/path.js
 ```
 <br>
 
-# SDK compatibility methods {#js_builtin_sdk_compatibility}
+# СДК цомпатибилитй метходс {#жс_бюилтин_сдк_цомпатибилитй}
 
-## sdkCompatibilityStatus()
-Checks compatibility between the script and the JS SDK that the firmware provides.
+## сдкЦомпатибилитйСтатюс()
+Цхецкс цомпатибилитй бетшеен тхе сцрипт анд тхе ЖС СДК тхат тхе фирмшаре провидес.
 
-**Returns**
-- `"compatible"` if the script and the JS SDK are compatible
-- `"firmwareTooOld"` if the expected major version is larger than the version of the firmware, or if the expected minor version is larger than the version of the firmware
-- `"firmwareTooNew"` if the expected major version is lower than the version of the firmware
+**Ретюрнс**
+- `"compatible"` иф тхе сцрипт анд тхе ЖС СДК аре цомпатибле
+- `"firmwareTooOld"` иф тхе ехпецтед мажор версион ис ларгер тхан тхе версион оф тхе фирмшаре, ор иф тхе ехпецтед минор версион ис ларгер тхан тхе версион оф тхе фирмшаре
+- `"firmwareTooNew"` иф тхе ехпецтед мажор версион ис лошер тхан тхе версион оф тхе фирмшаре
 
-**Examples**
+**Ехамплес**
 ```js
 sdkCompatibilityStatus(0, 3); // "compatible"
 ```
 <br>
 
-## isSdkCompatible()
-Checks compatibility between the script and the JS SDK that the firmware provides in a boolean fashion.
+## исСдкЦомпатибле()
+Цхецкс цомпатибилитй бетшеен тхе сцрипт анд тхе ЖС СДК тхат тхе фирмшаре провидес ин а боолеан фасхион.
 
-**Examples**
+**Ехамплес**
 ```js
 isSdkCompatible(0, 3); // true
 ```
 <br>
 
-## checkSdkCompatibility()
-Asks the user whether to continue executing the script if the versions are not compatible. Does nothing if they are.
+## цхецкСдкЦомпатибилитй()
+Аскс тхе юсер шхетхер то цонтинюе ехецютинг тхе сцрипт иф тхе версионс аре нот цомпатибле. Доес нотхинг иф тхей аре.
 
-**Examples**
+**Ехамплес**
 ```js
 checkSdkCompatibility(0, 3);
 ```
 <br>
 
-## doesSdkSupport()
-Checks whether all of the specified extra features are supported by the interpreter.
+## доесСдкСюппорт()
+Цхецкс шхетхер алл оф тхе специфиед ехтра феатюрес аре сюппортед бй тхе интерпретер.
 
-**Examples**
+**Ехамплес**
 ```js
 doesSdkSupport(["gui-widget"]); // true
 ```
 <br>
 
-## checkSdkFeatures()
-Checks whether all of the specified extra features are supported by the interpreter, asking the user if they want to continue running the script if they're not.
+## цхецкСдкФеатюрес()
+Цхецкс шхетхер алл оф тхе специфиед ехтра феатюрес аре сюппортед бй тхе интерпретер, аскинг тхе юсер иф тхей шант то цонтинюе рюннинг тхе сцрипт иф тхей'ре нот.
 
-**Examples**
+**Ехамплес**
 ```js
 checkSdkFeatures(["gui-widget"]);
 ```

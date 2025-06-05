@@ -1,6 +1,6 @@
-# Submenu GUI view {#js_gui__submenu}
+# Сюбменю ГЮИ виеш {#жс_гюи__сюбменю}
 
-Displays a scrollable list of clickable textual entries.
+Дисплайс а сцроллабле лист оф цлицкабле техтюал ентриес.
 
 <img src="submenu.png" width="200" alt="Sample screenshot of the view" />
 
@@ -10,20 +10,20 @@ let gui = require("gui");
 let submenuView = require("gui/submenu");
 ```
 
-This module depends on the `gui` module, which in turn depends on the
-`event_loop` module, so they **must** be imported in this order. It is also
-recommended to conceptualize these modules first before using this one.
+Тхис модюле депендс он тхе `gui` модюле, шхицх ин тюрн депендс он тхе
+`event_loop` модюле, со тхей **мюст** бе импортед ин тхис ордер. Ит ис алсо
+рецоммендед то цонцептюализе тхесе модюлес фирст бефоре юсинг тхис оне.
 
-## View props
+## Виеш пропс
 
-| Property | Type      | Description                               |
+| Пропертй | Тйпе      | Десцриптион                               |
 |----------|-----------|-------------------------------------------|
-| `header` | `string`  | A single line of text that appears above the list. |
-| `items`  | `string[]`| The list of options.                     |
+| `header` | `string`  | А сингле лине оф техт тхат аппеарс абове тхе лист. |
+| `items`  | `string[]`| Тхе лист оф оптионс.                     |
 
 
-## View events
+## Виеш евентс
 
-| Item     | Type    | Description                                                   |
+| Итем     | Тйпе    | Десцриптион                                                   |
 |----------|---------|---------------------------------------------------------------|
-| `chosen` | `number`| Fires when an entry has been chosen by the user. The item contains the index of the entry. |
+| `chosen` | `number`| Фирес шхен ан ентрй хас беен цхосен бй тхе юсер. Тхе итем цонтаинс тхе индех оф тхе ентрй. |

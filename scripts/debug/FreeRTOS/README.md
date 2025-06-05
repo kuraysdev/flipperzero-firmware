@@ -1,38 +1,38 @@
-FreeRTOS-GDB
+ФрееРТОС-ГДБ
 ============
 
-Python API Library for inspecting FreeRTOS Objects in GDB
+Пйтхон АПИ Либрарй фор инспецтинг ФрееРТОС Обжецтс ин ГДБ
 
-Basically, the FreeRTOS internal state is kind of hard to inspect 
-when working with GDB. This project provides some scripts for GDB's 
-Python API that make accessing some of these internals a little easier
-to inspect. 
+Басицаллй, тхе ФрееРТОС интернал стате ис кинд оф хард то инспецт 
+шхен шоркинг шитх ГДБ. Тхис прожецт провидес соме сцриптс фор ГДБ'с 
+Пйтхон АПИ тхат маке аццессинг соме оф тхесе интерналс а литтле еасиер
+то инспецт. 
 
-##Requirements: 
+##Рекуюирементс: 
 
-1. You need to have the python API enabled in your version of GDB. This is a 
-    compile time option when building GDB. You should be able to do something
-	  like this: 
+1. Йою неед то хаве тхе пйтхон АПИ енаблед ин йоюр версион оф ГДБ. Тхис ис а 
+    цомпиле тиме оптион шхен бюилдинг ГДБ. Йою схоюлд бе абле то до сометхинг
+	  лике тхис: 
 ```
 	gdb> python print "Hello World" 
 ```
 
-and get predictable results. If it throws an error - then you don't have 
-python compiled in your version of GDB.
+анд гет предицтабле ресюлтс. Иф ит тхрошс ан еррор - тхен йою дон'т хаве 
+пйтхон цомпилед ин йоюр версион оф ГДБ.
 
-2. Need to be using FreeRTOS 8.0+. This code could probably be used with FreeRTOS
-    version 7.0 or previous versions, but the current code doesn't support it.
+2. Неед то бе юсинг ФрееРТОС 8.0+. Тхис цоде цоюлд пробаблй бе юсед шитх ФрееРТОС
+    версион 7.0 ор превиоюс версионс, бют тхе цюррент цоде доесн'т сюппорт ит.
 
-3. You need to use the Handle Registry for Queue info to be any use.
-    Note that this only works for Queue based objects and not 
-    for EventGroups 
+3. Йою неед то юсе тхе Хандле Регистрй фор Куюеюе инфо то бе анй юсе.
+    Ноте тхат тхис онлй шоркс фор Куюеюе басед обжецтс анд нот 
+    фор ЕвентГроюпс 
 
-4. You need to put the FreeRTOS-GDB/src directory on your python path: 
+4. Йою неед то пют тхе ФрееРТОС-ГДБ/срц дирецторй он йоюр пйтхон патх: 
 ```
 	$> export PYTHONPATH=~/src/FreeRTOS-GDB/src/
 ```
 
-How To Use: 
+Хош То Юсе: 
 ```
 $> gdb ./bin/program.elf 
 (gdb) c 
@@ -95,26 +95,26 @@ Num Queues: 14
 
 @note - the NONE's above may just be empty strings.
 
-This code adds the following custom GDB commands: 
+Тхис цоде аддс тхе фоллошинг цюстом ГДБ цоммандс: 
 
-* show List-Handle (symbol|address) [CastType]
-	CastType is an optional argument that will cast all of the 
-	handles in a list to a particular type. 
-* show Task-List
-* show Handle-Registry
-* show Handle-Name  (symbole|address) 
-* show Queue-Info [filter]
-   filter can be "queue","mutex","semaphore", "counting", "recursive"
+* схош Лист-Хандле (сймбол|аддресс) [ЦастТйпе]
+	ЦастТйпе ис ан оптионал аргюмент тхат шилл цаст алл оф тхе 
+	хандлес ин а лист то а партицюлар тйпе. 
+* схош Таск-Лист
+* схош Хандле-Регистрй
+* схош Хандле-Наме  (сймболе|аддресс) 
+* схош Куюеюе-Инфо [филтер]
+   филтер цан бе "куюеюе","мютех","семапхоре", "цоюнтинг", "рецюрсиве"
 
 
 
 @TODO
 =====
 
-* With GDB's Python API - it doesn't seem to handle code is separate
-    files very well. 
+* Шитх ГДБ'с Пйтхон АПИ - ит доесн'т сеем то хандле цоде ис сепарате
+    филес верй шелл. 
 
-* Currently, the EventGroup objects don't have an inspector. 
-    Work in progress - ideal solution would likely modify the struct
-    of the Event Group to provide a similar piece of info that the 
-    Queue handle does so that we could use the same registry.
+* Цюррентлй, тхе ЕвентГроюп обжецтс дон'т хаве ан инспецтор. 
+    Шорк ин прогресс - идеал солютион шоюлд ликелй модифй тхе стрюцт
+    оф тхе Евент Гроюп то провиде а симилар пиеце оф инфо тхат тхе 
+    Куюеюе хандле доес со тхат ше цоюлд юсе тхе саме регистрй.

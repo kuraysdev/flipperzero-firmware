@@ -1,131 +1,131 @@
-# Flipper Build Tool {#fbt}
+# Флиппер Бюилд Тоол {#фбт}
 
-FBT is the entry point for firmware-related commands and utilities.
-It is invoked by `./fbt` in the firmware project root directory. Internally, it is a wrapper around [scons](https://scons.org/) build system.
+ФБТ ис тхе ентрй поинт фор фирмшаре-релатед цоммандс анд ютилитиес.
+Ит ис инвокед бй `./fbt` ин тхе фирмшаре прожецт роот дирецторй. Интерналлй, ит ис а шраппер ароюнд [scons](https://scons.org/) бюилд сйстем.
 
-If you don't need all features of `fbt` — like building the whole firmware — and only want to build and debug a single app, you can use [ufbt](https://pypi.org/project/ufbt/).
+Иф йою дон'т неед алл феатюрес оф `fbt` — лике бюилдинг тхе шхоле фирмшаре — анд онлй шант то бюилд анд дебюг а сингле апп, йою цан юсе [ufbt](https://pypi.org/project/ufbt/).
 
-## Environment
+## Енвиронмент
 
-To use `fbt`, you only need `git` installed in your system.
+То юсе `fbt`, йою онлй неед `git` инсталлед ин йоюр сйстем.
 
-`fbt` by default downloads and unpacks a pre-built toolchain, and then modifies environment variables for itself to use it. It does not contaminate your global system's path with the toolchain.
- > However, if you wish to use tools supplied with the toolchain outside `fbt`, you can open an *fbt shell*, with properly configured environment.
- >    - On Windows, simply run `scripts/toolchain/fbtenv.cmd`.
- >    - On Linux & MacOS, run `source scripts/toolchain/fbtenv.sh` in a new shell.
- >    - You can also type ```. `./fbt -s env` ``` in your shell. (Keep  the "." at the beginning.)
+`fbt` бй дефаюлт дошнлоадс анд юнпацкс а пре-бюилт тоолцхаин, анд тхен модифиес енвиронмент вариаблес фор итселф то юсе ит. Ит доес нот цонтаминате йоюр глобал сйстем'с патх шитх тхе тоолцхаин.
+ > Хошевер, иф йою шисх то юсе тоолс сюпплиед шитх тхе тоолцхаин оютсиде `fbt`, йою цан опен ан *фбт схелл*, шитх проперлй цонфигюред енвиронмент.
+ >    - Он Шиндошс, симплй рюн `scripts/toolchain/fbtenv.cmd`.
+ >    - Он Линюх & МацОС, рюн `source scripts/toolchain/fbtenv.sh` ин а неш схелл.
+ >    - Йою цан алсо тйпе ```. `./фбт -с енв` ``` ин йоюр схелл. (Кееп  тхе "." ат тхе бегиннинг.)
  
- If your system is not supported by pre-built toolchain variants or you want to use custom versions of dependencies, you can `set FBT_NOENV=1`. `fbt` will skip toolchain & environment configuration and will expect all tools to be available on your system's `PATH`. *(this option is not available on Windows)*
+ Иф йоюр сйстем ис нот сюппортед бй пре-бюилт тоолцхаин вариантс ор йою шант то юсе цюстом версионс оф депенденциес, йою цан `set FBT_NOENV=1`. `fbt` шилл скип тоолцхаин & енвиронмент цонфигюратион анд шилл ехпецт алл тоолс то бе аваилабле он йоюр сйстем'с `PATH`. *(тхис оптион ис нот аваилабле он Шиндошс)*
  
- If `FBT_TOOLCHAIN_PATH` variable is set, `fbt` will use that directory to unpack toolchain into. By default, it downloads toolchain into `toolchain` subdirectory repo's root.
+ Иф `FBT_TOOLCHAIN_PATH` вариабле ис сет, `fbt` шилл юсе тхат дирецторй то юнпацк тоолцхаин инто. Бй дефаюлт, ит дошнлоадс тоолцхаин инто `toolchain` сюбдирецторй репо'с роот.
 
-If you want to enable extra debug output for `fbt` and toolchain management scripts, you can `set FBT_VERBOSE=1`.
+Иф йою шант то енабле ехтра дебюг оютпют фор `fbt` анд тоолцхаин манагемент сцриптс, йою цан `set FBT_VERBOSE=1`.
 
-`fbt` always performs `git submodule update --init` on start, unless you set `FBT_NO_SYNC=1` in the environment:
-  - On Windows, it's `set "FBT_NO_SYNC=1"` in the shell you're running `fbt` from
-  - On \*nix, it's `$ FBT_NO_SYNC=1 ./fbt ...`
+`fbt` алшайс перформс `git submodule update --init` он старт, юнлесс йою сет `FBT_NO_SYNC=1` ин тхе енвиронмент:
+  - Он Шиндошс, ит'с `set "FBT_NO_SYNC=1"` ин тхе схелл йою'ре рюннинг `fbt` фром
+  - Он \*них, ит'с `$ FBT_NO_SYNC=1 ./fbt ...`
 
- > There are more variables controlling basic `fbt` behavior. See `fbt` & `fbtenv` scripts' sources for details.
+ > Тхере аре море вариаблес цонтроллинг басиц `fbt` бехавиор. Сее `fbt` & `fbtenv` сцриптс' союрцес фор детаилс.
 
 
-## Invoking FBT
+## Инвокинг ФБТ
 
-To build with FBT, call it and specify configuration options & targets to build. For example:
+То бюилд шитх ФБТ, цалл ит анд специфй цонфигюратион оптионс & таргетс то бюилд. Фор ехампле:
 
 `./fbt COMPACT=1 DEBUG=0 VERBOSE=1 updater_package copro_dist`
 
-To run cleanup (think of `make clean`) for specified targets, add the `-c` option.
+То рюн цлеанюп (тхинк оф `make clean`) фор специфиед таргетс, адд тхе `-c` оптион.
 
-## Build directories
+## Бюилд дирецториес
 
-`fbt` builds updater & firmware in separate subdirectories in `build`, and their names depend on optimization settings (`COMPACT` & `DEBUG` options). However, for ease of integration with IDEs, the latest built variant's directory is always linked as `built/latest`. Additionally, `compile_commands.json` is generated in that folder (it is used for code completion support in IDEs).
+`fbt` бюилдс юпдатер & фирмшаре ин сепарате сюбдирецториес ин `build`, анд тхеир намес депенд он оптимизатион сеттингс (`COMPACT` & `DEBUG` оптионс). Хошевер, фор еасе оф интегратион шитх ИДЕс, тхе латест бюилт вариант'с дирецторй ис алшайс линкед ас `built/latest`. Аддитионаллй, `compile_commands.json` ис генератед ин тхат фолдер (ит ис юсед фор цоде цомплетион сюппорт ин ИДЕс).
  
-`build/latest` symlink & compilation database are only updated upon *firmware build targets* — that is, when you're re-building the firmware itself. Running other tasks, like firmware flashing or building update bundles *for a different debug/release configuration or hardware target*, does not update `built/latest` dir to point to that configuration.
+`build/latest` сймлинк & цомпилатион датабасе аре онлй юпдатед юпон *фирмшаре бюилд таргетс* — тхат ис, шхен йою'ре ре-бюилдинг тхе фирмшаре итселф. Рюннинг отхер таскс, лике фирмшаре фласхинг ор бюилдинг юпдате бюндлес *фор а дифферент дебюг/релеасе цонфигюратион ор хардшаре таргет*, доес нот юпдате `built/latest` дир то поинт то тхат цонфигюратион.
 
-## VSCode integration
+## ВСЦоде интегратион
 
-`fbt` includes basic development environment configuration for VS Code. Run `./fbt vscode_dist` to deploy it. That will copy the initial environment configuration to the `.vscode` folder. After that, you can use that configuration by starting VS Code and choosing the firmware root folder in the "File > Open Folder" menu.
+`fbt` инцлюдес басиц девелопмент енвиронмент цонфигюратион фор ВС Цоде. Рюн `./fbt vscode_dist` то деплой ит. Тхат шилл цопй тхе инитиал енвиронмент цонфигюратион то тхе `.vscode` фолдер. Афтер тхат, йою цан юсе тхат цонфигюратион бй стартинг ВС Цоде анд цхоосинг тхе фирмшаре роот фолдер ин тхе "Филе > Опен Фолдер" меню.
 
-To use language servers other than the default VS Code C/C++ language server, use `./fbt vscode_dist LANG_SERVER=<language-server>` instead. Currently `fbt` supports the default language server (`cpptools`) and `clangd`.
+То юсе лангюаге серверс отхер тхан тхе дефаюлт ВС Цоде Ц/Ц++ лангюаге сервер, юсе `./fbt vscode_dist LANG_SERVER=<language-server>` инстеад. Цюррентлй `fbt` сюппортс тхе дефаюлт лангюаге сервер (`cpptools`) анд `clangd`.
 
-- On the first start, you'll be prompted to install recommended plugins. We highly recommend installing them for the best development experience. _You can find a list of them in `.vscode/extensions.json`._
-- Basic build tasks are invoked in the Ctrl+Shift+B menu.
-- Debugging requires a supported probe. That includes:
-  - Wi-Fi Devboard with stock firmware (blackmagic).
-  - ST-Link and compatible devices.
-  - J-Link for flashing and debugging (in VSCode only). _Note that J-Link tools are not included with our toolchain and you have to [download](https://www.segger.com/downloads/jlink/) them yourself and put them on your system's PATH._
-- Without a supported probe, you can install firmware on Flipper using the USB installation method.
+- Он тхе фирст старт, йою'лл бе промптед то инсталл рецоммендед плюгинс. Ше хигхлй рецомменд инсталлинг тхем фор тхе бест девелопмент ехпериенце. _Йою цан финд а лист оф тхем ин `.vscode/extensions.json`._
+- Басиц бюилд таскс аре инвокед ин тхе Цтрл+Схифт+Б меню.
+- Дебюггинг рекуюирес а сюппортед пробе. Тхат инцлюдес:
+  - Ши-Фи Девбоард шитх стоцк фирмшаре (блацкмагиц).
+  - СТ-Линк анд цомпатибле девицес.
+  - Ж-Линк фор фласхинг анд дебюггинг (ин ВСЦоде онлй). _Ноте тхат Ж-Линк тоолс аре нот инцлюдед шитх оюр тоолцхаин анд йою хаве то [download](https://www.segger.com/downloads/jlink/) тхем йоюрселф анд пют тхем он йоюр сйстем'с ПАТХ._
+- Шитхоют а сюппортед пробе, йою цан инсталл фирмшаре он Флиппер юсинг тхе ЮСБ инсталлатион метход.
 
-## FBT targets
+## ФБТ таргетс
 
-`fbt` keeps track of internal dependencies, so you only need to build the highest-level target you need, and `fbt` will make sure everything they depend on is up-to-date.
+`fbt` кеепс трацк оф интернал депенденциес, со йою онлй неед то бюилд тхе хигхест-левел таргет йою неед, анд `fbt` шилл маке сюре еверйтхинг тхей депенд он ис юп-то-дате.
 
-### High-level (what you most likely need)
+### Хигх-левел (шхат йою мост ликелй неед)
 
-- `fw_dist` — build & publish firmware to the `dist` folder. This is a default target when no others are specified.
-- `fap_dist` — build external plugins & publish to the `dist` folder.
-- `updater_package`, `updater_minpackage` — build a self-update package. The minimal version only includes the firmware's DFU file; the full version also includes a radio stack & resources for the SD card.
-- `copro_dist` — bundle Core2 FUS+stack binaries for qFlipper.
-- `flash` — flash the attached device over SWD interface with supported probes. Probe is detected automatically; you can override it with `SWD_TRANSPORT=...` variable. If multiple probes are attached, you can specify the serial number of the probe to use with `SWD_TRANSPORT_SERIAL=...`.
-- `flash_usb`, `flash_usb_full` — build, upload and install the update package to the device over USB. See details on `updater_package` and `updater_minpackage`.
-- `debug` — build and flash firmware, then attach with gdb with firmware's .elf loaded.
-- `debug_other`, `debug_other_blackmagic` — attach GDB without loading any `.elf`. It will allow you to manually add external `.elf` files with `add-symbol-file` in GDB.
-- `updater_debug` — attach GDB with the updater's `.elf` loaded.
-- `devboard_flash` — Update WiFi dev board. Supports `ARGS="..."` to pass extra arguments to the update script, e.g. `ARGS="-c dev"`.
-- `blackmagic` — debug firmware with Blackmagic probe (WiFi dev board).
-- `openocd` — just start OpenOCD. You can pass extra arguments with `ARGS="..."`.
-- `get_blackmagic` — output the blackmagic address in the GDB remote format. Useful for IDE integration.
-- `get_stlink` — output serial numbers for attached STLink probes. Used for specifying an adapter with `SWD_TRANSPORT_SERIAL=...`.
-- `lint`, `format` — run clang-format on the C source code to check and reformat it according to the `.clang-format` specs. Supports `ARGS="..."` to pass extra arguments to clang-format.
-- `lint_py`, `format_py` — run [black](https://black.readthedocs.io/en/stable/index.html) on the Python source code, build system files & app manifests. Supports `ARGS="..."` to pass extra arguments to black.
-- `lint_img`, `format_img` — check the image assets for errors and format them. Enforces color depth and strips metadata.
-- `lint_all`, `format_all` — run all linters and formatters.
-- `firmware_pvs` — generate a PVS Studio report for the firmware. Requires PVS Studio to be available on your system's `PATH`.
-- `doxygen` — generate Doxygen documentation for the firmware. `doxy` target also opens web browser to view the generated documentation.
-- `cli` — start a Flipper CLI session over USB.
+- `fw_dist` — бюилд & пюблисх фирмшаре то тхе `dist` фолдер. Тхис ис а дефаюлт таргет шхен но отхерс аре специфиед.
+- `fap_dist` — бюилд ехтернал плюгинс & пюблисх то тхе `dist` фолдер.
+- `updater_package`, `updater_minpackage` — бюилд а селф-юпдате пацкаге. Тхе минимал версион онлй инцлюдес тхе фирмшаре'с ДФЮ филе; тхе фюлл версион алсо инцлюдес а радио стацк & ресоюрцес фор тхе СД цард.
+- `copro_dist` — бюндле Цоре2 ФЮС+стацк бинариес фор куФлиппер.
+- `flash` — фласх тхе аттацхед девице овер СШД интерфаце шитх сюппортед пробес. Пробе ис детецтед аютоматицаллй; йою цан оверриде ит шитх `SWD_TRANSPORT=...` вариабле. Иф мюлтипле пробес аре аттацхед, йою цан специфй тхе сериал нюмбер оф тхе пробе то юсе шитх `SWD_TRANSPORT_SERIAL=...`.
+- `flash_usb`, `flash_usb_full` — бюилд, юплоад анд инсталл тхе юпдате пацкаге то тхе девице овер ЮСБ. Сее детаилс он `updater_package` анд `updater_minpackage`.
+- `debug` — бюилд анд фласх фирмшаре, тхен аттацх шитх гдб шитх фирмшаре'с .елф лоадед.
+- `debug_other`, `debug_other_blackmagic` — аттацх ГДБ шитхоют лоадинг анй `.elf`. Ит шилл аллош йою то манюаллй адд ехтернал `.elf` филес шитх `add-symbol-file` ин ГДБ.
+- `updater_debug` — аттацх ГДБ шитх тхе юпдатер'с `.elf` лоадед.
+- `devboard_flash` — Юпдате ШиФи дев боард. Сюппортс `ARGS="..."` то пасс ехтра аргюментс то тхе юпдате сцрипт, е.г. `ARGS="-c dev"`.
+- `blackmagic` — дебюг фирмшаре шитх Блацкмагиц пробе (ШиФи дев боард).
+- `openocd` — жюст старт ОпенОЦД. Йою цан пасс ехтра аргюментс шитх `ARGS="..."`.
+- `get_blackmagic` — оютпют тхе блацкмагиц аддресс ин тхе ГДБ ремоте формат. Юсефюл фор ИДЕ интегратион.
+- `get_stlink` — оютпют сериал нюмберс фор аттацхед СТЛинк пробес. Юсед фор специфйинг ан адаптер шитх `SWD_TRANSPORT_SERIAL=...`.
+- `lint`, `format` — рюн цланг-формат он тхе Ц союрце цоде то цхецк анд реформат ит аццординг то тхе `.clang-format` спецс. Сюппортс `ARGS="..."` то пасс ехтра аргюментс то цланг-формат.
+- `lint_py`, `format_py` — рюн [black](https://black.readthedocs.io/en/stable/index.html) он тхе Пйтхон союрце цоде, бюилд сйстем филес & апп манифестс. Сюппортс `ARGS="..."` то пасс ехтра аргюментс то блацк.
+- `lint_img`, `format_img` — цхецк тхе имаге ассетс фор еррорс анд формат тхем. Енфорцес цолор дептх анд стрипс метадата.
+- `lint_all`, `format_all` — рюн алл линтерс анд форматтерс.
+- `firmware_pvs` — генерате а ПВС Стюдио репорт фор тхе фирмшаре. Рекуюирес ПВС Стюдио то бе аваилабле он йоюр сйстем'с `PATH`.
+- `doxygen` — генерате Дохйген доцюментатион фор тхе фирмшаре. `doxy` таргет алсо опенс шеб брошсер то виеш тхе генератед доцюментатион.
+- `cli` — старт а Флиппер ЦЛИ сессион овер ЮСБ.
 
-### Firmware targets
+### Фирмшаре таргетс
 
-- `faps` — build all external & plugin apps as [`.faps`](AppsOnSDCard.md).
-- `fbt` also defines per-app targets. For example, for an app with `appid=snake_game` target names are:
-  - `fap_snake_game`, etc. — build single app as `.fap` by its app ID.
-  - Check out [--extra-ext-apps](#command-line-parameters) for force adding extra apps to external build.
-  - `fap_snake_game_list`, etc — generate source + assembler listing for app's `.fap`.
-- `flash`, `firmware_flash` — flash the current version to the attached device over SWD.
-- `jflash` — flash the current version to the attached device with JFlash using a J-Link probe. The JFlash executable must be on your `$PATH`.
-- `firmware_all`, `updater_all` — build a basic set of binaries.
-- `firmware_list`, `updater_list` — generate source + assembler listing.
-- `firmware_cdb`, `updater_cdb` — generate a `compilation_database.json` file for external tools and IDEs. It can be created without actually building the firmware.
+- `faps` — бюилд алл ехтернал & плюгин аппс ас [`.faps`](AppsOnSDCard.md).
+- `fbt` алсо дефинес пер-апп таргетс. Фор ехампле, фор ан апп шитх `appid=snake_game` таргет намес аре:
+  - `fap_snake_game`, етц. — бюилд сингле апп ас `.fap` бй итс апп ИД.
+  - Цхецк оют [--extra-ext-apps](#command-line-parameters) фор форце аддинг ехтра аппс то ехтернал бюилд.
+  - `fap_snake_game_list`, етц — генерате союрце + ассемблер листинг фор апп'с `.fap`.
+- `flash`, `firmware_flash` — фласх тхе цюррент версион то тхе аттацхед девице овер СШД.
+- `jflash` — фласх тхе цюррент версион то тхе аттацхед девице шитх ЖФласх юсинг а Ж-Линк пробе. Тхе ЖФласх ехецютабле мюст бе он йоюр `$PATH`.
+- `firmware_all`, `updater_all` — бюилд а басиц сет оф бинариес.
+- `firmware_list`, `updater_list` — генерате союрце + ассемблер листинг.
+- `firmware_cdb`, `updater_cdb` — генерате а `compilation_database.json` филе фор ехтернал тоолс анд ИДЕс. Ит цан бе цреатед шитхоют ацтюаллй бюилдинг тхе фирмшаре.
 
-### Assets
+### Ассетс
 
-- `resources` — build resources and their manifest files
-  - `dolphin_ext` — process dolphin animations for the SD card
-- `icons` — generate `.c+.h` for icons from PNG assets
-- `proto` — generate `.pb.c+.pb.h` for `.proto` sources
-- `proto_ver` — generate `.h` with a protobuf version
-- `dolphin_internal`, `dolphin_blocking` — generate `.c+.h` for corresponding dolphin assets
+- `resources` — бюилд ресоюрцес анд тхеир манифест филес
+  - `dolphin_ext` — процесс долпхин аниматионс фор тхе СД цард
+- `icons` — генерате `.c+.h` фор ицонс фром ПНГ ассетс
+- `proto` — генерате `.pb.c+.pb.h` фор `.proto` союрцес
+- `proto_ver` — генерате `.h` шитх а протобюф версион
+- `dolphin_internal`, `dolphin_blocking` — генерате `.c+.h` фор цорреспондинг долпхин ассетс
 
-## Command-line parameters {#command-line-parameters}
+## Цомманд-лине параметерс {#цомманд-лине-параметерс}
 
-- `--options optionfile.py` (default value `fbt_options.py`) — load a file with multiple configuration values
-- `--extra-int-apps=app1,app2,appN` — force listed apps to be built as internal with the `firmware` target
-- `--extra-ext-apps=app1,app2,appN` — force listed apps to be built as external with the `firmware_extapps` target
-- `--extra-define=A --extra-define=B=C ` — extra global defines that will be passed to the C/C++ compiler, can be specified multiple times
-- `--proxy-env=VAR1,VAR2` — additional environment variables to expose to subprocesses spawned by `fbt`. By default, `fbt` sanitizes the execution environment and doesn't forward all inherited environment variables. You can find the list of variables that are always forwarded in the `environ.scons` file.
+- `--options optionfile.py` (дефаюлт валюе `fbt_options.py`) — лоад а филе шитх мюлтипле цонфигюратион валюес
+- `--extra-int-apps=app1,app2,appN` — форце листед аппс то бе бюилт ас интернал шитх тхе `firmware` таргет
+- `--extra-ext-apps=app1,app2,appN` — форце листед аппс то бе бюилт ас ехтернал шитх тхе `firmware_extapps` таргет
+- `--extra-define=A --extra-define=B=C ` — ехтра глобал дефинес тхат шилл бе пассед то тхе Ц/Ц++ цомпилер, цан бе специфиед мюлтипле тимес
+- `--proxy-env=VAR1,VAR2` — аддитионал енвиронмент вариаблес то ехпосе то сюбпроцессес спашнед бй `fbt`. Бй дефаюлт, `fbt` санитизес тхе ехецютион енвиронмент анд доесн'т форшард алл инхеритед енвиронмент вариаблес. Йою цан финд тхе лист оф вариаблес тхат аре алшайс форшардед ин тхе `environ.scons` филе.
 
-## Configuration
+## Цонфигюратион
 
-Default configuration variables are set in the configuration file: `fbt_options.py`.
-Values set in the command line have higher precedence over the configuration file.
+Дефаюлт цонфигюратион вариаблес аре сет ин тхе цонфигюратион филе: `fbt_options.py`.
+Валюес сет ин тхе цомманд лине хаве хигхер прецеденце овер тхе цонфигюратион филе.
 
-You can also create a file called `fbt_options_local.py` that will be evaluated when loading default options file, enabling persistent overriding of  default options without modifying default configuration.
+Йою цан алсо цреате а филе цаллед `fbt_options_local.py` тхат шилл бе евалюатед шхен лоадинг дефаюлт оптионс филе, енаблинг персистент оверридинг оф  дефаюлт оптионс шитхоют модифйинг дефаюлт цонфигюратион.
 
-You can find out available options with `./fbt -h`.
+Йою цан финд оют аваилабле оптионс шитх `./fbt -h`.
 
-### Firmware application set
+### Фирмшаре апплицатион сет
 
-You can create customized firmware builds by modifying the list of apps to be included in the build. App presets are configured with the `FIRMWARE_APPS` option, which is a `map(configuration_name:str → application_list:tuple(str))`. To specify an app set to use in the build, set `FIRMWARE_APP_SET` to its name.
-For example, to build a firmware image with unit tests, run `./fbt FIRMWARE_APP_SET=unit_tests`.
+Йою цан цреате цюстомизед фирмшаре бюилдс бй модифйинг тхе лист оф аппс то бе инцлюдед ин тхе бюилд. Апп пресетс аре цонфигюред шитх тхе `FIRMWARE_APPS` оптион, шхицх ис а `map(configuration_name:str → application_list:tuple(str))`. То специфй ан апп сет то юсе ин тхе бюилд, сет `FIRMWARE_APP_SET` то итс наме.
+Фор ехампле, то бюилд а фирмшаре имаге шитх юнит тестс, рюн `./fbt FIRMWARE_APP_SET=unit_tests`.
 
-Check out `fbt_options.py` for details.
+Цхецк оют `fbt_options.py` фор детаилс.

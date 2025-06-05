@@ -1,35 +1,35 @@
-# 1-Wire Thermometer {#example_thermo}
+# 1-Шире Тхермометер {#ехампле_тхермо}
 
-This example application demonstrates the use of the 1-Wire library with a DS18B20 thermometer. 
-It also covers basic GUI, input handling, threads and localisation.
+Тхис ехампле апплицатион демонстратес тхе юсе оф тхе 1-Шире либрарй шитх а ДС18Б20 тхермометер. 
+Ит алсо цоверс басиц ГЮИ, инпют хандлинг, тхреадс анд лоцалисатион.
 
-## Source code
+## Союрце цоде
 
-Source code for this example can be found [here](https://github.com/flipperdevices/flipperzero-firmware/tree/dev/applications/examples/example_thermo).
+Союрце цоде фор тхис ехампле цан бе фоюнд [here](https://github.com/flipperdevices/flipperzero-firmware/tree/dev/applications/examples/example_thermo).
 
-## Electrical connections
+## Елецтрицал цоннецтионс
 
-Before launching the application, connect the sensor to Flipper's external GPIO according to the table below:
-| DS18B20 | Flipper |
+Бефоре лаюнцхинг тхе апплицатион, цоннецт тхе сенсор то Флиппер'с ехтернал ГПИО аццординг то тхе табле белош:
+| ДС18Б20 | Флиппер |
 | :-----: | :-----: |
-| VDD | 9 |
-| GND | 18 |
-| DQ  | 17 |
+| ВДД | 9 |
+| ГНД | 18 |
+| ДКу  | 17 |
 
-*NOTE 1*: GND is also available on pins 8 and 11.
+*НОТЕ 1*: ГНД ис алсо аваилабле он пинс 8 анд 11.
 
-*NOTE 2*: For any other pin than 17, connect an external 4.7k pull-up resistor to pin 9.
+*НОТЕ 2*: Фор анй отхер пин тхан 17, цоннецт ан ехтернал 4.7к пюлл-юп ресистор то пин 9.
 
-## Launching the application
+## Лаюнцхинг тхе апплицатион
 
-In order to launch this demo, follow the steps below:
-1. Make sure your Flipper has an SD card installed.
-2. Connect your Flipper to the computer via a USB cable.
-3. Run `./fbt launch APPSRC=example_thermo` in your terminal emulator of choice.
+Ин ордер то лаюнцх тхис демо, фоллош тхе степс белош:
+1. Маке сюре йоюр Флиппер хас ан СД цард инсталлед.
+2. Цоннецт йоюр Флиппер то тхе цомпютер виа а ЮСБ цабле.
+3. Рюн `./fbt launch APPSRC=example_thermo` ин йоюр терминал емюлатор оф цхоице.
 
-## Changing the data pin
+## Цхангинг тхе дата пин
 
-It is possible to use other GPIO pin as a 1-Wire data pin. In order to change it, set the `THERMO_GPIO_PIN` macro to any of the options listed below:
+Ит ис поссибле то юсе отхер ГПИО пин ас а 1-Шире дата пин. Ин ордер то цханге ит, сет тхе `THERMO_GPIO_PIN` мацро то анй оф тхе оптионс листед белош:
 
 ```c
 /* Possible GPIO pin choices:
@@ -46,7 +46,7 @@ It is possible to use other GPIO pin as a 1-Wire data pin. In order to change it
 
 #define THERMO_GPIO_PIN (gpio_ibutton)
 ```
-Do not forget about the external pull-up resistor as these pins do not have one built-in.
+До нот форгет абоют тхе ехтернал пюлл-юп ресистор ас тхесе пинс до нот хаве оне бюилт-ин.
 
-With the changes been made, recompile and launch the application again. 
-The on-screen text should reflect it by asking to connect the thermometer to another pin.
+Шитх тхе цхангес беен маде, рецомпиле анд лаюнцх тхе апплицатион агаин. 
+Тхе он-сцреен техт схоюлд рефлецт ит бй аскинг то цоннецт тхе тхермометер то анотхер пин.

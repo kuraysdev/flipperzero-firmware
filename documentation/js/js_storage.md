@@ -1,14 +1,14 @@
-# Storage module {#js_storage}
+# Стораге модюле {#жс_стораге}
 
-The module allows you to access files and directories on the Flipper Zero filesystems. Call the `require` function to load the module before first using its methods:
+Тхе модюле аллошс йою то аццесс филес анд дирецториес он тхе Флиппер Зеро филесйстемс. Цалл тхе `require` фюнцтион то лоад тхе модюле бефоре фирст юсинг итс метходс:
 
 ```js
 let storage = require("storage");
 ```
 
-## Paths
+## Патхс
 
-To work with files and folders, you'll need to specify paths to them. File paths have the following structure:
+То шорк шитх филес анд фолдерс, йою'лл неед то специфй патхс то тхем. Филе патхс хаве тхе фоллошинг стрюцтюре:
 
 ```
 /ext/example_subdir_1/example_subdir_2/example_file.txt
@@ -16,249 +16,249 @@ To work with files and folders, you'll need to specify paths to them. File paths
                 dirPath                  fileName  fileExt
 ```
 
-* **dirPath** — directory path starting with `/int/` (small storage in the MCU's flash memory) or `/ext/` (microSD card storage). Specify the sub-directories containing the file using `/` as a separator between directory names.
-* **fileName** — file name.
-* **fileExt** — file extension (separated from the file name by a period).
+* **дирПатх** — дирецторй патх стартинг шитх `/int/` (смалл стораге ин тхе МЦЮ'с фласх меморй) ор `/ext/` (мицроСД цард стораге). Специфй тхе сюб-дирецториес цонтаининг тхе филе юсинг `/` ас а сепаратор бетшеен дирецторй намес.
+* **филеНаме** — филе наме.
+* **филеЕхт** — филе ехтенсион (сепаратед фром тхе филе наме бй а период).
 
 ---
 
-# Structures
+# Стрюцтюрес
 
-## FsInfo 
+## ФсИнфо 
 
-Filesystem information structure.
+Филесйстем информатион стрюцтюре.
 
-**Fields**
+**Фиелдс**
 
-- totalSpace: Total size of the filesystem, in bytes
-- freeSpace: Free space in the filesystem, in bytes
+- тоталСпаце: Тотал сизе оф тхе филесйстем, ин бйтес
+- фрееСпаце: Фрее спаце ин тхе филесйстем, ин бйтес
 
 <br>
 
-## FileInfo
+## ФилеИнфо
 
-File information structure.
+Филе информатион стрюцтюре.
 
-**Fields**
+**Фиелдс**
 
-- path: Full path (e.g. "/ext/test", returned by `stat`) or file name (e.g. "test", returned by `readDirectory`)
-- isDirectory: Returns `true` if path leads to a directory (not a file)
-- size: File size in bytes, or 0 in the case of directories
-- accessTime: Time of last access as a UNIX timestamp
+- патх: Фюлл патх (е.г. "/ехт/тест", ретюрнед бй `stat`) ор филе наме (е.г. "тест", ретюрнед бй `readDirectory`)
+- исДирецторй: Ретюрнс `true` иф патх леадс то а дирецторй (нот а филе)
+- сизе: Филе сизе ин бйтес, ор 0 ин тхе цасе оф дирецториес
+- аццессТиме: Тиме оф ласт аццесс ас а ЮНИХ тиместамп
 
 ---
 
-# Classes
+# Цлассес
 
-## File
+## Филе
 
-This class implements methods for working with file. To get an object of the File class, use the `openFile` method.
-
-<br>
-
-### close()
-
-Closes the file. After this method is called, all other operations related to this file become unavailable.
-
-**Returns**
-
-`true` on success, `false` on failure.
+Тхис цласс имплементс метходс фор шоркинг шитх филе. То гет ан обжецт оф тхе Филе цласс, юсе тхе `openFile` метход.
 
 <br>
 
-### isOpen()
+### цлосе()
 
-**Returns**
+Цлосес тхе филе. Афтер тхис метход ис цаллед, алл отхер оператионс релатед то тхис филе бецоме юнаваилабле.
 
-`true` if file is currently opened, `false` otherwise.
+**Ретюрнс**
 
-<br>
-
-### read()
-
-Reads bytes from a file opened in read-only or read-write mode.
-
-**Parameters**
-
-- mode: The data type to interpret the bytes as: a `string` decoded from ASCII data (`"ascii"`), or an `ArrayBuf` (`"binary"`)
-- bytes: How many bytes to read from the file
-
-**Returns**
-
-An `ArrayBuf` if the mode is `"binary"`, a `string` if the mode is `ascii`. The number of bytes that was actually read may be fewer than requested.
+`true` он сюццесс, `false` он фаилюре.
 
 <br>
 
-### write()
+### исОпен()
 
-Writes bytes to a file opened in write-only or read-write mode.
+**Ретюрнс**
 
-**Parameters**
-
-- data: The data to write: a string that will be ASCII-encoded, or an ArrayBuf
-
-**Returns**
-
-The amount of bytes that was actually written.
+`true` иф филе ис цюррентлй опенед, `false` отхершисе.
 
 <br>
 
-### seekRelative()
+### реад()
 
-Moves the R/W pointer forward.
+Реадс бйтес фром а филе опенед ин реад-онлй ор реад-шрите моде.
 
-**Parameters**
+**Параметерс**
 
-- bytes: How many bytes to move the pointer forward by
+- моде: Тхе дата тйпе то интерпрет тхе бйтес ас: а `string` децодед фром АСЦИИ дата (`"ascii"`), ор ан `ArrayBuf` (`"binary"`)
+- бйтес: Хош манй бйтес то реад фром тхе филе
 
-**Returns**
+**Ретюрнс**
 
-`true` on success, `false` on failure.
-
-<br>
-
-### seekAbsolute()
-
-Moves the R/W pointer to an absolute position inside the file.
-
-**Parameters**
-
-- bytes: The position inside the file
-
-**Returns**
-
-`true` on success, `false` on failure.
+Ан `ArrayBuf` иф тхе моде ис `"binary"`, а `string` иф тхе моде ис `ascii`. Тхе нюмбер оф бйтес тхат шас ацтюаллй реад май бе фешер тхан рекуюестед.
 
 <br>
 
-### tell()
+### шрите()
 
-Gets the absolute position of the R/W pointer in bytes.
+Шритес бйтес то а филе опенед ин шрите-онлй ор реад-шрите моде.
 
-**Returns**
+**Параметерс**
 
-The absolute current position in the file.
+- дата: Тхе дата то шрите: а стринг тхат шилл бе АСЦИИ-енцодед, ор ан АррайБюф
 
-<br>
+**Ретюрнс**
 
-### truncate()
-
-Discards the data after the current position of the R/W pointer in a file opened in either write-only or read-write mode.
-
-**Returns**
-
-`true` on success, `false` on failure.
+Тхе амоюнт оф бйтес тхат шас ацтюаллй шриттен.
 
 <br>
 
-### size()
+### сеекРелативе()
 
-**Returns**
+Мовес тхе Р/Ш поинтер форшард.
 
-The total size of the file in bytes.
+**Параметерс**
 
-<br>
+- бйтес: Хош манй бйтес то мове тхе поинтер форшард бй
 
-### eof()
+**Ретюрнс**
 
-Detects whether the R/W pointer has reached the end of the file.
-
-**Returns**
-
-`true` if end of file reached, `false` otherwise.
+`true` он сюццесс, `false` он фаилюре.
 
 <br>
 
-### copyTo()
+### сеекАбсолюте()
 
-Copies bytes from the R/W pointer in the current file to the R/W pointer in another file.
+Мовес тхе Р/Ш поинтер то ан абсолюте поситион инсиде тхе филе.
 
-**Parameters**
+**Параметерс**
 
-- dest: The file to copy the bytes into
-- bytes: The number of bytes to copy
+- бйтес: Тхе поситион инсиде тхе филе
 
-**Returns**
+**Ретюрнс**
 
-`true` on success, `false` on failure.
+`true` он сюццесс, `false` он фаилюре.
+
+<br>
+
+### телл()
+
+Гетс тхе абсолюте поситион оф тхе Р/Ш поинтер ин бйтес.
+
+**Ретюрнс**
+
+Тхе абсолюте цюррент поситион ин тхе филе.
+
+<br>
+
+### трюнцате()
+
+Дисцардс тхе дата афтер тхе цюррент поситион оф тхе Р/Ш поинтер ин а филе опенед ин еитхер шрите-онлй ор реад-шрите моде.
+
+**Ретюрнс**
+
+`true` он сюццесс, `false` он фаилюре.
+
+<br>
+
+### сизе()
+
+**Ретюрнс**
+
+Тхе тотал сизе оф тхе филе ин бйтес.
+
+<br>
+
+### еоф()
+
+Детецтс шхетхер тхе Р/Ш поинтер хас реацхед тхе енд оф тхе филе.
+
+**Ретюрнс**
+
+`true` иф енд оф филе реацхед, `false` отхершисе.
+
+<br>
+
+### цопйТо()
+
+Цопиес бйтес фром тхе Р/Ш поинтер ин тхе цюррент филе то тхе Р/Ш поинтер ин анотхер филе.
+
+**Параметерс**
+
+- дест: Тхе филе то цопй тхе бйтес инто
+- бйтес: Тхе нюмбер оф бйтес то цопй
+
+**Ретюрнс**
+
+`true` он сюццесс, `false` он фаилюре.
 
 ---
 
-# Methods
+# Метходс
 
-## openFile()
+## опенФиле()
 
-Opens a file.
+Опенс а филе.
 
-**Parameters**
+**Параметерс**
 
-- path: The path to the file
-- accessMode: How to access the file (`"r"`, `"w"` or `"rw"`)
-- openMode: How to open the file (`"open_existing"`, `"open_always"`, `"open_append"`, `"create_new"` or `"create_always"`)
+- патх: Тхе патх то тхе филе
+- аццессМоде: Хош то аццесс тхе филе (`"r"`, `"w"` ор `"rw"`)
+- опенМоде: Хош то опен тхе филе (`"open_existing"`, `"open_always"`, `"open_append"`, `"create_new"` ор `"create_always"`)
 
-**Returns**
+**Ретюрнс**
 
-A `File` object on success, `undefined` otherwise.
-
-<br>
-
-## fileExists()
-
-Detects whether a file exists.
-
-**Parameters**
-
-- path: The path to the file
-
-**Returns**
-
-`true` if file exists, `false` otherwise.
+А `File` обжецт он сюццесс, `undefined` отхершисе.
 
 <br>
 
-## arePathsEqual()
+## филеЕхистс()
 
-Determines whether the two paths are equivalent. Respects filesystem-defined path equivalence rules.
+Детецтс шхетхер а филе ехистс.
 
-**Parameters**
+**Параметерс**
 
-- path1: The first path for comparison
-- path2: The second path for comparison
+- патх: Тхе патх то тхе филе
 
-**Returns**
+**Ретюрнс**
 
-`true` if path1 and path2 are equals, `false` otherwise.
-
-<br>
-
-## isSubpathOf()
-
-Determines whether a path is a subpath of another path. Respects filesystem-defined path equivalence rules.
-
-**Parameters**
-
-- parentPath: The parent path
-- childPath: The child path
-
-**Returns**
-
-`true` if path1 and path2 are equals, `false` otherwise.
+`true` иф филе ехистс, `false` отхершисе.
 
 <br>
 
-## fileOrDirExists()
+## ареПатхсЕкуюал()
 
-Detects whether a file or a directory exists.
+Детерминес шхетхер тхе тшо патхс аре екуюивалент. Респецтс филесйстем-дефинед патх екуюиваленце рюлес.
 
-**Parameters**
+**Параметерс**
 
-- path: The path to the file or directory
+- патх1: Тхе фирст патх фор цомпарисон
+- патх2: Тхе сецонд патх фор цомпарисон
 
-**Returns**
+**Ретюрнс**
 
-`true` if file/directory exists, `false` otherwise.
+`true` иф патх1 анд патх2 аре екуюалс, `false` отхершисе.
 
-**Example**
+<br>
+
+## исСюбпатхОф()
+
+Детерминес шхетхер а патх ис а сюбпатх оф анотхер патх. Респецтс филесйстем-дефинед патх екуюиваленце рюлес.
+
+**Параметерс**
+
+- парентПатх: Тхе парент патх
+- цхилдПатх: Тхе цхилд патх
+
+**Ретюрнс**
+
+`true` иф патх1 анд патх2 аре екуюалс, `false` отхершисе.
+
+<br>
+
+## филеОрДирЕхистс()
+
+Детецтс шхетхер а филе ор а дирецторй ехистс.
+
+**Параметерс**
+
+- патх: Тхе патх то тхе филе ор дирецторй
+
+**Ретюрнс**
+
+`true` иф филе/дирецторй ехистс, `false` отхершисе.
+
+**Ехампле**
 ```js
 if (storage.fileOrDirExists("/ext/test_dir")) {
     print("Test directory exists");
@@ -267,19 +267,19 @@ if (storage.fileOrDirExists("/ext/test_dir")) {
 
 <br>
 
-## fsInfo()
+## фсИнфо()
 
-Fetches generic information about a filesystem.
+Фетцхес генериц информатион абоют а филесйстем.
 
-**Parameters**
+**Параметерс**
 
-- filesystem: The path to the filesystem (e.g. `"/ext"` or `"/int"`)
+- филесйстем: Тхе патх то тхе филесйстем (е.г. `"/ext"` ор `"/int"`)
 
-**Returns**
+**Ретюрнс**
 
-A `fsInfo` structure or `undefined` on failure.
+А `fsInfo` стрюцтюре ор `undefined` он фаилюре.
 
-**Example**
+**Ехампле**
 ```js
 let fsinfo = storage.fsInfo("/ext");
 if (fsinfo === undefined) {
@@ -291,19 +291,19 @@ if (fsinfo === undefined) {
 
 <br>
 
-## stat()
+## стат()
 
-Acquires metadata about a file or directory.
+Ацкуюирес метадата абоют а филе ор дирецторй.
 
-**Parameters**
+**Параметерс**
 
-- path: The path to the file or directory
+- патх: Тхе патх то тхе филе ор дирецторй
 
-**Returns**
+**Ретюрнс**
 
-A `FileInfo` structure or `undefined` on failure.
+А `FileInfo` стрюцтюре ор `undefined` он фаилюре.
 
-**Example**
+**Ехампле**
 ```js
 let finfo = storage.stat("/ext/test_file.txt");
 if (finfo === undefined) {
@@ -315,51 +315,51 @@ if (finfo === undefined) {
 
 <br>
 
-## directoryExists()
+## дирецторйЕхистс()
 
-Detects whether a directory exists.
+Детецтс шхетхер а дирецторй ехистс.
 
-**Parameters**
+**Параметерс**
 
-- path: The path to the directory
+- патх: Тхе патх то тхе дирецторй
 
-**Returns**
+**Ретюрнс**
 
-`true` if directory exists, `false` otherwise.
-
-<br>
-
-## makeDirectory()
-
-Creates an empty directory.
-
-**Parameters**
-
-- path: The path to the new directory
-
-**Returns**
-
-`true` on success, `false` on failure.
+`true` иф дирецторй ехистс, `false` отхершисе.
 
 <br>
 
-## readDirectory()
+## макеДирецторй()
 
-Reads the list of files in a directory.
+Цреатес ан емптй дирецторй.
 
-**Parameters**
+**Параметерс**
 
-- path: The path to the directory
+- патх: Тхе патх то тхе неш дирецторй
 
-**Returns**
+**Ретюрнс**
 
-Array of `FileInfo` structures with directory entries, or `undefined` on failure.
+`true` он сюццесс, `false` он фаилюре.
 
 <br>
 
-## nextAvailableFilename()
+## реадДирецторй()
 
-Chooses the next available filename with a numeric suffix in a directory.
+Реадс тхе лист оф филес ин а дирецторй.
+
+**Параметерс**
+
+- патх: Тхе патх то тхе дирецторй
+
+**Ретюрнс**
+
+Аррай оф `FileInfo` стрюцтюрес шитх дирецторй ентриес, ор `undefined` он фаилюре.
+
+<br>
+
+## нехтАваилаблеФиленаме()
+
+Цхоосес тхе нехт аваилабле филенаме шитх а нюмериц сюффих ин а дирецторй.
 ```
 /ext/example_dir/example_file123.txt
 \______________/ \__________/\_/ \_/
@@ -368,33 +368,33 @@ Chooses the next available filename with a numeric suffix in a directory.
                               +------- suffix selected by this function
 ```
 
-**Parameters**
+**Параметерс**
 
-- dirPath: The directory to look in
-- fileName: The base of the filename (the part before the numeric suffix)
-- fileExt: The extension of the filename (the part after the numeric suffix)
-- maxLen: The maximum length of the filename with the numeric suffix
+- дирПатх: Тхе дирецторй то лоок ин
+- филеНаме: Тхе басе оф тхе филенаме (тхе парт бефоре тхе нюмериц сюффих)
+- филеЕхт: Тхе ехтенсион оф тхе филенаме (тхе парт афтер тхе нюмериц сюффих)
+- махЛен: Тхе махимюм ленгтх оф тхе филенаме шитх тхе нюмериц сюффих
 
-**Returns**
+**Ретюрнс**
 
-The base of the filename with the next available numeric suffix, without the extension or the base directory.
+Тхе басе оф тхе филенаме шитх тхе нехт аваилабле нюмериц сюффих, шитхоют тхе ехтенсион ор тхе басе дирецторй.
 
 <br>
 
-## copy()
+## цопй()
 
-Copies a file or recursively copies a possibly non-empty directory.
+Цопиес а филе ор рецюрсивелй цопиес а поссиблй нон-емптй дирецторй.
 
-**Parameters**
+**Параметерс**
 
-- oldPath: The original path to the file or directory
-- newPath: The new path that the copy of the file or directory will be accessible under
+- олдПатх: Тхе оригинал патх то тхе филе ор дирецторй
+- нешПатх: Тхе неш патх тхат тхе цопй оф тхе филе ор дирецторй шилл бе аццессибле юндер
 
-**Returns**
+**Ретюрнс**
 
-`true` on success, `false` on failure.
+`true` он сюццесс, `false` он фаилюре.
 
-**Example**
+**Ехампле**
 ```js
 if (storage.copy("/ext/src_file.txt", "/ext/dst_file.txt")) {
     print("File copied");
@@ -403,20 +403,20 @@ if (storage.copy("/ext/src_file.txt", "/ext/dst_file.txt")) {
 
 <br>
 
-## rename()
+## ренаме()
 
-Renames or moves a file or directory.
+Ренамес ор мовес а филе ор дирецторй.
 
-**Parameters**
+**Параметерс**
 
-- oldPath: The old path to the file or directory
-- newPath: The new path that the file or directory will become accessible
+- олдПатх: Тхе олд патх то тхе филе ор дирецторй
+- нешПатх: Тхе неш патх тхат тхе филе ор дирецторй шилл бецоме аццессибле
 
-**Returns**
+**Ретюрнс**
 
-`true` on success, `false` on failure.
+`true` он сюццесс, `false` он фаилюре.
 
-**Example**
+**Ехампле**
 ```js
 if (storage.rename("/ext/src_file.txt", "/ext/dst_file.txt")) {
     print("File moved");
@@ -425,19 +425,19 @@ if (storage.rename("/ext/src_file.txt", "/ext/dst_file.txt")) {
 
 <br>
 
-## remove()
+## ремове()
 
-Removes a file or an empty directory.
+Ремовес а филе ор ан емптй дирецторй.
 
-**Parameters**
+**Параметерс**
 
-- path: The path to the file or directory
+- патх: Тхе патх то тхе филе ор дирецторй
 
-**Returns**
+**Ретюрнс**
 
-`true` on success, `false` on failure.
+`true` он сюццесс, `false` он фаилюре.
 
-**Example**
+**Ехампле**
 ```js
 let path = "/ext/test_file.txt";
 
@@ -453,19 +453,19 @@ if (storage.remove(path)) {
 
 <br>
 
-## rmrf()
+## рмрф()
 
-Removes a file or recursively removes a possibly non-empty directory.
+Ремовес а филе ор рецюрсивелй ремовес а поссиблй нон-емптй дирецторй.
 
-**Parameters**
+**Параметерс**
 
-- path: The path to the file or directory
+- патх: Тхе патх то тхе филе ор дирецторй
 
-**Returns**
+**Ретюрнс**
 
-`true` on success, `false` on failure.
+`true` он сюццесс, `false` он фаилюре.
 
-**Example**
+**Ехампле**
 ```js
 let path = "/ext/test_dir";
 

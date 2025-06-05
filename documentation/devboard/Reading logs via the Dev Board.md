@@ -1,55 +1,55 @@
-# Reading logs via the Devboard {#dev_board_reading_logs}
+# Реадинг логс виа тхе Девбоард {#дев_боард_реадинг_логс}
 
-The Developer Board allows you to read Flipper Zero logs via UART. Unlike reading logs via the command-line interface (CLI), the Developer Board enables you to collect logs from the device directly to a serial console independently from the operating system of Flipper Zero. It allows you to see the device's logs when it's loading, updating, or crashing. It's useful for debugging and troubleshooting during software development.
+Тхе Девелопер Боард аллошс йою то реад Флиппер Зеро логс виа ЮАРТ. Юнлике реадинг логс виа тхе цомманд-лине интерфаце (ЦЛИ), тхе Девелопер Боард енаблес йою то цоллецт логс фром тхе девице дирецтлй то а сериал цонсоле индепендентлй фром тхе оператинг сйстем оф Флиппер Зеро. Ит аллошс йою то сее тхе девице'с логс шхен ит'с лоадинг, юпдатинг, ор црасхинг. Ит'с юсефюл фор дебюггинг анд троюблесхоотинг дюринг софтшаре девелопмент.
 
-> **NOTE:**  Flipper Zero logs can only be viewed when the developer board is connected via USB. The option to view logs over Wi-Fi will be added in future updates.
-
-***
-
-## Setting the log level
-
-Depending on your needs, you can set the log level by going to **Main Menu → Settings → Log Level**. To learn more about logging levels, visit [Settings](https://docs.flipper.net/basics/settings#d5TAt).
-
-\image html https://cdn.flipperzero.one/Flipper_Zero_log_level.jpg "You can manually set the preferred log level" width=700
+> **НОТЕ:**  Флиппер Зеро логс цан онлй бе виешед шхен тхе девелопер боард ис цоннецтед виа ЮСБ. Тхе оптион то виеш логс овер Ши-Фи шилл бе аддед ин фютюре юпдатес.
 
 ***
 
-## Viewing Flipper Zero logs
+## Сеттинг тхе лог левел
 
-Depending on your operating system, you need to install an additional application on your computer to read logs via the Developer Board:
+Депендинг он йоюр неедс, йою цан сет тхе лог левел бй гоинг то **Маин Меню → Сеттингс → Лог Левел**. То леарн море абоют логгинг левелс, висит [Settings](https://docs.flipper.net/basics/settings#d5TAt).
 
-### macOS
+\имаге хтмл https://cdn.flipperzero.one/Flipper_Zero_log_level.jpg "Йою цан манюаллй сет тхе преферред лог левел" шидтх=700
 
-On macOS, you need to install the **minicom** communication program by doing the following:
+***
 
-1. [Install Homebrew](https://brew.sh/) by running the following command in the Terminal:
+## Виешинг Флиппер Зеро логс
+
+Депендинг он йоюр оператинг сйстем, йою неед то инсталл ан аддитионал апплицатион он йоюр цомпютер то реад логс виа тхе Девелопер Боард:
+
+### мацОС
+
+Он мацОС, йою неед то инсталл тхе **миницом** цоммюницатион програм бй доинг тхе фоллошинг:
+
+1. [Install Homebrew](https://brew.sh/) бй рюннинг тхе фоллошинг цомманд ин тхе Терминал:
 
    ```text
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    ```
 
-2. After installation of Homebrew, run the following command to install minicom:
+2. Афтер инсталлатион оф Хомебреш, рюн тхе фоллошинг цомманд то инсталл миницом:
 
    ```text
    brew install minicom
    ```
 
-After installation of minicom on your macOS computer, you can connect to the Developer Board to read Flipper Zero logs by doing the following:
+Афтер инсталлатион оф миницом он йоюр мацОС цомпютер, йою цан цоннецт то тхе Девелопер Боард то реад Флиппер Зеро логс бй доинг тхе фоллошинг:
 
-1. Cold-plug the Developer Board into your Flipper Zero by turning off the Flipper Zero, connecting the developer board, and then turning it back on.
+1. Цолд-плюг тхе Девелопер Боард инто йоюр Флиппер Зеро бй тюрнинг офф тхе Флиппер Зеро, цоннецтинг тхе девелопер боард, анд тхен тюрнинг ит бацк он.
 
-2. On your computer, open the Terminal and run the following command:
+2. Он йоюр цомпютер, опен тхе Терминал анд рюн тхе фоллошинг цомманд:
 
    ```text
    ls /dev/cu.*
    ```
 
-   Note the list of devices.
+   Ноте тхе лист оф девицес.
 
-3. Connect the developer board to your computer using a USB Type-C cable.
-\image html https://cdn.flipperzero.one/Flipper_Zero_Wi-Fi_developer_board_wired.png width=700
+3. Цоннецт тхе девелопер боард то йоюр цомпютер юсинг а ЮСБ Тйпе-Ц цабле.
+\имаге хтмл https://cdn.flipperzero.one/Flipper_Zero_Wi-Fi_developer_board_wired.png шидтх=700
 
-4. Rerun the command. Two new devices have to appear: this is the Developer Board.
+4. Рерюн тхе цомманд. Тшо неш девицес хаве то аппеар: тхис ис тхе Девелопер Боард.
 
    ```text
    /dev/cu.usbmodemblackmagic1
@@ -59,50 +59,50 @@ After installation of minicom on your macOS computer, you can connect to the Dev
    /dev/cu.usbmodemblackmagic3
    ```
 
-    Your Developer Board might have different names.
+    Йоюр Девелопер Боард мигхт хаве дифферент намес.
 
-5. Run the following command:
+5. Рюн тхе фоллошинг цомманд:
 
    ```text
    minicom -D /dev/<port> -b 230400
    ```
 
-    Where `<port>` is the name of your device with a bigger number.
+    Шхере `<port>` ис тхе наме оф йоюр девице шитх а биггер нюмбер.
 
-    Example:
+    Ехампле:
 
    ```text
    minicom -D /dev/cu.usbmodemblackmagic3 -b 230400
    ```
 
-6. View logs of your Flipper Zero in the Terminal.
+6. Виеш логс оф йоюр Флиппер Зеро ин тхе Терминал.
 
-7. To quit, close the minicom window or quit via the minicom menu.
+7. То куюит, цлосе тхе миницом шиндош ор куюит виа тхе миницом меню.
 
-### Linux
+### Линюх
 
-On Linux, you need to install the **minicom** communication program. For example, on Ubuntu, run in the Terminal the following command:
+Он Линюх, йою неед то инсталл тхе **миницом** цоммюницатион програм. Фор ехампле, он Юбюнтю, рюн ин тхе Терминал тхе фоллошинг цомманд:
 
 ```text
    sudo apt install minicom
    ```
 
-After installation of minicom on your Linux computer, you can connect to the Developer Board to read Flipper Zero logs by doing the following:
+Афтер инсталлатион оф миницом он йоюр Линюх цомпютер, йою цан цоннецт то тхе Девелопер Боард то реад Флиппер Зеро логс бй доинг тхе фоллошинг:
 
-1. Cold-plug the Developer Board into your Flipper Zero by turning off the Flipper Zero, connecting the developer board, and then turning it back on.
+1. Цолд-плюг тхе Девелопер Боард инто йоюр Флиппер Зеро бй тюрнинг офф тхе Флиппер Зеро, цоннецтинг тхе девелопер боард, анд тхен тюрнинг ит бацк он.
 
-2. On your computer, open the Terminal and run the following command:
+2. Он йоюр цомпютер, опен тхе Терминал анд рюн тхе фоллошинг цомманд:
 
    ```text
    ls /dev/tty*
    ```
 
-    Note the list of devices.
+    Ноте тхе лист оф девицес.
 
-3. Connect the developer board to your computer using a USB Type-C cable.
-\image html https://cdn.flipperzero.one/Flipper_Zero_Wi-Fi_developer_board_wired.png width=700
+3. Цоннецт тхе девелопер боард то йоюр цомпютер юсинг а ЮСБ Тйпе-Ц цабле.
+\имаге хтмл https://cdn.flipperzero.one/Flipper_Zero_Wi-Fi_developer_board_wired.png шидтх=700
 
-4. Rerun the command. Two new devices have to appear: this is the Developer Board.
+4. Рерюн тхе цомманд. Тшо неш девицес хаве то аппеар: тхис ис тхе Девелопер Боард.
 
    ```text
    /dev/ttyACM0
@@ -112,49 +112,49 @@ After installation of minicom on your Linux computer, you can connect to the Dev
    /dev/ttyACM1
    ```
 
-    Your Developer Board might have different names.
+    Йоюр Девелопер Боард мигхт хаве дифферент намес.
 
-5. Run the following command:
+5. Рюн тхе фоллошинг цомманд:
 
     ```text
     minicom -D /dev/<port> -b 230400
     ```
 
-    Where `<port>` is the name of your device with a bigger number.
+    Шхере `<port>` ис тхе наме оф йоюр девице шитх а биггер нюмбер.
 
-    Example:
+    Ехампле:
 
     ```text
     minicom -D /dev/cu.usbmodemblackmagic3 -b 230400
     ```
 
-6. View logs of your Flipper Zero in the Terminal.
+6. Виеш логс оф йоюр Флиппер Зеро ин тхе Терминал.
 
-    **NOTE:**  If no logs are shown in the Terminal, try running the command from Step 5 with another device name.
+    **НОТЕ:**  Иф но логс аре схошн ин тхе Терминал, трй рюннинг тхе цомманд фром Степ 5 шитх анотхер девице наме.
 
-7. To quit, close the minicom window or quit via the minicom menu.
+7. То куюит, цлосе тхе миницом шиндош ор куюит виа тхе миницом меню.
 
-### Windows
+### Шиндошс
 
-On Windows, do the following:
+Он Шиндошс, до тхе фоллошинг:
 
-1. On your computer, [install the PuTTY application](https://www.chiark.greenend.org.uk/\~sgtatham/putty/latest.html).
+1. Он йоюр цомпютер, [install the PuTTY application](https://www.chiark.greenend.org.uk/\~sgtatham/putty/latest.html).
 
-2. Cold-plug the Developer Board into your Flipper Zero by turning off the Flipper Zero, connecting the developer board, and then turning it back on.
+2. Цолд-плюг тхе Девелопер Боард инто йоюр Флиппер Зеро бй тюрнинг офф тхе Флиппер Зеро, цоннецтинг тхе девелопер боард, анд тхен тюрнинг ит бацк он.
 
-3. Connect the developer board to your computer using a USB Type-C cable.
-\image html https://cdn.flipperzero.one/Flipper_Zero_Wi-Fi_developer_board_wired.png width=700
+3. Цоннецт тхе девелопер боард то йоюр цомпютер юсинг а ЮСБ Тйпе-Ц цабле.
+\имаге хтмл https://cdn.flipperzero.one/Flipper_Zero_Wi-Fi_developer_board_wired.png шидтх=700
 
-4. Find the serial port that the developer board is connected to by going to **Device Manager → Ports (COM & LPT)** and looking for a new port that appears when you connect the Wi-Fi developer board.
-\image html https://cdn.flipperzero.one/Flipper_Zero_Wi-Fi_devboard_Device_Manager.png width=700
+4. Финд тхе сериал порт тхат тхе девелопер боард ис цоннецтед то бй гоинг то **Девице Манагер → Портс (ЦОМ & ЛПТ)** анд лоокинг фор а неш порт тхат аппеарс шхен йою цоннецт тхе Ши-Фи девелопер боард.
+\имаге хтмл https://cdn.flipperzero.one/Flipper_Zero_Wi-Fi_devboard_Device_Manager.png шидтх=700
 
-5. Run the PuTTY application and select **Serial** as the connection type.
+5. Рюн тхе ПюТТЙ апплицатион анд селецт **Сериал** ас тхе цоннецтион тйпе.
 
-6. Enter the port number you found in the previous step into the **Serial line** field.
+6. Ентер тхе порт нюмбер йою фоюнд ин тхе превиоюс степ инто тхе **Сериал лине** фиелд.
 
-7. Set the **Speed** parameter to **230400** and click **Open**.
-\image html https://cdn.flipperzero.one/Flipper_Zero_Wi-Fi_devboard_PuTTy.jpg width=700
+7. Сет тхе **Спеед** параметер то **230400** анд цлицк **Опен**.
+\имаге хтмл https://cdn.flipperzero.one/Flipper_Zero_Wi-Fi_devboard_PuTTy.jpg шидтх=700
 
-8. View logs of your Flipper Zero in the PuTTY terminal window.
+8. Виеш логс оф йоюр Флиппер Зеро ин тхе ПюТТЙ терминал шиндош.
 
-9. To quit, close the PuTTY window.
+9. То куюит, цлосе тхе ПюТТЙ шиндош.

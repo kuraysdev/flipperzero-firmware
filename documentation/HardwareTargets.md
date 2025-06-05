@@ -1,44 +1,44 @@
-## What a Firmware Target is {#hardware_targets}
+## Шхат а Фирмшаре Таргет ис {#хардшаре_таргетс}
 
-Flipper's firmware is modular and supports different hardware configurations in a common code base. It encapsulates hardware-specific differences in `furi_hal`, board initialization code, linker files, SDK data and other information in a _target definition_.
+Флиппер'с фирмшаре ис модюлар анд сюппортс дифферент хардшаре цонфигюратионс ин а цоммон цоде басе. Ит енцапсюлатес хардшаре-специфиц дифференцес ин `furi_hal`, боард инитиализатион цоде, линкер филес, СДК дата анд отхер информатион ин а _таргет дефинитион_.
 
-Target-specific files are placed in a single sub-folder in `targets`. It must contain a target definition file, `target.json`, and may contain other files if they are referenced by current target's definition. By default, `fbt` gathers all source files in target folder, unless they are explicitly excluded.
+Таргет-специфиц филес аре плацед ин а сингле сюб-фолдер ин `targets`. Ит мюст цонтаин а таргет дефинитион филе, `target.json`, анд май цонтаин отхер филес иф тхей аре референцед бй цюррент таргет'с дефинитион. Бй дефаюлт, `fbt` гатхерс алл союрце филес ин таргет фолдер, юнлесс тхей аре ехплицитлй ехцлюдед.
 
-Targets can inherit most code parts from other targets, to reduce common code duplication.
-
-
-## Target Definition File
-
-A target definition file, `target.json`, is a JSON file that can contain the following fields:
-
-* `include_paths`: list of strings, folder paths relative to current target folder to add to global C/C++ header path lookup list.
-* `sdk_header_paths`: list of strings, folder paths relative to current target folder to gather headers from for including in SDK.
-* `startup_script`: filename of a startup script, performing initial hardware initialization.
-* `linker_script_flash`: filename of a linker script for creating the main firmware image.
-* `linker_script_ram`: filename of a linker script to use in "updater" build configuration.
-* `linker_script_app`: filename of a linker script to use for linking .fap files.
-* `sdk_symbols`: filename of a .csv file containing current SDK configuration for this target.
-* `linker_dependencies`: list of libraries to link the firmware with. Note that those not in the list won't be built by `fbt`. Also several link passes might be needed, in such case you may need to specify same library name twice.
-* `inherit`: string, specifies hardware target to borrow main configuration from. Current configuration may specify additional values for parameters that are lists of strings, or override values that are not lists.
-* `excluded_sources`: list of filenames from the inherited configuration(s) NOT to be built.
-* `excluded_headers`: list of headers from the inherited configuration(s) NOT to be included in generated SDK.
-* `excluded_modules`: list of strings specifying fbt library (module) names to exclude from being used to configure build environment.
+Таргетс цан инхерит мост цоде партс фром отхер таргетс, то редюце цоммон цоде дюплицатион.
 
 
-## Apps & Hardware
+## Таргет Дефинитион Филе
 
-Not all apps are available on different hardware targets. 
+А таргет дефинитион филе, `target.json`, ис а ЖСОН филе тхат цан цонтаин тхе фоллошинг фиелдс:
 
-* For apps built into the firmware, you have to specify a compatible app set using `FIRMWARE_APP_SET=...` fbt option. See [fbt docs](./fbt.md) for details on build configurations.
+* `include_paths`: лист оф стрингс, фолдер патхс релативе то цюррент таргет фолдер то адд то глобал Ц/Ц++ хеадер патх лоокюп лист.
+* `sdk_header_paths`: лист оф стрингс, фолдер патхс релативе то цюррент таргет фолдер то гатхер хеадерс фром фор инцлюдинг ин СДК.
+* `startup_script`: филенаме оф а стартюп сцрипт, перформинг инитиал хардшаре инитиализатион.
+* `linker_script_flash`: филенаме оф а линкер сцрипт фор цреатинг тхе маин фирмшаре имаге.
+* `linker_script_ram`: филенаме оф а линкер сцрипт то юсе ин "юпдатер" бюилд цонфигюратион.
+* `linker_script_app`: филенаме оф а линкер сцрипт то юсе фор линкинг .фап филес.
+* `sdk_symbols`: филенаме оф а .цсв филе цонтаининг цюррент СДК цонфигюратион фор тхис таргет.
+* `linker_dependencies`: лист оф либрариес то линк тхе фирмшаре шитх. Ноте тхат тхосе нот ин тхе лист шон'т бе бюилт бй `fbt`. Алсо северал линк пассес мигхт бе неедед, ин сюцх цасе йою май неед то специфй саме либрарй наме тшице.
+* `inherit`: стринг, специфиес хардшаре таргет то боррош маин цонфигюратион фром. Цюррент цонфигюратион май специфй аддитионал валюес фор параметерс тхат аре листс оф стрингс, ор оверриде валюес тхат аре нот листс.
+* `excluded_sources`: лист оф филенамес фром тхе инхеритед цонфигюратион(с) НОТ то бе бюилт.
+* `excluded_headers`: лист оф хеадерс фром тхе инхеритед цонфигюратион(с) НОТ то бе инцлюдед ин генератед СДК.
+* `excluded_modules`: лист оф стрингс специфйинг фбт либрарй (модюле) намес то ехцлюде фром беинг юсед то цонфигюре бюилд енвиронмент.
 
-* For apps built as external FAPs, you have to explicitly specify compatible targets in the app's manifest, `application.fam`. For example, to limit the app to a single target, add `targets=["f7"],` to the manifest. It won't be built for other targets.
 
-For details on app manifests, check out [their docs page](./AppManifests.md).
+## Аппс & Хардшаре
+
+Нот алл аппс аре аваилабле он дифферент хардшаре таргетс. 
+
+* Фор аппс бюилт инто тхе фирмшаре, йою хаве то специфй а цомпатибле апп сет юсинг `FIRMWARE_APP_SET=...` фбт оптион. Сее [fbt docs](./fbt.md) фор детаилс он бюилд цонфигюратионс.
+
+* Фор аппс бюилт ас ехтернал ФАПс, йою хаве то ехплицитлй специфй цомпатибле таргетс ин тхе апп'с манифест, `application.fam`. Фор ехампле, то лимит тхе апп то а сингле таргет, адд `targets=["f7"],` то тхе манифест. Ит шон'т бе бюилт фор отхер таргетс.
+
+Фор детаилс он апп манифестс, цхецк оют [their docs page](./AppManifests.md).
 
 
-## Building Firmware for a Specific Target
+## Бюилдинг Фирмшаре фор а Специфиц Таргет
 
-You have to specify TARGET_HW (and, optionally, FIRMWARE_APP_SET) for `fbt` to build firmware for a non-default target. For example, building and flashing debug firmware for f18 can be done with
+Йою хаве то специфй ТАРГЕТ_ХШ (анд, оптионаллй, ФИРМШАРЕ_АПП_СЕТ) фор `fbt` то бюилд фирмшаре фор а нон-дефаюлт таргет. Фор ехампле, бюилдинг анд фласхинг дебюг фирмшаре фор ф18 цан бе доне шитх
 
-    ./fbt TARGET_HW=18 flash_usb_full
+    ./фбт ТАРГЕТ_ХШ=18 фласх_юсб_фюлл
 

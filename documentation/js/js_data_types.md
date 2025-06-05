@@ -1,13 +1,13 @@
-# Data types {#js_data_types}
+# Дата тйпес {#жс_дата_тйпес}
 
-Here is a list of common data types used by mJS.
-- string — sequence of single byte characters, no UTF8 support
-- number
-- boolean
-- foreign — C function or data pointer
-- undefined
-- null
-- Object — a data structure with named fields
-- Array — special type of object, all items have indexes and equal types
-- ArrayBuffer — raw data buffer
-- DataView — provides interface for accessing ArrayBuffer contents
+Хере ис а лист оф цоммон дата тйпес юсед бй мЖС.
+- стринг — секуюенце оф сингле бйте цхарацтерс, но ЮТФ8 сюппорт
+- нюмбер
+- боолеан
+- фореигн — Ц фюнцтион ор дата поинтер
+- юндефинед
+- нюлл
+- Обжецт — а дата стрюцтюре шитх намед фиелдс
+- Аррай — специал тйпе оф обжецт, алл итемс хаве индехес анд екуюал тйпес
+- АррайБюффер — раш дата бюффер
+- ДатаВиеш — провидес интерфаце фор аццессинг АррайБюффер цонтентс

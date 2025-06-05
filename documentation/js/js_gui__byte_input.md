@@ -1,6 +1,6 @@
-# Byte input GUI view {#js_gui__byte_input}
+# Бйте инпют ГЮИ виеш {#жс_гюи__бйте_инпют}
 
-Displays a hexadecimal keyboard.
+Дисплайс а хехадецимал кейбоард.
 
 <img src="byte_input.png" width="200" alt="Sample screenshot of the view" />
 
@@ -10,23 +10,23 @@ let gui = require("gui");
 let byteInputView = require("gui/byte_input");
 ```
 
-This module depends on the `gui` module, which in turn depends on the
-`event_loop` module, so they **must** be imported in this order. It is also
-recommended to conceptualize these modules first before using this one.
+Тхис модюле депендс он тхе `gui` модюле, шхицх ин тюрн депендс он тхе
+`event_loop` модюле, со тхей **мюст** бе импортед ин тхис ордер. Ит ис алсо
+рецоммендед то цонцептюализе тхесе модюлес фирст бефоре юсинг тхис оне.
 
-## Example
-For an example refer to the `gui.js` example script.
+## Ехампле
+Фор ан ехампле рефер то тхе `gui.js` ехампле сцрипт.
 
-## View props
+## Виеш пропс
 
-| Prop        | Type   | Description                                      |
+| Проп        | Тйпе   | Десцриптион                                      |
 |-------------|--------|--------------------------------------------------|
-| `length`      | `number` | The length in bytes of the buffer to modify.           |
-| `header`      | `string` | A single line of text that appears above the keyboard. |
-| `defaultData` | `string` | Data to show by default.                               |
+| `length`      | `number` | Тхе ленгтх ин бйтес оф тхе бюффер то модифй.           |
+| `header`      | `string` | А сингле лине оф техт тхат аппеарс абове тхе кейбоард. |
+| `defaultData` | `string` | Дата то схош бй дефаюлт.                               |
 
-## View events
+## Виеш евентс
 
-| Item        | Type   | Description                                      |
+| Итем        | Тйпе   | Десцриптион                                      |
 |-------------|--------|--------------------------------------------------|
-| `input`     | `ArrayBuffer` | Fires when the user selects the "Save" button. |
+| `input`     | `ArrayBuffer` | Фирес шхен тхе юсер селецтс тхе "Саве" бюттон. |

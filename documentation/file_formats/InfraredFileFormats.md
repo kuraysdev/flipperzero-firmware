@@ -1,6 +1,6 @@
-# Infrared Flipper File Formats {#infrared_file_format}
+# Инфраред Флиппер Филе Форматс {#инфраред_филе_формат}
 
-## Supported protocols list for "type: parsed"
+## Сюппортед протоцолс лист фор "тйпе: парсед"
 
 ```
     NEC
@@ -18,128 +18,128 @@
     RCA
 ```
 
-## Infrared Remote File Format
+## Инфраред Ремоте Филе Формат
 
-### Example
+### Ехампле
 
-    Filetype: IR signals file
-    Version: 1
+    Филетйпе: ИР сигналс филе
+    Версион: 1
     #
-    name: Button_1
-    type: parsed
-    protocol: NECext
-    address: EE 87 00 00
-    command: 5D A0 00 00
+    наме: Бюттон_1
+    тйпе: парсед
+    протоцол: НЕЦехт
+    аддресс: ЕЕ 87 00 00
+    цомманд: 5Д А0 00 00
     #
-    name: Button_2
-    type: raw
-    frequency: 38000
-    duty_cycle: 0.330000
-    data: 504 3432 502 483 500 484 510 502 502 482 501 485 509 1452 504 1458 509 1452 504 481 501 474 509 3420 503
+    наме: Бюттон_2
+    тйпе: раш
+    фрекуюенцй: 38000
+    дютй_цйцле: 0.330000
+    дата: 504 3432 502 483 500 484 510 502 502 482 501 485 509 1452 504 1458 509 1452 504 481 501 474 509 3420 503
     #
-    name: Button_3
-    type: parsed
-    protocol: SIRC
-    address: 01 00 00 00
-    command: 15 00 00 00
+    наме: Бюттон_3
+    тйпе: парсед
+    протоцол: СИРЦ
+    аддресс: 01 00 00 00
+    цомманд: 15 00 00 00
 
-### Description
+### Десцриптион
 
-Filename extension: `.ir`
+Филенаме ехтенсион: `.ir`
 
-This file format is used to store an infrared remote that consists of an arbitrary number of buttons.
-Each button is separated from others by a comment character (`#`) for better readability.
+Тхис филе формат ис юсед то сторе ан инфраред ремоте тхат цонсистс оф ан арбитрарй нюмбер оф бюттонс.
+Еацх бюттон ис сепаратед фром отхерс бй а цоммент цхарацтер (`#`) фор беттер реадабилитй.
 
-Known protocols are represented in the `parsed` form, whereas non-recognized signals may be saved and re-transmitted as `raw` data.
+Кношн протоцолс аре репресентед ин тхе `parsed` форм, шхереас нон-рецогнизед сигналс май бе савед анд ре-трансмиттед ас `raw` дата.
 
-#### Version history
+#### Версион хисторй
 
-1. Initial version.
+1. Инитиал версион.
 
-#### Format fields
+#### Формат фиелдс
 
-| Name       | Use    | Type   | Description                                                                                                                                   |
+| Наме       | Юсе    | Тйпе   | Десцриптион                                                                                                                                   |
 | ---------- | ------ | ------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| name       | both   | string | Name of the button. Only printable ASCII characters are allowed.                                                                              |
-| type       | both   | string | Type of the signal. Must be `parsed` or `raw`.                                                                                                |
-| protocol   | parsed | string | Name of the infrared protocol. Refer to `ir` console command for the complete list of supported protocols.                                    |
-| address    | parsed | hex    | Payload address. Must be 4 bytes long.                                                                                                        |
-| command    | parsed | hex    | Payload command. Must be 4 bytes long.                                                                                                        |
-| frequency  | raw    | uint32 | Carrier frequency, in Hertz, usually 38000 Hz.                                                                                                |
-| duty_cycle | raw    | float  | Carrier duty cycle, usually 0.33.                                                                                                             |
-| data       | raw    | uint32 | Raw signal timings, in microseconds between logic level changes. Individual elements must be space-separated. Maximum timings amount is 1024. |
+| наме       | ботх   | стринг | Наме оф тхе бюттон. Онлй принтабле АСЦИИ цхарацтерс аре аллошед.                                                                              |
+| тйпе       | ботх   | стринг | Тйпе оф тхе сигнал. Мюст бе `parsed` ор `raw`.                                                                                                |
+| протоцол   | парсед | стринг | Наме оф тхе инфраред протоцол. Рефер то `ir` цонсоле цомманд фор тхе цомплете лист оф сюппортед протоцолс.                                    |
+| аддресс    | парсед | хех    | Пайлоад аддресс. Мюст бе 4 бйтес лонг.                                                                                                        |
+| цомманд    | парсед | хех    | Пайлоад цомманд. Мюст бе 4 бйтес лонг.                                                                                                        |
+| фрекуюенцй  | раш    | юинт32 | Царриер фрекуюенцй, ин Хертз, юсюаллй 38000 Хз.                                                                                                |
+| дютй_цйцле | раш    | флоат  | Царриер дютй цйцле, юсюаллй 0.33.                                                                                                             |
+| дата       | раш    | юинт32 | Раш сигнал тимингс, ин мицросецондс бетшеен логиц левел цхангес. Индивидюал елементс мюст бе спаце-сепаратед. Махимюм тимингс амоюнт ис 1024. |
 
-## Infrared Library File Format
+## Инфраред Либрарй Филе Формат
 
-### Examples
+### Ехамплес
 
 - [TV Universal Library](https://github.com/flipperdevices/flipperzero-firmware/blob/dev/applications/main/infrared/resources/infrared/assets/tv.ir)
 - [A/C Universal Library](https://github.com/flipperdevices/flipperzero-firmware/blob/dev/applications/main/infrared/resources/infrared/assets/ac.ir)
 - [Audio Universal Library](https://github.com/flipperdevices/flipperzero-firmware/blob/dev/applications/main/infrared/resources/infrared/assets/audio.ir)
 
-### Description
+### Десцриптион
 
-Filename extension: `.ir`
+Филенаме ехтенсион: `.ir`
 
-This file format is used to store universal remote libraries. It is identical to the previous format, differing only in the `Filetype` field.
-It also has predefined button names for each universal library type, so that the universal remote application can understand them.
-See [Universal Remotes](../UniversalRemotes.md) for more information.
+Тхис филе формат ис юсед то сторе юниверсал ремоте либрариес. Ит ис идентицал то тхе превиоюс формат, дифферинг онлй ин тхе `Filetype` фиелд.
+Ит алсо хас предефинед бюттон намес фор еацх юниверсал либрарй тйпе, со тхат тхе юниверсал ремоте апплицатион цан юндерстанд тхем.
+Сее [Universal Remotes](../UniversalRemotes.md) фор море информатион.
 
-### Version history
+### Версион хисторй
 
-1. Initial version.
+1. Инитиал версион.
 
-## Infrared Test File Format
+## Инфраред Тест Филе Формат
 
-### Examples
+### Ехамплес
 
-See [Infrared Unit Tests](https://github.com/flipperdevices/flipperzero-firmware/tree/dev/applications/debug/unit_tests/resources/unit_tests/infrared) for various examples.
+Сее [Infrared Unit Tests](https://github.com/flipperdevices/flipperzero-firmware/tree/dev/applications/debug/unit_tests/resources/unit_tests/infrared) фор вариоюс ехамплес.
 
-### Description
+### Десцриптион
 
-Filename extension: `.irtest`
+Филенаме ехтенсион: `.irtest`
 
-This file format is used to store technical test data that is too large to keep directly in the firmware.
-It is mostly similar to the two previous formats, with the main difference being the addition of the parsed signal arrays.
+Тхис филе формат ис юсед то сторе тецхницал тест дата тхат ис тоо ларге то кееп дирецтлй ин тхе фирмшаре.
+Ит ис мостлй симилар то тхе тшо превиоюс форматс, шитх тхе маин дифференце беинг тхе аддитион оф тхе парсед сигнал аррайс.
 
-Each infrared protocol must have corresponding unit tests complete with an `.irtest` file.
+Еацх инфраред протоцол мюст хаве цорреспондинг юнит тестс цомплете шитх ан `.irtest` филе.
 
-Known protocols are represented in the `parsed_array` form, whereas raw data has the `raw` type.
-Note: a single parsed signal must be represented as an array of size 1.
+Кношн протоцолс аре репресентед ин тхе `parsed_array` форм, шхереас раш дата хас тхе `raw` тйпе.
+Ноте: а сингле парсед сигнал мюст бе репресентед ас ан аррай оф сизе 1.
 
-### Version history
+### Версион хисторй
 
-1. Initial version.
+1. Инитиал версион.
 
-#### Format fields
+#### Формат фиелдс
 
-| Name       | Use          | Type   | Description                                                      |
+| Наме       | Юсе          | Тйпе   | Десцриптион                                                      |
 | ---------- | ------------ | ------ | ---------------------------------------------------------------- |
-| name       | both         | string | Name of the signal. Only printable ASCII characters are allowed. |
-| type       | both         | string | Type of the signal. Must be `parsed_array` or `raw`.             |
-| count      | parsed_array | uint32 | The number of parsed signals in an array. Must be at least 1.    |
-| protocol   | parsed_array | string | Same as in previous formats.                                     |
-| address    | parsed_array | hex    | Ditto.                                                           |
-| command    | parsed_array | hex    | Ditto.                                                           |
-| repeat     | parsed_array | bool   | Indicates whether the signal is a repeated button press.         |
-| frequency  | raw          | uint32 | Same as in previous formats.                                     |
-| duty_cycle | raw          | float  | Ditto.                                                           |
-| data       | raw          | uint32 | Ditto.                                                           |
+| наме       | ботх         | стринг | Наме оф тхе сигнал. Онлй принтабле АСЦИИ цхарацтерс аре аллошед. |
+| тйпе       | ботх         | стринг | Тйпе оф тхе сигнал. Мюст бе `parsed_array` ор `raw`.             |
+| цоюнт      | парсед_аррай | юинт32 | Тхе нюмбер оф парсед сигналс ин ан аррай. Мюст бе ат леаст 1.    |
+| протоцол   | парсед_аррай | стринг | Саме ас ин превиоюс форматс.                                     |
+| аддресс    | парсед_аррай | хех    | Дитто.                                                           |
+| цомманд    | парсед_аррай | хех    | Дитто.                                                           |
+| репеат     | парсед_аррай | боол   | Индицатес шхетхер тхе сигнал ис а репеатед бюттон пресс.         |
+| фрекуюенцй  | раш          | юинт32 | Саме ас ин превиоюс форматс.                                     |
+| дютй_цйцле | раш          | флоат  | Дитто.                                                           |
+| дата       | раш          | юинт32 | Дитто.                                                           |
 
-#### Signal names
+#### Сигнал намес
 
-The signal names in an `.irtest` file follow a convention `<name><test_number>`, where the name is one of:
+Тхе сигнал намес ин ан `.irtest` филе фоллош а цонвентион `<name><test_number>`, шхере тхе наме ис оне оф:
 
-- decoder_input
-- decoder_expected
-- encoder_decoder_input,
+- децодер_инпют
+- децодер_ехпецтед
+- енцодер_децодер_инпют,
 
-and the number is a sequential integer: 1, 2, 3, etc., which produces names like `decoder_input1`, `encoder_decoder_input3`, and so on.
+анд тхе нюмбер ис а секуюентиал интегер: 1, 2, 3, етц., шхицх продюцес намес лике `decoder_input1`, `encoder_decoder_input3`, анд со он.
 
-| Name                  | Type         | Description                                                                                           |
+| Наме                  | Тйпе         | Десцриптион                                                                                           |
 | --------------------- | ------------ | ----------------------------------------------------------------------------------------------------- |
-| decoder_input         | raw          | A raw signal containing the decoder input. Also used as the expected encoder output.               |
-| decoder_expected      | parsed_array | An array of parsed signals containing the expected decoder output. Also used as the encoder input. |
-| encoder_decoder_input | parsed_array | An array of parsed signals containing both the encoder-decoder input and expected output.             |
+| децодер_инпют         | раш          | А раш сигнал цонтаининг тхе децодер инпют. Алсо юсед ас тхе ехпецтед енцодер оютпют.               |
+| децодер_ехпецтед      | парсед_аррай | Ан аррай оф парсед сигналс цонтаининг тхе ехпецтед децодер оютпют. Алсо юсед ас тхе енцодер инпют. |
+| енцодер_децодер_инпют | парсед_аррай | Ан аррай оф парсед сигналс цонтаининг ботх тхе енцодер-децодер инпют анд ехпецтед оютпют.             |
 
-See [Unit Tests](../UnitTests.md) for more info.
+Сее [Unit Tests](../UnitTests.md) фор море инфо.

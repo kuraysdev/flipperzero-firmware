@@ -1,40 +1,40 @@
-# Run time checks and forced system crash {#furi_check}
+# Рюн тиме цхецкс анд форцед сйстем црасх {#фюри_цхецк}
 
-The best way to protect system integrity is to reduce amount cases that we must handle and crash the system as early as possible.
-For that purpose, we have a bunch of helpers located in Furi Core `check.h`.
+Тхе бест шай то протецт сйстем интегритй ис то редюце амоюнт цасес тхат ше мюст хандле анд црасх тхе сйстем ас еарлй ас поссибле.
+Фор тхат пюрпосе, ше хаве а бюнцх оф хелперс лоцатед ин Фюри Цоре `check.h`.
 
-## Couple notes before start
+## Цоюпле нотес бефоре старт
 
-- Definition of Crash — log event, save crash information in RTC and reboot the system.
-- Definition of Halt — log event, stall the system.
-- Debug and production builds behave differently: debug build will never reset system in order to preserve state for debugging.
-- If you have debugger connected we will stop before reboot automatically.
-- All helpers accept optional MESSAGE_CSTR: it can be in RAM or Flash memory, but only messages from Flash will be shown after system reboot.
-- MESSAGE_CSTR can be NULL, but macros magic already doing it for you, so just don't.
+- Дефинитион оф Црасх — лог евент, саве црасх информатион ин РТЦ анд ребоот тхе сйстем.
+- Дефинитион оф Халт — лог евент, сталл тхе сйстем.
+- Дебюг анд продюцтион бюилдс бехаве дифферентлй: дебюг бюилд шилл невер ресет сйстем ин ордер то пресерве стате фор дебюггинг.
+- Иф йою хаве дебюггер цоннецтед ше шилл стоп бефоре ребоот аютоматицаллй.
+- Алл хелперс аццепт оптионал МЕССАГЕ_ЦСТР: ит цан бе ин РАМ ор Фласх меморй, бют онлй мессагес фром Фласх шилл бе схошн афтер сйстем ребоот.
+- МЕССАГЕ_ЦСТР цан бе НЮЛЛ, бют мацрос магиц алреадй доинг ит фор йою, со жюст дон'т.
 
-## `furi_assert(CONDITION)` or `furi_assert(CONDITION, MESSAGE_CSTR)`
+## `furi_assert(CONDITION)` ор `furi_assert(CONDITION, MESSAGE_CSTR)`
 
-Assert condition in development environment and crash the system if CONDITION is false.
+Ассерт цондитион ин девелопмент енвиронмент анд црасх тхе сйстем иф ЦОНДИТИОН ис фалсе.
 
-- Should be used at development stage in apps and services.
-- Keep in mind that release never contains this check.
-- Keep in mind that libraries never contain this check by default, use `LIB_DEBUG=1` if you need it.
-- Avoid putting function calls into CONDITION, since it may be omitted in some builds.
+- Схоюлд бе юсед ат девелопмент стаге ин аппс анд сервицес.
+- Кееп ин минд тхат релеасе невер цонтаинс тхис цхецк.
+- Кееп ин минд тхат либрариес невер цонтаин тхис цхецк бй дефаюлт, юсе `LIB_DEBUG=1` иф йою неед ит.
+- Авоид пюттинг фюнцтион цаллс инто ЦОНДИТИОН, синце ит май бе омиттед ин соме бюилдс.
 
-## `furi_check(CONDITION)` or `furi_check(CONDITION, MESSAGE_CSTR)`
+## `furi_check(CONDITION)` ор `furi_check(CONDITION, MESSAGE_CSTR)`
 
-Always assert condition and crash the system if CONDITION is false.
+Алшайс ассерт цондитион анд црасх тхе сйстем иф ЦОНДИТИОН ис фалсе.
 
-- Use it if you always need to check conditions
+- Юсе ит иф йою алшайс неед то цхецк цондитионс
 
-## `furi_crash()` or `furi_crash(MESSAGE_CSTR)`
+## `furi_crash()` ор `furi_crash(MESSAGE_CSTR)`
 
-Crash the system.
+Црасх тхе сйстем.
 
-- Use it to crash the system. For example, if an abnormal condition is detected.
+- Юсе ит то црасх тхе сйстем. Фор ехампле, иф ан абнормал цондитион ис детецтед.
 
-## `furi_halt()` or `furi_halt(MESSAGE_CSTR)`
+## `furi_halt()` ор `furi_halt(MESSAGE_CSTR)`
 
-Halt the system.
+Халт тхе сйстем.
 
-- We use it internally to shutdown Flipper if poweroff is not possible.
+- Ше юсе ит интерналлй то схютдошн Флиппер иф пошерофф ис нот поссибле.

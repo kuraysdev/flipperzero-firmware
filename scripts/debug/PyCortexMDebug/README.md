@@ -1,35 +1,35 @@
-PyCortexMDebug
+ПйЦортехМДебюг
 ==============
 
-## SVD
+## СВД
 
-ARM defines an SVD (System View Description) file format in its CMSIS standard as a means for Cortex-M-based chip manufacturers to provide a common description of peripherals, registers, and register fields. You can download SVD files for different manufacturers [here](http://www.arm.com/products/processors/cortex-m/cortex-microcontroller-software-interface-standard.php).
+АРМ дефинес ан СВД (Сйстем Виеш Десцриптион) филе формат ин итс ЦМСИС стандард ас а меанс фор Цортех-М-басед цхип манюфацтюрерс то провиде а цоммон десцриптион оф перипхералс, регистерс, анд регистер фиелдс. Йою цан дошнлоад СВД филес фор дифферент манюфацтюрерс [here](http://www.arm.com/products/processors/cortex-m/cortex-microcontroller-software-interface-standard.php).
 
-The implementation consists of two components -- An lxml-based parser module (pysvd) and a GDB file (gdb_svd). I haven't yet worked out a perfect workflow for this, though it's quite easy to use when you already tend to have a GDB initialization file for starting up OpenOCD and the like. However your workflow works, just make sure to, in GDB:
+Тхе имплементатион цонсистс оф тшо цомпонентс -- Ан лхмл-басед парсер модюле (пйсвд) анд а ГДБ филе (гдб_свд). И хавен'т йет шоркед оют а перфецт шоркфлош фор тхис, тхоюгх ит'с куюите еасй то юсе шхен йою алреадй тенд то хаве а ГДБ инитиализатион филе фор стартинг юп ОпенОЦД анд тхе лике. Хошевер йоюр шоркфлош шоркс, жюст маке сюре то, ин ГДБ:
 
-    source gdb_svd.py
-    svd_load [your_svd_file].svd
+    союрце гдб_свд.пй
+    свд_лоад [йоюр_свд_филе].свд
 
-These files can be huge so it might take a second or two. Anyways, after that, you can do
+Тхесе филес цан бе хюге со ит мигхт таке а сецонд ор тшо. Анйшайс, афтер тхат, йою цан до
 
-    svd
+    свд
 
-to list available peripherals with descriptions. Or you can do
+то лист аваилабле перипхералс шитх десцриптионс. Ор йою цан до
 
-    svd [some_peripheral_name]
+    свд [соме_перипхерал_наме]
 
-to see all of the registers (with their values) for a given peripheral. For more details, run
+то сее алл оф тхе регистерс (шитх тхеир валюес) фор а гивен перипхерал. Фор море детаилс, рюн
 
-    svd [some_peripheral_name] [some_register_name]
+    свд [соме_перипхерал_наме] [соме_регистер_наме]
 
-to see all of the field values with descriptions.
+то сее алл оф тхе фиелд валюес шитх десцриптионс.
 
-You can add format modifiers like:
+Йою цан адд формат модифиерс лике:
 
-* `svd/x` will display values in hex
-* `svd/o` will display values in octal
-* `svd/t` or `svd/b` will display values in binary
-* `svd/a` will display values in hex and try to resolve symbols from the values
+* `svd/x` шилл дисплай валюес ин хех
+* `svd/o` шилл дисплай валюес ин оцтал
+* `svd/t` ор `svd/b` шилл дисплай валюес ин бинарй
+* `svd/a` шилл дисплай валюес ин хех анд трй то ресолве сймболс фром тхе валюес
 
-All field values are displayed at the correct lengths as provided by the SVD files.
-Also, tab completion exists for nearly everything! When in doubt, run `svd help`.
+Алл фиелд валюес аре дисплайед ат тхе цоррецт ленгтхс ас провидед бй тхе СВД филес.
+Алсо, таб цомплетион ехистс фор неарлй еверйтхинг! Шхен ин доюбт, рюн `svd help`.

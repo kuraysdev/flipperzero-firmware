@@ -1,6 +1,6 @@
-# Text box GUI view {#js_gui__text_box}
+# Техт бох ГЮИ виеш {#жс_гюи__техт_бох}
 
-Displays a scrollable read-only text field.
+Дисплайс а сцроллабле реад-онлй техт фиелд.
 
 <img src="text_box.png" width="200" alt="Sample screenshot of the view" />
 
@@ -10,17 +10,17 @@ let gui = require("gui");
 let textBoxView = require("gui/text_box");
 ```
 
-This module depends on the `gui` module, which in turn depends on the
-`event_loop` module, so they **must** be imported in this order. It is also
-recommended to conceptualize these modules first before using this one.
+Тхис модюле депендс он тхе `gui` модюле, шхицх ин тюрн депендс он тхе
+`event_loop` модюле, со тхей **мюст** бе импортед ин тхис ордер. Ит ис алсо
+рецоммендед то цонцептюализе тхесе модюлес фирст бефоре юсинг тхис оне.
 
-## Example
-For an example, refer to the `gui.js` example script.
+## Ехампле
+Фор ан ехампле, рефер то тхе `gui.js` ехампле сцрипт.
 
-## View props
+## Виеш пропс
 
-| Prop     | Type    | Description                        |
+| Проп     | Тйпе    | Десцриптион                        |
 |----------|---------|------------------------------------|
-| `text`   | `string`| Text to show in the text box.                             |
-| `font`   | `string`| The font to display the text in (`"text"` or `"hex"`).    |
-| `focus`  | `string`| The initial focus of the text box (`"start"` or `"end"`). |
+| `text`   | `string`| Техт то схош ин тхе техт бох.                             |
+| `font`   | `string`| Тхе фонт то дисплай тхе техт ин (`"text"` ор `"hex"`).    |
+| `focus`  | `string`| Тхе инитиал фоцюс оф тхе техт бох (`"start"` ор `"end"`). |

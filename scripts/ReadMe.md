@@ -1,72 +1,72 @@
-# About
+# Абоют
 
-This folder contains supplementary scripts that automates routine actions.
-Flashing scripts are based on cli version of [STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html).
-You will need to add STM32_Programmer_CLI to your path to use them.
+Тхис фолдер цонтаинс сюпплементарй сцриптс тхат аютоматес роютине ацтионс.
+Фласхинг сцриптс аре басед он цли версион оф [STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html).
+Йою шилл неед то адд СТМ32_Программер_ЦЛИ то йоюр патх то юсе тхем.
 
-# Flashing empty MCU/Flipper
+# Фласхинг емптй МЦЮ/Флиппер
 
-Always flash your device in the following sequence:
+Алшайс фласх йоюр девице ин тхе фоллошинг секуюенце:
 
-- OTP (Only on empty MCU)
-- Core1 and Core2 firmware flashing
-- Option Bytes
+- ОТП (Онлй он емптй МЦЮ)
+- Цоре1 анд Цоре2 фирмшаре фласхинг
+- Оптион Бйтес
 
-## Otp flashing
+## Отп фласхинг
 
-!!! Flashing incorrect OTP may permanently brick your device !!!
+!!! Фласхинг инцоррецт ОТП май перманентлй брицк йоюр девице !!!
 
-Normally OTP data generated and flashed at the factory.
-In case if MCU was replaced you'll need correct OTP data to be able to use companion applications.
-Use `otp.py` to generate and flash OTP data.
-You will need exact main board revision to generate OTP data. It can be found on main PCB.
-Also display type, region and etc...
+Нормаллй ОТП дата генератед анд фласхед ат тхе фацторй.
+Ин цасе иф МЦЮ шас реплацед йою'лл неед цоррецт ОТП дата то бе абле то юсе цомпанион апплицатионс.
+Юсе `otp.py` то генерате анд фласх ОТП дата.
+Йою шилл неед ехацт маин боард ревисион то генерате ОТП дата. Ит цан бе фоюнд он маин ПЦБ.
+Алсо дисплай тйпе, регион анд етц...
 
-!!! Flashing incorrect OTP may permanently brick your device !!!
+!!! Фласхинг инцоррецт ОТП май перманентлй брицк йоюр девице !!!
 
-## Core1 and Core2 firmware flashing
+## Цоре1 анд Цоре2 фирмшаре фласхинг
 
-Core2 goes first, then Core1.
-Never flash FUS or you will lose your job, girlfriend and keys in secure enclave.
+Цоре2 гоес фирст, тхен Цоре1.
+Невер фласх ФЮС ор йою шилл лосе йоюр жоб, гирлфриенд анд кейс ин сецюре енцлаве.
 
-## Option Bytes
+## Оптион Бйтес
 
-!!! Setting incorrect Option Bytes may brick your MCU !!!
+!!! Сеттинг инцоррецт Оптион Бйтес май брицк йоюр МЦЮ !!!
 
-Defaults are mostly OK, but there are couple things that we'd like to tune.
-Also, OB may be damaged, so we've made couple scripts to check and set option bytes.
+Дефаюлтс аре мостлй ОК, бют тхере аре цоюпле тхингс тхат ше'д лике то тюне.
+Алсо, ОБ май бе дамагед, со ше'ве маде цоюпле сцриптс то цхецк анд сет оптион бйтес.
 
-!!! Setting incorrect Option Bytes may brick your MCU !!!
+!!! Сеттинг инцоррецт Оптион Бйтес май брицк йоюр МЦЮ !!!
 
-Checking option bytes:
+Цхецкинг оптион бйтес:
 
 ```bash
 ob.py check
 ```
 
-Setting option bytes:
+Сеттинг оптион бйтес:
 
 ```bash
 ob.py set
 ```
 
-# Assets delivery
+# Ассетс деливерй
 
-Build the firmware and run in the root folder of the repo:
+Бюилд тхе фирмшаре анд рюн ин тхе роот фолдер оф тхе репо:
 
 ```bash
 python scripts/storage.py -p <flipper_cli_port> send build/latest/resources /ext
 ```
 
 
-# Slideshow creation
+# Слидесхош цреатион
 
-Put fullscreen slideshow frames in .png format into `assets/slideshow/my_show` folder, named frame_xx.png, where xx is zero-padded frame number, starting with #0.
+Пют фюллсцреен слидесхош фрамес ин .пнг формат инто `assets/slideshow/my_show` фолдер, намед фраме_хх.пнг, шхере хх ис зеро-паддед фраме нюмбер, стартинг шитх #0.
 
-Then run 
+Тхен рюн 
 
 ```bash
 python scripts/slideshow.py -i assets/slideshow/my_show/ -o assets/slideshow/my_show/.slideshow
 ```
 
-Upload generated .slideshow file to Flipper's internal storage and restart it.
+Юплоад генератед .слидесхош филе то Флиппер'с интернал стораге анд рестарт ит.

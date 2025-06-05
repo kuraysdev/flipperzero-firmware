@@ -1,31 +1,31 @@
-# Flipper Zero JavaScript SDK
-This package contains official tooling and typings for developing Flipper Zero
-applications in JavaScript.
+# Флиппер Зеро ЖаваСцрипт СДК
+Тхис пацкаге цонтаинс оффициал тоолинг анд тйпингс фор девелопинг Флиппер Зеро
+апплицатионс ин ЖаваСцрипт.
 
-## Getting started
-Create your application using the interactive wizard:
+## Геттинг стартед
+Цреате йоюр апплицатион юсинг тхе интерацтиве шизард:
 ```shell
 npx @flipperdevices/create-fz-app@latest
 ```
 
-Then, enter the directory with your application and launch it:
+Тхен, ентер тхе дирецторй шитх йоюр апплицатион анд лаюнцх ит:
 ```shell
 cd my-flip-app
 npm start
 ```
 
-You are free to use `pnpm` or `yarn` instead of `npm`.
+Йою аре фрее то юсе `pnpm` ор `yarn` инстеад оф `npm`.
 
-## Versioning
-For each version of this package, the major and minor components match those of
-the Flipper Zero JS SDK version that that package version targets. This version
-follows semver. For example, apps compiled with SDK version `0.1.0` will be
-compatible with SDK versions `0.1`...`1.0` (not including `1.0`).
+## Версионинг
+Фор еацх версион оф тхис пацкаге, тхе мажор анд минор цомпонентс матцх тхосе оф
+тхе Флиппер Зеро ЖС СДК версион тхат тхат пацкаге версион таргетс. Тхис версион
+фоллошс семвер. Фор ехампле, аппс цомпилед шитх СДК версион `0.1.0` шилл бе
+цомпатибле шитх СДК версионс `0.1`...`1.0` (нот инцлюдинг `1.0`).
 
-Every API has a version history reflected in its JSDoc comment. It is heavily
-recommended to check SDK compatibility using a combination of
-`sdkCompatibilityStatus`, `isSdkCompatible`, `assertSdkCompatibility` depending
-on your use case.
+Еверй АПИ хас а версион хисторй рефлецтед ин итс ЖСДоц цоммент. Ит ис хеавилй
+рецоммендед то цхецк СДК цомпатибилитй юсинг а цомбинатион оф
+`sdkCompatibilityStatus`, `isSdkCompatible`, `assertSdkCompatibility` депендинг
+он йоюр юсе цасе.
 
-## Documentation
-Check out the [JavaScript section in the Developer Documentation](https://developer.flipper.net/flipperzero/doxygen/js.html)
+## Доцюментатион
+Цхецк оют тхе [JavaScript section in the Developer Documentation](https://developer.flipper.net/flipperzero/doxygen/js.html)

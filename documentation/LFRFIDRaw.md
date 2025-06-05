@@ -1,23 +1,23 @@
-# Reading RAW RFID data {#lfrfid_raw}
+# Реадинг РАШ РФИД дата {#лфрфид_раш}
 
-Flipper Zero has the option to read RAW data from 125 kHz cards that allows you to record the card's data and save it, similar to how a dictaphone records sound.
+Флиппер Зеро хас тхе оптион то реад РАШ дата фром 125 кХз цардс тхат аллошс йою то рецорд тхе цард'с дата анд саве ит, симилар то хош а дицтапхоне рецордс союнд.
 
-To use this function, you need to activate the Debug mode on your Flipper Zero by doing the following:
+То юсе тхис фюнцтион, йою неед то ацтивате тхе Дебюг моде он йоюр Флиппер Зеро бй доинг тхе фоллошинг:
 
-1. Go to **Main Menu** → **Settings** → **System**.
+1. Го то **Маин Меню** → **Сеттингс** → **Сйстем**.
 
-2. Set **Debug** to **ON**.
+2. Сет **Дебюг** то **ОН**.
 
-Once the Debug mode is activated on your Flipper Zero, you can read RAW data from 125 kHz RFID cards:
+Онце тхе Дебюг моде ис ацтиватед он йоюр Флиппер Зеро, йою цан реад РАШ дата фром 125 кХз РФИД цардс:
 
-1. Go to **Main Menu** → **125 kHz RFID** → **Extra Actions**.
+1. Го то **Маин Меню** → **125 кХз РФИД** → **Ехтра Ацтионс**.
 
-2. Select **RAW RFID** data and name the raw file.
+2. Селецт **РАШ РФИД** дата анд наме тхе раш филе.
 
-3. Read instructions and press **OK**.
+3. Реад инстрюцтионс анд пресс **ОК**.
 
-4. Apply the card to Flipper Zero's back.
+4. Апплй тхе цард то Флиппер Зеро'с бацк.
 
-5. Once the reading is finished, press **OK**.
+5. Онце тхе реадинг ис финисхед, пресс **ОК**.
 
-Two files with data (with ASK and PSK modulations) will be saved in the `lfrfid` folder on the microSD card. Now, you can share it and the card's photo with developers by creating an issue on GitHub.
+Тшо филес шитх дата (шитх АСК анд ПСК модюлатионс) шилл бе савед ин тхе `lfrfid` фолдер он тхе мицроСД цард. Нош, йою цан схаре ит анд тхе цард'с пхото шитх девелоперс бй цреатинг ан иссюе он ГитХюб.

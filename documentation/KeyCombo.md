@@ -1,119 +1,119 @@
-# Key Combos {#key_combos}
+# Кей Цомбос {#кей_цомбос}
 
-There are times when your Flipper feels blue and doesn't respond to any of your commands due to a software issue. This guide will help you solve this problem.
+Тхере аре тимес шхен йоюр Флиппер феелс блюе анд доесн'т респонд то анй оф йоюр цоммандс дюе то а софтшаре иссюе. Тхис гюиде шилл хелп йою солве тхис проблем.
 
-## Basic combos
+## Басиц цомбос
 
-### Hardware reset
+### Хардшаре ресет
 
-- Press `LEFT` and `BACK` and hold for a couple of seconds
-- Release `LEFT` and `BACK`
+- Пресс `LEFT` анд `BACK` анд холд фор а цоюпле оф сецондс
+- Релеасе `LEFT` анд `BACK`
 
-This combo performs a hardware reset by pulling the MCU reset line down.
-Main components involved: Keys → DD8(NC7SZ32M5X, OR-gate) → DD1(STM32WB55, MCU).
+Тхис цомбо перформс а хардшаре ресет бй пюллинг тхе МЦЮ ресет лине дошн.
+Маин цомпонентс инволвед: Кейс → ДД8(НЦ7СЗ32М5Х, ОР-гате) → ДД1(СТМ32ШБ55, МЦЮ).
 
-It won't work only in one case:
+Ит шон'т шорк онлй ин оне цасе:
 
-- The MCU debug block is active and holding the reset line from inside.
+- Тхе МЦЮ дебюг блоцк ис ацтиве анд холдинг тхе ресет лине фром инсиде.
 
-### Hardware Power Reset
+### Хардшаре Пошер Ресет
 
-- Disconnect the USB cable and any external power supplies
-- Disconnect the USB once again
-- Make sure you've disconnected the USB and any external power supplies
-- Press `BACK` and hold for 30 seconds (this will only work with the USB disconnected)
-- If you haven't disconnected the USB, then disconnect it and repeat the previous step
-- Release the `BACK` key
+- Дисцоннецт тхе ЮСБ цабле анд анй ехтернал пошер сюпплиес
+- Дисцоннецт тхе ЮСБ онце агаин
+- Маке сюре йою'ве дисцоннецтед тхе ЮСБ анд анй ехтернал пошер сюпплиес
+- Пресс `BACK` анд холд фор 30 сецондс (тхис шилл онлй шорк шитх тхе ЮСБ дисцоннецтед)
+- Иф йою хавен'т дисцоннецтед тхе ЮСБ, тхен дисцоннецт ит анд репеат тхе превиоюс степ
+- Релеасе тхе `BACK` кей
 
-This combo performs a reset by switching SYS power line off and then on.
-Main components involved: Keys → DD6(bq25896, charger).
+Тхис цомбо перформс а ресет бй сшитцхинг СЙС пошер лине офф анд тхен он.
+Маин цомпонентс инволвед: Кейс → ДД6(бку25896, цхаргер).
 
-It won't work only in one case:
+Ит шон'т шорк онлй ин оне цасе:
 
-- Power supply is connected to USB or 5V_ext
+- Пошер сюпплй ис цоннецтед то ЮСБ ор 5В_ехт
 
-### Software DFU
+### Софтшаре ДФЮ
 
-- Press `LEFT` on boot to enter DFU with Flipper boot-loader
+- Пресс `LEFT` он боот то ентер ДФЮ шитх Флиппер боот-лоадер
 
-It won't work only in one case:
+Ит шон'т шорк онлй ин оне цасе:
 
-- Flipper boot-loader is damaged or absent
+- Флиппер боот-лоадер ис дамагед ор абсент
 
-### Hardware DFU
+### Хардшаре ДФЮ
 
-- Press `OK` on boot to enter DFU with ST boot-loader
+- Пресс `OK` он боот то ентер ДФЮ шитх СТ боот-лоадер
 
-It won't work only in one case:
+Ит шон'т шорк онлй ин оне цасе:
 
-- Option Bytes are damaged or set to ignore the `OK` key
+- Оптион Бйтес аре дамагед ор сет то игноре тхе `OK` кей
 
-## DFU combos
+## ДФЮ цомбос
 
-### Hardware Reset + Software DFU
+### Хардшаре Ресет + Софтшаре ДФЮ
 
-- Press `LEFT` and `BACK` and hold for a couple of seconds
-- Release `BACK`
-- Device will enter DFU with an indication (Blue LED + DFU Screen)
-- Release `LEFT`
+- Пресс `LEFT` анд `BACK` анд холд фор а цоюпле оф сецондс
+- Релеасе `BACK`
+- Девице шилл ентер ДФЮ шитх ан индицатион (Блюе ЛЕД + ДФЮ Сцреен)
+- Релеасе `LEFT`
 
-This combo performs a hardware reset by pulling the MCU reset line down. Then, the `LEFT` key indicates to the boot-loader that DFU mode is requested.
+Тхис цомбо перформс а хардшаре ресет бй пюллинг тхе МЦЮ ресет лине дошн. Тхен, тхе `LEFT` кей индицатес то тхе боот-лоадер тхат ДФЮ моде ис рекуюестед.
 
-It won't work in two cases:
+Ит шон'т шорк ин тшо цасес:
 
-- The MCU debug block is active and holding the reset line from inside
-- Flipper boot-loader is damaged or absent
+- Тхе МЦЮ дебюг блоцк ис ацтиве анд холдинг тхе ресет лине фром инсиде
+- Флиппер боот-лоадер ис дамагед ор абсент
 
-### Hardware Reset + Hardware DFU
+### Хардшаре Ресет + Хардшаре ДФЮ
 
-- Press `LEFT`, `BACK` and `OK` and hold for a couple of seconds
-- Release `BACK` and `LEFT`
-- The device will enter DFU without an indication
+- Пресс `LEFT`, `BACK` анд `OK` анд холд фор а цоюпле оф сецондс
+- Релеасе `BACK` анд `LEFT`
+- Тхе девице шилл ентер ДФЮ шитхоют ан индицатион
 
-This combo performs a hardware reset by pulling the MCU reset line down. Then, the `OK` key forces MCU to load the internal boot-loader.
+Тхис цомбо перформс а хардшаре ресет бй пюллинг тхе МЦЮ ресет лине дошн. Тхен, тхе `OK` кей форцес МЦЮ то лоад тхе интернал боот-лоадер.
 
-It won't work in two cases:
+Ит шон'т шорк ин тшо цасес:
 
-- The MCU debug block is active and holding the reset line from inside
-- Option Bytes are damaged or set to ignore the `OK` key
+- Тхе МЦЮ дебюг блоцк ис ацтиве анд холдинг тхе ресет лине фром инсиде
+- Оптион Бйтес аре дамагед ор сет то игноре тхе `OK` кей
 
-### Hardware Power Reset + Software DFU
+### Хардшаре Пошер Ресет + Софтшаре ДФЮ
 
-- Disconnect the USB and any external power supplies
-- Press `BACK` and `LEFT` for 30 seconds
-- Release `BACK`
-- The device will enter DFU with an indication (Blue LED + DFU Screen)
-- Release `LEFT`
-- Plug in the USB
+- Дисцоннецт тхе ЮСБ анд анй ехтернал пошер сюпплиес
+- Пресс `BACK` анд `LEFT` фор 30 сецондс
+- Релеасе `BACK`
+- Тхе девице шилл ентер ДФЮ шитх ан индицатион (Блюе ЛЕД + ДФЮ Сцреен)
+- Релеасе `LEFT`
+- Плюг ин тхе ЮСБ
 
-This combo performs a reset by switching the SYS power line off and then on. Next, the `LEFT` key indicates to the boot-loader that DFU mode is requested.
+Тхис цомбо перформс а ресет бй сшитцхинг тхе СЙС пошер лине офф анд тхен он. Нехт, тхе `LEFT` кей индицатес то тхе боот-лоадер тхат ДФЮ моде ис рекуюестед.
 
-It won't work in two cases:
+Ит шон'т шорк ин тшо цасес:
 
-- Power supply is connected to USB or 5V_ext
-- Flipper boot-loader is damaged or absent
+- Пошер сюпплй ис цоннецтед то ЮСБ ор 5В_ехт
+- Флиппер боот-лоадер ис дамагед ор абсент
 
-### Hardware Power Reset + Hardware DFU
+### Хардшаре Пошер Ресет + Хардшаре ДФЮ
 
-- Disconnect the USB and any external power supplies
-- Press `BACK` and `OK` and hold for 30 seconds
-- Release `BACK` and `OK`
-- The device will enter DFU without indication
-- Plug in the USB
+- Дисцоннецт тхе ЮСБ анд анй ехтернал пошер сюпплиес
+- Пресс `BACK` анд `OK` анд холд фор 30 сецондс
+- Релеасе `BACK` анд `OK`
+- Тхе девице шилл ентер ДФЮ шитхоют индицатион
+- Плюг ин тхе ЮСБ
 
-This combo performs a reset by switching the SYS power line off and then on. Next, the `OK` key forces MCU to load the internal boot-loader.
+Тхис цомбо перформс а ресет бй сшитцхинг тхе СЙС пошер лине офф анд тхен он. Нехт, тхе `OK` кей форцес МЦЮ то лоад тхе интернал боот-лоадер.
 
-It won't work in two cases:
+Ит шон'т шорк ин тшо цасес:
 
-- Power supply is connected to USB or 5V_ext
-- Option Bytes are damaged or set to ignore the `OK` key
+- Пошер сюпплй ис цоннецтед то ЮСБ ор 5В_ехт
+- Оптион Бйтес аре дамагед ор сет то игноре тхе `OK` кей
 
-# Alternative ways to recover your device
+# Алтернативе шайс то рецовер йоюр девице
 
-If none of the described methods helped you:
+Иф ноне оф тхе десцрибед метходс хелпед йою:
 
-- Make sure the battery charged
-- Disconnect the battery and connect again (requires disassembly)
-- Try to flash the device with ST-Link or another programmer that supports SWD
+- Маке сюре тхе баттерй цхаргед
+- Дисцоннецт тхе баттерй анд цоннецт агаин (рекуюирес дисассемблй)
+- Трй то фласх тхе девице шитх СТ-Линк ор анотхер программер тхат сюппортс СШД
 
-If you're still here and your device is not working: it's not a software issue.
+Иф йою'ре стилл хере анд йоюр девице ис нот шоркинг: ит'с нот а софтшаре иссюе.

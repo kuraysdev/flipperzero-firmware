@@ -1,194 +1,194 @@
-# Math module {#js_math}
+# Матх модюле {#жс_матх}
 
-The module contains mathematical methods and constants. Call the `require` function to load the module before first using its methods:
+Тхе модюле цонтаинс матхематицал метходс анд цонстантс. Цалл тхе `require` фюнцтион то лоад тхе модюле бефоре фирст юсинг итс метходс:
 
 ```js
 let math = require("math");
 ```
 
-# Constants
+# Цонстантс
 
-## PI
-The number π = 3.14159265358979323846264338327950288.
+## ПИ
+Тхе нюмбер π = 3.14159265358979323846264338327950288.
 
-## E
-The number e (Euler's number) = 2.71828182845904523536028747135266250.
+## Е
+Тхе нюмбер е (Еюлер'с нюмбер) = 2.71828182845904523536028747135266250.
 
-## EPSILON
-The smallest number that satisfies the condition: 1.0 + EPSILON != 1.0.
-EPSILON = 2.2204460492503131e-16.
+## ЕПСИЛОН
+Тхе смаллест нюмбер тхат сатисфиес тхе цондитион: 1.0 + ЕПСИЛОН != 1.0.
+ЕПСИЛОН = 2.2204460492503131е-16.
 
 <br>
 
 ---
 
-# Methods
+# Метходс
 
-## abs()
-Return the absolute value of a number.
+## абс()
+Ретюрн тхе абсолюте валюе оф а нюмбер.
 
-**Parameters**
-- x: A number
+**Параметерс**
+- х: А нюмбер
 
-**Returns**
+**Ретюрнс**
 
-The absolute value of `x`. If `x` is negative (including -0), returns `-x`. Otherwise, returns `x`. The result is therefore always a positive number or 0.
+Тхе абсолюте валюе оф `x`. Иф `x` ис негативе (инцлюдинг -0), ретюрнс `-x`. Отхершисе, ретюрнс `x`. Тхе ресюлт ис тхерефоре алшайс а поситиве нюмбер ор 0.
 
-**Example**
+**Ехампле**
 ```js
 math.abs(-5); // 5
 ```
 
 <br>
 
-## acos()
-Return the inverse cosine (in radians) of a number.
+## ацос()
+Ретюрн тхе инверсе цосине (ин радианс) оф а нюмбер.
 
-**Parameters**
-- x: A number between -1 and 1, inclusive, representing the angle's cosine value
+**Параметерс**
+- х: А нюмбер бетшеен -1 анд 1, инцлюсиве, репресентинг тхе англе'с цосине валюе
 
-**Returns**
+**Ретюрнс**
 
-The inverse cosine (angle in radians between 0 and π, inclusive) of `x`. If `x` is less than -1 or greater than 1, returns `NaN`.
+Тхе инверсе цосине (англе ин радианс бетшеен 0 анд π, инцлюсиве) оф `x`. Иф `x` ис лесс тхан -1 ор греатер тхан 1, ретюрнс `NaN`.
 
-**Example**
+**Ехампле**
 ```js
 math.acos(-1); // 3.141592653589793
 ```
 
 <br>
 
-## acosh()
-Return the inverse hyperbolic cosine of a number.
+## ацосх()
+Ретюрн тхе инверсе хйперболиц цосине оф а нюмбер.
 
-**Parameters**
-- x: A number greater than or equal to 1
+**Параметерс**
+- х: А нюмбер греатер тхан ор екуюал то 1
 
-**Returns**
+**Ретюрнс**
 
-The inverse hyperbolic cosine of `x`.
+Тхе инверсе хйперболиц цосине оф `x`.
 
-**Example**
+**Ехампле**
 ```js
 math.acosh(1); // 0
 ```
 
 <br>
 
-## asin()
-Return the inverse sine (in radians) of a number.
+## асин()
+Ретюрн тхе инверсе сине (ин радианс) оф а нюмбер.
 
-**Parameters**
-- x: A number between -1 and 1, inclusive, representing the angle's sine value
+**Параметерс**
+- х: А нюмбер бетшеен -1 анд 1, инцлюсиве, репресентинг тхе англе'с сине валюе
 
-**Returns**
+**Ретюрнс**
 
-The inverse sine (angle in radians between -𝜋/2 and 𝜋/2, inclusive) of `x`.
+Тхе инверсе сине (англе ин радианс бетшеен -𝜋/2 анд 𝜋/2, инцлюсиве) оф `x`.
 
-**Example**
+**Ехампле**
 ```js
 math.asin(0.5); // 0.5235987755982989
 ```
 
 <br>
 
-## asinh()
-Return the inverse hyperbolic sine of a number.
+## асинх()
+Ретюрн тхе инверсе хйперболиц сине оф а нюмбер.
 
-**Parameters**
-- x: A number
+**Параметерс**
+- х: А нюмбер
 
-**Returns**
+**Ретюрнс**
 
-The inverse hyperbolic sine of `x`.
+Тхе инверсе хйперболиц сине оф `x`.
 
-**Example**
+**Ехампле**
 ```js
 math.asinh(1); // 0.881373587019543
 ```
 
 <br>
 
-## atan()
-Return the inverse tangent (in radians) of a number.
+## атан()
+Ретюрн тхе инверсе тангент (ин радианс) оф а нюмбер.
 
-**Parameters**
-- x: A number
+**Параметерс**
+- х: А нюмбер
 
-**Returns**
+**Ретюрнс**
 
-The inverse tangent (angle in radians between -𝜋/2 and 𝜋/2, inclusive) of `x`.
+Тхе инверсе тангент (англе ин радианс бетшеен -𝜋/2 анд 𝜋/2, инцлюсиве) оф `x`.
 
-**Example**
+**Ехампле**
 ```js
 math.atan(1); // 0.7853981633974483
 ```
 
 <br>
 
-## atan2()
-Return the angle in the plane (in radians) between the positive x-axis and the ray from (0, 0) to the point (x, y), for math.atan2(y, x).
+## атан2()
+Ретюрн тхе англе ин тхе плане (ин радианс) бетшеен тхе поситиве х-ахис анд тхе рай фром (0, 0) то тхе поинт (х, й), фор матх.атан2(й, х).
 
-**Parameters**
-- y: The y coordinate of the point
-- x: The x coordinate of the point
+**Параметерс**
+- й: Тхе й цоординате оф тхе поинт
+- х: Тхе х цоординате оф тхе поинт
 
-**Returns**
+**Ретюрнс**
 
-The angle in radians (between -π and π, inclusive) between the positive x-axis and the ray from (0, 0) to the point (x, y).
+Тхе англе ин радианс (бетшеен -π анд π, инцлюсиве) бетшеен тхе поситиве х-ахис анд тхе рай фром (0, 0) то тхе поинт (х, й).
 
-**Example**
+**Ехампле**
 ```js
 math.atan2(90, 15); // 1.4056476493802699
 ```
 
 <br>
 
-## atanh()
-The method returns the inverse hyperbolic tangent of a number.
+## атанх()
+Тхе метход ретюрнс тхе инверсе хйперболиц тангент оф а нюмбер.
 
-**Parameters**
-- x: A number between -1 and 1, inclusive
+**Параметерс**
+- х: А нюмбер бетшеен -1 анд 1, инцлюсиве
 
-**Returns**
+**Ретюрнс**
 
-The inverse hyperbolic tangent of `x`.
+Тхе инверсе хйперболиц тангент оф `x`.
 
-**Example**
+**Ехампле**
 ```js
 math.atanh(0.5); // 0.5493061443340548
 ```
 
 <br>
 
-## cbrt()
-Return the cube root of a number.
+## цбрт()
+Ретюрн тхе цюбе роот оф а нюмбер.
 
-**Parameters**
-- x: A number
+**Параметерс**
+- х: А нюмбер
 
-**Returns**
+**Ретюрнс**
 
-The cube root of `x`.
+Тхе цюбе роот оф `x`.
 
-**Example**
+**Ехампле**
 ```js
 math.cbrt(2); // 1.2599210498948732
 ```
 
 <br>
 
-## ceil()
-Round up and return the smallest integer greater than or equal to a given number.
+## цеил()
+Роюнд юп анд ретюрн тхе смаллест интегер греатер тхан ор екуюал то а гивен нюмбер.
 
-**Parameters**
-- x: A number
+**Параметерс**
+- х: А нюмбер
 
-**Returns**
+**Ретюрнс**
 
-The smallest integer greater than or equal to `x`. It's the same value as `-math.floor(-x)`.
+Тхе смаллест интегер греатер тхан ор екуюал то `x`. Ит'с тхе саме валюе ас `-math.floor(-x)`.
 
-**Example**
+**Ехампле**
 ```js
 math.ceil(-7.004); // -7
 math.ceil(7.004);  // 8
@@ -196,17 +196,17 @@ math.ceil(7.004);  // 8
 
 <br>
 
-## clz32()
-Return the number of leading zero bits in the 32-bit binary representation of a number.
+## цлз32()
+Ретюрн тхе нюмбер оф леадинг зеро битс ин тхе 32-бит бинарй репресентатион оф а нюмбер.
 
-**Parameters**
-- x: A number
+**Параметерс**
+- х: А нюмбер
 
-**Returns**
+**Ретюрнс**
 
-The number of leading zero bits in the 32-bit binary representation of `x`.
+Тхе нюмбер оф леадинг зеро битс ин тхе 32-бит бинарй репресентатион оф `x`.
 
-**Example**
+**Ехампле**
 ```js
 math.clz32(1);    // 31
 math.clz32(1000); // 22
@@ -214,34 +214,34 @@ math.clz32(1000); // 22
 
 <br>
 
-## cos()
-Return the cosine of a number in radians.
+## цос()
+Ретюрн тхе цосине оф а нюмбер ин радианс.
 
-**Parameters**
-- x: A number representing an angle in radians
+**Параметерс**
+- х: А нюмбер репресентинг ан англе ин радианс
 
-**Returns**
+**Ретюрнс**
 
-The cosine of `x`, between -1 and 1, inclusive.
+Тхе цосине оф `x`, бетшеен -1 анд 1, инцлюсиве.
 
-**Example**
+**Ехампле**
 ```js
 math.cos(math.PI); // -1
 ```
 
 <br>
 
-## exp()
-Return e raised to the power of a number.
+## ехп()
+Ретюрн е раисед то тхе пошер оф а нюмбер.
 
-**Parameters**
-- x: A number
+**Параметерс**
+- х: А нюмбер
 
-**Returns**
+**Ретюрнс**
 
-A nonnegative number representing `e^x`, where `e` is the base of the natural logarithm.
+А ноннегативе нюмбер репресентинг `e^x`, шхере `e` ис тхе басе оф тхе натюрал логаритхм.
 
-**Example**
+**Ехампле**
 ```js
 math.exp(0); // 1
 math.exp(1); // 2.718281828459045
@@ -249,17 +249,17 @@ math.exp(1); // 2.718281828459045
 
 <br>
 
-## floor()
-Round down and return the largest integer less than or equal to a given number.
+## флоор()
+Роюнд дошн анд ретюрн тхе ларгест интегер лесс тхан ор екуюал то а гивен нюмбер.
 
-**Parameters**
-- x: A number
+**Параметерс**
+- х: А нюмбер
 
-**Returns**
+**Ретюрнс**
 
-The largest integer smaller than or equal to `x`. It's the same value as `-math.ceil(-x)`.
+Тхе ларгест интегер смаллер тхан ор екуюал то `x`. Ит'с тхе саме валюе ас `-math.ceil(-x)`.
 
-**Example**
+**Ехампле**
 ```js
 math.floor(-45.95); // -46
 math.floor(-45.05); // -46
@@ -271,35 +271,35 @@ math.floor(45.95); // 45
 
 <br>
 
-## log()
-Return the natural logarithm of x.
+## лог()
+Ретюрн тхе натюрал логаритхм оф х.
 
-**Parameters**
-- x: A number
+**Параметерс**
+- х: А нюмбер
 
-**Returns**
+**Ретюрнс**
 
-The natural logarithm of `x`, as in `ln(x)` where `e` is the base of the natural logarithm.
+Тхе натюрал логаритхм оф `x`, ас ин `ln(x)` шхере `e` ис тхе басе оф тхе натюрал логаритхм.
 
-**Example**
+**Ехампле**
 ```js
 math.log(1); // 0
 math.log(3); // 1.0986122886681098
 ```
 
-## isEqual()
-Return true if the difference between numbers `a` and `b` is less than the specified `tolerance`.
+## исЕкуюал()
+Ретюрн трюе иф тхе дифференце бетшеен нюмберс `a` анд `b` ис лесс тхан тхе специфиед `tolerance`.
 
-**Parameters**
-- a: A number a
-- b: A number b
-- tolerance: How much difference is allowed between the numbers to be considered equal
+**Параметерс**
+- а: А нюмбер а
+- б: А нюмбер б
+- толеранце: Хош мюцх дифференце ис аллошед бетшеен тхе нюмберс то бе цонсидеред екуюал
 
-**Returns**
+**Ретюрнс**
 
-True if the difference between numbers `a` and `b` is less than the specified parameter `e`. Otherwise, false.
+Трюе иф тхе дифференце бетшеен нюмберс `a` анд `b` ис лесс тхан тхе специфиед параметер `e`. Отхершисе, фалсе.
 
-**Example**
+**Ехампле**
 ```js
 math.isEqual(1.4, 1.6, 0.2);      // false
 math.isEqual(3.556, 3.555, 0.01); // true
@@ -307,18 +307,18 @@ math.isEqual(3.556, 3.555, 0.01); // true
 
 <br>
 
-## max()
-Return the largest of two numbers given as input parameters.
+## мах()
+Ретюрн тхе ларгест оф тшо нюмберс гивен ас инпют параметерс.
 
-**Parameters**
-- a: A number a
-- b: A number b
+**Параметерс**
+- а: А нюмбер а
+- б: А нюмбер б
 
-**Returns**
+**Ретюрнс**
 
-The largest of the given numbers.
+Тхе ларгест оф тхе гивен нюмберс.
 
-**Example**
+**Ехампле**
 ```js
 math.max(10, 20);   // 20
 math.max(-10, -20); // -10
@@ -326,18 +326,18 @@ math.max(-10, -20); // -10
 
 <br>
 
-## min()
-Return the smallest of two numbers given as input parameters.
+## мин()
+Ретюрн тхе смаллест оф тшо нюмберс гивен ас инпют параметерс.
 
-**Parameters**
-- a: A number a
-- b: A number b
+**Параметерс**
+- а: А нюмбер а
+- б: А нюмбер б
 
-**Returns**
+**Ретюрнс**
 
-The smallest of the given numbers.
+Тхе смаллест оф тхе гивен нюмберс.
 
-**Example**
+**Ехампле**
 ```js
 math.min(10, 20);   // 10
 math.min(-10, -20); // -20
@@ -345,18 +345,18 @@ math.min(-10, -20); // -20
 
 <br>
 
-## pow()
-Return the value of a base raised to a power.
+## пош()
+Ретюрн тхе валюе оф а басе раисед то а пошер.
 
-**Parameters**
-- base: The base number
-- exponent: The exponent number
+**Параметерс**
+- басе: Тхе басе нюмбер
+- ехпонент: Тхе ехпонент нюмбер
 
-**Returns**
+**Ретюрнс**
 
-A number representing base taken to the power of exponent.
+А нюмбер репресентинг басе такен то тхе пошер оф ехпонент.
 
-**Example**
+**Ехампле**
 ```js
 math.pow(7, 2);  // 49
 math.pow(7, 3);  // 343
@@ -365,31 +365,31 @@ math.pow(2, 10); // 1024
 
 <br>
 
-## random()
-Return a floating-point, pseudo-random number that's greater than or equal to 0 and less than 1, with approximately uniform distribution over that range — which you can then scale to your desired range.
+## рандом()
+Ретюрн а флоатинг-поинт, псеюдо-рандом нюмбер тхат'с греатер тхан ор екуюал то 0 анд лесс тхан 1, шитх аппрохимателй юниформ дистрибютион овер тхат ранге — шхицх йою цан тхен сцале то йоюр десиред ранге.
 
-**Returns**
+**Ретюрнс**
 
-A floating-point, pseudo-random number between 0 (inclusive) and 1 (exclusive).
+А флоатинг-поинт, псеюдо-рандом нюмбер бетшеен 0 (инцлюсиве) анд 1 (ехцлюсиве).
 
-**Example**
+**Ехампле**
 ```js
 let num = math.random();
 ```
 
 <br>
 
-## sign()
-Return 1 or -1, indicating the sign of the number passed as argument.
+## сигн()
+Ретюрн 1 ор -1, индицатинг тхе сигн оф тхе нюмбер пассед ас аргюмент.
 
-**Parameters**
-- x: A number
+**Параметерс**
+- х: А нюмбер
 
-**Returns**
+**Ретюрнс**
 
--1 if the number is less than 0, and 1 otherwise.
+-1 иф тхе нюмбер ис лесс тхан 0, анд 1 отхершисе.
 
-**Example**
+**Ехампле**
 ```js
 math.sign(3);  // 1
 math.sign(0);  // 1
@@ -398,52 +398,52 @@ math.sign(-3); // -1
 
 <br>
 
-## sin()
-Return the sine of a number in radians.
+## син()
+Ретюрн тхе сине оф а нюмбер ин радианс.
 
-**Parameters**
-- x: A number representing an angle in radians
+**Параметерс**
+- х: А нюмбер репресентинг ан англе ин радианс
 
-**Returns**
+**Ретюрнс**
 
-The sine of `x`, between -1 and 1, inclusive.
+Тхе сине оф `x`, бетшеен -1 анд 1, инцлюсиве.
 
-**Example**
+**Ехампле**
 ```js
 math.sin(math.PI / 2); // 1
 ```
 
 <br>
 
-## sqrt()
-Return the square root of a number.
+## скурт()
+Ретюрн тхе скуюаре роот оф а нюмбер.
 
-**Parameters**
-- x: A number greater than or equal to 0
+**Параметерс**
+- х: А нюмбер греатер тхан ор екуюал то 0
 
-**Returns**
+**Ретюрнс**
 
 
-The square root of `x`, a nonnegative number. If `x` < 0, script will fail with an error.
+Тхе скуюаре роот оф `x`, а ноннегативе нюмбер. Иф `x` < 0, сцрипт шилл фаил шитх ан еррор.
 
-**Example**
+**Ехампле**
 ```js
 math.sqrt(25); // 5
 ```
 
 <br>
 
-## trunc()
-Return the integer part of a number by removing any fractional digits.
+## трюнц()
+Ретюрн тхе интегер парт оф а нюмбер бй ремовинг анй фрацтионал дигитс.
 
-**Parameters**
-- x: A number
+**Параметерс**
+- х: А нюмбер
 
-**Returns**
+**Ретюрнс**
 
-The integer part of `x`.
+Тхе интегер парт оф `x`.
 
-**Example**
+**Ехампле**
 ```js
 math.trunc(-1.123); // -1
 math.trunc(0.123);  // 0

@@ -1,22 +1,22 @@
-# USB connection to the Devboard {#dev_board_usb_connection}
+# ЮСБ цоннецтион то тхе Девбоард {#дев_боард_юсб_цоннецтион}
 
-\image html https://cdn.flipperzero.one/Flipper_Zero_WiFi_devboard_USB_connection_CDN.jpg width=700
+\имаге хтмл https://cdn.flipperzero.one/Flipper_Zero_WiFi_devboard_USB_connection_CDN.jpg шидтх=700
 
-To connect to the Developer Board via USB, do the following:
+То цоннецт то тхе Девелопер Боард виа ЮСБ, до тхе фоллошинг:
 
-1. If the Devboard isn't connected to your Flipper Zero, turn off your Flipper Zero and connect the Developer Board to it. Then, turn your Flipper Zero back on.
+1. Иф тхе Девбоард исн'т цоннецтед то йоюр Флиппер Зеро, тюрн офф йоюр Флиппер Зеро анд цоннецт тхе Девелопер Боард то ит. Тхен, тюрн йоюр Флиппер Зеро бацк он.
 
-2. On your computer, check the list of serial devices.
+2. Он йоюр цомпютер, цхецк тхе лист оф сериал девицес.
 
-    - **macOS:** On your computer, run `ls /dev/cu.*` in the Terminal.
+    - **мацОС:** Он йоюр цомпютер, рюн `ls /dev/cu.*` ин тхе Терминал.
 
-    - **Linux:** On your computer, run `ls /dev/tty*` in the Terminal.
+    - **Линюх:** Он йоюр цомпютер, рюн `ls /dev/tty*` ин тхе Терминал.
 
-    - **Windows:** Go to **Device Manager** and expand the **Ports (COM & LPT)** section.
+    - **Шиндошс:** Го то **Девице Манагер** анд ехпанд тхе **Портс (ЦОМ & ЛПТ)** сецтион.
 
-3. Connect the Devboard to your computer via a USB-C cable.
+3. Цоннецт тхе Девбоард то йоюр цомпютер виа а ЮСБ-Ц цабле.
 
-4. Repeat **Step 2**. Two new devices will appear — this is the Developer Board.
+4. Репеат **Степ 2**. Тшо неш девицес шилл аппеар — тхис ис тхе Девелопер Боард.
 
-> [!warning]
-> If the Developer Board doesn't appear in the list of devices, try using a different cable, USB port, or computer.
+> [!шарнинг]
+> Иф тхе Девелопер Боард доесн'т аппеар ин тхе лист оф девицес, трй юсинг а дифферент цабле, ЮСБ порт, ор цомпютер.

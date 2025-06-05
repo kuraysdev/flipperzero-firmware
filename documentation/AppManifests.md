@@ -1,67 +1,67 @@
-# FAM (Flipper App Manifests) {#app_manifests}
+# ФАМ (Флиппер Апп Манифестс) {#апп_манифестс}
 
-All components of Flipper Zero firmware — services, user applications, and system settings — are developed independently. Each component has a build system manifest file named `application.fam`, which defines the basic properties of that component and its relations to other parts of the system.
+Алл цомпонентс оф Флиппер Зеро фирмшаре — сервицес, юсер апплицатионс, анд сйстем сеттингс — аре девелопед индепендентлй. Еацх цомпонент хас а бюилд сйстем манифест филе намед `application.fam`, шхицх дефинес тхе басиц пропертиес оф тхат цомпонент анд итс релатионс то отхер партс оф тхе сйстем.
 
-When building firmware, `fbt` collects all app manifests and processes their dependencies. Then it builds only those components referenced in the current build configuration. See [FBT docs](fbt.md) for details on build configurations.
+Шхен бюилдинг фирмшаре, `fbt` цоллецтс алл апп манифестс анд процессес тхеир депенденциес. Тхен ит бюилдс онлй тхосе цомпонентс референцед ин тхе цюррент бюилд цонфигюратион. Сее [FBT docs](fbt.md) фор детаилс он бюилд цонфигюратионс.
 
-## App definition
+## Апп дефинитион
 
-A firmware component's properties are declared in a Python code snippet, forming a call to the `App()` function with various parameters.
+А фирмшаре цомпонент'с пропертиес аре децларед ин а Пйтхон цоде сниппет, форминг а цалл то тхе `App()` фюнцтион шитх вариоюс параметерс.
 
-Only two parameters are mandatory: **appid** and **apptype**. Others are optional and may only be meaningful for certain app types.
+Онлй тшо параметерс аре мандаторй: **аппид** анд **апптйпе**. Отхерс аре оптионал анд май онлй бе меанингфюл фор цертаин апп тйпес.
 
-### Parameters
+### Параметерс
 
-- **appid**: string, app ID within the build system. It is used to specify which app to include in the build configuration and resolve dependencies and conflicts.
+- **аппид**: стринг, апп ИД шитхин тхе бюилд сйстем. Ит ис юсед то специфй шхицх апп то инцлюде ин тхе бюилд цонфигюратион анд ресолве депенденциес анд цонфлицтс.
 
-- **apptype**: member of FlipperAppType.\* enumeration. Valid values are:
+- **апптйпе**: мембер оф ФлипперАппТйпе.\* енюмератион. Валид валюес аре:
 
-| Enum member | Firmware component type                                                                     |
+| Енюм мембер | Фирмшаре цомпонент тйпе                                                                     |
 | ----------- | ------------------------------------------------------------------------------------------- |
-| SERVICE     | System service, created at early startup                                                    |
-| SYSTEM      | App is not being shown in any menus. It can be started by other apps or from CLI    |
-| APP         | Regular app for the main menu                                                       |
-| PLUGIN      | App to be built as a part of the firmware and to be placed in the Plugins menu      |
-| DEBUG       | App only visible in Debug menu with debug mode enabled                              |
-| ARCHIVE     | One and only Archive app                                                                    |
-| SETTINGS    | App to be placed in the system settings menu                                        |
-| STARTUP     | Callback function to run at system startup. Does not define a separate app                  |
-| EXTERNAL    | App to be built as `.fap` plugin                                                    |
-| METAPACKAGE | Does not define any code to be run, used for declaring dependencies and app bundles |
+| СЕРВИЦЕ     | Сйстем сервице, цреатед ат еарлй стартюп                                                    |
+| СЙСТЕМ      | Апп ис нот беинг схошн ин анй менюс. Ит цан бе стартед бй отхер аппс ор фром ЦЛИ    |
+| АПП         | Регюлар апп фор тхе маин меню                                                       |
+| ПЛЮГИН      | Апп то бе бюилт ас а парт оф тхе фирмшаре анд то бе плацед ин тхе Плюгинс меню      |
+| ДЕБЮГ       | Апп онлй висибле ин Дебюг меню шитх дебюг моде енаблед                              |
+| АРЦХИВЕ     | Оне анд онлй Арцхиве апп                                                                    |
+| СЕТТИНГС    | Апп то бе плацед ин тхе сйстем сеттингс меню                                        |
+| СТАРТЮП     | Цаллбацк фюнцтион то рюн ат сйстем стартюп. Доес нот дефине а сепарате апп                  |
+| ЕХТЕРНАЛ    | Апп то бе бюилт ас `.fap` плюгин                                                    |
+| МЕТАПАЦКАГЕ | Доес нот дефине анй цоде то бе рюн, юсед фор децларинг депенденциес анд апп бюндлес |
 
-- **name**: name displayed in menus.
-- **entry_point**: C function to be used as the app's entry point. Note that C++ function names are mangled, so you need to wrap them in `extern "C"` to use them as entry points.
-- **flags**: internal flags for system apps. Do not use.
-- **cdefines**: C preprocessor definitions to declare globally for other apps when the current app is included in the active build configuration. **For external apps**: specified definitions are used when building the app itself.
-- **requires**: list of app IDs to include in the build configuration when the current app is referenced in the list of apps to build.
-- **conflicts**: list of app IDs with which the current app conflicts. If any of them is found in the constructed app list, `fbt` will abort the firmware build process.
-- **provides**: functionally identical to **_requires_** field.
-- **stack_size**: stack size in bytes to allocate for an app on its startup. Note that allocating a stack too small for an app to run will cause a system crash due to stack overflow, and allocating too much stack space will reduce usable heap memory size for apps to process data. _Note: you can use `top` and `free` CLI commands to profile your app's memory usage._
-- **icon**: animated icon name from built-in assets to be used when building the app as a part of the firmware.
-- **order**: order of an app within its group when sorting entries in it. The lower the order is, the closer to the start of the list the item is placed. _Used for ordering startup hooks and menu entries._
-- **sdk_headers**: list of C header files from this app's code to include in API definitions for external apps.
-- **targets**: list of strings and target names with which this app is compatible. If not specified, the app is built for all targets. The default value is `["all"]`.
-- **resources**: name of a folder within the app's source folder to be used for packacking SD card resources for this app. They will only be used if app is included in build configuration. The default value is `""`, meaning no resources are packaged.
+- **наме**: наме дисплайед ин менюс.
+- **ентрй_поинт**: Ц фюнцтион то бе юсед ас тхе апп'с ентрй поинт. Ноте тхат Ц++ фюнцтион намес аре манглед, со йою неед то шрап тхем ин `extern "C"` то юсе тхем ас ентрй поинтс.
+- **флагс**: интернал флагс фор сйстем аппс. До нот юсе.
+- **цдефинес**: Ц препроцессор дефинитионс то децларе глобаллй фор отхер аппс шхен тхе цюррент апп ис инцлюдед ин тхе ацтиве бюилд цонфигюратион. **Фор ехтернал аппс**: специфиед дефинитионс аре юсед шхен бюилдинг тхе апп итселф.
+- **рекуюирес**: лист оф апп ИДс то инцлюде ин тхе бюилд цонфигюратион шхен тхе цюррент апп ис референцед ин тхе лист оф аппс то бюилд.
+- **цонфлицтс**: лист оф апп ИДс шитх шхицх тхе цюррент апп цонфлицтс. Иф анй оф тхем ис фоюнд ин тхе цонстрюцтед апп лист, `fbt` шилл аборт тхе фирмшаре бюилд процесс.
+- **провидес**: фюнцтионаллй идентицал то **_рекуюирес_** фиелд.
+- **стацк_сизе**: стацк сизе ин бйтес то аллоцате фор ан апп он итс стартюп. Ноте тхат аллоцатинг а стацк тоо смалл фор ан апп то рюн шилл цаюсе а сйстем црасх дюе то стацк оверфлош, анд аллоцатинг тоо мюцх стацк спаце шилл редюце юсабле хеап меморй сизе фор аппс то процесс дата. _Ноте: йою цан юсе `top` анд `free` ЦЛИ цоммандс то профиле йоюр апп'с меморй юсаге._
+- **ицон**: аниматед ицон наме фром бюилт-ин ассетс то бе юсед шхен бюилдинг тхе апп ас а парт оф тхе фирмшаре.
+- **ордер**: ордер оф ан апп шитхин итс гроюп шхен сортинг ентриес ин ит. Тхе лошер тхе ордер ис, тхе цлосер то тхе старт оф тхе лист тхе итем ис плацед. _Юсед фор ордеринг стартюп хоокс анд меню ентриес._
+- **сдк_хеадерс**: лист оф Ц хеадер филес фром тхис апп'с цоде то инцлюде ин АПИ дефинитионс фор ехтернал аппс.
+- **таргетс**: лист оф стрингс анд таргет намес шитх шхицх тхис апп ис цомпатибле. Иф нот специфиед, тхе апп ис бюилт фор алл таргетс. Тхе дефаюлт валюе ис `["all"]`.
+- **ресоюрцес**: наме оф а фолдер шитхин тхе апп'с союрце фолдер то бе юсед фор пацкацкинг СД цард ресоюрцес фор тхис апп. Тхей шилл онлй бе юсед иф апп ис инцлюдед ин бюилд цонфигюратион. Тхе дефаюлт валюе ис `""`, меанинг но ресоюрцес аре пацкагед.
 
-#### Parameters for external apps
+#### Параметерс фор ехтернал аппс
 
-The following parameters are used only for [FAPs](./AppsOnSDCard.md):
+Тхе фоллошинг параметерс аре юсед онлй фор [FAPs](./AppsOnSDCard.md):
 
-- **sources**: list of strings, file name masks used for gathering sources within the app folder. The default value of `["*.c*"]` includes C and C++ source files. Apps cannot use the `"lib"` folder for their own source code, as it is reserved for **fap_private_libs**. Paths starting with `"!"` are excluded from the list of sources. They can also include wildcard characters and directory names. For example, a value of `["*.c*", "!plugins"]` will include all C and C++ source files in the app folder except those in the `plugins` (and `lib`) folders. Paths with no wildcards (`*, ?`) are treated as full literal paths for both inclusion and exclusion.
-- **fap_version**: string, app version. The default value is "0.1". You can also use a tuple of 2 numbers in the form of (x,y) to specify the version. It is also possible to add more dot-separated parts to the version, like patch number, but only major and minor version numbers are stored in the built .fap.
-- **fap_icon**: name of a `.png` file, 1-bit color depth, 10x10px, to be embedded within `.fap` file.
-- **fap_libs**: list of extra libraries to link the app against. Provides access to extra functions that are not exported as a part of main firmware at the expense of increased `.fap` file size and RAM consumption.
-- **fap_category**: string, may be empty. App subcategory, also determines the path of the FAP within the apps folder in the file system.
-- **fap_description**: string, may be empty. Short app description.
-- **fap_author**: string, may be empty. App's author.
-- **fap_weburl**: string, may be empty. App's homepage.
-- **fap_icon_assets**: string. If present, it defines a folder name to be used for gathering image assets for this app. These images will be preprocessed and built alongside the app. See [FAP assets](AppsOnSDCard.md) for details.
-- **fap_extbuild**: provides support for parts of app sources to be built by external tools. Contains a list of `ExtFile(path="file name", command="shell command")` definitions. `fbt` will run the specified command for each file in the list.
-- **fal_embedded**: boolean, default `False`. Applies only to PLUGIN type. If `True`, the plugin will be embedded into host app's .fap file as a resource and extracted to `apps_assets/APPID` folder on its start. This allows plugins to be distributed as a part of the host app.
+- **союрцес**: лист оф стрингс, филе наме маскс юсед фор гатхеринг союрцес шитхин тхе апп фолдер. Тхе дефаюлт валюе оф `["*.c*"]` инцлюдес Ц анд Ц++ союрце филес. Аппс цаннот юсе тхе `"lib"` фолдер фор тхеир ошн союрце цоде, ас ит ис ресервед фор **фап_привате_либс**. Патхс стартинг шитх `"!"` аре ехцлюдед фром тхе лист оф союрцес. Тхей цан алсо инцлюде шилдцард цхарацтерс анд дирецторй намес. Фор ехампле, а валюе оф `["*.c*", "!plugins"]` шилл инцлюде алл Ц анд Ц++ союрце филес ин тхе апп фолдер ехцепт тхосе ин тхе `plugins` (анд `lib`) фолдерс. Патхс шитх но шилдцардс (`*, ?`) аре треатед ас фюлл литерал патхс фор ботх инцлюсион анд ехцлюсион.
+- **фап_версион**: стринг, апп версион. Тхе дефаюлт валюе ис "0.1". Йою цан алсо юсе а тюпле оф 2 нюмберс ин тхе форм оф (х,й) то специфй тхе версион. Ит ис алсо поссибле то адд море дот-сепаратед партс то тхе версион, лике патцх нюмбер, бют онлй мажор анд минор версион нюмберс аре сторед ин тхе бюилт .фап.
+- **фап_ицон**: наме оф а `.png` филе, 1-бит цолор дептх, 10х10пх, то бе ембеддед шитхин `.fap` филе.
+- **фап_либс**: лист оф ехтра либрариес то линк тхе апп агаинст. Провидес аццесс то ехтра фюнцтионс тхат аре нот ехпортед ас а парт оф маин фирмшаре ат тхе ехпенсе оф инцреасед `.fap` филе сизе анд РАМ цонсюмптион.
+- **фап_цатегорй**: стринг, май бе емптй. Апп сюбцатегорй, алсо детерминес тхе патх оф тхе ФАП шитхин тхе аппс фолдер ин тхе филе сйстем.
+- **фап_десцриптион**: стринг, май бе емптй. Схорт апп десцриптион.
+- **фап_аютхор**: стринг, май бе емптй. Апп'с аютхор.
+- **фап_шебюрл**: стринг, май бе емптй. Апп'с хомепаге.
+- **фап_ицон_ассетс**: стринг. Иф пресент, ит дефинес а фолдер наме то бе юсед фор гатхеринг имаге ассетс фор тхис апп. Тхесе имагес шилл бе препроцессед анд бюилт алонгсиде тхе апп. Сее [FAP assets](AppsOnSDCard.md) фор детаилс.
+- **фап_ехтбюилд**: провидес сюппорт фор партс оф апп союрцес то бе бюилт бй ехтернал тоолс. Цонтаинс а лист оф `ExtFile(path="file name", command="shell command")` дефинитионс. `fbt` шилл рюн тхе специфиед цомманд фор еацх филе ин тхе лист.
+- **фал_ембеддед**: боолеан, дефаюлт `False`. Апплиес онлй то ПЛЮГИН тйпе. Иф `True`, тхе плюгин шилл бе ембеддед инто хост апп'с .фап филе ас а ресоюрце анд ехтрацтед то `apps_assets/APPID` фолдер он итс старт. Тхис аллошс плюгинс то бе дистрибютед ас а парт оф тхе хост апп.
 
-Note that commands are executed at the firmware root folder, and all intermediate files must be placed in an app's temporary build folder. For that, you can use pattern expansion by `fbt`: `${FAP_WORK_DIR}` will be replaced with the path to the app's temporary build folder, and `${FAP_SRC_DIR}` will be replaced with the path to the app's source folder. You can also use other variables defined internally by `fbt`.
+Ноте тхат цоммандс аре ехецютед ат тхе фирмшаре роот фолдер, анд алл интермедиате филес мюст бе плацед ин ан апп'с темпорарй бюилд фолдер. Фор тхат, йою цан юсе паттерн ехпансион бй `fbt`: `${FAP_WORK_DIR}` шилл бе реплацед шитх тхе патх то тхе апп'с темпорарй бюилд фолдер, анд `${FAP_SRC_DIR}` шилл бе реплацед шитх тхе патх то тхе апп'с союрце фолдер. Йою цан алсо юсе отхер вариаблес дефинед интерналлй бй `fbt`.
 
-Example for building an app from Rust sources:
+Ехампле фор бюилдинг ан апп фром Рюст союрцес:
 
 ```python
     sources=["target/thumbv7em-none-eabihf/release/libhello_rust.a"],
@@ -73,18 +73,18 @@ Example for building an app from Rust sources:
     ),
 ```
 
-- **fap_private_libs**: list of additional libraries distributed as sources alongside the app. These libraries will be built as a part of the app build process.
-  Library sources must be placed in a subfolder of the `lib` folder within the app's source folder.
-  Each library is defined as a call to the `Lib()` function, accepting the following parameters:
+- **фап_привате_либс**: лист оф аддитионал либрариес дистрибютед ас союрцес алонгсиде тхе апп. Тхесе либрариес шилл бе бюилт ас а парт оф тхе апп бюилд процесс.
+  Либрарй союрцес мюст бе плацед ин а сюбфолдер оф тхе `lib` фолдер шитхин тхе апп'с союрце фолдер.
+  Еацх либрарй ис дефинед ас а цалл то тхе `Lib()` фюнцтион, аццептинг тхе фоллошинг параметерс:
 
-  - **name**: name of the library's folder. Required.
-  - **fap_include_paths**: list of the library's relative paths to add to the parent fap's include path list. The default value is `["."]`, meaning the library's source root.
-  - **sources**: list of filename masks to be used for gathering include files for this library. Paths are relative to the library's source root. The default value is `["*.c*"]`.
-  - **cflags**: list of additional compiler flags to be used for building this library. The default value is `[]`.
-  - **cdefines**: list of additional preprocessor definitions to be used for building this library. The default value is `[]`.
-  - **cincludes**: list of additional include paths to be used for building this library. Paths are relative to the app's root. This can be used for providing external search paths for this library's code — for configuration headers. The default value is `[]`.
+  - **наме**: наме оф тхе либрарй'с фолдер. Рекуюиред.
+  - **фап_инцлюде_патхс**: лист оф тхе либрарй'с релативе патхс то адд то тхе парент фап'с инцлюде патх лист. Тхе дефаюлт валюе ис `["."]`, меанинг тхе либрарй'с союрце роот.
+  - **союрцес**: лист оф филенаме маскс то бе юсед фор гатхеринг инцлюде филес фор тхис либрарй. Патхс аре релативе то тхе либрарй'с союрце роот. Тхе дефаюлт валюе ис `["*.c*"]`.
+  - **цфлагс**: лист оф аддитионал цомпилер флагс то бе юсед фор бюилдинг тхис либрарй. Тхе дефаюлт валюе ис `[]`.
+  - **цдефинес**: лист оф аддитионал препроцессор дефинитионс то бе юсед фор бюилдинг тхис либрарй. Тхе дефаюлт валюе ис `[]`.
+  - **цинцлюдес**: лист оф аддитионал инцлюде патхс то бе юсед фор бюилдинг тхис либрарй. Патхс аре релативе то тхе апп'с роот. Тхис цан бе юсед фор провидинг ехтернал сеарцх патхс фор тхис либрарй'с цоде — фор цонфигюратион хеадерс. Тхе дефаюлт валюе ис `[]`.
 
-Example for building an app with a private library:
+Ехампле фор бюилдинг ан апп шитх а привате либрарй:
 
 ```python
     fap_private_libs=[
@@ -105,14 +105,14 @@ Example for building an app with a private library:
         ],
 ```
 
-For that snippet, `fbt` will build 2 libraries: one from sources in `lib/mbedtls` folder and another from sources in the `lib/loclass` folder. For the `mbedtls` library, `fbt` will add `lib/mbedtls/include` to the list of include paths for the app and compile only the files specified in the `sources` list. Additionally, `fbt` will enable `MBEDTLS_ERROR_C` preprocessor definition for `mbedtls` sources.
-For the `loclass` library, `fbt` will add `lib/loclass` to the list of the included paths for the app and build all sources in that folder. Also, `fbt` will disable treating compiler warnings as errors for the `loclass` library, which can be useful when compiling large 3rd-party codebases.
+Фор тхат сниппет, `fbt` шилл бюилд 2 либрариес: оне фром союрцес ин `lib/mbedtls` фолдер анд анотхер фром союрцес ин тхе `lib/loclass` фолдер. Фор тхе `mbedtls` либрарй, `fbt` шилл адд `lib/mbedtls/include` то тхе лист оф инцлюде патхс фор тхе апп анд цомпиле онлй тхе филес специфиед ин тхе `sources` лист. Аддитионаллй, `fbt` шилл енабле `MBEDTLS_ERROR_C` препроцессор дефинитион фор `mbedtls` союрцес.
+Фор тхе `loclass` либрарй, `fbt` шилл адд `lib/loclass` то тхе лист оф тхе инцлюдед патхс фор тхе апп анд бюилд алл союрцес ин тхат фолдер. Алсо, `fbt` шилл дисабле треатинг цомпилер шарнингс ас еррорс фор тхе `loclass` либрарй, шхицх цан бе юсефюл шхен цомпилинг ларге 3рд-партй цодебасес.
 
-Both libraries will be linked with the app.
+Ботх либрариес шилл бе линкед шитх тхе апп.
 
-## .fam file contents
+## .фам филе цонтентс
 
-The `.fam` file contains one or more app definitions. For example, here's a part of `applications/service/bt/application.fam`:
+Тхе `.fam` филе цонтаинс оне ор море апп дефинитионс. Фор ехампле, хере'с а парт оф `applications/service/bt/application.fam`:
 
 ```python
 App(
@@ -136,4 +136,4 @@ App(
 )
 ```
 
-For more examples, see `.fam` files from various firmware parts.
+Фор море ехамплес, сее `.fam` филес фром вариоюс фирмшаре партс.

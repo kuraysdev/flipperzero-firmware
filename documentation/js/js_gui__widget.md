@@ -1,6 +1,6 @@
-# Widget GUI view {#js_gui__widget}
+# Шидгет ГЮИ виеш {#жс_гюи__шидгет}
 
-Displays a combination of custom elements on one screen.
+Дисплайс а цомбинатион оф цюстом елементс он оне сцреен.
 
 <img src="widget.png" width="200" alt="Sample screenshot of the view" />
 
@@ -10,28 +10,28 @@ let gui = require("gui");
 let widgetView = require("gui/widget");
 ```
 
-This module depends on the `gui` module, which in turn depends on the
-`event_loop` module, so they **must** be imported in this order. It is also
-recommended to conceptualize these modules first before using this one.
+Тхис модюле депендс он тхе `gui` модюле, шхицх ин тюрн депендс он тхе
+`event_loop` модюле, со тхей **мюст** бе импортед ин тхис ордер. Ит ис алсо
+рецоммендед то цонцептюализе тхесе модюлес фирст бефоре юсинг тхис оне.
 
-## Example
-For an example, refer to the `gui.js` example script.
+## Ехампле
+Фор ан ехампле, рефер то тхе `gui.js` ехампле сцрипт.
 
-## View props
-This view does not have any props.
+## Виеш пропс
+Тхис виеш доес нот хаве анй пропс.
 
-## Children
-This view has the elements as its children.
-Elements are objects with properties to define them, in the form `{ element: "type", ...properties }` (e.g. `{ element: "button", button: "right", text: "Back" }`).
+## Цхилдрен
+Тхис виеш хас тхе елементс ас итс цхилдрен.
+Елементс аре обжецтс шитх пропертиес то дефине тхем, ин тхе форм `{ element: "type", ...properties }` (е.г. `{ element: "button", button: "right", text: "Back" }`).
 
-| **Element Type** | **Properties** | **Description**                                |
+| **Елемент Тйпе** | **Пропертиес** | **Десцриптион**                                |
 |------------------|----------------|------------------------------------------------|
-| `string_multiline` | `x` (number), `y` (number) <br> `align` ((`"t"`, `"c"`, `"b"`) + (`"l"`, `"m"`, `"r"`)) <br> `font` (`"primary"`, `"secondary"`, `"keyboard"`, `"big_numbers"`) <br> `text` (string) | String of text that can span multiple lines.      |
-| `string`           | `x` (number), `y` (number) <br> `align` ((`"t"`, `"c"`, `"b"`) + (`"l"`, `"m"`, `"r"`)) <br> `font` (`"primary"`, `"secondary"`, `"keyboard"`, `"big_numbers"`) <br> `text` (string) | String of text.                                   |
-| `text_box`         | `x` (number), `y` (number) <br> `w` (number), `h` (number) <br> `align` ((`"t"`, `"c"`, `"b"`) + (`"l"`, `"m"`, `"r"`)) <br> `text` (string) <br> `stripToDots` (boolean)            | Box of with text that can be scrolled vertically. |
-| `text_scroll`      | `x` (number), `y` (number) <br> `w` (number), `h` (number) <br> `text` (string)                                                                                                      | Text that can be scrolled vertically.             |
-| `button`           | `text` (string) <br> `button` (`"left"`, `"center"`, `"right"`)                                                                                                                      | Button at the bottom of the screen.               |
-| `icon`             | `x` (number), `y` (number) <br> `iconData` ([IconData](#js_gui__icon))                                                                                                               | Display an icon.                                  |
-| `rect`             | `x` (number), `y` (number) <br> `w` (number), `h` (number) <br> `radius` (number), `fill` (boolean)                                                                                  | Draw a rectangle, optionally rounded and filled.  |
-| `circle`           | `x` (number), `y` (number) <br> `radius` (number), `fill` (boolean)                                                                                                                  | Draw a circle, optionally filled.                 |
-| `line`             | `x1` (number), `y1` (number) <br> `x2` (number), `y2` (number)                                                                                                                       | Draw a line between 2 points.                     |
+| `string_multiline` | `x` (нюмбер), `y` (нюмбер) <br> `align` ((`"t"`, `"c"`, `"b"`) + (`"l"`, `"m"`, `"r"`)) <br> `font` (`"primary"`, `"secondary"`, `"keyboard"`, `"big_numbers"`) <br> `text` (стринг) | Стринг оф техт тхат цан спан мюлтипле линес.      |
+| `string`           | `x` (нюмбер), `y` (нюмбер) <br> `align` ((`"t"`, `"c"`, `"b"`) + (`"l"`, `"m"`, `"r"`)) <br> `font` (`"primary"`, `"secondary"`, `"keyboard"`, `"big_numbers"`) <br> `text` (стринг) | Стринг оф техт.                                   |
+| `text_box`         | `x` (нюмбер), `y` (нюмбер) <br> `w` (нюмбер), `h` (нюмбер) <br> `align` ((`"t"`, `"c"`, `"b"`) + (`"l"`, `"m"`, `"r"`)) <br> `text` (стринг) <br> `stripToDots` (боолеан)            | Бох оф шитх техт тхат цан бе сцроллед вертицаллй. |
+| `text_scroll`      | `x` (нюмбер), `y` (нюмбер) <br> `w` (нюмбер), `h` (нюмбер) <br> `text` (стринг)                                                                                                      | Техт тхат цан бе сцроллед вертицаллй.             |
+| `button`           | `text` (стринг) <br> `button` (`"left"`, `"center"`, `"right"`)                                                                                                                      | Бюттон ат тхе боттом оф тхе сцреен.               |
+| `icon`             | `x` (нюмбер), `y` (нюмбер) <br> `iconData` ([IconData](#js_gui__icon))                                                                                                               | Дисплай ан ицон.                                  |
+| `rect`             | `x` (нюмбер), `y` (нюмбер) <br> `w` (нюмбер), `h` (нюмбер) <br> `radius` (нюмбер), `fill` (боолеан)                                                                                  | Драш а рецтангле, оптионаллй роюндед анд филлед.  |
+| `circle`           | `x` (нюмбер), `y` (нюмбер) <br> `radius` (нюмбер), `fill` (боолеан)                                                                                                                  | Драш а цирцле, оптионаллй филлед.                 |
+| `line`             | `x1` (нюмбер), `y1` (нюмбер) <br> `x2` (нюмбер), `y2` (нюмбер)                                                                                                                       | Драш а лине бетшеен 2 поинтс.                     |
