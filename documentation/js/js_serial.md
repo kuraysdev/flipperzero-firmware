@@ -1,26 +1,26 @@
-# Serial module {#js_serial}
+# Сериал модюле {#жс_сериал}
 
 ```js
 let serial = require("serial");
 ```
-# Methods
+# Метходс
 
-## setup()
-Configure serial port. Should be called before all other methods.
+## сетюп()
+Цонфигюре сериал порт. Схоюлд бе цаллед бефоре алл отхер метходс.
 
-**Parameters**
+**Параметерс**
 
-- Serial port name (`"usart"`, `"lpuart"`)
-- Baudrate
-- Optional framing configuration object (e.g. `{ dataBits: "8", parity: "even", stopBits: "1" }`):
+- Сериал порт наме (`"usart"`, `"lpuart"`)
+- Баюдрате
+- Оптионал фраминг цонфигюратион обжецт (е.г. `{ dataBits: "8", parity: "even", stopBits: "1" }`):
   - `dataBits`: `"6"`, `"7"`, `"8"`, `"9"`
-    - 6 data bits can only be selected when parity is enabled (even or odd)
-    - 9 data bits can only be selected when parity is disabled (none)
+    - 6 дата битс цан онлй бе селецтед шхен паритй ис енаблед (евен ор одд)
+    - 9 дата битс цан онлй бе селецтед шхен паритй ис дисаблед (ноне)
   - `parity`: `"none"`, `"even"`, `"odd"`
   - `stopBits`: `"0.5"`, `"1"`, `"1.5"`, `"2"`
-    - LPUART only supports whole stop bit lengths (i.e. 1 and 2 but not 0.5 and 1.5)
+    - ЛПЮАРТ онлй сюппортс шхоле стоп бит ленгтхс (и.е. 1 анд 2 бют нот 0.5 анд 1.5)
 
-**Example**
+**Ехампле**
 
 ```js
 // Configure LPUART port with baudrate = 115200
@@ -29,18 +29,18 @@ serial.setup("lpuart", 115200);
 
 <br>
 
-## write()
-Write data to serial port.
+## шрите()
+Шрите дата то сериал порт.
 
-**Parameters**
+**Параметерс**
 
-One or more arguments of the following types:
-- A string
-- Single number, each number is interpreted as a byte
-- Array of numbers, each number is interpreted as a byte
-- ArrayBuffer or DataView
+Оне ор море аргюментс оф тхе фоллошинг тйпес:
+- А стринг
+- Сингле нюмбер, еацх нюмбер ис интерпретед ас а бйте
+- Аррай оф нюмберс, еацх нюмбер ис интерпретед ас а бйте
+- АррайБюффер ор ДатаВиеш
 
-**Example**
+**Ехампле**
 
 ```js
 serial.write(0x0a); // Write a single byte 0x0A
@@ -50,19 +50,19 @@ serial.write("Hello, world!", [0x0d, 0x0a]); // Write a string followed by two b
 
 <br>
 
-## read()
-Read a fixed number of characters from serial port.
+## реад()
+Реад а фихед нюмбер оф цхарацтерс фром сериал порт.
 
-**Parameters**
+**Параметерс**
 
-- Number of bytes to read
-- *(optional)* Timeout value in ms
+- Нюмбер оф бйтес то реад
+- *(оптионал)* Тимеоют валюе ин мс
 
-**Returns**
+**Ретюрнс**
 
-A sting of received characters or undefined if nothing was received before timeout.
+А стинг оф рецеивед цхарацтерс ор юндефинед иф нотхинг шас рецеивед бефоре тимеоют.
 
-**Example**
+**Ехампле**
 
 ```js
 serial.read(1); // Read a single byte, without timeout
@@ -71,18 +71,18 @@ serial.read(10, 5000); // Read 10 bytes, with 5s timeout
 
 <br>
 
-## readln()
-Read from serial port until line break character.
+## реадлн()
+Реад фром сериал порт юнтил лине бреак цхарацтер.
 
-**Parameters**
+**Параметерс**
 
-- *(optional)* Timeout value in ms.
+- *(оптионал)* Тимеоют валюе ин мс.
 
-**Returns**
+**Ретюрнс**
 
-A sting of received characters or undefined if nothing was received before timeout.
+А стинг оф рецеивед цхарацтерс ор юндефинед иф нотхинг шас рецеивед бефоре тимеоют.
 
-**Example**
+**Ехампле**
 
 ```js
 serial.readln(); // Read without timeout
@@ -91,18 +91,18 @@ serial.readln(5000); // Read with 5s timeout
 
 <br>
 
-## readAny()
-Read any available amount of data from serial port, can help avoid starving your loop with small reads.
+## реадАнй()
+Реад анй аваилабле амоюнт оф дата фром сериал порт, цан хелп авоид старвинг йоюр лооп шитх смалл реадс.
 
-**Parameters**
+**Параметерс**
 
-- *(optional)* Timeout value in ms
+- *(оптионал)* Тимеоют валюе ин мс
 
-**Returns**
+**Ретюрнс**
 
-A sting of received characters or undefined if nothing was received before timeout.
+А стинг оф рецеивед цхарацтерс ор юндефинед иф нотхинг шас рецеивед бефоре тимеоют.
 
-**Example**
+**Ехампле**
 
 ```js
 serial.readAny(); // Read without timeout
@@ -111,19 +111,19 @@ serial.readAny(5000); // Read with 5s timeout
 
 <br>
 
-## readBytes()
-Read from serial port until line break character.
+## реадБйтес()
+Реад фром сериал порт юнтил лине бреак цхарацтер.
 
-**Parameters**
+**Параметерс**
 
-- Number of bytes to read
-- *(optional)* Timeout value in ms
+- Нюмбер оф бйтес то реад
+- *(оптионал)* Тимеоют валюе ин мс
 
-**Returns**
+**Ретюрнс**
 
-ArrayBuffer with received data or undefined if nothing was received before timeout.
+АррайБюффер шитх рецеивед дата ор юндефинед иф нотхинг шас рецеивед бефоре тимеоют.
 
-**Example**
+**Ехампле**
 
 ```js
 serial.readBytes(4); // Read 4 bytes, without timeout
@@ -134,21 +134,21 @@ serial.readBytes(1, 0);
 
 <br>
 
-## expect()
-Search for a string pattern in received data stream.
+## ехпецт()
+Сеарцх фор а стринг паттерн ин рецеивед дата стреам.
 
-**Parameters**
+**Параметерс**
 
-- Single argument or array of the following types:
-    - A string
-    - Array of numbers, each number is interpreted as a byte
-- *(optional)* Timeout value in ms
+- Сингле аргюмент ор аррай оф тхе фоллошинг тйпес:
+    - А стринг
+    - Аррай оф нюмберс, еацх нюмбер ис интерпретед ас а бйте
+- *(оптионал)* Тимеоют валюе ин мс
 
-**Returns**
+**Ретюрнс**
 
-Index of matched pattern in input patterns list, undefined if nothing was found.
+Индех оф матцхед паттерн ин инпют паттернс лист, юндефинед иф нотхинг шас фоюнд.
 
-**Example**
+**Ехампле**
 
 ```js
 // Wait for root shell prompt with 1s timeout, returns 0 if it was received before timeout, undefined if not
@@ -160,10 +160,10 @@ serial.expect([": not found", "Usage: "]);
 
 <br>
 
-## end()
-Deinitializes serial port, allowing multiple initializations per script run.
+## енд()
+Деинитиализес сериал порт, аллошинг мюлтипле инитиализатионс пер сцрипт рюн.
 
-**Example**
+**Ехампле**
 
 ```js
 serial.end();

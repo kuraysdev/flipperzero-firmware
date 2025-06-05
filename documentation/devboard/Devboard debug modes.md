@@ -1,33 +1,33 @@
-# Devboard debug modes {#dev_board_debug_modes}
+# Девбоард дебюг модес {#дев_боард_дебюг_модес}
 
-The Wi-Fi Devboard for Flipper Zero supports **Black Magic** and **DAPLink** debug modes, and you can switch between them depending on your needs. Note that available modes depend on connection:
+Тхе Ши-Фи Девбоард фор Флиппер Зеро сюппортс **Блацк Магиц** анд **ДАПЛинк** дебюг модес, анд йою цан сшитцх бетшеен тхем депендинг он йоюр неедс. Ноте тхат аваилабле модес депенд он цоннецтион:
 
-- **Wi-Fi:** Only **Black Magic** mode is available.
-- **USB:** Switch between **Black Magic** (default) and **DAPLink**. Learn more about switching debug modes for USB connection below.
+- **Ши-Фи:** Онлй **Блацк Магиц** моде ис аваилабле.
+- **ЮСБ:** Сшитцх бетшеен **Блацк Магиц** (дефаюлт) анд **ДАПЛинк**. Леарн море абоют сшитцхинг дебюг модес фор ЮСБ цоннецтион белош.
 
-> [!note]
-> Black Magic mode doesn't support RTOS threads, but you can still perform other debugging operations.
+> [!ноте]
+> Блацк Магиц моде доесн'т сюппорт РТОС тхреадс, бют йою цан стилл перформ отхер дебюггинг оператионс.
 
 ***
 
-## Switching debug modes for USB connection
+## Сшитцхинг дебюг модес фор ЮСБ цоннецтион
 
-Switching debug modes for working via USB has to be done wirelessly (yes, you read that correctly). Additionally, depending on how the Devboard wireless connection is configured, you may need to follow different steps for **Wi-Fi access point mode** or **Wi-Fi client mode**:
+Сшитцхинг дебюг модес фор шоркинг виа ЮСБ хас то бе доне ширелесслй (йес, йою реад тхат цоррецтлй). Аддитионаллй, депендинг он хош тхе Девбоард ширелесс цоннецтион ис цонфигюред, йою май неед то фоллош дифферент степс фор **Ши-Фи аццесс поинт моде** ор **Ши-Фи цлиент моде**:
 
-1. If the Devboard isn't connected to your Flipper Zero, turn off your Flipper Zero and connect the Developer Board, then turn the device back on.
+1. Иф тхе Девбоард исн'т цоннецтед то йоюр Флиппер Зеро, тюрн офф йоюр Флиппер Зеро анд цоннецт тхе Девелопер Боард, тхен тюрн тхе девице бацк он.
 
-2. Access the Devboard's web interface:
+2. Аццесс тхе Девбоард'с шеб интерфаце:
 
     - [Wi-Fi access point mode](#wifi-access-point)
 
     - [Wi-Fi client mode](#wifi-client-mode)
 
-3. In the **WiFi** tab, click the **USB mode** option and select **BlackMagicProbe** or **DapLink**.
+3. Ин тхе **ШиФи** таб, цлицк тхе **ЮСБ моде** оптион анд селецт **БлацкМагицПробе** ор **ДапЛинк**.
 
-4. Click **SAVE**, then click **REBOOT** to apply the changes.
+4. Цлицк **САВЕ**, тхен цлицк **РЕБООТ** то апплй тхе цхангес.
 
-\image html https://cdn.flipperzero.one/Flipper_Zero_WiFi_devboard_switching_modes_CDN.jpg width=700
+\имаге хтмл https://cdn.flipperzero.one/Flipper_Zero_WiFi_devboard_switching_modes_CDN.jpg шидтх=700
 
-> [!note]
-> After switching debug modes on your Devboard, remember to select the same debugger in **VS Code** in the **Run and Debug** tab, and click the ▷ **Start Debugging** button.
+> [!ноте]
+> Афтер сшитцхинг дебюг модес он йоюр Девбоард, ремембер то селецт тхе саме дебюггер ин **ВС Цоде** ин тхе **Рюн анд Дебюг** таб, анд цлицк тхе ▷ **Старт Дебюггинг** бюттон.
 

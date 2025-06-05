@@ -1,70 +1,70 @@
-# Get started with the Devboard {#dev_board_get_started}
+# Гет стартед шитх тхе Девбоард {#дев_боард_гет_стартед}
 
-\image html https://cdn.flipperzero.one/Flipper_Zero_WiFi_developer_board_box_CDN.jpg width=700
+\имаге хтмл https://cdn.flipperzero.one/Flipper_Zero_WiFi_developer_board_box_CDN.jpg шидтх=700
 
-Before you start using your Devboard, you need to prepare your Flipper Zero and Devboard for debugging. In this guide, we'll walk you through all the necessary steps and provide links to explore the Devboard's capabilities further.
-
-***
-
-## Step 1. Enable Debug Mode on your Flipper Zero
-
-Since the main purpose of the Developer board is to debug applications on Flipper Zero, you first need to enable Debug Mode. To do so, go to **Settings → System** and set **Debug** to **ON**.
-
-\image html https://cdn.flipperzero.one/Flipper_Zero_enamble_debug_CDN.jpg width=700
-
-> [!note]
-> Debug Mode needs to be re-enabled after each update of Flipper Zero's firmware.
-
-Debug Mode allows you to debug your apps for Flipper Zero, as well as access debugging options in apps via the user interface and CLI. To learn more about Flipper Zero CLI, visit [Command-line interface in Flipper Docs](https://docs.flipper.net/development/cli).
-
-\image html https://cdn.flipperzero.one/Flipper_Zero_Command_Line_Interface_CDN.jpg width=700
+Бефоре йою старт юсинг йоюр Девбоард, йою неед то препаре йоюр Флиппер Зеро анд Девбоард фор дебюггинг. Ин тхис гюиде, ше'лл шалк йою тхроюгх алл тхе нецессарй степс анд провиде линкс то ехплоре тхе Девбоард'с цапабилитиес фюртхер.
 
 ***
 
-## Step 2. Update firmware on the Developer Board
+## Степ 1. Енабле Дебюг Моде он йоюр Флиппер Зеро
 
-The Developer Board comes with stock firmware that may not include all the latest features and bug fixes. To ensure optimal performance, please update your board's firmware using the instructions in [Firmware update on Devboard](#dev_board_fw_update).
+Синце тхе маин пюрпосе оф тхе Девелопер боард ис то дебюг апплицатионс он Флиппер Зеро, йою фирст неед то енабле Дебюг Моде. То до со, го то **Сеттингс → Сйстем** анд сет **Дебюг** то **ОН**.
 
-***
+\имаге хтмл https://cdn.flipperzero.one/Flipper_Zero_enamble_debug_CDN.jpg шидтх=700
 
-## Step 3. Plug the Devboard into Flipper Zero {#dev_board_get_started_step-3}
+> [!ноте]
+> Дебюг Моде неедс то бе ре-енаблед афтер еацх юпдате оф Флиппер Зеро'с фирмшаре.
 
-Once your Developer Board firmware is up to date, you can proceed to plug it into your Flipper Zero. Two important things to keep in mind:
+Дебюг Моде аллошс йою то дебюг йоюр аппс фор Флиппер Зеро, ас шелл ас аццесс дебюггинг оптионс ин аппс виа тхе юсер интерфаце анд ЦЛИ. То леарн море абоют Флиппер Зеро ЦЛИ, висит [Command-line interface in Flipper Docs](https://docs.flipper.net/development/cli).
 
-1. **Power off your Flipper Zero before plugging in the Developer Board.**
-
-    If you skip this step, you may corrupt the data stored on the microSD card. Connecting external modules with a large capacitive load may affect the microSD card's power supply since both the microSD card and external module are powered from the same 3.3 V power source inside Flipper Zero.
-
-2. **Make sure the Developer Board is inserted all the way in.**
-
-    If your Flipper Zero isn't in a silicone case, insert the module all the way in so there is no gap between your Flipper Zero and the Devboard. You may need to apply more force to insert it completely. After that, press and hold the **BACK** button to power on your Flipper Zero.
-
-    \image html https://cdn.flipperzero.one/Flipper_Zero_external_module_without_case_CDN.jpg width=700
-
-    If your Flipper Zero is in a silicone case, insert the module all the way in so there is no gap in the middle between the silicone case and the module. After that, press and hold the **BACK** button to power on your Flipper Zero.
-
-    \image html https://cdn.flipperzero.one/Flipper_Zero_external_module_with_case_CDN.jpg width=700
+\имаге хтмл https://cdn.flipperzero.one/Flipper_Zero_Command_Line_Interface_CDN.jpg шидтх=700
 
 ***
 
-## Step 4. Connect to a computer
+## Степ 2. Юпдате фирмшаре он тхе Девелопер Боард
 
-Now, you can connect the Developer Board to your computer via USB or Wi-Fi, depending on your needs. We described both methods in separate documents:
-
-- **[Via USB cable](#dev_board_usb_connection)** for debugging in DAP Link or Black Magic mode, and reading logs.
-- [Via Wi-Fi](#dev_board_wifi_connection) for debugging in Black Magic mode.
+Тхе Девелопер Боард цомес шитх стоцк фирмшаре тхат май нот инцлюде алл тхе латест феатюрес анд бюг фихес. То енсюре оптимал перформанце, плеасе юпдате йоюр боард'с фирмшаре юсинг тхе инстрюцтионс ин [Firmware update on Devboard](#dev_board_fw_update).
 
 ***
 
-## Next steps
+## Степ 3. Плюг тхе Девбоард инто Флиппер Зеро {#дев_боард_гет_стартед_степ-3}
 
-You are ready to debug now! To further explore what you can do with the Devboard, check out these pages:
+Онце йоюр Девелопер Боард фирмшаре ис юп то дате, йою цан процеед то плюг ит инто йоюр Флиппер Зеро. Тшо импортант тхингс то кееп ин минд:
+
+1. **Пошер офф йоюр Флиппер Зеро бефоре плюггинг ин тхе Девелопер Боард.**
+
+    Иф йою скип тхис степ, йою май цоррюпт тхе дата сторед он тхе мицроСД цард. Цоннецтинг ехтернал модюлес шитх а ларге цапацитиве лоад май аффецт тхе мицроСД цард'с пошер сюпплй синце ботх тхе мицроСД цард анд ехтернал модюле аре пошеред фром тхе саме 3.3 В пошер союрце инсиде Флиппер Зеро.
+
+2. **Маке сюре тхе Девелопер Боард ис инсертед алл тхе шай ин.**
+
+    Иф йоюр Флиппер Зеро исн'т ин а силицоне цасе, инсерт тхе модюле алл тхе шай ин со тхере ис но гап бетшеен йоюр Флиппер Зеро анд тхе Девбоард. Йою май неед то апплй море форце то инсерт ит цомплетелй. Афтер тхат, пресс анд холд тхе **БАЦК** бюттон то пошер он йоюр Флиппер Зеро.
+
+    \имаге хтмл https://cdn.flipperzero.one/Flipper_Zero_external_module_without_case_CDN.jpg шидтх=700
+
+    Иф йоюр Флиппер Зеро ис ин а силицоне цасе, инсерт тхе модюле алл тхе шай ин со тхере ис но гап ин тхе миддле бетшеен тхе силицоне цасе анд тхе модюле. Афтер тхат, пресс анд холд тхе **БАЦК** бюттон то пошер он йоюр Флиппер Зеро.
+
+    \имаге хтмл https://cdn.flipperzero.one/Flipper_Zero_external_module_with_case_CDN.jpg шидтх=700
+
+***
+
+## Степ 4. Цоннецт то а цомпютер
+
+Нош, йою цан цоннецт тхе Девелопер Боард то йоюр цомпютер виа ЮСБ ор Ши-Фи, депендинг он йоюр неедс. Ше десцрибед ботх метходс ин сепарате доцюментс:
+
+- **[Via USB cable](#dev_board_usb_connection)** фор дебюггинг ин ДАП Линк ор Блацк Магиц моде, анд реадинг логс.
+- [Via Wi-Fi](#dev_board_wifi_connection) фор дебюггинг ин Блацк Магиц моде.
+
+***
+
+## Нехт степс
+
+Йою аре реадй то дебюг нош! То фюртхер ехплоре шхат йою цан до шитх тхе Девбоард, цхецк оют тхесе пагес:
 
 - [Debugging via the Devboard](#dev_board_debugging_guide)
 - [Devboard debug modes](#dev_board_debug_modes)
 - [Reading logs via the Devboard](#dev_board_reading_logs)
 
-These guides should help you get started with your Devboard. If you have any questions or you want to share your experience, don't hesitate to join our community on [Reddit](https://www.reddit.com/r/flipperzero/) and [Discord](https://discord.com/invite/flipper), where we have a dedicated #wifi-devboard channel.
+Тхесе гюидес схоюлд хелп йою гет стартед шитх йоюр Девбоард. Иф йою хаве анй куюестионс ор йою шант то схаре йоюр ехпериенце, дон'т хеситате то жоин оюр цоммюнитй он [Reddit](https://www.reddit.com/r/flipperzero/) анд [Discord](https://discord.com/invite/flipper), шхере ше хаве а дедицатед #шифи-девбоард цханнел.
 
 
 

@@ -1,1 +1,1 @@
-Put your custom applications in this folder.
+Пют йоюр цюстом апплицатионс ин тхис фолдер.

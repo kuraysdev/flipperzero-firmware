@@ -1,138 +1,138 @@
-# Flipper Zero OTA update process {#ota_updates}
+# Флиппер Зеро ОТА юпдате процесс {#ота_юпдатес}
 
-## Executing code from RAM
+## Ехецютинг цоде фром РАМ
 
-In Flipper firmware, we have a special boot mode that loads a specially crafted system image into RAM and transfers control to it. The system image executing in RAM has full write access to Flipper's entire flash memory — something that's not possible when running main code from the same flash.
+Ин Флиппер фирмшаре, ше хаве а специал боот моде тхат лоадс а специаллй црафтед сйстем имаге инто РАМ анд трансферс цонтрол то ит. Тхе сйстем имаге ехецютинг ин РАМ хас фюлл шрите аццесс то Флиппер'с ентире фласх меморй — сометхинг тхат'с нот поссибле шхен рюннинг маин цоде фром тхе саме фласх.
 
-We leverage that boot mode to perform OTA firmware updates, including operations on a radio stack running on the second MCU core.
+Ше левераге тхат боот моде то перформ ОТА фирмшаре юпдатес, инцлюдинг оператионс он а радио стацк рюннинг он тхе сецонд МЦЮ цоре.
 
-## How does Flipper OTA work?
+## Хош доес Флиппер ОТА шорк?
 
-Installation of OTA updates goes through 3 stages:
+Инсталлатион оф ОТА юпдатес гоес тхроюгх 3 стагес:
 
-### 1. Backing up internal storage (/int)
+### 1. Бацкинг юп интернал стораге (/инт)
 
-It is a special partition of Flipper's flash memory, taking up all available space not used by the firmware code. Newer versions of firmware may be of different size, and simply installing them would cause flash repartitioning and data loss.
+Ит ис а специал партитион оф Флиппер'с фласх меморй, такинг юп алл аваилабле спаце нот юсед бй тхе фирмшаре цоде. Нешер версионс оф фирмшаре май бе оф дифферент сизе, анд симплй инсталлинг тхем шоюлд цаюсе фласх репартитионинг анд дата лосс.
 
-So, before taking any action on the firmware, we back up the current configuration from `/int` into a plain tar archive on the SD card.
+Со, бефоре такинг анй ацтион он тхе фирмшаре, ше бацк юп тхе цюррент цонфигюратион фром `/int` инто а плаин тар арцхиве он тхе СД цард.
 
-### 2. Performing device update
+### 2. Перформинг девице юпдате
 
-The main firmware loads an updater image — a customized build of the main Flipper firmware — into RAM and runs it. Updater performs operations on system flash as described by an Update manifest file.
+Тхе маин фирмшаре лоадс ан юпдатер имаге — а цюстомизед бюилд оф тхе маин Флиппер фирмшаре — инто РАМ анд рюнс ит. Юпдатер перформс оператионс он сйстем фласх ас десцрибед бй ан Юпдате манифест филе.
 
-First, if there's a Radio stack image bundled with the update, updater compares its version with the currently installed one. If they don't match, updater performs stack deinstallation followed by writing and installing a new one. The installation itself is performed by proprietary software FUS running on Core2, and leads to a series of system restarts.
+Фирст, иф тхере'с а Радио стацк имаге бюндлед шитх тхе юпдате, юпдатер цомпарес итс версион шитх тхе цюррентлй инсталлед оне. Иф тхей дон'т матцх, юпдатер перформс стацк деинсталлатион фоллошед бй шритинг анд инсталлинг а неш оне. Тхе инсталлатион итселф ис перформед бй проприетарй софтшаре ФЮС рюннинг он Цоре2, анд леадс то а сериес оф сйстем рестартс.
 
-Then, updater validates and corrects Option Bytes — a special memory region containing low-level configuration for Flipper's MCU.
+Тхен, юпдатер валидатес анд цоррецтс Оптион Бйтес — а специал меморй регион цонтаининг лош-левел цонфигюратион фор Флиппер'с МЦЮ.
 
-After that, updater loads a `.dfu` file with firmware to be flashed, checks its integrity using CRC32, writes it to system flash and validates written data.
+Афтер тхат, юпдатер лоадс а `.dfu` филе шитх фирмшаре то бе фласхед, цхецкс итс интегритй юсинг ЦРЦ32, шритес ит то сйстем фласх анд валидатес шриттен дата.
 
-### 3. Restoring internal storage and updating resources
+### 3. Ресторинг интернал стораге анд юпдатинг ресоюрцес
 
-After performing operations on flash memory, the system restarts into newly flashed firmware. Then it performs restoration of previously backed up `/int` contents.
+Афтер перформинг оператионс он фласх меморй, тхе сйстем рестартс инто нешлй фласхед фирмшаре. Тхен ит перформс ресторатион оф превиоюслй бацкед юп `/int` цонтентс.
 
-If the update package contains an additional resources archive, it is extracted onto the SD card.
+Иф тхе юпдате пацкаге цонтаинс ан аддитионал ресоюрцес арцхиве, ит ис ехтрацтед онто тхе СД цард.
 
-## Update manifest
+## Юпдате манифест
 
-An update package comes with a manifest that contains a description of its contents. The manifest is in Flipper File Format — a simple text file, comprised of key-value pairs.
+Ан юпдате пацкаге цомес шитх а манифест тхат цонтаинс а десцриптион оф итс цонтентс. Тхе манифест ис ин Флиппер Филе Формат — а симпле техт филе, цомприсед оф кей-валюе паирс.
 
-### Mandatory fields
+### Мандаторй фиелдс
 
-An update manifest must contain the following keys in the given order:
+Ан юпдате манифест мюст цонтаин тхе фоллошинг кейс ин тхе гивен ордер:
 
-- **Filetype**: a constant string, "Flipper firmware upgrade configuration".
+- **Филетйпе**: а цонстант стринг, "Флиппер фирмшаре юпграде цонфигюратион".
 
-- **Version**: manifest version. The current value is 2.
+- **Версион**: манифест версион. Тхе цюррент валюе ис 2.
 
-- **Info**: arbitrary string, describing package contents.
+- **Инфо**: арбитрарй стринг, десцрибинг пацкаге цонтентс.
 
-- **Target**: hardware revision for which the package is built.
+- **Таргет**: хардшаре ревисион фор шхицх тхе пацкаге ис бюилт.
 
-- **Loader**: file name of stage 2 loader that is executed from RAM.
+- **Лоадер**: филе наме оф стаге 2 лоадер тхат ис ехецютед фром РАМ.
 
-- **Loader CRC**: CRC32 of loader file. Note that it is represented in little-endian hex.
+- **Лоадер ЦРЦ**: ЦРЦ32 оф лоадер филе. Ноте тхат ит ис репресентед ин литтле-ендиан хех.
 
-### Optional fields
+### Оптионал фиелдс
 
-Other fields may have empty values. In this case, updater skips all operations related to these values.
+Отхер фиелдс май хаве емптй валюес. Ин тхис цасе, юпдатер скипс алл оператионс релатед то тхесе валюес.
 
-- **Radio**: file name of radio stack image, provided by STM.
+- **Радио**: филе наме оф радио стацк имаге, провидед бй СТМ.
 
-- **Radio address**: address to install the radio stack at. It is specified in Release Notes by STM.
+- **Радио аддресс**: аддресс то инсталл тхе радио стацк ат. Ит ис специфиед ин Релеасе Нотес бй СТМ.
 
-- **Radio version**: radio major, minor and sub versions followed by branch, release and stack type packed into 6 hex-encoded bytes.
+- **Радио версион**: радио мажор, минор анд сюб версионс фоллошед бй бранцх, релеасе анд стацк тйпе пацкед инто 6 хех-енцодед бйтес.
 
-- **Radio CRC**: CRC32 of radio image.
+- **Радио ЦРЦ**: ЦРЦ32 оф радио имаге.
 
-- **Resources**: file name of TAR archive with resources to be extracted onto the SD card.
+- **Ресоюрцес**: филе наме оф ТАР арцхиве шитх ресоюрцес то бе ехтрацтед онто тхе СД цард.
 
-- **OB reference**, **OB mask**, **OB write mask**: reference values for validating and correcting option bytes.
+- **ОБ референце**, **ОБ маск**, **ОБ шрите маск**: референце валюес фор валидатинг анд цоррецтинг оптион бйтес.
 
-## OTA update error codes
+## ОТА юпдате еррор цодес
 
-We designed the OTA update process to be as fail-safe as possible. We don't start any risky operations before validating all related pieces of data to ensure we don't leave the device in a partially updated, or bricked, state.
+Ше десигнед тхе ОТА юпдате процесс то бе ас фаил-сафе ас поссибле. Ше дон'т старт анй рискй оператионс бефоре валидатинг алл релатед пиецес оф дата то енсюре ше дон'т леаве тхе девице ин а партиаллй юпдатед, ор брицкед, стате.
 
-Even if something goes wrong, updater allows you to retry failed operations and reports its state with an error code. These error codes have an `[XX-YY]` format, where `XX` encodes the failed operation, and `YY` contains extra details on its progress where the error occurred.
+Евен иф сометхинг гоес шронг, юпдатер аллошс йою то ретрй фаилед оператионс анд репортс итс стате шитх ан еррор цоде. Тхесе еррор цодес хаве ан `[XX-YY]` формат, шхере `XX` енцодес тхе фаилед оператион, анд `YY` цонтаинс ехтра детаилс он итс прогресс шхере тхе еррор оццюрред.
 
-|    Stage description    |   Code | Progress   | Description                                |
+|    Стаге десцриптион    |   Цоде | Прогресс   | Десцриптион                                |
 | :---------------------: | -----: | ---------- | ------------------------------------------ |
-| Loading update manifest |  **1** | **13**     | Updater reported hardware version mismatch |
-|                         |        | **20**     | Failed to get saved manifest path          |
-|                         |        | **30**     | Failed to load manifest                    |
-|                         |        | **40**     | Unsupported update package version         |
-|                         |        | **50**     | Package has mismatching HW target          |
-|                         |        | **60**     | Missing DFU file                           |
-|                         |        | **80**     | Missing radio firmware file                |
-| Backing up configuration|  **2** | **0-100**  | FS read/write error                        |
-|    Checking radio FW    |  **3** | **0-99**   | Error reading radio firmware file          |
-|                         |        | **100**    | CRC mismatch                               |
-|  Uninstalling radio FW  |  **4** | **0**      | SHCI Delete command error                  |
-|                         |        | **80**     | Error awaiting command status              |
-|    Writing radio FW     |  **5** | **0-100**  | Block read/write error                     |
-|   Installing radio FW   |  **6** | **10**     | SHCI Install command error                 |
-|                         |        | **80**     | Error awaiting command status              |
-|      Core2 is busy      |  **7** | **10**     | Couldn't start C2                          |
-|                         |        | **20**     | Failed to switch C2 to FUS mode            |
-|                         |        | **30**     | Error in FUS operation                     |
-|                         |        | **50**     | Failed to switch C2 to stack mode          |
-|  Validating opt. bytes  |  **8** | **yy**     | Option byte code                           |
-|    Checking DFU file    |  **9** | **0**      | Error opening DFU file                     |
-|                         |        | **1-98**   | Error reading DFU file                     |
-|                         |        | **99-100** | Corrupted DFU file                         |
-|      Writing flash      | **10** | **0-100**  | Block read/write error                     |
-|    Validating flash     | **11** | **0-100**  | Block read/write error                     |
-| Restoring configuration | **12** | **0-100**  | FS read/write error                        |
-|   Updating resources    | **13-15** | **0-100**  | SD card read/write error                   |
+| Лоадинг юпдате манифест |  **1** | **13**     | Юпдатер репортед хардшаре версион мисматцх |
+|                         |        | **20**     | Фаилед то гет савед манифест патх          |
+|                         |        | **30**     | Фаилед то лоад манифест                    |
+|                         |        | **40**     | Юнсюппортед юпдате пацкаге версион         |
+|                         |        | **50**     | Пацкаге хас мисматцхинг ХШ таргет          |
+|                         |        | **60**     | Миссинг ДФЮ филе                           |
+|                         |        | **80**     | Миссинг радио фирмшаре филе                |
+| Бацкинг юп цонфигюратион|  **2** | **0-100**  | ФС реад/шрите еррор                        |
+|    Цхецкинг радио ФШ    |  **3** | **0-99**   | Еррор реадинг радио фирмшаре филе          |
+|                         |        | **100**    | ЦРЦ мисматцх                               |
+|  Юнинсталлинг радио ФШ  |  **4** | **0**      | СХЦИ Делете цомманд еррор                  |
+|                         |        | **80**     | Еррор ашаитинг цомманд статюс              |
+|    Шритинг радио ФШ     |  **5** | **0-100**  | Блоцк реад/шрите еррор                     |
+|   Инсталлинг радио ФШ   |  **6** | **10**     | СХЦИ Инсталл цомманд еррор                 |
+|                         |        | **80**     | Еррор ашаитинг цомманд статюс              |
+|      Цоре2 ис бюсй      |  **7** | **10**     | Цоюлдн'т старт Ц2                          |
+|                         |        | **20**     | Фаилед то сшитцх Ц2 то ФЮС моде            |
+|                         |        | **30**     | Еррор ин ФЮС оператион                     |
+|                         |        | **50**     | Фаилед то сшитцх Ц2 то стацк моде          |
+|  Валидатинг опт. бйтес  |  **8** | **йй**     | Оптион бйте цоде                           |
+|    Цхецкинг ДФЮ филе    |  **9** | **0**      | Еррор опенинг ДФЮ филе                     |
+|                         |        | **1-98**   | Еррор реадинг ДФЮ филе                     |
+|                         |        | **99-100** | Цоррюптед ДФЮ филе                         |
+|      Шритинг фласх      | **10** | **0-100**  | Блоцк реад/шрите еррор                     |
+|    Валидатинг фласх     | **11** | **0-100**  | Блоцк реад/шрите еррор                     |
+| Ресторинг цонфигюратион | **12** | **0-100**  | ФС реад/шрите еррор                        |
+|   Юпдатинг ресоюрцес    | **13-15** | **0-100**  | СД цард реад/шрите еррор                   |
 
-## Building update packages
+## Бюилдинг юпдате пацкагес
 
-### Full package
+### Фюлл пацкаге
 
-To build a full update package, including firmware, radio stack and resources for the SD card, run:
+То бюилд а фюлл юпдате пацкаге, инцлюдинг фирмшаре, радио стацк анд ресоюрцес фор тхе СД цард, рюн:
 
 `./fbt COMPACT=1 DEBUG=0 updater_package`
 
-### Minimal package
+### Минимал пацкаге
 
-To build a minimal update package, including only firmware, run:
+То бюилд а минимал юпдате пацкаге, инцлюдинг онлй фирмшаре, рюн:
 
 `./fbt COMPACT=1 DEBUG=0 updater_minpackage`
 
-### Customizing update bundles
+### Цюстомизинг юпдате бюндлес
 
-Default update packages are built with Bluetooth Light stack.
-You can pick a different stack if your firmware version supports it, and build a bundle with it by passing the stack type and binary name to `fbt`:
+Дефаюлт юпдате пацкагес аре бюилт шитх Блюетоотх Лигхт стацк.
+Йою цан пицк а дифферент стацк иф йоюр фирмшаре версион сюппортс ит, анд бюилд а бюндле шитх ит бй пассинг тхе стацк тйпе анд бинарй наме то `fbt`:
 
 `./fbt updater_package COMPACT=1 DEBUG=0 COPRO_OB_DATA=scripts/ob_custradio.data COPRO_STACK_BIN=stm32wb5x_BLE_Stack_full_fw.bin COPRO_STACK_TYPE=ble_full`
 
-Note that `COPRO_OB_DATA` must point to a valid file in the `scripts` folder containing reference Option Byte data matching your radio stack type.
+Ноте тхат `COPRO_OB_DATA` мюст поинт то а валид филе ин тхе `scripts` фолдер цонтаининг референце Оптион Бйте дата матцхинг йоюр радио стацк тйпе.
 
-In certain cases, you might have to confirm your intentions by adding `COPRO_DISCLAIMER=...` to the build command line.
+Ин цертаин цасес, йою мигхт хаве то цонфирм йоюр интентионс бй аддинг `COPRO_DISCLAIMER=...` то тхе бюилд цомманд лине.
 
-### Building partial update packages
+### Бюилдинг партиал юпдате пацкагес
 
-You can customize package contents by calling `scripts/update.py` directly.
-For example, to build a package only for installing BLE FULL stack:
+Йою цан цюстомизе пацкаге цонтентс бй цаллинг `scripts/update.py` дирецтлй.
+Фор ехампле, то бюилд а пацкаге онлй фор инсталлинг БЛЕ ФЮЛЛ стацк:
 
 ```shell
 scripts/update.py generate \
@@ -142,4 +142,4 @@ scripts/update.py generate \
   --radiotype ble_full
 ```
 
-For the full list of options, check `scripts/update.py generate` help.
+Фор тхе фюлл лист оф оптионс, цхецк `scripts/update.py generate` хелп.

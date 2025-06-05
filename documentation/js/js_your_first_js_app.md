@@ -1,83 +1,83 @@
-# Your first JavaScript app {#js_your_first_js_app}
+# Йоюр фирст ЖаваСцрипт апп {#жс_йоюр_фирст_жс_апп}
 
-In this guide, we'll create a simple script that outputs ordinal numbers with a delay and learn how to run it on Flipper Zero in different ways. All you need is your Flipper Zero, a PC, and a USB cable.
+Ин тхис гюиде, ше'лл цреате а симпле сцрипт тхат оютпютс ординал нюмберс шитх а делай анд леарн хош то рюн ит он Флиппер Зеро ин дифферент шайс. Алл йою неед ис йоюр Флиппер Зеро, а ПЦ, анд а ЮСБ цабле.
 
-## Step 1. Create the script file
+## Степ 1. Цреате тхе сцрипт филе
 
-Create a new text file `first_app.js`. Paste the code below into it and save the file:
+Цреате а неш техт филе `first_app.js`. Пасте тхе цоде белош инто ит анд саве тхе филе:
 
-\code{.js}
-print("start");
-delay(1000);
-print("1");
-delay(500);
-print("2");
-delay(500);
-print("3");
-delay(500);
-print("end");
-\endcode
+\цоде{.жс}
+принт("старт");
+делай(1000);
+принт("1");
+делай(500);
+принт("2");
+делай(500);
+принт("3");
+делай(500);
+принт("енд");
+\ендцоде
 
-What the code does:
-* Outputs the text **start**, waits 1 second
-* Outputs the numbers **1**, **2** and **3**, with a 0.5-second pause after each number
-* Outputs the text **end**
+Шхат тхе цоде доес:
+* Оютпютс тхе техт **старт**, шаитс 1 сецонд
+* Оютпютс тхе нюмберс **1**, **2** анд **3**, шитх а 0.5-сецонд паюсе афтер еацх нюмбер
+* Оютпютс тхе техт **енд**
 
-The `print()` function is used to output text. The string to be output is in the brackets. This is a built-in function, so you don't need to include additional JS modules. You can use this function anywhere in your application.
+Тхе `print()` фюнцтион ис юсед то оютпют техт. Тхе стринг то бе оютпют ис ин тхе брацкетс. Тхис ис а бюилт-ин фюнцтион, со йою дон'т неед то инцлюде аддитионал ЖС модюлес. Йою цан юсе тхис фюнцтион анйшхере ин йоюр апплицатион.
 
-Another built-in function, `delay()`, implements delay. The delay time in milliseconds is given in the brackets. Since 1000 milliseconds equals 1 second, a 1-second delay is written as 1000, and a 0.5-second delay as 500.
+Анотхер бюилт-ин фюнцтион, `delay()`, имплементс делай. Тхе делай тиме ин миллисецондс ис гивен ин тхе брацкетс. Синце 1000 миллисецондс екуюалс 1 сецонд, а 1-сецонд делай ис шриттен ас 1000, анд а 0.5-сецонд делай ас 500.
 
-> [!note]
-> Find the list of built-in functions in [Built-in functions](#js_builtin).
+> [!ноте]
+> Финд тхе лист оф бюилт-ин фюнцтионс ин [Built-in functions](#js_builtin).
 
-## Step 2. Copy the file to Flipper Zero
+## Степ 2. Цопй тхе филе то Флиппер Зеро
 
-To copy the JavaScript file to Flipper Zero, follow these steps:
-1. Connect your Flipper Zero to your PC via USB.
-2. Open the **qFlipper** application.
-3. Go to the **File manager** tab and open the path `SD Card/apps/Scripts/`.
-4. Drag and drop the file into the qFlipper window.
+То цопй тхе ЖаваСцрипт филе то Флиппер Зеро, фоллош тхесе степс:
+1. Цоннецт йоюр Флиппер Зеро то йоюр ПЦ виа ЮСБ.
+2. Опен тхе **куФлиппер** апплицатион.
+3. Го то тхе **Филе манагер** таб анд опен тхе патх `SD Card/apps/Scripts/`.
+4. Драг анд дроп тхе филе инто тхе куФлиппер шиндош.
 
-> [!note]
-> To learn more about qFlipper, visit the [dedicated section in our user documentation](https://docs.flipper.net/qflipper).
+> [!ноте]
+> То леарн море абоют куФлиппер, висит тхе [dedicated section in our user documentation](https://docs.flipper.net/qflipper).
 
-Your script is now ready to run on Flipper Zero.
+Йоюр сцрипт ис нош реадй то рюн он Флиппер Зеро.
 
-## Step 3. Run your script
+## Степ 3. Рюн йоюр сцрипт
 
-You can launch your app in two ways:
+Йою цан лаюнцх йоюр апп ин тшо шайс:
 
-* From the Flipper Zero menu
-* Remotely from your PC using the CLI (command-line interface)
+* Фром тхе Флиппер Зеро меню
+* Ремотелй фром йоюр ПЦ юсинг тхе ЦЛИ (цомманд-лине интерфаце)
 
-Let's explore them both.
+Лет'с ехплоре тхем ботх.
 
-### How to run a script from Flipper Zero's menu
+### Хош то рюн а сцрипт фром Флиппер Зеро'с меню
 
-1. Go to **Apps → Scripts** in your Flipper Zero's menu. Here, you'll see a list of scripts located in the `SD Card/apps/Scripts/` folder.
-2. Select the script you want to run.
-3. Press the **OK** button to run the script.
+1. Го то **Аппс → Сцриптс** ин йоюр Флиппер Зеро'с меню. Хере, йою'лл сее а лист оф сцриптс лоцатед ин тхе `SD Card/apps/Scripts/` фолдер.
+2. Селецт тхе сцрипт йою шант то рюн.
+3. Пресс тхе **ОК** бюттон то рюн тхе сцрипт.
 
-\image html js_first_app_on_fz.jpg width=500
+\имаге хтмл жс_фирст_апп_он_фз.жпг шидтх=500
 
-The Flipper Zero screen will display the strings with the specified delay, as defined by the `print()` and `delay()` functions.
+Тхе Флиппер Зеро сцреен шилл дисплай тхе стрингс шитх тхе специфиед делай, ас дефинед бй тхе `print()` анд `delay()` фюнцтионс.
 
-### How to run script using CLI
+### Хош то рюн сцрипт юсинг ЦЛИ
 
-The command-line interface (CLI) is a text-based interface that lets you control your Flipper Zero from your computer, including running scripts. Running JavaScript apps via CLI is useful for debugging, as it lets you write and test code remotely, without switching between your PC and the device.
+Тхе цомманд-лине интерфаце (ЦЛИ) ис а техт-басед интерфаце тхат летс йою цонтрол йоюр Флиппер Зеро фром йоюр цомпютер, инцлюдинг рюннинг сцриптс. Рюннинг ЖаваСцрипт аппс виа ЦЛИ ис юсефюл фор дебюггинг, ас ит летс йою шрите анд тест цоде ремотелй, шитхоют сшитцхинг бетшеен йоюр ПЦ анд тхе девице.
 
-To run the script via CLI:
+То рюн тхе сцрипт виа ЦЛИ:
 
-1. Connect your Flipper Zero to your PC via USB.
-2. Access the CLI using one of the [recommended methods](https://docs.flipper.net/development/cli#HfXTy).
-3. Enter the `js path` command, replacing `path` with the path to the script file on your Flipper Zero:
+1. Цоннецт йоюр Флиппер Зеро то йоюр ПЦ виа ЮСБ.
+2. Аццесс тхе ЦЛИ юсинг оне оф тхе [recommended methods](https://docs.flipper.net/development/cli#HfXTy).
+3. Ентер тхе `js path` цомманд, реплацинг `path` шитх тхе патх то тхе сцрипт филе он йоюр Флиппер Зеро:
 
-\code{.sh}
-js /ext/apps/Scripts/first_app.js
-\endcode
+\цоде{.сх}
+жс /ехт/аппс/Сцриптс/фирст_апп.жс
+\ендцоде
 
-\image html js_first_app_on_cli.jpg width=700
+\имаге хтмл жс_фирст_апп_он_цли.жпг шидтх=700
 
-As you can see, unlike running JavaScript apps from the Flipper Zero UI, all output from the `print()` function is sent to the CLI, not the device screen.
+Ас йою цан сее, юнлике рюннинг ЖаваСцрипт аппс фром тхе Флиппер Зеро ЮИ, алл оютпют фром тхе `print()` фюнцтион ис сент то тхе ЦЛИ, нот тхе девице сцреен.
 
-**Next step:** [Developing apps using JavaScript SDK](#js_developing_apps_using_js_sdk)
+**Нехт степ:** [Developing apps using JavaScript SDK](#js_developing_apps_using_js_sdk)

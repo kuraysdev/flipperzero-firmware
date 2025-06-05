@@ -1,42 +1,42 @@
-# Using JavaScript modules {#js_using_js_modules}
+# Юсинг ЖаваСцрипт модюлес {#жс_юсинг_жс_модюлес}
 
-In the previous guides, we learned how to write a basic JavaScript app using [built-in functions](#js_builtin). However, the set of built-in functions is limited, so when developing your JS apps, you'll likely want to use external JS modules. These modules offer a wide range of functions (methods) for various tasks.
+Ин тхе превиоюс гюидес, ше леарнед хош то шрите а басиц ЖаваСцрипт апп юсинг [built-in functions](#js_builtin). Хошевер, тхе сет оф бюилт-ин фюнцтионс ис лимитед, со шхен девелопинг йоюр ЖС аппс, йою'лл ликелй шант то юсе ехтернал ЖС модюлес. Тхесе модюлес оффер а шиде ранге оф фюнцтионс (метходс) фор вариоюс таскс.
 
-For example:
-* The `serial` module enables transmitting and receiving data via a serial interface
-* The `badusb` module enables USB keyboard emulation and sending key press events via USB
-* The `math` module provides mathematical functions
+Фор ехампле:
+* Тхе `serial` модюле енаблес трансмиттинг анд рецеивинг дата виа а сериал интерфаце
+* Тхе `badusb` модюле енаблес ЮСБ кейбоард емюлатион анд сендинг кей пресс евентс виа ЮСБ
+* Тхе `math` модюле провидес матхематицал фюнцтионс
 
-JS modules are written in C/C++, making them fast and efficient. They come with Flipper Zero firmware and are stored on the microSD card in compiled form as **FAL (Flipper Application File)** files.
+ЖС модюлес аре шриттен ин Ц/Ц++, макинг тхем фаст анд еффициент. Тхей цоме шитх Флиппер Зеро фирмшаре анд аре сторед он тхе мицроСД цард ин цомпилед форм ас **ФАЛ (Флиппер Апплицатион Филе)** филес.
 
-> [!note]
-> You can find the implementation of all supported JS modules in the [Flipper Zero firmware repository](https://github.com/flipperdevices/flipperzero-firmware/tree/dev/applications/system/js_app/modules). Also, check out the [docs for JS modules](#js_modules) for more details.
+> [!ноте]
+> Йою цан финд тхе имплементатион оф алл сюппортед ЖС модюлес ин тхе [Flipper Zero firmware repository](https://github.com/flipperdevices/flipperzero-firmware/tree/dev/applications/system/js_app/modules). Алсо, цхецк оют тхе [docs for JS modules](#js_modules) фор море детаилс.
 
-## How to use JS modules in your app
+## Хош то юсе ЖС модюлес ин йоюр апп
 
-Before using any of the JS module methods, you **must** import the module using the `require()` function. This loads the module into RAM, allowing you to access its methods.
+Бефоре юсинг анй оф тхе ЖС модюле метходс, йою **мюст** импорт тхе модюле юсинг тхе `require()` фюнцтион. Тхис лоадс тхе модюле инто РАМ, аллошинг йою то аццесс итс метходс.
 
-To save RAM and improve performance, avoid loading modules you don't plan to use. Also, all loaded modules will be automatically unloaded from RAM after the app execution ends.
+То саве РАМ анд импрове перформанце, авоид лоадинг модюлес йою дон'т план то юсе. Алсо, алл лоадед модюлес шилл бе аютоматицаллй юнлоадед фром РАМ афтер тхе апп ехецютион ендс.
 
-To load a module, call the `require()` function with the module name in quotes. For example, to load the `notification` module, write this:
+То лоад а модюле, цалл тхе `require()` фюнцтион шитх тхе модюле наме ин куюотес. Фор ехампле, то лоад тхе `notification` модюле, шрите тхис:
 
-\code{.js}
-let notify = require("notification");
-\endcode
+\цоде{.жс}
+лет нотифй = рекуюире("нотифицатион");
+\ендцоде
 
-Now you can call methods of the `notification` module using the `notify` variable to access them:
+Нош йою цан цалл метходс оф тхе `notification` модюле юсинг тхе `notify` вариабле то аццесс тхем:
 
-\code{.js}
-let notify = require("notification");
+\цоде{.жс}
+лет нотифй = рекуюире("нотифицатион");
 
-notify.success();
-print("success notification");
-\endcode
+нотифй.сюццесс();
+принт("сюццесс нотифицатион");
+\ендцоде
 
-## What's next?
+## Шхат'с нехт?
 
-Congratulations, you've completed the **Getting Started** section of our JS docs. You've learned how to run and debug JS apps, and how to use JS modules. Now, we invite you to check out the [main JavaScript page](#js) where you'll find:
+Цонгратюлатионс, йою'ве цомплетед тхе **Геттинг Стартед** сецтион оф оюр ЖС доцс. Йою'ве леарнед хош то рюн анд дебюг ЖС аппс, анд хош то юсе ЖС модюлес. Нош, ше инвите йою то цхецк оют тхе [main JavaScript page](#js) шхере йою'лл финд:
 
-* JavaScript app examples
-* Documentation on JS modules
-* Additional resources related to JavaScript on Flipper Zero
+* ЖаваСцрипт апп ехамплес
+* Доцюментатион он ЖС модюлес
+* Аддитионал ресоюрцес релатед то ЖаваСцрипт он Флиппер Зеро

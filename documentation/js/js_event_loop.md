@@ -1,49 +1,49 @@
-# Event Loop module {#js_event_loop}
+# Евент Лооп модюле {#жс_евент_лооп}
 
-The event loop is central to event-based programming in many frameworks, and our
-JS subsystem is no exception. It is a good idea to familiarize yourself with the
-event loop first before using any of the advanced modules (e.g. GPIO and GUI).
+Тхе евент лооп ис централ то евент-басед программинг ин манй фрамешоркс, анд оюр
+ЖС сюбсйстем ис но ехцептион. Ит ис а гоод идеа то фамилиаризе йоюрселф шитх тхе
+евент лооп фирст бефоре юсинг анй оф тхе адванцед модюлес (е.г. ГПИО анд ГЮИ).
 
 ```js
 let eventLoop = require("event_loop");
 ```
 
-## Conceptualizing the event loop
-If you've ever written JavaScript code before, you've definitely seen callbacks. It's
-when a function takes another function (usually an anonymous one) as one of
-the arguments, which it will call later, e.g. when an event happens or when
-data becomes ready:
+## Цонцептюализинг тхе евент лооп
+Иф йою'ве евер шриттен ЖаваСцрипт цоде бефоре, йою'ве дефинителй сеен цаллбацкс. Ит'с
+шхен а фюнцтион такес анотхер фюнцтион (юсюаллй ан анонймоюс оне) ас оне оф
+тхе аргюментс, шхицх ит шилл цалл латер, е.г. шхен ан евент хаппенс ор шхен
+дата бецомес реадй:
 ```js
 setTimeout(function() { console.log("Hello, World!") }, 1000);
 ```
 
-Many JavaScript engines employ a queue from which the runtime fetches events as
-they occur, subsequently calling the corresponding callbacks. This is done in a
-long-running loop, hence the name "event loop". Here's the pseudocode for a
-typical event loop:
+Манй ЖаваСцрипт енгинес емплой а куюеюе фром шхицх тхе рюнтиме фетцхес евентс ас
+тхей оццюр, сюбсекуюентлй цаллинг тхе цорреспондинг цаллбацкс. Тхис ис доне ин а
+лонг-рюннинг лооп, хенце тхе наме "евент лооп". Хере'с тхе псеюдоцоде фор а
+тйпицал евент лооп:
 
-\code{.js}
-while(loop_is_running()) {
-    if(event_available_in_queue()) {
-        let event = fetch_event_from_queue();
-        let callback = get_callback_associated_with(event);
-        if(callback)
-            callback(get_extra_data_for(event));
-    } else {
-        // avoid wasting CPU time
-        sleep_until_any_event_becomes_available();
+\цоде{.жс}
+шхиле(лооп_ис_рюннинг()) {
+    иф(евент_аваилабле_ин_куюеюе()) {
+        лет евент = фетцх_евент_фром_куюеюе();
+        лет цаллбацк = гет_цаллбацк_ассоциатед_шитх(евент);
+        иф(цаллбацк)
+            цаллбацк(гет_ехтра_дата_фор(евент));
+    } елсе {
+        // авоид шастинг ЦПЮ тиме
+        слееп_юнтил_анй_евент_бецомес_аваилабле();
     }
 }
-\endcode
+\ендцоде
 
-Most JS runtimes enclose the event loop within themselves, so that most JS
-programmers don't even need to be aware of its existence. This is not the
-case with our JS subsystem.
+Мост ЖС рюнтимес енцлосе тхе евент лооп шитхин тхемселвес, со тхат мост ЖС
+программерс дон'т евен неед то бе ашаре оф итс ехистенце. Тхис ис нот тхе
+цасе шитх оюр ЖС сюбсйстем.
 
 ---
 
-# Example
-This is how one would write something similar to the `setTimeout` example above:
+# Ехампле
+Тхис ис хош оне шоюлд шрите сометхинг симилар то тхе `setTimeout` ехампле абове:
 ```js
 // import module
 let eventLoop = require("event_loop");
@@ -65,11 +65,11 @@ eventLoop.run();
 print("Stopped");
 ```
 
-I promised you that we'll come back to the extra argument after the callback
-function. Our JavaScript engine does not support closures (anonymous functions
-that access values outside of their arguments), so we ask `subscribe` to pass an
-outside value (namely, `eventLoop`) as an argument to the callback so that we
-can access it. We can modify this extra state:
+И промисед йою тхат ше'лл цоме бацк то тхе ехтра аргюмент афтер тхе цаллбацк
+фюнцтион. Оюр ЖаваСцрипт енгине доес нот сюппорт цлосюрес (анонймоюс фюнцтионс
+тхат аццесс валюес оютсиде оф тхеир аргюментс), со ше аск `subscribe` то пасс ан
+оютсиде валюе (намелй, `eventLoop`) ас ан аргюмент то тхе цаллбацк со тхат ше
+цан аццесс ит. Ше цан модифй тхис ехтра стате:
 ```js
 // this timer will fire every second
 let timer = eventLoop.timer("periodic", 1000);
@@ -82,79 +82,79 @@ eventLoop.subscribe(timer, function(_subscription, _item, counter, eventLoop) {
 }, 0, eventLoop);
 ```
 
-Because we have two extra arguments, if we return anything other than an array
-of length 2, the arguments will be kept as-is for the next call.
+Бецаюсе ше хаве тшо ехтра аргюментс, иф ше ретюрн анйтхинг отхер тхан ан аррай
+оф ленгтх 2, тхе аргюментс шилл бе кепт ас-ис фор тхе нехт цалл.
 
-The first two arguments that get passed to our callback are:
-  - The subscription manager that lets us `.cancel()` our subscription.
-  - The event item, used for events that have extra data. Timer events do not,
-    they just produce `undefined`.
+Тхе фирст тшо аргюментс тхат гет пассед то оюр цаллбацк аре:
+  - Тхе сюбсцриптион манагер тхат летс юс `.cancel()` оюр сюбсцриптион.
+  - Тхе евент итем, юсед фор евентс тхат хаве ехтра дата. Тимер евентс до нот,
+    тхей жюст продюце `undefined`.
 
 ---
 
-# API reference
-## run()
-Runs the event loop until it is stopped with `stop`.
+# АПИ референце
+## рюн()
+Рюнс тхе евент лооп юнтил ит ис стоппед шитх `stop`.
 
 <br>
 
-## subscribe()
-Subscribes a function to an event.
+## сюбсцрибе()
+Сюбсцрибес а фюнцтион то ан евент.
 
-**Parameters**
-  - `contract`: an event source identifier
-  - `callback`: the function to call when the event happens
-  - extra arguments: will be passed as extra arguments to the callback
+**Параметерс**
+  - `contract`: ан евент союрце идентифиер
+  - `callback`: тхе фюнцтион то цалл шхен тхе евент хаппенс
+  - ехтра аргюментс: шилл бе пассед ас ехтра аргюментс то тхе цаллбацк
 
-The callback will be called with at least two arguments, plus however many were
-passed as extra arguments to `subscribe`. The first argument is the subscription
-manager (the same one that `subscribe` itself returns). The second argument is
-the event item for events that produce extra data; the ones that don't set this
-to `undefined`. The callback may return an array of the same length as the count
-of the extra arguments to modify them for the next time that the event handler
-is called. Any other returns values are discarded.
+Тхе цаллбацк шилл бе цаллед шитх ат леаст тшо аргюментс, плюс хошевер манй шере
+пассед ас ехтра аргюментс то `subscribe`. Тхе фирст аргюмент ис тхе сюбсцриптион
+манагер (тхе саме оне тхат `subscribe` итселф ретюрнс). Тхе сецонд аргюмент ис
+тхе евент итем фор евентс тхат продюце ехтра дата; тхе онес тхат дон'т сет тхис
+то `undefined`. Тхе цаллбацк май ретюрн ан аррай оф тхе саме ленгтх ас тхе цоюнт
+оф тхе ехтра аргюментс то модифй тхем фор тхе нехт тиме тхат тхе евент хандлер
+ис цаллед. Анй отхер ретюрнс валюес аре дисцардед.
 
-**Returns**
+**Ретюрнс**
 
-A `SubscriptionManager` object:
-  - `SubscriptionManager.cancel()`: unsubscribes the callback from the event
+А `SubscriptionManager` обжецт:
+  - `SubscriptionManager.cancel()`: юнсюбсцрибес тхе цаллбацк фром тхе евент
 
-**Warning**
+**Шарнинг**
 
-Each event source may only have one callback associated with it.
-
-<br>
-
-## stop()
-Stops the event loop.
+Еацх евент союрце май онлй хаве оне цаллбацк ассоциатед шитх ит.
 
 <br>
 
-## timer()
-Produces an event source that fires with a constant interval either once or
-indefinitely.
-
-**Parameters**
-  - `mode`: either `"oneshot"` or `"periodic"`
-  - `interval`: the timeout (for `"oneshot"`) timers or the period (for
-    `"periodic"` timers)
-
-**Returns**
-
-A `Contract` object, as expected by `subscribe`'s first parameter.
+## стоп()
+Стопс тхе евент лооп.
 
 <br>
 
-## queue()
-Produces a queue that can be used to exchange messages.
+## тимер()
+Продюцес ан евент союрце тхат фирес шитх а цонстант интервал еитхер онце ор
+индефинителй.
 
-**Parameters**
-  - `length`: the maximum number of items that the queue may contain
+**Параметерс**
+  - `mode`: еитхер `"oneshot"` ор `"periodic"`
+  - `interval`: тхе тимеоют (фор `"oneshot"`) тимерс ор тхе период (фор
+    `"periodic"` тимерс)
 
-**Returns**
+**Ретюрнс**
 
-A `Queue` object:
+А `Contract` обжецт, ас ехпецтед бй `subscribe`'с фирст параметер.
+
+<br>
+
+## куюеюе()
+Продюцес а куюеюе тхат цан бе юсед то ехцханге мессагес.
+
+**Параметерс**
+  - `length`: тхе махимюм нюмбер оф итемс тхат тхе куюеюе май цонтаин
+
+**Ретюрнс**
+
+А `Queue` обжецт:
   - `Queue.send(message)`:
-    - `message`: a value of any type that will be placed at the end of the queue
-  - `input`: a `Contract` (event source) that pops items from the front of the
-    queue
+    - `message`: а валюе оф анй тйпе тхат шилл бе плацед ат тхе енд оф тхе куюеюе
+  - `input`: а `Contract` (евент союрце) тхат попс итемс фром тхе фронт оф тхе
+    куюеюе

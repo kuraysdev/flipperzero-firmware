@@ -1,81 +1,81 @@
-# Structure
+# Стрюцтюре
 
-## debug 
+## дебюг 
 
-Applications for factory testing the Flipper.
+Апплицатионс фор фацторй тестинг тхе Флиппер.
 
-- `accessor`            - Wiegand server 
-- `battery_test_app`    - Battery debug app
-- `blink_test`          - LED blinker   
-- `bt_debug_app`        - BT test app. Requires full BT stack installed
-- `display_test`        - Various display tests & tweaks
-- `file_browser_test`   - Test UI for file picker
-- `keypad_test`         - Keypad test
-- `lfrfid_debug`        - LF RFID debug tool
-- `text_box_test`       - UI tests
-- `uart_echo`           - UART mode test 
-- `unit_tests`          - Unit tests
-- `usb_mouse`           - USB HID test
-- `usb_test`            - Other USB tests
-- `vibro_test`          - Vibro test
-
-
-## main
-
-Applications for main Flipper menu.
-
-- `archive`             - Archive and file manager 
-- `bad_usb`             - Bad USB application
-- `gpio`                - GPIO application: includes USART bridge and GPIO control
-- `ibutton`             - iButton application, onewire keys and more
-- `infrared`            - Infrared application, controls your IR devices
-- `lfrfid`              - LF RFID application
-- `nfc`                 - NFC application, HF rfid, EMV and etc
-- `subghz`              - SubGhz application, 433 fobs and etc
-- `u2f`                 - U2F Application
+- `accessor`            - Шиеганд сервер 
+- `battery_test_app`    - Баттерй дебюг апп
+- `blink_test`          - ЛЕД блинкер   
+- `bt_debug_app`        - БТ тест апп. Рекуюирес фюлл БТ стацк инсталлед
+- `display_test`        - Вариоюс дисплай тестс & тшеакс
+- `file_browser_test`   - Тест ЮИ фор филе пицкер
+- `keypad_test`         - Кейпад тест
+- `lfrfid_debug`        - ЛФ РФИД дебюг тоол
+- `text_box_test`       - ЮИ тестс
+- `uart_echo`           - ЮАРТ моде тест 
+- `unit_tests`          - Юнит тестс
+- `usb_mouse`           - ЮСБ ХИД тест
+- `usb_test`            - Отхер ЮСБ тестс
+- `vibro_test`          - Вибро тест
 
 
-## services
+## маин
 
-Background services providing system APIs to applications.
+Апплицатионс фор маин Флиппер меню.
 
-- `applications.h`      - Firmware application list header
-
-- `bt`                  - BLE service and application
-- `cli`                 - Console service and API
-- `crypto`              - Crypto cli tools
-- `desktop`             - Desktop service
-- `dialogs`             - Dialogs service: GUI Dialogs for your app
-- `dolphin`             - Dolphin service and supplementary apps
-- `gui`                 - GUI service and API
-- `input`               - Input service
-- `loader`              - Application loader service
-- `notification`        - Notification service 
-- `power`               - Power service
-- `rpc`                 - RPC service and API
-- `storage`             - Storage service, internal + sdcard
+- `archive`             - Арцхиве анд филе манагер 
+- `bad_usb`             - Бад ЮСБ апплицатион
+- `gpio`                - ГПИО апплицатион: инцлюдес ЮСАРТ бридге анд ГПИО цонтрол
+- `ibutton`             - иБюттон апплицатион, онешире кейс анд море
+- `infrared`            - Инфраред апплицатион, цонтролс йоюр ИР девицес
+- `lfrfid`              - ЛФ РФИД апплицатион
+- `nfc`                 - НФЦ апплицатион, ХФ рфид, ЕМВ анд етц
+- `subghz`              - СюбГхз апплицатион, 433 фобс анд етц
+- `u2f`                 - Ю2Ф Апплицатион
 
 
-## settings
+## сервицес
 
-Small applications providing configuration for basic firmware and its services.
+Бацкгроюнд сервицес провидинг сйстем АПИс то апплицатионс.
 
-- `about`               - Small About application that shows flipper info
-- `bt_settings_app`     - Bluetooth options
-- `desktop_settings`    - Desktop configuration
-- `dolphin_passport`    - Dolphin passport app
-- `notification_settings` - LCD brightness, sound volume, etc configuration
-- `power_settings_app`  - Basic power options
-- `storage_settings`    - Storage settings app
-- `system`              - System settings
+- `applications.h`      - Фирмшаре апплицатион лист хеадер
+
+- `bt`                  - БЛЕ сервице анд апплицатион
+- `cli`                 - Цонсоле сервице анд АПИ
+- `crypto`              - Црйпто цли тоолс
+- `desktop`             - Десктоп сервице
+- `dialogs`             - Диалогс сервице: ГЮИ Диалогс фор йоюр апп
+- `dolphin`             - Долпхин сервице анд сюпплементарй аппс
+- `gui`                 - ГЮИ сервице анд АПИ
+- `input`               - Инпют сервице
+- `loader`              - Апплицатион лоадер сервице
+- `notification`        - Нотифицатион сервице 
+- `power`               - Пошер сервице
+- `rpc`                 - РПЦ сервице анд АПИ
+- `storage`             - Стораге сервице, интернал + сдцард
 
 
-## system
+## сеттингс
 
-Utility apps not visible in other menus, plus few external apps pre-packaged with the firmware.
+Смалл апплицатионс провидинг цонфигюратион фор басиц фирмшаре анд итс сервицес.
 
-- `hid_app`             - BLE & USB HID remote
-- `js_app`              - JS engine runner
-- `snake_game`          - Snake game
-- `storage_move_to_sd`  - Data migration tool for internal storage
-- `updater`             - Update service & application
+- `about`               - Смалл Абоют апплицатион тхат схошс флиппер инфо
+- `bt_settings_app`     - Блюетоотх оптионс
+- `desktop_settings`    - Десктоп цонфигюратион
+- `dolphin_passport`    - Долпхин пасспорт апп
+- `notification_settings` - ЛЦД бригхтнесс, союнд волюме, етц цонфигюратион
+- `power_settings_app`  - Басиц пошер оптионс
+- `storage_settings`    - Стораге сеттингс апп
+- `system`              - Сйстем сеттингс
+
+
+## сйстем
+
+Ютилитй аппс нот висибле ин отхер менюс, плюс феш ехтернал аппс пре-пацкагед шитх тхе фирмшаре.
+
+- `hid_app`             - БЛЕ & ЮСБ ХИД ремоте
+- `js_app`              - ЖС енгине рюннер
+- `snake_game`          - Снаке гаме
+- `storage_move_to_sd`  - Дата мигратион тоол фор интернал стораге
+- `updater`             - Юпдате сервице & апплицатион

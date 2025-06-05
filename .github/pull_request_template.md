@@ -1,13 +1,13 @@
-# What's new
+# Шхат'с неш
 
-- [ Describe changes here ]
+- [ Десцрибе цхангес хере ]
 
-# Verification 
+# Верифицатион 
 
-- [ Describe how to verify changes ]
+- [ Десцрибе хош то верифй цхангес ]
 
-# Checklist (For Reviewer)
+# Цхецклист (Фор Ревиешер)
 
-- [ ] PR has description of feature/bug or link to Confluence/Jira task
-- [ ] Description contains actions to verify feature/bugfix
-- [ ] I've built this code, uploaded it to the device and verified feature/bugfix
+- [ ] ПР хас десцриптион оф феатюре/бюг ор линк то Цонфлюенце/Жира таск
+- [ ] Десцриптион цонтаинс ацтионс то верифй феатюре/бюгфих
+- [ ] И'ве бюилт тхис цоде, юплоадед ит то тхе девице анд верифиед феатюре/бюгфих

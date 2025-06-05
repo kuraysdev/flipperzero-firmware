@@ -1,38 +1,38 @@
-# Structure
+# Стрюцтюре
 
-- `app-scened-template` - C++ app library
-- `bit_lib`             - library for working with bits/bytes directly
-- `ble_profile`         - BLE Profiles source code
-- `cmsis_core`          - CMSIS Core package, contain cortex-m core headers
-- `cxxheaderparser`     - C++ headers parser, used by SDK bundler
-- `datetime`            - DateTime library
-- `digital_signal`      - Digital signal library: used by NFC for software implemented protocols
-- `drivers`             - Various flipper drivers
-- `fatfs`               - FatFS file system driver
-- `flipper_application` - Flipper application library, used for FAPs
-- `flipper_format`      - Flipper File Format library
-- `FreeRTOS-glue`       - Extra glue to hold together FreeRTOS kernel and flipper firmware
-- `FreeRTOS-Kernel`     - FreeRTOS kernel source code
-- `heatshrink`          - Heatshrink compression library
-- `ibutton`             - ibutton library, used by iButton application
-- `infrared`            - Infrared library, used by Infrared application
-- `lfrfid`              - LF-RFID library, used by LF RFID application
-- `libusb_stm32`        - LibUSB for STM32 series MCU
-- `mbedtls`             - MbedTLS cryptography library
-- `microtar`            - MicroTAR library
-- `mjs`                 - MJs, javascript engine library
-- `mlib`                - M-Lib C containers library
-- `music_worker`        - MusicWorker library for playing midi and RTTTL files
-- `nanopb`              - NanoPB library, protobuf implementation for MCU
-- `nfc`                 - NFC library, used by NFC application
-- `one_wire`            - OneWire library, used by iButton application
-- `print`               - Tiny printf implementation
-- `digital_signal`      - Digital Signal library used by NFC for software implemented protocols
-- `pulse_reader`        - Pulse Reader library used by NFC for software implemented protocols
-- `stm32wb_cmsis`       - STM32WB series CMSIS headers, extends CMSIS Core
-- `stm32wb_copro`       - STM32WB Copro library: contains WPAN and radio co-processor firmware
-- `stm32wb_hal`         - STM32WB HAL library, extends STM32WB CMSIS and provides HAL
-- `subghz`              - Subghz library, used by SubGhz application
-- `toolbox`             - Toolbox library, contains various things that is used by Flipper firmware
-- `u8g2`                - u8g2 graphics library, used by GUI subsystem
-- `update_util`         - update utilities library, used by updater
+- `app-scened-template` - Ц++ апп либрарй
+- `bit_lib`             - либрарй фор шоркинг шитх битс/бйтес дирецтлй
+- `ble_profile`         - БЛЕ Профилес союрце цоде
+- `cmsis_core`          - ЦМСИС Цоре пацкаге, цонтаин цортех-м цоре хеадерс
+- `cxxheaderparser`     - Ц++ хеадерс парсер, юсед бй СДК бюндлер
+- `datetime`            - ДатеТиме либрарй
+- `digital_signal`      - Дигитал сигнал либрарй: юсед бй НФЦ фор софтшаре имплементед протоцолс
+- `drivers`             - Вариоюс флиппер дриверс
+- `fatfs`               - ФатФС филе сйстем дривер
+- `flipper_application` - Флиппер апплицатион либрарй, юсед фор ФАПс
+- `flipper_format`      - Флиппер Филе Формат либрарй
+- `FreeRTOS-glue`       - Ехтра глюе то холд тогетхер ФрееРТОС кернел анд флиппер фирмшаре
+- `FreeRTOS-Kernel`     - ФрееРТОС кернел союрце цоде
+- `heatshrink`          - Хеатсхринк цомпрессион либрарй
+- `ibutton`             - ибюттон либрарй, юсед бй иБюттон апплицатион
+- `infrared`            - Инфраред либрарй, юсед бй Инфраред апплицатион
+- `lfrfid`              - ЛФ-РФИД либрарй, юсед бй ЛФ РФИД апплицатион
+- `libusb_stm32`        - ЛибЮСБ фор СТМ32 сериес МЦЮ
+- `mbedtls`             - МбедТЛС црйптограпхй либрарй
+- `microtar`            - МицроТАР либрарй
+- `mjs`                 - МЖс, жавасцрипт енгине либрарй
+- `mlib`                - М-Либ Ц цонтаинерс либрарй
+- `music_worker`        - МюсицШоркер либрарй фор плайинг миди анд РТТТЛ филес
+- `nanopb`              - НаноПБ либрарй, протобюф имплементатион фор МЦЮ
+- `nfc`                 - НФЦ либрарй, юсед бй НФЦ апплицатион
+- `one_wire`            - ОнеШире либрарй, юсед бй иБюттон апплицатион
+- `print`               - Тинй принтф имплементатион
+- `digital_signal`      - Дигитал Сигнал либрарй юсед бй НФЦ фор софтшаре имплементед протоцолс
+- `pulse_reader`        - Пюлсе Реадер либрарй юсед бй НФЦ фор софтшаре имплементед протоцолс
+- `stm32wb_cmsis`       - СТМ32ШБ сериес ЦМСИС хеадерс, ехтендс ЦМСИС Цоре
+- `stm32wb_copro`       - СТМ32ШБ Цопро либрарй: цонтаинс ШПАН анд радио цо-процессор фирмшаре
+- `stm32wb_hal`         - СТМ32ШБ ХАЛ либрарй, ехтендс СТМ32ШБ ЦМСИС анд провидес ХАЛ
+- `subghz`              - Сюбгхз либрарй, юсед бй СюбГхз апплицатион
+- `toolbox`             - Тоолбох либрарй, цонтаинс вариоюс тхингс тхат ис юсед бй Флиппер фирмшаре
+- `u8g2`                - ю8г2 грапхицс либрарй, юсед бй ГЮИ сюбсйстем
+- `update_util`         - юпдате ютилитиес либрарй, юсед бй юпдатер

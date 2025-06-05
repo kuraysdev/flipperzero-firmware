@@ -1,76 +1,76 @@
-# Universal Remotes {#universal_remotes}
+# Юниверсал Ремотес {#юниверсал_ремотес}
 
-## Televisions
+## Телевисионс
 
-Adding your TV set to the universal remote is quite straightforward. Up to 6 signals can be recorded: `Power`, `Mute`, `Vol_up`, `Vol_dn`, `Ch_next`, and `Ch_prev`. Any of them can be omitted if not supported by your TV.
+Аддинг йоюр ТВ сет то тхе юниверсал ремоте ис куюите страигхтфоршард. Юп то 6 сигналс цан бе рецордед: `Power`, `Mute`, `Vol_up`, `Vol_dn`, `Ch_next`, анд `Ch_prev`. Анй оф тхем цан бе омиттед иф нот сюппортед бй йоюр ТВ.
 
-Each signal is recorded using the following algorithm:
+Еацх сигнал ис рецордед юсинг тхе фоллошинг алгоритхм:
 
-1. Get the remote and point it to Flipper's IR receiver.
-2. Start learning a new remote if it's the first button or press `+` to add a new button otherwise.
-3. Press a remote button and save it under a corresponding name.
-4. Repeat steps 2-3 until all required signals are saved.
+1. Гет тхе ремоте анд поинт ит то Флиппер'с ИР рецеивер.
+2. Старт леарнинг а неш ремоте иф ит'с тхе фирст бюттон ор пресс `+` то адд а неш бюттон отхершисе.
+3. Пресс а ремоте бюттон анд саве ит юндер а цорреспондинг наме.
+4. Репеат степс 2-3 юнтил алл рекуюиред сигналс аре савед.
 
-The signal names are self-explanatory. Remember to make sure that every recorded signal does what it's supposed to.
+Тхе сигнал намес аре селф-ехпланаторй. Ремембер то маке сюре тхат еверй рецордед сигнал доес шхат ит'с сюппосед то.
 
-If everything checks out, append these signals **to the end** of the [TV universal remote file](https://github.com/flipperdevices/flipperzero-firmware/blob/dev/applications/main/infrared/resources/infrared/assets/tv.ir).
+Иф еверйтхинг цхецкс оют, аппенд тхесе сигналс **то тхе енд** оф тхе [TV universal remote file](https://github.com/flipperdevices/flipperzero-firmware/blob/dev/applications/main/infrared/resources/infrared/assets/tv.ir).
 
-## Audio players
+## Аюдио плайерс
 
-Adding your audio player to the universal remote is done in the same manner as described above. Up to 8 signals can be recorded: `Power`, `Play`, `Pause`, `Vol_up`, `Vol_dn`, `Next`, `Prev`, and `Mute`. Any of them can be omitted if not supported by the player.
+Аддинг йоюр аюдио плайер то тхе юниверсал ремоте ис доне ин тхе саме маннер ас десцрибед абове. Юп то 8 сигналс цан бе рецордед: `Power`, `Play`, `Pause`, `Vol_up`, `Vol_dn`, `Next`, `Prev`, анд `Mute`. Анй оф тхем цан бе омиттед иф нот сюппортед бй тхе плайер.
 
-The signal names are self-explanatory.
-On many remotes, the `Play` button doubles as `Pause`. In this case, record it as `Play` omitting the `Pause`.
-Make sure that every signal does what it's supposed to.
+Тхе сигнал намес аре селф-ехпланаторй.
+Он манй ремотес, тхе `Play` бюттон доюблес ас `Pause`. Ин тхис цасе, рецорд ит ас `Play` омиттинг тхе `Pause`.
+Маке сюре тхат еверй сигнал доес шхат ит'с сюппосед то.
 
-If everything checks out, append these signals **to the end** of the [audio player universal remote file](https://github.com/flipperdevices/flipperzero-firmware/blob/dev/applications/main/infrared/resources/infrared/assets/audio.ir).
+Иф еверйтхинг цхецкс оют, аппенд тхесе сигналс **то тхе енд** оф тхе [audio player universal remote file](https://github.com/flipperdevices/flipperzero-firmware/blob/dev/applications/main/infrared/resources/infrared/assets/audio.ir).
 
-## Projectors
+## Прожецторс
 
-Adding your projector to the universal remote is really simple. Up to 4 signals can be recorded: `Power`, `Mute`, `Vol_up`, `Vol_dn`. Any of them can be omitted if not supported by your projector.
-To save time, please make sure every recording has been named accordingly.
-In case of omitting, on most projectors with the 4 following buttons, you should not have a problem.
+Аддинг йоюр прожецтор то тхе юниверсал ремоте ис реаллй симпле. Юп то 4 сигналс цан бе рецордед: `Power`, `Mute`, `Vol_up`, `Vol_dn`. Анй оф тхем цан бе омиттед иф нот сюппортед бй йоюр прожецтор.
+То саве тиме, плеасе маке сюре еверй рецординг хас беен намед аццординглй.
+Ин цасе оф омиттинг, он мост прожецторс шитх тхе 4 фоллошинг бюттонс, йою схоюлд нот хаве а проблем.
 
 
-## Air conditioners
+## Аир цондитионерс
 
-Air conditioners differ from most other infrared-controlled devices because their state is tracked by the remote.
-The majority of A/C remotes have a small display that shows the current mode, temperature, and other settings.
-When the user presses a button, a whole set of parameters is transmitted to the device, which must be recorded and used as a whole.
+Аир цондитионерс диффер фром мост отхер инфраред-цонтроллед девицес бецаюсе тхеир стате ис трацкед бй тхе ремоте.
+Тхе мажоритй оф А/Ц ремотес хаве а смалл дисплай тхат схошс тхе цюррент моде, температюре, анд отхер сеттингс.
+Шхен тхе юсер прессес а бюттон, а шхоле сет оф параметерс ис трансмиттед то тхе девице, шхицх мюст бе рецордед анд юсед ас а шхоле.
 
-In order to add a particular air conditioner to the universal remote, 6 signals must be recorded: `Off`, `Dh`, `Cool_hi`, `Cool_lo`, `Heat_hi`, and `Heat_lo`.
-Each signal (except `Off`) is recorded using the following algorithm:
+Ин ордер то адд а партицюлар аир цондитионер то тхе юниверсал ремоте, 6 сигналс мюст бе рецордед: `Off`, `Dh`, `Cool_hi`, `Cool_lo`, `Heat_hi`, анд `Heat_lo`.
+Еацх сигнал (ехцепт `Off`) ис рецордед юсинг тхе фоллошинг алгоритхм:
 
-1. Get the remote and press the **POWER** button so that the display shows that A/C is ON.
-2. Set the A/C to the corresponding mode (see table below), leaving other parameters such as fan speed or vane on **AUTO** (if applicable).
-3. Press the **POWER** button to switch the A/C off.
-4. Start learning a new remote on Flipper if it's the first button or press `+` to add a new button otherwise.
-5. Point the remote to Flipper's IR receiver as directed and press the **POWER** button once again.
-6. Save the resulting signal under the specified name.
-7. Repeat steps 2-6 for each signal from the table below.
+1. Гет тхе ремоте анд пресс тхе **ПОШЕР** бюттон со тхат тхе дисплай схошс тхат А/Ц ис ОН.
+2. Сет тхе А/Ц то тхе цорреспондинг моде (сее табле белош), леавинг отхер параметерс сюцх ас фан спеед ор ване он **АЮТО** (иф апплицабле).
+3. Пресс тхе **ПОШЕР** бюттон то сшитцх тхе А/Ц офф.
+4. Старт леарнинг а неш ремоте он Флиппер иф ит'с тхе фирст бюттон ор пресс `+` то адд а неш бюттон отхершисе.
+5. Поинт тхе ремоте то Флиппер'с ИР рецеивер ас дирецтед анд пресс тхе **ПОШЕР** бюттон онце агаин.
+6. Саве тхе ресюлтинг сигнал юндер тхе специфиед наме.
+7. Репеат степс 2-6 фор еацх сигнал фром тхе табле белош.
 
-| Signal  |    Mode    | Temperature | Note                                |
+| Сигнал  |    Моде    | Температюре | Ноте                                |
 | :-----: | :--------: | :---------: | ----------------------------------- |
-|   Dh    | Dehumidify |     N/A     |                                     |
-| Cool_hi |  Cooling   |  See note   | Lowest temperature in cooling mode  |
-| Cool_lo |  Cooling   |    23°C     |                                     |
-| Heat_hi |  Heating   |  See note   | Highest temperature in heating mode |
-| Heat_lo |  Heating   |    23°C     |                                     |
+|   Дх    | Дехюмидифй |     Н/А     |                                     |
+| Цоол_хи |  Цоолинг   |  Сее ноте   | Лошест температюре ин цоолинг моде  |
+| Цоол_ло |  Цоолинг   |    23°Ц     |                                     |
+| Хеат_хи |  Хеатинг   |  Сее ноте   | Хигхест температюре ин хеатинг моде |
+| Хеат_ло |  Хеатинг   |    23°Ц     |                                     |
 
-Finally, record the `Off` signal:
+Финаллй, рецорд тхе `Off` сигнал:
 
-1. Make sure the display shows that the A/C is ON.
-2. Start learning a new signal on Flipper and point the remote towards the IR receiver.
-3. Press the **POWER** button so that the remote shows the OFF state.
-4. Save the resulting signal under the name `Off`.
+1. Маке сюре тхе дисплай схошс тхат тхе А/Ц ис ОН.
+2. Старт леарнинг а неш сигнал он Флиппер анд поинт тхе ремоте тошардс тхе ИР рецеивер.
+3. Пресс тхе **ПОШЕР** бюттон со тхат тхе ремоте схошс тхе ОФФ стате.
+4. Саве тхе ресюлтинг сигнал юндер тхе наме `Off`.
 
-The resulting remote file should now contain 6 signals. You can omit any of them, but you then won't be able to use their functionality.
-Test the file against the actual device. Make sure that every signal does what it's supposed to.
+Тхе ресюлтинг ремоте филе схоюлд нош цонтаин 6 сигналс. Йою цан омит анй оф тхем, бют йою тхен шон'т бе абле то юсе тхеир фюнцтионалитй.
+Тест тхе филе агаинст тхе ацтюал девице. Маке сюре тхат еверй сигнал доес шхат ит'с сюппосед то.
 
-If everything checks out, append these signals **to the end** of the [A/C universal remote file](https://github.com/flipperdevices/flipperzero-firmware/blob/dev/applications/main/infrared/resources/infrared/assets/ac.ir).
+Иф еверйтхинг цхецкс оют, аппенд тхесе сигналс **то тхе енд** оф тхе [A/C universal remote file](https://github.com/flipperdevices/flipperzero-firmware/blob/dev/applications/main/infrared/resources/infrared/assets/ac.ir).
 
-## Final steps
+## Финал степс
 
-The order of signals is not important, but they should be preceded by the following comment: `# Model: <Your model name>` in order to keep the library organized.
+Тхе ордер оф сигналс ис нот импортант, бют тхей схоюлд бе прецедед бй тхе фоллошинг цоммент: `# Model: <Your model name>` ин ордер то кееп тхе либрарй организед.
 
-When done, open a pull request containing the changed file.
+Шхен доне, опен а пюлл рекуюест цонтаининг тхе цхангед филе.

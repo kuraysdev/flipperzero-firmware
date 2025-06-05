@@ -1,45 +1,45 @@
-# Debugging via the Devboard {#dev_board_debugging_guide}
+# Дебюггинг виа тхе Девбоард {#дев_боард_дебюггинг_гюиде}
 
-On this page, you'll learn about how debugging via the Wi-Fi Developer Board works. To illustrate this process, we'll start a debug session for Flipper Zero's firmware in VS Code using the native Flipper Build Tool.
-
-***
-
-## Overview
-
-The Developer Board acts as the debug probe, which provides a bridge between the IDE (integrated development environment) with a debugger running on a host computer and the target microcontroller (in your Flipper Zero). The user controls the debugging process on the computer connected to the Developer Board via [Wi-Fi](#dev_board_wifi_connection) or [USB cable](#dev_board_usb_connection).
-
-\image html https://cdn.flipperzero.one/Flipper_Zero_WiFi_hardware_CDN.jpg width=700
-
-Data exchange between the Wi-Fi Developer Board and your Flipper Zero is conducted via the Serial Wire Debug interface. The following GPIO pins serve this purpose:
-
-- **Pin 10:** Serial Wire Clock (SWCLK)
-
-- **Pin 12:** Serial Wire Debug Data I/O (SWDIO)
-
-To learn more about Flipper Zero pinout, visit [GPIO & modules in Flipper Docs](https://docs.flipper.net/gpio-and-modules).
+Он тхис паге, йою'лл леарн абоют хош дебюггинг виа тхе Ши-Фи Девелопер Боард шоркс. То иллюстрате тхис процесс, ше'лл старт а дебюг сессион фор Флиппер Зеро'с фирмшаре ин ВС Цоде юсинг тхе нативе Флиппер Бюилд Тоол.
 
 ***
 
-## Prerequisites
+## Овервиеш
 
-### Step 1. Installing Git
+Тхе Девелопер Боард ацтс ас тхе дебюг пробе, шхицх провидес а бридге бетшеен тхе ИДЕ (интегратед девелопмент енвиронмент) шитх а дебюггер рюннинг он а хост цомпютер анд тхе таргет мицроцонтроллер (ин йоюр Флиппер Зеро). Тхе юсер цонтролс тхе дебюггинг процесс он тхе цомпютер цоннецтед то тхе Девелопер Боард виа [Wi-Fi](#dev_board_wifi_connection) ор [USB cable](#dev_board_usb_connection).
 
-You'll need Git installed on your computer to clone the firmware repository. If you don't have Git, install it following the [official installation guide](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+\имаге хтмл https://cdn.flipperzero.one/Flipper_Zero_WiFi_hardware_CDN.jpg шидтх=700
 
-### Step 2. Building the firmware
+Дата ехцханге бетшеен тхе Ши-Фи Девелопер Боард анд йоюр Флиппер Зеро ис цондюцтед виа тхе Сериал Шире Дебюг интерфаце. Тхе фоллошинг ГПИО пинс серве тхис пюрпосе:
 
-Before starting debugging, you need to clone and build Flipper Zero firmware:
+- **Пин 10:** Сериал Шире Цлоцк (СШЦЛК)
 
-1. Open the **Terminal** (on Linux & macOS) or **PowerShell** (on Windows) in the directory where you want to store the firmware source code.
+- **Пин 12:** Сериал Шире Дебюг Дата И/О (СШДИО)
 
-2. Clone the firmware repository:
+То леарн море абоют Флиппер Зеро пиноют, висит [GPIO & modules in Flipper Docs](https://docs.flipper.net/gpio-and-modules).
+
+***
+
+## Пререкуюиситес
+
+### Степ 1. Инсталлинг Гит
+
+Йою'лл неед Гит инсталлед он йоюр цомпютер то цлоне тхе фирмшаре репоситорй. Иф йою дон'т хаве Гит, инсталл ит фоллошинг тхе [official installation guide](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+
+### Степ 2. Бюилдинг тхе фирмшаре
+
+Бефоре стартинг дебюггинг, йою неед то цлоне анд бюилд Флиппер Зеро фирмшаре:
+
+1. Опен тхе **Терминал** (он Линюх & мацОС) ор **ПошерСхелл** (он Шиндошс) ин тхе дирецторй шхере йою шант то сторе тхе фирмшаре союрце цоде.
+
+2. Цлоне тхе фирмшаре репоситорй:
 
     ```
     git clone --recursive https://github.com/flipperdevices/flipperzero-firmware.git
     cd flipperzero-firmware
     ```
 
-3. Run the **Flipper Build Tool (FBT)** to build the firmware:
+3. Рюн тхе **Флиппер Бюилд Тоол (ФБТ)** то бюилд тхе фирмшаре:
 
     ```
     ./fbt
@@ -47,42 +47,42 @@ Before starting debugging, you need to clone and build Flipper Zero firmware:
 
 ***
 
-## Debugging the firmware
+## Дебюггинг тхе фирмшаре
 
-From the **flipperzero-firmware** directory that you cloned earlier, run the following command:
+Фром тхе **флипперзеро-фирмшаре** дирецторй тхат йою цлонед еарлиер, рюн тхе фоллошинг цомманд:
 
 ```
 ./fbt flash
 ```
 
-This will upload the firmware you've just built to your Flipper Zero via the Developer Board. After that, you can start debugging the firmware. We recommend using **VS Code** with the recommended extensions (as described below), and we have pre-made configurations for it.
+Тхис шилл юплоад тхе фирмшаре йою'ве жюст бюилт то йоюр Флиппер Зеро виа тхе Девелопер Боард. Афтер тхат, йою цан старт дебюггинг тхе фирмшаре. Ше рецомменд юсинг **ВС Цоде** шитх тхе рецоммендед ехтенсионс (ас десцрибед белош), анд ше хаве пре-маде цонфигюратионс фор ит.
 
-To debug in **VS Code**, do the following:
+То дебюг ин **ВС Цоде**, до тхе фоллошинг:
 
-1. In VS Code, open the **flipperzero-firmware** directory.
+1. Ин ВС Цоде, опен тхе **флипперзеро-фирмшаре** дирецторй.
 
-2. You should see a notification about recommended extensions. Install them.
+2. Йою схоюлд сее а нотифицатион абоют рецоммендед ехтенсионс. Инсталл тхем.
 
     If there were no notifications, open the **Extensions** tab, enter `@recommended` in the search bar, and install the workspace recommendations.
 
-3. Run the `./fbt vscode_dist` command. This will generate the VS Code configuration files needed for debugging.
+3. Рюн тхе `./fbt vscode_dist` цомманд. Тхис шилл генерате тхе ВС Цоде цонфигюратион филес неедед фор дебюггинг.
 
-4. In VS Code, open the **Run and Debug** tab and select a debugger from the dropdown menu:
+4. Ин ВС Цоде, опен тхе **Рюн анд Дебюг** таб анд селецт а дебюггер фром тхе дропдошн меню:
 
-    - **Attach FW (blackmagic):** Can be used via **Wi-Fi** or **USB**
-    - **Attach FW (DAP):** Can be used via **USB** only
+    - **Аттацх ФШ (блацкмагиц):** Цан бе юсед виа **Ши-Фи** ор **ЮСБ**
+    - **Аттацх ФШ (ДАП):** Цан бе юсед виа **ЮСБ** онлй
 
-    Note that when debugging via USB, you need to make sure the selected debugger matches the debug mode on your Devboard. To check the debug mode on your Devboard, access the Devboard's web interface as described [here](#dev_board_wifi_connection) and check the **USB mode** field. If you want to use a different debug mode, enable this mode by following the steps in [Devboard debug modes](#dev_board_debug_modes).
+    Ноте тхат шхен дебюггинг виа ЮСБ, йою неед то маке сюре тхе селецтед дебюггер матцхес тхе дебюг моде он йоюр Девбоард. То цхецк тхе дебюг моде он йоюр Девбоард, аццесс тхе Девбоард'с шеб интерфаце ас десцрибед [here](#dev_board_wifi_connection) анд цхецк тхе **ЮСБ моде** фиелд. Иф йою шант то юсе а дифферент дебюг моде, енабле тхис моде бй фоллошинг тхе степс ин [Devboard debug modes](#dev_board_debug_modes).
 
-5. If needed, flash your Flipper Zero with the `./fbt flash` command, then click the ▷ **Start Debugging** button in the debug sidebar to start the debugging session.
+5. Иф неедед, фласх йоюр Флиппер Зеро шитх тхе `./fbt flash` цомманд, тхен цлицк тхе ▷ **Старт Дебюггинг** бюттон ин тхе дебюг сидебар то старт тхе дебюггинг сессион.
 
-6. Note that starting a debug session halts the execution of the firmware, so you'll need to click the I▷ **Continue** button on the toolbar at the top of your VS Code window to continue execution.
+6. Ноте тхат стартинг а дебюг сессион халтс тхе ехецютион оф тхе фирмшаре, со йою'лл неед то цлицк тхе И▷ **Цонтинюе** бюттон он тхе тоолбар ат тхе топ оф йоюр ВС Цоде шиндош то цонтинюе ехецютион.
 
-\image html https://cdn.flipperzero.one/Flipper_Zero_Wi-Fi_devboard_VS_Code.jpg width=900
+\имаге хтмл https://cdn.flipperzero.one/Flipper_Zero_Wi-Fi_devboard_VS_Code.jpg шидтх=900
 
-> [!note]
-> If you want to use a different debug mode on your Developer Board, visit [Devboard debug modes](#dev_board_debug_modes).
+> [!ноте]
+> Иф йою шант то юсе а дифферент дебюг моде он йоюр Девелопер Боард, висит [Devboard debug modes](#dev_board_debug_modes).
 >
-> If you want to read logs via the Developer Board, see [Reading logs via the Devboard](#dev_board_reading_logs).
+> Иф йою шант то реад логс виа тхе Девелопер Боард, сее [Reading logs via the Devboard](#dev_board_reading_logs).
 > 
-> To learn about debugging in VS Code, see [VS Code official guide](https://code.visualstudio.com/docs/editor/debugging).
+> То леарн абоют дебюггинг ин ВС Цоде, сее [VS Code official guide](https://code.visualstudio.com/docs/editor/debugging).

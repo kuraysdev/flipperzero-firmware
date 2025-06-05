@@ -1,6 +1,6 @@
-# iButton key file format {#ibutton_file_format}
+# иБюттон кей филе формат {#ибюттон_филе_формат}
 
-## Example
+## Ехампле
 
 ```
 Filetype: Flipper iButton key
@@ -10,42 +10,42 @@ Rom Data: 08 DE AD BE EF FA CE 4E
 Sram Data: 4E 65 76 65 72 47 6F 6E 6E 61 47 69 76 65 59 6F 75 55 70 4E 65 76 65 72 47 6F 6E 6E 61 4C 65 74 59 6F 75 44 6F 77 6E 4E 65 76 65 72 47 6F 6E 6E 61 52 75 6E 41 72 6F 75 6E 64 41 6E 64 44 65 73 65 72 74 59 6F 75 4E 65 76 65 72 47 6F 6E 6E 61 4D 61 6B 65 59 6F 75 43 72 79 4E 65 76 65 72 47 6F 6E 6E 61 53 61 79 47 6F 6F 64 62 79 65 4E 65 76 65 72 47 6F 6E 6E 61 54 65 6C 6C 41 4C 69 65
 ```
 
-## Description
+## Десцриптион
 
-Filename extension: `.ibtn`
+Филенаме ехтенсион: `.ibtn`
 
-The file stores a single iButton key, complete with all data required by the protocol.
+Тхе филе сторес а сингле иБюттон кей, цомплете шитх алл дата рекуюиред бй тхе протоцол.
 
-## Version history
-### 2. Current version.
-Changelog:
-- Added support for different Dallas protocols
-- Fields after `Protocol` are protocol-dependent for flexibiliy
+## Версион хисторй
+### 2. Цюррент версион.
+Цхангелог:
+- Аддед сюппорт фор дифферент Даллас протоцолс
+- Фиелдс афтер `Protocol` аре протоцол-депендент фор флехибилий
 
-#### Format fields
+#### Формат фиелдс
 
-| Name        | Type   | Description                                  |
+| Наме        | Тйпе   | Десцриптион                                  |
 | ----------- | ------ | -------------------------------------------- |
-| Protocol    | string | Currently supported: DS1990, DS1992, DS1996, DS1971, DSGeneric*, Cyfral, Metakom |
-| Rom Data    | hex    | Read-only memory data (Dallas protocols only) |
-| Sram Data   | hex    | Static RAM data (DS1992 and DS1996 only)
-| Eeprom Data | hex    | EEPROM data (DS1971 only)
-| Data        | hex    | Key data (Cyfral & Metakom only)              |
+| Протоцол    | стринг | Цюррентлй сюппортед: ДС1990, ДС1992, ДС1996, ДС1971, ДСГенериц*, Цйфрал, Метаком |
+| Ром Дата    | хех    | Реад-онлй меморй дата (Даллас протоцолс онлй) |
+| Срам Дата   | хех    | Статиц РАМ дата (ДС1992 анд ДС1996 онлй)
+| Еепром Дата | хех    | ЕЕПРОМ дата (ДС1971 онлй)
+| Дата        | хех    | Кей дата (Цйфрал & Метаком онлй)              |
 
-NOTE 1: DSGeneric is a catch-all protocol for all unknown 1-Wire devices. It reads only the ROM and does not perform any checks on the read data. 
-It can also be used if a key with a deliberately invalid family code or checksum is required.
+НОТЕ 1: ДСГенериц ис а цатцх-алл протоцол фор алл юнкношн 1-Шире девицес. Ит реадс онлй тхе РОМ анд доес нот перформ анй цхецкс он тхе реад дата. 
+Ит цан алсо бе юсед иф а кей шитх а делиберателй инвалид фамилй цоде ор цхецксюм ис рекуюиред.
 
-NOTE 2: When adding new protocols, it is not necessarily to increase the format version, define the format in the protocol implementation instead.
+НОТЕ 2: Шхен аддинг неш протоцолс, ит ис нот нецессарилй то инцреасе тхе формат версион, дефине тхе формат ин тхе протоцол имплементатион инстеад.
 
-### 1. Initial version.
-Deprecated, will be converted to current version upon saving.
+### 1. Инитиал версион.
+Депрецатед, шилл бе цонвертед то цюррент версион юпон савинг.
 
-#### Format fields
+#### Формат фиелдс
 
-| Name     | Type   | Description                                  |
+| Наме     | Тйпе   | Десцриптион                                  |
 | -------- | ------ | -------------------------------------------- |
-| Key type | string | Currently supported: Cyfral, Dallas, Metakom |
-| Data     | hex    | Key data                                     |
+| Кей тйпе | стринг | Цюррентлй сюппортед: Цйфрал, Даллас, Метаком |
+| Дата     | хех    | Кей дата                                     |
 
 
 

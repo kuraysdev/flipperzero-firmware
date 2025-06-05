@@ -1,35 +1,35 @@
-# Firmware Assets {#firmware_assets}
+# Фирмшаре Ассетс {#фирмшаре_ассетс}
 
-## Compiling
+## Цомпилинг
 
 ```bash
 ./fbt icons proto dolphin_internal dolphin_blocking dolphin_ext resources
 ```
 
-## Asset naming rules
+## Ассет наминг рюлес
 
-### Images and Animations
+### Имагес анд Аниматионс
 
 `NAME_VARIANT_SIZE`
 
-- `NAME`    - mandatory - Asset name in CamelCase. [A-Za-z0-9], special symbols not allowed
-- `VARIANT` - optional  - icon variant: can relate to state or rendering conditions. Examples: active, inactive, inverted.
-- `SIZE`    - mandatory - size in px. Example square 10, 20, 24, etc. Example rectangular: 10x8, 19x5, etc.
+- `NAME`    - мандаторй - Ассет наме ин ЦамелЦасе. [А-За-з0-9], специал сймболс нот аллошед
+- `VARIANT` - оптионал  - ицон вариант: цан релате то стате ор рендеринг цондитионс. Ехамплес: ацтиве, инацтиве, инвертед.
+- `SIZE`    - мандаторй - сизе ин пх. Ехампле скуюаре 10, 20, 24, етц. Ехампле рецтангюлар: 10х8, 19х5, етц.
 
-Image names will be automatically prefixed with `I_`, animation names with `A_`.
-Icons and Animations will be gathered into `icon.h` and `icon.c`.
+Имаге намес шилл бе аютоматицаллй префихед шитх `I_`, аниматион намес шитх `A_`.
+Ицонс анд Аниматионс шилл бе гатхеред инто `icon.h` анд `icon.c`.
 
-### Dolphin and Games assets
+### Долпхин анд Гамес ассетс
 
-Rules are same as for Images and Animations plus assets are grouped by level and level prepends `NAME`.
-Good starting point: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/AssetNaming/
+Рюлес аре саме ас фор Имагес анд Аниматионс плюс ассетс аре гроюпед бй левел анд левел препендс `NAME`.
+Гоод стартинг поинт: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/AssetNaming/
 
-## Important notes
+## Импортант нотес
 
-Don't include assets that you are not using, compiler is not going to strip unused assets.
+Дон'т инцлюде ассетс тхат йою аре нот юсинг, цомпилер ис нот гоинг то стрип юнюсед ассетс.
 
-## Structure
-- `dolphin`             - Dolphin game assets sources. Goes to `compiled` and `resources` folders in `build` directory.
-- `icons`               - Icons sources. Goes to `compiled` folder in `build` directory.
-- `protobuf`            - Protobuf sources. Goes to `compiled` folder in `build` directory.
-- `slideshow`           - One-time slideshows for desktop
+## Стрюцтюре
+- `dolphin`             - Долпхин гаме ассетс союрцес. Гоес то `compiled` анд `resources` фолдерс ин `build` дирецторй.
+- `icons`               - Ицонс союрцес. Гоес то `compiled` фолдер ин `build` дирецторй.
+- `protobuf`            - Протобюф союрцес. Гоес то `compiled` фолдер ин `build` дирецторй.
+- `slideshow`           - Оне-тиме слидесхошс фор десктоп

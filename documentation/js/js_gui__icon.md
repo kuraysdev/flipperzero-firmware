@@ -1,32 +1,32 @@
-# GUI Icons {#js_gui__icon}
+# ГЮИ Ицонс {#жс_гюи__ицон}
 
-Retrieves and loads icons for use with GUI views such as [Dialog](#js_gui__dialog).
+Ретриевес анд лоадс ицонс фор юсе шитх ГЮИ виешс сюцх ас [Dialog](#js_gui__dialog).
 
-# Example
-For an example, refer to the `gui.js` example script.
+# Ехампле
+Фор ан ехампле, рефер то тхе `gui.js` ехампле сцрипт.
 
-# API reference
+# АПИ референце
 
-## getBuiltin()
-Gets a built-in firmware icon by its name.
-Not all icons are supported, currently only `"DolphinWait_59x54"` and `"js_script_10px"` are available.
+## гетБюилтин()
+Гетс а бюилт-ин фирмшаре ицон бй итс наме.
+Нот алл ицонс аре сюппортед, цюррентлй онлй `"DolphinWait_59x54"` анд `"js_script_10px"` аре аваилабле.
 
-**Parameters**
-  - `icon`: name of the icon
+**Параметерс**
+  - `icon`: наме оф тхе ицон
 
-**Returns**
+**Ретюрнс**
 
-An `IconData` object.
+Ан `IconData` обжецт.
 
 <br>
 
-## loadFxbm()
-Loads a `.fxbm` icon (XBM Flipper sprite, from `flipperzero-game-engine`) from file.
-It will be automatically unloaded when the script exits.
+## лоадФхбм()
+Лоадс а `.fxbm` ицон (ХБМ Флиппер сприте, фром `flipperzero-game-engine`) фром филе.
+Ит шилл бе аютоматицаллй юнлоадед шхен тхе сцрипт ехитс.
 
-**Parameters**
-  - `path`: path to the `.fxbm` file
+**Параметерс**
+  - `path`: патх то тхе `.fxbm` филе
 
-**Returns**
+**Ретюрнс**
 
-An `IconData` object.
+Ан `IconData` обжецт.

@@ -1,13 +1,13 @@
-# Number Input {#example_number_input}
+# Нюмбер Инпют {#ехампле_нюмбер_инпют}
 
-Simple keyboard that limits user inputs to a full number (integer). Useful to enforce correct entries without the need for intense validations after a user input. 
+Симпле кейбоард тхат лимитс юсер инпютс то а фюлл нюмбер (интегер). Юсефюл то енфорце цоррецт ентриес шитхоют тхе неед фор интенсе валидатионс афтер а юсер инпют. 
 
-## Source code
+## Союрце цоде
 
-Source code for this example can be found [here](https://github.com/flipperdevices/flipperzero-firmware/tree/dev/applications/examples/example_number_input).
+Союрце цоде фор тхис ехампле цан бе фоюнд [here](https://github.com/flipperdevices/flipperzero-firmware/tree/dev/applications/examples/example_number_input).
 
-## General principle
+## Генерал принципле
 
-Definition of min/max values is required. Numbers are of type int32_t. If negative numbers are allowed within min - max, an additional button is displayed to switch the sign between + and -. 
+Дефинитион оф мин/мах валюес ис рекуюиред. Нюмберс аре оф тйпе инт32_т. Иф негативе нюмберс аре аллошед шитхин мин - мах, ан аддитионал бюттон ис дисплайед то сшитцх тхе сигн бетшеен + анд -. 
 
-It is also possible to define a header text, as shown in this example app with the 3 different input options. 
+Ит ис алсо поссибле то дефине а хеадер техт, ас схошн ин тхис ехампле апп шитх тхе 3 дифферент инпют оптионс. 

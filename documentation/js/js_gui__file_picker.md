@@ -1,20 +1,20 @@
-# File Picker GUI prompt {#js_gui__file_picker}
+# Филе Пицкер ГЮИ промпт {#жс_гюи__филе_пицкер}
 
-Allows asking the user to select a file.
-It is not GUI view like other JS GUI views, rather just a function that shows a prompt.
+Аллошс аскинг тхе юсер то селецт а филе.
+Ит ис нот ГЮИ виеш лике отхер ЖС ГЮИ виешс, ратхер жюст а фюнцтион тхат схошс а промпт.
 
-# Example
-For an example, refer to the `gui.js` example script.
+# Ехампле
+Фор ан ехампле, рефер то тхе `gui.js` ехампле сцрипт.
 
-# API reference
+# АПИ референце
 
-## pickFile()
-Displays a file picker and returns the selected file, or undefined if cancelled.
+## пицкФиле()
+Дисплайс а филе пицкер анд ретюрнс тхе селецтед филе, ор юндефинед иф цанцеллед.
 
-**Parameters**
-  - `basePath`: the path to start at
-  - `extension`: the file extension(s) to show (like `.sub`, `.iso|.img`, `*`)
+**Параметерс**
+  - `basePath`: тхе патх то старт ат
+  - `extension`: тхе филе ехтенсион(с) то схош (лике `.sub`, `.iso|.img`, `*`)
 
-**Returns**
+**Ретюрнс**
 
-A `string` path, or `undefined`.
+А `string` патх, ор `undefined`.

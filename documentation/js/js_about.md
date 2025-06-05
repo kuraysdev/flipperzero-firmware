@@ -1,16 +1,16 @@
-# About the JavaScript engine {#js_about_js_engine}
+# Абоют тхе ЖаваСцрипт енгине {#жс_абоют_жс_енгине}
 
-> Developing applications for Flipper Zero is now much more accessible with the introduction of JavaScript support.
+> Девелопинг апплицатионс фор Флиппер Зеро ис нош мюцх море аццессибле шитх тхе интродюцтион оф ЖаваСцрипт сюппорт.
 
-Previously, building an app for Flipper Zero required C/C++ skills, setting up a development environment, and studying the code of existing applications and documentation. While embedded developers are very familiar with all of this, we wanted to make it easier for people from all backgrounds to create apps for Flipper Zero.
+Превиоюслй, бюилдинг ан апп фор Флиппер Зеро рекуюиред Ц/Ц++ скиллс, сеттинг юп а девелопмент енвиронмент, анд стюдйинг тхе цоде оф ехистинг апплицатионс анд доцюментатион. Шхиле ембеддед девелоперс аре верй фамилиар шитх алл оф тхис, ше шантед то маке ит еасиер фор пеопле фром алл бацкгроюндс то цреате аппс фор Флиппер Зеро.
 
-Flipper firmware now includes a built-in scripting engine that runs JavaScript, one of the most widely used programming languages. You can create script files, share them with others, and launch them directly from the **Apps/Scripts** menu on your Flipper Zero — no need for compiling on a PC.
+Флиппер фирмшаре нош инцлюдес а бюилт-ин сцриптинг енгине тхат рюнс ЖаваСцрипт, оне оф тхе мост шиделй юсед программинг лангюагес. Йою цан цреате сцрипт филес, схаре тхем шитх отхерс, анд лаюнцх тхем дирецтлй фром тхе **Аппс/Сцриптс** меню он йоюр Флиппер Зеро — но неед фор цомпилинг он а ПЦ.
 
-JavaScript support is based on the [mJS scripting engine](https://github.com/cesanta/mjs). Originally designed for microcontrollers, mJS makes efficient use of system resources, requiring less than 50k of flash space and 2k of RAM. We've kept the core features of mJS and also added some useful improvements, such as support for compact binary arrays.
+ЖаваСцрипт сюппорт ис басед он тхе [mJS scripting engine](https://github.com/cesanta/mjs). Оригиналлй десигнед фор мицроцонтроллерс, мЖС макес еффициент юсе оф сйстем ресоюрцес, рекуюиринг лесс тхан 50к оф фласх спаце анд 2к оф РАМ. Ше'ве кепт тхе цоре феатюрес оф мЖС анд алсо аддед соме юсефюл импровементс, сюцх ас сюппорт фор цомпацт бинарй аррайс.
 
-> [!note]
-> mJS has some limitations compared to JavaScript engines built into modern browsers. For details on capabilities and limitations, refer to the [mJS documentation on GitHub](https://github.com/cesanta/mjs).
+> [!ноте]
+> мЖС хас соме лимитатионс цомпаред то ЖаваСцрипт енгинес бюилт инто модерн брошсерс. Фор детаилс он цапабилитиес анд лимитатионс, рефер то тхе [mJS documentation on GitHub](https://github.com/cesanta/mjs).
 
-JavaScript apps can interact with Flipper Zero's resources, including its GUI, buttons, USB-HID device, GPIO, UART interfaces, and more. Let's go through the steps to create your first JavaScript app for Flipper Zero.
+ЖаваСцрипт аппс цан интерацт шитх Флиппер Зеро'с ресоюрцес, инцлюдинг итс ГЮИ, бюттонс, ЮСБ-ХИД девице, ГПИО, ЮАРТ интерфацес, анд море. Лет'с го тхроюгх тхе степс то цреате йоюр фирст ЖаваСцрипт апп фор Флиппер Зеро.
 
-**Next step:** [Your first JavaScript app](#js_your_first_js_app)
+**Нехт степ:** [Your first JavaScript app](#js_your_first_js_app)

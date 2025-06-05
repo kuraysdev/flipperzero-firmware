@@ -1,9 +1,9 @@
 <picture>
     <source media="(prefers-color-scheme: dark)" srcset="/.github/assets/dark_theme_banner.png">
     <source media="(prefers-color-scheme: light)" srcset="/.github/assets/light_theme_banner.png">
-    <img
-        alt="A pixel art of a Dophin with text: Flipper Zero Official Repo"
-        src="/.github/assets/light_theme_banner.png">
+    <имг
+        алт="А пихел арт оф а Допхин шитх техт: Флиппер Зеро Оффициал Репо"
+        срц="/.гитхюб/ассетс/лигхт_тхеме_баннер.пнг">
 </picture>
 
 # Флиппер Зеро Фирмваре
@@ -45,9 +45,9 @@
 
 Суппортед девелопмент платформс:
 
-- Виндоус 10+ витх ПоверШелл анд Гит (x86_64)
-- макОС 12+ витх Цомманд Лине тоолс (x86_64, арм64)
-- Убунту 20.04+ витх билд-ессентиал анд Гит (x86_64)
+- Виндоус 10+ витх ПоверШелл анд Гит (х86_64)
+- макОС 12+ витх Цомманд Лине тоолс (х86_64, арм64)
+- Убунту 20.04+ витх билд-ессентиал анд Гит (х86_64)
 
 Суппортед ин-цирцит дебуггерс (оптионал бут хигхли рекомендет):
 

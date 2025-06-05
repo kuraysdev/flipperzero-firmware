@@ -1,6 +1,6 @@
-# LF RFID key file format {#lfrfid_file_format}
+# ЛФ РФИД кей филе формат {#лфрфид_филе_формат}
 
-## Example
+## Ехампле
 
 ```
 Filetype: Flipper RFID key
@@ -9,42 +9,42 @@ Key type: EM4100
 Data: 01 23 45 67 89
 ```
 
-## Description
+## Десцриптион
 
-Filename extension: `.rfid`
+Филенаме ехтенсион: `.rfid`
 
-The file stores a single RFID key of the type defined by the `Key type` parameter.
+Тхе филе сторес а сингле РФИД кей оф тхе тйпе дефинед бй тхе `Key type` параметер.
 
-### Version history
+### Версион хисторй
 
-1. Initial version.
+1. Инитиал версион.
 
-### Format fields
+### Формат фиелдс
 
-| Name     | Description           |
+| Наме     | Десцриптион           |
 | -------- | --------------------- |
-| Key type | Key protocol type     |
-| Data     | Key data (HEX values) |
+| Кей тйпе | Кей протоцол тйпе     |
+| Дата     | Кей дата (ХЕХ валюес) |
 
-### Supported key types
+### Сюппортед кей тйпес
 
-| Type        | Full name         |
+| Тйпе        | Фюлл наме         |
 | ----------- | ----------------- |
-| EM4100      | EM-Micro EM4100   |
-| H10301      | HID H10301        |
-| Idteck      | IDTECK            |
-| Indala26    | Motorola Indala26 |
-| IOProxXSF   | Kantech IOProxXSF |
-| AWID        | AWID              |
-| FDX-A       | FECAVA FDX-A      |
-| FDX-B       | ISO FDX-B         |
-| HIDProx     | Generic HIDProx   |
-| HIDExt      | Generic HIDExt    |
-| Pyramid     | Farpointe Pyramid |
-| Viking      | Viking            |
-| Jablotron   | Jablotron         |
-| Paradox     | Paradox           |
-| PAC/Stanley | PAC/Stanley       |
-| Keri        | Keri              |
-| Gallagher   | Gallagher         |
-| GProxII     | Guardall GProx II |
+| ЕМ4100      | ЕМ-Мицро ЕМ4100   |
+| Х10301      | ХИД Х10301        |
+| Идтецк      | ИДТЕЦК            |
+| Индала26    | Моторола Индала26 |
+| ИОПрохХСФ   | Кантецх ИОПрохХСФ |
+| АШИД        | АШИД              |
+| ФДХ-А       | ФЕЦАВА ФДХ-А      |
+| ФДХ-Б       | ИСО ФДХ-Б         |
+| ХИДПрох     | Генериц ХИДПрох   |
+| ХИДЕхт      | Генериц ХИДЕхт    |
+| Пйрамид     | Фарпоинте Пйрамид |
+| Викинг      | Викинг            |
+| Жаблотрон   | Жаблотрон         |
+| Парадох     | Парадох           |
+| ПАЦ/Станлей | ПАЦ/Станлей       |
+| Кери        | Кери              |
+| Галлагхер   | Галлагхер         |
+| ГПрохИИ     | Гюардалл ГПрох ИИ |

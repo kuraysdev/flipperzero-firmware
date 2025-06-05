@@ -1,327 +1,327 @@
-# NFC Flipper File Formats {#nfc_file_format}
+# НФЦ Флиппер Филе Форматс {#нфц_филе_формат}
 
-## UID + Header (General format)
+## ЮИД + Хеадер (Генерал формат)
 
-### Example
+### Ехампле
 
-    Filetype: Flipper NFC device
-    Version: 4
-    # Device type can be ISO14443-3A, ISO14443-3B, ISO14443-4A, NTAG/Ultralight, Mifare Classic, Mifare DESFire
-    Device type: ISO14443-4A
-    # UID is common for all formats
-    UID: 04 48 6A 32 33 58 80
+    Филетйпе: Флиппер НФЦ девице
+    Версион: 4
+    # Девице тйпе цан бе ИСО14443-3А, ИСО14443-3Б, ИСО14443-4А, НТАГ/Юлтралигхт, Мифаре Цлассиц, Мифаре ДЕСФире
+    Девице тйпе: ИСО14443-4А
+    # ЮИД ис цоммон фор алл форматс
+    ЮИД: 04 48 6А 32 33 58 80
     -------------------------
-    (Device-specific data)
+    (Девице-специфиц дата)
 
-### Description
+### Десцриптион
 
-This file format is used to store the device type and the UID of an NFC device. It does not store any internal data, so it is only used as a header for other formats.
+Тхис филе формат ис юсед то сторе тхе девице тйпе анд тхе ЮИД оф ан НФЦ девице. Ит доес нот сторе анй интернал дата, со ит ис онлй юсед ас а хеадер фор отхер форматс.
 
-Version differences:
+Версион дифференцес:
 
-1. Initial version, deprecated
-2. LSB ATQA (e.g. 4400 instead of 0044)
-3. MSB ATQA (current version)
-4. Replace UID device type with ISO14443-3A
+1. Инитиал версион, депрецатед
+2. ЛСБ АТКуА (е.г. 4400 инстеад оф 0044)
+3. МСБ АТКуА (цюррент версион)
+4. Реплаце ЮИД девице тйпе шитх ИСО14443-3А
 
-## ISO14443-3A
+## ИСО14443-3А
 
-    Filetype: Flipper NFC device
-    Version: 4
-    # Device type can be ISO14443-3A, ISO14443-3B, ISO14443-4A, NTAG/Ultralight, Mifare Classic, Mifare DESFire
-    Device type: ISO14443-3A
-    # UID is common for all formats
-    UID: 34 19 6D 41 14 56 E6
-    # ISO14443-3A specific data
-    ATQA: 00 44
-    SAK: 00
+    Филетйпе: Флиппер НФЦ девице
+    Версион: 4
+    # Девице тйпе цан бе ИСО14443-3А, ИСО14443-3Б, ИСО14443-4А, НТАГ/Юлтралигхт, Мифаре Цлассиц, Мифаре ДЕСФире
+    Девице тйпе: ИСО14443-3А
+    # ЮИД ис цоммон фор алл форматс
+    ЮИД: 34 19 6Д 41 14 56 Е6
+    # ИСО14443-3А специфиц дата
+    АТКуА: 00 44
+    САК: 00
 
-### Description 
+### Десцриптион 
 
-This file format is used to store the UID, SAK and ATQA of an ISO14443-3A device.
-UID must be either 4 or 7 bytes long. ATQA is 2 bytes long. SAK is 1 byte long.
+Тхис филе формат ис юсед то сторе тхе ЮИД, САК анд АТКуА оф ан ИСО14443-3А девице.
+ЮИД мюст бе еитхер 4 ор 7 бйтес лонг. АТКуА ис 2 бйтес лонг. САК ис 1 бйте лонг.
 
-Version differences:
-None, there are no versions yet.
+Версион дифференцес:
+Ноне, тхере аре но версионс йет.
 
-## ISO14443-3B
+## ИСО14443-3Б
 
-    Filetype: Flipper NFC device
-    Version: 4
-    # Device type can be ISO14443-3A, ISO14443-3B, ISO14443-4A, NTAG/Ultralight, Mifare Classic, Mifare DESFire
-    Device type: ISO14443-3B
-    # UID is common for all formats
-    UID: 30 1D B3 28
-    # ISO14443-3B specific data
-    Application data: 00 12 34 FF
-    Protocol info: 11 81 E1
+    Филетйпе: Флиппер НФЦ девице
+    Версион: 4
+    # Девице тйпе цан бе ИСО14443-3А, ИСО14443-3Б, ИСО14443-4А, НТАГ/Юлтралигхт, Мифаре Цлассиц, Мифаре ДЕСФире
+    Девице тйпе: ИСО14443-3Б
+    # ЮИД ис цоммон фор алл форматс
+    ЮИД: 30 1Д Б3 28
+    # ИСО14443-3Б специфиц дата
+    Апплицатион дата: 00 12 34 ФФ
+    Протоцол инфо: 11 81 Е1
 
-### Description 
+### Десцриптион 
 
-This file format is used to store the UID, Application data and Protocol info of a ISO14443-3B device.
-UID must be 4 bytes long. Application data is 4 bytes long. Protocol info is 3 bytes long.
+Тхис филе формат ис юсед то сторе тхе ЮИД, Апплицатион дата анд Протоцол инфо оф а ИСО14443-3Б девице.
+ЮИД мюст бе 4 бйтес лонг. Апплицатион дата ис 4 бйтес лонг. Протоцол инфо ис 3 бйтес лонг.
 
-Version differences:
-None, there are no versions yet.
+Версион дифференцес:
+Ноне, тхере аре но версионс йет.
 
-## ISO14443-4A
+## ИСО14443-4А
 
-### Example
+### Ехампле
 
-    Filetype: Flipper NFC device
-    Version: 4
-    # Device type can be ISO14443-3A, ISO14443-3B, ISO14443-4A, NTAG/Ultralight, Mifare Classic, Mifare DESFire
-    Device type: ISO14443-4A
-    # UID is common for all formats
-    UID: 04 48 6A 32 33 58 80
-    # ISO14443-3A specific data
-    ATQA: 03 44
-    SAK: 20
-    # ISO14443-4A specific data
-    ATS: 06 75 77 81 02 80
+    Филетйпе: Флиппер НФЦ девице
+    Версион: 4
+    # Девице тйпе цан бе ИСО14443-3А, ИСО14443-3Б, ИСО14443-4А, НТАГ/Юлтралигхт, Мифаре Цлассиц, Мифаре ДЕСФире
+    Девице тйпе: ИСО14443-4А
+    # ЮИД ис цоммон фор алл форматс
+    ЮИД: 04 48 6А 32 33 58 80
+    # ИСО14443-3А специфиц дата
+    АТКуА: 03 44
+    САК: 20
+    # ИСО14443-4А специфиц дата
+    АТС: 06 75 77 81 02 80
     
-### Description 
+### Десцриптион 
 
-This file format is used to store the UID, SAK and ATQA of a ISO14443-4A device. It also stores the Answer to Select (ATS) data of the card.
-ATS must be no less than 5 bytes long.
+Тхис филе формат ис юсед то сторе тхе ЮИД, САК анд АТКуА оф а ИСО14443-4А девице. Ит алсо сторес тхе Ансшер то Селецт (АТС) дата оф тхе цард.
+АТС мюст бе но лесс тхан 5 бйтес лонг.
 
-Version differences:
-None, there are no versions yet.
+Версион дифференцес:
+Ноне, тхере аре но версионс йет.
 
-## NTAG/Ultralight
+## НТАГ/Юлтралигхт
 
-### Example
+### Ехампле
 
-    Filetype: Flipper NFC device
-    Version: 4
-    # Device type can be ISO14443-3A, ISO14443-3B, ISO14443-4A, NTAG/Ultralight, Mifare Classic, Mifare DESFire
-    Device type: NTAG/Ultralight
-    # UID is common for all formats
-    UID: 04 85 90 54 12 98 23
-    # ISO14443-3A specific data
-    ATQA: 00 44
-    SAK: 00
-    # NTAG/Ultralight specific data
-    Data format version: 2
-    NTAG/Ultralight type: NTAG216
-    Signature: 1B 84 EB 70 BD 4C BD 1B 1D E4 98 0B 18 58 BD 7C 72 85 B4 E4 7B 38 8E 96 CF 88 6B EE A3 43 AD 90
-    Mifare version: 00 04 04 02 01 00 13 03
-    Counter 0: 0
-    Tearing 0: 00
-    Counter 1: 0
-    Tearing 1: 00
-    Counter 2: 0
-    Tearing 2: 00
-    Pages total: 231
-    Pages read: 231
-    Page 0: 04 85 92 9B
-    Page 1: 8A A0 61 81
-    Page 2: CA 48 0F 00
+    Филетйпе: Флиппер НФЦ девице
+    Версион: 4
+    # Девице тйпе цан бе ИСО14443-3А, ИСО14443-3Б, ИСО14443-4А, НТАГ/Юлтралигхт, Мифаре Цлассиц, Мифаре ДЕСФире
+    Девице тйпе: НТАГ/Юлтралигхт
+    # ЮИД ис цоммон фор алл форматс
+    ЮИД: 04 85 90 54 12 98 23
+    # ИСО14443-3А специфиц дата
+    АТКуА: 00 44
+    САК: 00
+    # НТАГ/Юлтралигхт специфиц дата
+    Дата формат версион: 2
+    НТАГ/Юлтралигхт тйпе: НТАГ216
+    Сигнатюре: 1Б 84 ЕБ 70 БД 4Ц БД 1Б 1Д Е4 98 0Б 18 58 БД 7Ц 72 85 Б4 Е4 7Б 38 8Е 96 ЦФ 88 6Б ЕЕ А3 43 АД 90
+    Мифаре версион: 00 04 04 02 01 00 13 03
+    Цоюнтер 0: 0
+    Теаринг 0: 00
+    Цоюнтер 1: 0
+    Теаринг 1: 00
+    Цоюнтер 2: 0
+    Теаринг 2: 00
+    Пагес тотал: 231
+    Пагес реад: 231
+    Паге 0: 04 85 92 9Б
+    Паге 1: 8А А0 61 81
+    Паге 2: ЦА 48 0Ф 00
     ...
-    Page 224: 00 00 00 00
-    Page 225: 00 00 00 00
-    Page 226: 00 00 7F BD
-    Page 227: 04 00 00 E2
-    Page 228: 00 05 00 00
-    Page 229: 00 00 00 00
-    Page 230: 00 00 00 00
-    Failed authentication attempts: 0
+    Паге 224: 00 00 00 00
+    Паге 225: 00 00 00 00
+    Паге 226: 00 00 7Ф БД
+    Паге 227: 04 00 00 Е2
+    Паге 228: 00 05 00 00
+    Паге 229: 00 00 00 00
+    Паге 230: 00 00 00 00
+    Фаилед аютхентицатион аттемптс: 0
 
-### Description
+### Десцриптион
 
-This file format is used to store the UID, SAK and ATQA of a Mifare Ultralight/NTAG device. It also stores the internal data of the card, the signature, the version, and the counters. The data is stored in pages, just like on the card itself.
+Тхис филе формат ис юсед то сторе тхе ЮИД, САК анд АТКуА оф а Мифаре Юлтралигхт/НТАГ девице. Ит алсо сторес тхе интернал дата оф тхе цард, тхе сигнатюре, тхе версион, анд тхе цоюнтерс. Тхе дата ис сторед ин пагес, жюст лике он тхе цард итселф.
 
-The "NTAG/Ultralight type" field contains the concrete device type. It must be one of: Mifare Ultralight, Mifare Ultralight 11, Mifare Ultralight 21, NTAG203, NTAG213, NTAG215, NTAG216, NTAG I2C 1K, NTAG I2C 2K, NTAG I2C Plus 1K, NTAG I2C Plus 2K.
+Тхе "НТАГ/Юлтралигхт тйпе" фиелд цонтаинс тхе цонцрете девице тйпе. Ит мюст бе оне оф: Мифаре Юлтралигхт, Мифаре Юлтралигхт 11, Мифаре Юлтралигхт 21, НТАГ203, НТАГ213, НТАГ215, НТАГ216, НТАГ И2Ц 1К, НТАГ И2Ц 2К, НТАГ И2Ц Плюс 1К, НТАГ И2Ц Плюс 2К.
 
-The "Signature" field contains the reply of the tag to the READ_SIG command. More on that can be found here: <https://www.nxp.com/docs/en/data-sheet/MF0ULX1.pdf> (page 31)
+Тхе "Сигнатюре" фиелд цонтаинс тхе реплй оф тхе таг то тхе РЕАД_СИГ цомманд. Море он тхат цан бе фоюнд хере: <https://www.nxp.com/docs/en/data-sheet/MF0ULX1.pdf> (паге 31)
 
-The "Mifare version" field is not related to the file format version but to the Mifare Ultralight version. It contains the response of the tag to the GET_VERSION command. More on that can be found here: <https://www.nxp.com/docs/en/data-sheet/MF0ULX1.pdf> (page 21)
+Тхе "Мифаре версион" фиелд ис нот релатед то тхе филе формат версион бют то тхе Мифаре Юлтралигхт версион. Ит цонтаинс тхе респонсе оф тхе таг то тхе ГЕТ_ВЕРСИОН цомманд. Море он тхат цан бе фоюнд хере: <https://www.nxp.com/docs/en/data-sheet/MF0ULX1.pdf> (паге 21)
 
-Other fields are the direct representation of the card's internal state. Learn more about them in the same datasheet.
+Отхер фиелдс аре тхе дирецт репресентатион оф тхе цард'с интернал стате. Леарн море абоют тхем ин тхе саме датасхеет.
 
-Version differences:
+Версион дифференцес:
 
-1. Mifare Ultralight type is stored directly in Device type field
-2. Current version, Mifare Ultralight type is stored in the same-named field
+1. Мифаре Юлтралигхт тйпе ис сторед дирецтлй ин Девице тйпе фиелд
+2. Цюррент версион, Мифаре Юлтралигхт тйпе ис сторед ин тхе саме-намед фиелд
 
-## Mifare Classic
+## Мифаре Цлассиц
 
-### Example
+### Ехампле
 
-    Filetype: Flipper NFC device
-    Version: 4
-    # Device type can be ISO14443-3A, ISO14443-3B, ISO14443-4A, NTAG/Ultralight, Mifare Classic, Mifare DESFire
-    Device type: Mifare Classic
-    # UID is common for all formats
-    UID: BA E2 7C 9D
-    # ISO14443-3A specific data
-    ATQA: 00 02
-    SAK: 18
-    # Mifare Classic specific data
-    Mifare Classic type: 4K
-    Data format version: 2
-    # Mifare Classic blocks, '??' means unknown data
-    Block 0: BA E2 7C 9D B9 18 02 00 46 44 53 37 30 56 30 31
-    Block 1: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-    Block 2: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-    Block 3: FF FF FF FF FF FF FF 07 80 69 FF FF FF FF FF FF
-    Block 4: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-    Block 5: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-    Block 6: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-    Block 7: FF FF FF FF FF FF FF 07 80 69 FF FF FF FF FF FF
+    Филетйпе: Флиппер НФЦ девице
+    Версион: 4
+    # Девице тйпе цан бе ИСО14443-3А, ИСО14443-3Б, ИСО14443-4А, НТАГ/Юлтралигхт, Мифаре Цлассиц, Мифаре ДЕСФире
+    Девице тйпе: Мифаре Цлассиц
+    # ЮИД ис цоммон фор алл форматс
+    ЮИД: БА Е2 7Ц 9Д
+    # ИСО14443-3А специфиц дата
+    АТКуА: 00 02
+    САК: 18
+    # Мифаре Цлассиц специфиц дата
+    Мифаре Цлассиц тйпе: 4К
+    Дата формат версион: 2
+    # Мифаре Цлассиц блоцкс, '??' меанс юнкношн дата
+    Блоцк 0: БА Е2 7Ц 9Д Б9 18 02 00 46 44 53 37 30 56 30 31
+    Блоцк 1: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Блоцк 2: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Блоцк 3: ФФ ФФ ФФ ФФ ФФ ФФ ФФ 07 80 69 ФФ ФФ ФФ ФФ ФФ ФФ
+    Блоцк 4: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Блоцк 5: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Блоцк 6: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Блоцк 7: ФФ ФФ ФФ ФФ ФФ ФФ ФФ 07 80 69 ФФ ФФ ФФ ФФ ФФ ФФ
     ...
-    Block 238: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-    Block 239: FF FF FF FF FF FF FF 07 80 69 FF FF FF FF FF FF
-    Block 240: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-    Block 241: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-    Block 242: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-    Block 243: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-    Block 244: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-    Block 245: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-    Block 246: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-    Block 247: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-    Block 248: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-    Block 249: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-    Block 250: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-    Block 251: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-    Block 252: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-    Block 253: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-    Block 254: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-    Block 255: FF FF FF FF FF FF FF 07 80 69 FF FF FF FF FF FF
+    Блоцк 238: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Блоцк 239: ФФ ФФ ФФ ФФ ФФ ФФ ФФ 07 80 69 ФФ ФФ ФФ ФФ ФФ ФФ
+    Блоцк 240: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Блоцк 241: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Блоцк 242: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Блоцк 243: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Блоцк 244: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Блоцк 245: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Блоцк 246: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Блоцк 247: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Блоцк 248: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Блоцк 249: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Блоцк 250: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Блоцк 251: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Блоцк 252: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Блоцк 253: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Блоцк 254: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Блоцк 255: ФФ ФФ ФФ ФФ ФФ ФФ ФФ 07 80 69 ФФ ФФ ФФ ФФ ФФ ФФ
 
-### Description
+### Десцриптион
 
-This file format is used to store the NFC-A and Mifare Classic specific data of a Mifare Classic card. Aside from the NFC-A data, it stores the card type (1K/4K) and the internal data of the card. The data is stored in blocks, there is no sector grouping. If the block's data is unknown, it is represented by '??'. Otherwise, the data is represented as a hex string.
+Тхис филе формат ис юсед то сторе тхе НФЦ-А анд Мифаре Цлассиц специфиц дата оф а Мифаре Цлассиц цард. Асиде фром тхе НФЦ-А дата, ит сторес тхе цард тйпе (1К/4К) анд тхе интернал дата оф тхе цард. Тхе дата ис сторед ин блоцкс, тхере ис но сецтор гроюпинг. Иф тхе блоцк'с дата ис юнкношн, ит ис репресентед бй '??'. Отхершисе, тхе дата ис репресентед ас а хех стринг.
 
-Version differences:
+Версион дифференцес:
 
-1. Initial version, has Key A and Key B masks instead of marking unknown data with '??'.
+1. Инитиал версион, хас Кей А анд Кей Б маскс инстеад оф маркинг юнкношн дата шитх '??'.
 
-Example:
+Ехампле:
 
     ...
-    Data format version: 1
-    # Key map is the bit mask indicating valid key in each sector
-    Key A map: 000000000000FFFF
-    Key B map: 000000000000FFFF
-    # Mifare Classic blocks
+    Дата формат версион: 1
+    # Кей мап ис тхе бит маск индицатинг валид кей ин еацх сецтор
+    Кей А мап: 000000000000ФФФФ
+    Кей Б мап: 000000000000ФФФФ
+    # Мифаре Цлассиц блоцкс
     ...
 
-2. Current version
+2. Цюррент версион
 
-## Mifare DESFire
+## Мифаре ДЕСФире
 
-### Example
+### Ехампле
 
-    Filetype: Flipper NFC device
-    Version: 4
-    # Device type can be ISO14443-3A, ISO14443-3B, ISO14443-4A, NTAG/Ultralight, Mifare Classic, Mifare DESFire
-    Device type: Mifare DESFire
-    # UID is common for all formats
-    UID: 04 2F 19 0A CD 66 80
-    # ISO14443-3A specific data
-    ATQA: 03 44
-    SAK: 20
-    # ISO14443-4A specific data
-    ATS: 06 75 77 81 02 80
-    # Mifare DESFire specific data
-    PICC Version: 04 01 01 12 00 1A 05 04 01 01 02 01 1A 05 04 2F 19 0A CD 66 80 CE ED D4 51 80 31 19
-    PICC Free Memory: 7520
-    PICC Change Key ID: 00
-    PICC Config Changeable: true
-    PICC Free Create Delete: true
-    PICC Free Directory List: true
-    PICC Key Changeable: true
-    PICC Max Keys: 01
-    PICC Key 0 Version: 00
-    Application Count: 1
-    Application IDs: 56 34 12
-    Application 563412 Change Key ID: 00
-    Application 563412 Config Changeable: true
-    Application 563412 Free Create Delete: true
-    Application 563412 Free Directory List: true
-    Application 563412 Key Changeable: true
-    Application 563412 Max Keys: 0E
-    Application 563412 Key 0 Version: 00
-    Application 563412 Key 1 Version: 00
-    Application 563412 Key 2 Version: 00
-    Application 563412 Key 3 Version: 00
-    Application 563412 Key 4 Version: 00
-    Application 563412 Key 5 Version: 00
-    Application 563412 Key 6 Version: 00
-    Application 563412 Key 7 Version: 00
-    Application 563412 Key 8 Version: 00
-    Application 563412 Key 9 Version: 00
-    Application 563412 Key 10 Version: 00
-    Application 563412 Key 11 Version: 00
-    Application 563412 Key 12 Version: 00
-    Application 563412 Key 13 Version: 00
-    Application 563412 File IDs: 01
-    Application 563412 File 1 Type: 00
-    Application 563412 File 1 Communication Settings: 00
-    Application 563412 File 1 Access Rights: EE EE
-    Application 563412 File 1 Size: 256
-    Application 563412 File 1: 13 37 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    Филетйпе: Флиппер НФЦ девице
+    Версион: 4
+    # Девице тйпе цан бе ИСО14443-3А, ИСО14443-3Б, ИСО14443-4А, НТАГ/Юлтралигхт, Мифаре Цлассиц, Мифаре ДЕСФире
+    Девице тйпе: Мифаре ДЕСФире
+    # ЮИД ис цоммон фор алл форматс
+    ЮИД: 04 2Ф 19 0А ЦД 66 80
+    # ИСО14443-3А специфиц дата
+    АТКуА: 03 44
+    САК: 20
+    # ИСО14443-4А специфиц дата
+    АТС: 06 75 77 81 02 80
+    # Мифаре ДЕСФире специфиц дата
+    ПИЦЦ Версион: 04 01 01 12 00 1А 05 04 01 01 02 01 1А 05 04 2Ф 19 0А ЦД 66 80 ЦЕ ЕД Д4 51 80 31 19
+    ПИЦЦ Фрее Меморй: 7520
+    ПИЦЦ Цханге Кей ИД: 00
+    ПИЦЦ Цонфиг Цхангеабле: трюе
+    ПИЦЦ Фрее Цреате Делете: трюе
+    ПИЦЦ Фрее Дирецторй Лист: трюе
+    ПИЦЦ Кей Цхангеабле: трюе
+    ПИЦЦ Мах Кейс: 01
+    ПИЦЦ Кей 0 Версион: 00
+    Апплицатион Цоюнт: 1
+    Апплицатион ИДс: 56 34 12
+    Апплицатион 563412 Цханге Кей ИД: 00
+    Апплицатион 563412 Цонфиг Цхангеабле: трюе
+    Апплицатион 563412 Фрее Цреате Делете: трюе
+    Апплицатион 563412 Фрее Дирецторй Лист: трюе
+    Апплицатион 563412 Кей Цхангеабле: трюе
+    Апплицатион 563412 Мах Кейс: 0Е
+    Апплицатион 563412 Кей 0 Версион: 00
+    Апплицатион 563412 Кей 1 Версион: 00
+    Апплицатион 563412 Кей 2 Версион: 00
+    Апплицатион 563412 Кей 3 Версион: 00
+    Апплицатион 563412 Кей 4 Версион: 00
+    Апплицатион 563412 Кей 5 Версион: 00
+    Апплицатион 563412 Кей 6 Версион: 00
+    Апплицатион 563412 Кей 7 Версион: 00
+    Апплицатион 563412 Кей 8 Версион: 00
+    Апплицатион 563412 Кей 9 Версион: 00
+    Апплицатион 563412 Кей 10 Версион: 00
+    Апплицатион 563412 Кей 11 Версион: 00
+    Апплицатион 563412 Кей 12 Версион: 00
+    Апплицатион 563412 Кей 13 Версион: 00
+    Апплицатион 563412 Филе ИДс: 01
+    Апплицатион 563412 Филе 1 Тйпе: 00
+    Апплицатион 563412 Филе 1 Цоммюницатион Сеттингс: 00
+    Апплицатион 563412 Филе 1 Аццесс Ригхтс: ЕЕ ЕЕ
+    Апплицатион 563412 Филе 1 Сизе: 256
+    Апплицатион 563412 Филе 1: 13 37 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 
-### Description
+### Десцриптион
 
-This file format is used to store the NFC-A and Mifare DESFire specific data of a Mifare DESFire card. Aside from the NFC-A data, it stores the card type (DESFire) and the internal data of the card. The data is stored per-application, and per-file. Here, the card was written using those pm3 commands:
+Тхис филе формат ис юсед то сторе тхе НФЦ-А анд Мифаре ДЕСФире специфиц дата оф а Мифаре ДЕСФире цард. Асиде фром тхе НФЦ-А дата, ит сторес тхе цард тйпе (ДЕСФире) анд тхе интернал дата оф тхе цард. Тхе дата ис сторед пер-апплицатион, анд пер-филе. Хере, тхе цард шас шриттен юсинг тхосе пм3 цоммандс:
 
-    hf mfdes createapp --aid 123456 --fid 2345 --dfname astra
-    hf mfdes createfile --aid 123456 --fid 01 --isofid 0001 --size 000100
-    hf mfdes write --aid 123456 --fid 01 -d 1337
+    хф мфдес цреатеапп --аид 123456 --фид 2345 --дфнаме астра
+    хф мфдес цреатефиле --аид 123456 --фид 01 --исофид 0001 --сизе 000100
+    хф мфдес шрите --аид 123456 --фид 01 -д 1337
 
-Version differences:
-None, there are no versions yet.
+Версион дифференцес:
+Ноне, тхере аре но версионс йет.
 
-## Mifare Classic Dictionary
+## Мифаре Цлассиц Дицтионарй
 
-### Example
+### Ехампле
 
-    # Key dictionary from https://github.com/ikarus23/MifareClassicTool.git
+    # Кей дицтионарй фром https://github.com/ikarus23/MifareClassicTool.git
 
-    # More well known keys!
-    # Standard keys
-    FFFFFFFFFFFF
-    A0A1A2A3A4A5
-    D3F7D3F7D3F7
+    # Море шелл кношн кейс!
+    # Стандард кейс
+    ФФФФФФФФФФФФ
+    А0А1А2А3А4А5
+    Д3Ф7Д3Ф7Д3Ф7
     000000000000
 
-    # Keys from mfoc
-    B0B1B2B3B4B5
-    4D3A99C351DD
-    1A982C7E459A
-    AABBCCDDEEFF
-    714C5C886E97
-    587EE5F9350F
-    A0478CC39091
-    533CB6C723F6
-    8FD0A4F256E9
+    # Кейс фром мфоц
+    Б0Б1Б2Б3Б4Б5
+    4Д3А99Ц351ДД
+    1А982Ц7Е459А
+    ААББЦЦДДЕЕФФ
+    714Ц5Ц886Е97
+    587ЕЕ5Ф9350Ф
+    А0478ЦЦ39091
+    533ЦБ6Ц723Ф6
+    8ФД0А4Ф256Е9
     ...
 
-### Description
+### Десцриптион
 
-This file contains a list of Mifare Classic keys. Each key is represented as a hex string. Lines starting with '#' are ignored as comments. Blank lines are ignored as well.
+Тхис филе цонтаинс а лист оф Мифаре Цлассиц кейс. Еацх кей ис репресентед ас а хех стринг. Линес стартинг шитх '#' аре игноред ас цомментс. Бланк линес аре игноред ас шелл.
 
-## EMV resources
+## ЕМВ ресоюрцес
 
-### Example
+### Ехампле
 
-    Filetype: Flipper EMV resources
-    Version: 1
-    # EMV currency code: currency name
-    0997: USN
-    0994: XSU
-    0990: CLF
-    0986: BRL
-    0985: PLN
-    0984: BOV
+    Филетйпе: Флиппер ЕМВ ресоюрцес
+    Версион: 1
+    # ЕМВ цюрренцй цоде: цюрренцй наме
+    0997: ЮСН
+    0994: ХСЮ
+    0990: ЦЛФ
+    0986: БРЛ
+    0985: ПЛН
+    0984: БОВ
     ...
 
-### Description
+### Десцриптион
 
-This file stores a list of EMV currency codes, country codes, or AIDs and their names. Each line contains a hex value and a name separated by a colon and a space.
+Тхис филе сторес а лист оф ЕМВ цюрренцй цодес, цоюнтрй цодес, ор АИДс анд тхеир намес. Еацх лине цонтаинс а хех валюе анд а наме сепаратед бй а цолон анд а спаце.
 
-Version differences:
+Версион дифференцес:
 
-1. Initial version
+1. Инитиал версион

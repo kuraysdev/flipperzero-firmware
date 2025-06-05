@@ -1,21 +1,21 @@
-# BadUSB module {#js_badusb}
+# БадЮСБ модюле {#жс_бадюсб}
 
 ```js
 let badusb = require("badusb");
 ```
-# Methods
-## setup()
-Start USB HID with optional parameters. Should be called before all other methods.
+# Метходс
+## сетюп()
+Старт ЮСБ ХИД шитх оптионал параметерс. Схоюлд бе цаллед бефоре алл отхер метходс.
 
-**Parameters**
+**Параметерс**
 
-Configuration object *(optional)*:
-- vid, pid (number): VID and PID values, both are mandatory
-- mfrName (string): Manufacturer name (32  ASCII characters max), optional
-- prodName (string): Product name (32  ASCII characters max), optional
-- layoutPath (string): Path to keyboard layout file, optional
+Цонфигюратион обжецт *(оптионал)*:
+- вид, пид (нюмбер): ВИД анд ПИД валюес, ботх аре мандаторй
+- мфрНаме (стринг): Манюфацтюрер наме (32  АСЦИИ цхарацтерс мах), оптионал
+- продНаме (стринг): Продюцт наме (32  АСЦИИ цхарацтерс мах), оптионал
+- лайоютПатх (стринг): Патх то кейбоард лайоют филе, оптионал
 
-**Examples**
+**Ехамплес**
 ```js
 // Start USB HID with default parameters
 badusb.setup();
@@ -27,10 +27,10 @@ badusb.setup({ vid: 0xAAAA, pid: 0xBBBB, mfrName: "Flipper Devices", prodName: "
 
 <br>
 
-## isConnected()
-Returns USB connection state.
+## исЦоннецтед()
+Ретюрнс ЮСБ цоннецтион стате.
 
-**Example**
+**Ехампле**
 ```js
 if (badusb.isConnected()) {
     // Do something
@@ -41,16 +41,16 @@ if (badusb.isConnected()) {
 
 <br>
 
-## press()
-Press and release a key.
+## пресс()
+Пресс анд релеасе а кей.
 
-**Parameters**
+**Параметерс**
 
-Key or modifier name, key code.
+Кей ор модифиер наме, кей цоде.
 
-See a [list of key names below](#js_badusb_keynames).
+Сее а [list of key names below](#js_badusb_keynames).
 
-**Examples**
+**Ехамплес**
 ```js
 badusb.press("a"); // Press "a" key
 badusb.press("A"); // SHIFT + "a"
@@ -62,14 +62,14 @@ badusb.press(0x47); // Press key with HID code (hex) 0x47 (Scroll lock)
 
 <br>
 
-## hold()
-Hold a key. Up to 5 keys (excluding modifiers) can be held simultaneously.
+## холд()
+Холд а кей. Юп то 5 кейс (ехцлюдинг модифиерс) цан бе хелд симюлтанеоюслй.
 
-**Parameters**
+**Параметерс**
 
-Same as `press`.
+Саме ас `press`.
 
-**Examples**
+**Ехамплес**
 ```js
 badusb.hold("a"); // Press and hold "a" key
 badusb.hold("CTRL", "v"); // Press and hold CTRL + "v" combo
@@ -77,16 +77,16 @@ badusb.hold("CTRL", "v"); // Press and hold CTRL + "v" combo
 
 <br>
 
-## release()
-Release a previously held key.
+## релеасе()
+Релеасе а превиоюслй хелд кей.
 
-**Parameters**
+**Параметерс**
 
-Same as `press`.
+Саме ас `press`.
 
-Release all keys if called without parameters.
+Релеасе алл кейс иф цаллед шитхоют параметерс.
 
-**Examples**
+**Ехамплес**
 ```js
 badusb.release(); // Release all keys
 badusb.release("a"); // Release "a" key
@@ -94,109 +94,109 @@ badusb.release("a"); // Release "a" key
 
 <br>
 
-## print()
-Print a string.
+## принт()
+Принт а стринг.
 
-**Parameters**
+**Параметерс**
 
-- A string to print
-- *(optional)* Delay between key presses
+- А стринг то принт
+- *(оптионал)* Делай бетшеен кей прессес
 
-**Examples**
+**Ехамплес**
 ```js
 badusb.print("Hello, world!"); // print "Hello, world!"
 badusb.print("Hello, world!", 100); // Add 100ms delay between key presses
 ```
 <br>
 
-## println()
-Same as `print` but ended with "ENTER" press.
+## принтлн()
+Саме ас `print` бют ендед шитх "ЕНТЕР" пресс.
 
-**Parameters**
+**Параметерс**
 
-- A string to print
-- *(optional)* Delay between key presses
+- А стринг то принт
+- *(оптионал)* Делай бетшеен кей прессес
 
-**Examples**
+**Ехамплес**
 ```js
 badusb.println("Hello, world!");  // print "Hello, world!" and press "ENTER"
 ```
 <br>
 
-## altPrint()
-Prints a string by Alt+Numpad method - works only on Windows!
+## алтПринт()
+Принтс а стринг бй Алт+Нюмпад метход - шоркс онлй он Шиндошс!
 
-**Parameters**
+**Параметерс**
 
-- A string to print
-- *(optional)* delay between key presses
+- А стринг то принт
+- *(оптионал)* делай бетшеен кей прессес
 
-**Examples**
+**Ехамплес**
 ```js
 badusb.altPrint("Hello, world!"); // print "Hello, world!"
 badusb.altPrint("Hello, world!", 100); // Add 100ms delay between key presses
 ```
 <br>
 
-## altPrintln()
-Same as `altPrint` but ended with "ENTER" press.
+## алтПринтлн()
+Саме ас `altPrint` бют ендед шитх "ЕНТЕР" пресс.
 
-**Parameters**
+**Параметерс**
 
-- A string to print
-- *(optional)* delay between key presses
+- А стринг то принт
+- *(оптионал)* делай бетшеен кей прессес
 
-**Examples**
+**Ехамплес**
 ```js
 badusb.altPrintln("Hello, world!");  // print "Hello, world!" and press "ENTER"
 ```
 <br>
 
-## quit()
-Releases usb, optional, but allows to interchange with usbdisk.
+## куюит()
+Релеасес юсб, оптионал, бют аллошс то интерцханге шитх юсбдиск.
 
-**Examples**
+**Ехамплес**
 ```js
 badusb.quit();
 usbdisk.start(...)
 ```
 <br>
 
-# Key names list {#js_badusb_keynames}
+# Кей намес лист {#жс_бадюсб_кейнамес}
 
-## Modifier keys
+## Модифиер кейс
 
-| Name          |
+| Наме          |
 | ------------- |
-| CTRL          |
-| SHIFT         |
-| ALT           |
-| GUI           |
+| ЦТРЛ          |
+| СХИФТ         |
+| АЛТ           |
+| ГЮИ           |
 
-## Special keys
+## Специал кейс
 
-| Name               | Notes            |
+| Наме               | Нотес            |
 | ------------------ | ---------------- |
-| DOWN               | Down arrow       |
-| LEFT               | Left arrow       |
-| RIGHT              | Right arrow      |
-| UP                 | Up arrow         |
-| ENTER              |                  |
-| DELETE             |                  |
-| BACKSPACE          |                  |
-| END                |                  |
-| HOME               |                  |
-| ESC                |                  |
-| INSERT             |                  |
-| PAGEUP             |                  |
-| PAGEDOWN           |                  |
-| CAPSLOCK           |                  |
-| NUMLOCK            |                  |
-| SCROLLLOCK         |                  |
-| PRINTSCREEN        |                  |
-| PAUSE              | Pause/Break key  |
-| SPACE              |                  |
-| TAB                |                  |
-| MENU               | Context menu key |
-| Fx                 | F1-F24 keys      |
-| NUMx               | NUM0-NUM9 keys   |
+| ДОШН               | Дошн аррош       |
+| ЛЕФТ               | Лефт аррош       |
+| РИГХТ              | Ригхт аррош      |
+| ЮП                 | Юп аррош         |
+| ЕНТЕР              |                  |
+| ДЕЛЕТЕ             |                  |
+| БАЦКСПАЦЕ          |                  |
+| ЕНД                |                  |
+| ХОМЕ               |                  |
+| ЕСЦ                |                  |
+| ИНСЕРТ             |                  |
+| ПАГЕЮП             |                  |
+| ПАГЕДОШН           |                  |
+| ЦАПСЛОЦК           |                  |
+| НЮМЛОЦК            |                  |
+| СЦРОЛЛЛОЦК         |                  |
+| ПРИНТСЦРЕЕН        |                  |
+| ПАЮСЕ              | Паюсе/Бреак кей  |
+| СПАЦЕ              |                  |
+| ТАБ                |                  |
+| МЕНЮ               | Цонтехт меню кей |
+| Фх                 | Ф1-Ф24 кейс      |
+| НЮМх               | НЮМ0-НЮМ9 кейс   |

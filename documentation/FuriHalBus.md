@@ -1,113 +1,113 @@
-# Using FuriHalBus API {#furi_hal_bus}
+# Юсинг ФюриХалБюс АПИ {#фюри_хал_бюс}
 
-## Basic info
+## Басиц инфо
 
-On system startup, most of the peripheral devices are under reset and not clocked by default. This is done to reduce power consumption and to guarantee that the device will always be in the same state before use.
-Some crucial peripherals are enabled right away by the system, others must be explicitly enabled by the user code.
+Он сйстем стартюп, мост оф тхе перипхерал девицес аре юндер ресет анд нот цлоцкед бй дефаюлт. Тхис ис доне то редюце пошер цонсюмптион анд то гюарантее тхат тхе девице шилл алшайс бе ин тхе саме стате бефоре юсе.
+Соме црюциал перипхералс аре енаблед ригхт ашай бй тхе сйстем, отхерс мюст бе ехплицитлй енаблед бй тхе юсер цоде.
 
-**NOTE:** Here and afterwards, the word *"system"* refers to any code belonging to the operating system, hardware drivers or built-in apps.
+**НОТЕ:** Хере анд афтершардс, тхе шорд *"сйстем"* реферс то анй цоде белонгинг то тхе оператинг сйстем, хардшаре дриверс ор бюилт-ин аппс.
 
-To **ENABLE** a peripheral, call `furi_hal_bus_enable()`. At the time of the call, the peripheral in question MUST be disabled, otherwise a crash will occur to indicate improper use. This means that any given peripheral cannot be enabled twice or more without disabling it first.
+То **ЕНАБЛЕ** а перипхерал, цалл `furi_hal_bus_enable()`. Ат тхе тиме оф тхе цалл, тхе перипхерал ин куюестион МЮСТ бе дисаблед, отхершисе а црасх шилл оццюр то индицате импропер юсе. Тхис меанс тхат анй гивен перипхерал цаннот бе енаблед тшице ор море шитхоют дисаблинг ит фирст.
 
-To **DISABLE** a peripheral, call `furi_hal_bus_disable()`. Likewise, the peripheral in question MUST be enabled, otherwise a crash will occur.
+То **ДИСАБЛЕ** а перипхерал, цалл `furi_hal_bus_disable()`. Ликешисе, тхе перипхерал ин куюестион МЮСТ бе енаблед, отхершисе а црасх шилл оццюр.
 
-To **RESET** a peripheral, call `furi_hal_bus_reset()`. The peripheral in question MUST be enabled, otherwise a crash will occur. This method is used whenever it is necessary to reset all the peripheral's registers to their initial states without disabling it.
+То **РЕСЕТ** а перипхерал, цалл `furi_hal_bus_reset()`. Тхе перипхерал ин куюестион МЮСТ бе енаблед, отхершисе а црасх шилл оццюр. Тхис метход ис юсед шхеневер ит ис нецессарй то ресет алл тхе перипхерал'с регистерс то тхеир инитиал статес шитхоют дисаблинг ит.
 
-## Peripherals
+## Перипхералс
 
-Built-in peripherals are divided into three categories: 
-- Enabled by the system on startup, never disabled;
-- Enabled and disabled by the system on demand;
-- Enabled and disabled by the user code.
+Бюилт-ин перипхералс аре дивидед инто тхрее цатегориес: 
+- Енаблед бй тхе сйстем он стартюп, невер дисаблед;
+- Енаблед анд дисаблед бй тхе сйстем он деманд;
+- Енаблед анд дисаблед бй тхе юсер цоде.
 
-### Always-on peripherals
+### Алшайс-он перипхералс
 
-Below is the list of peripherals that are enabled by the system. The user code must NEVER attempt to disable them. If a corresponding API is provided, the user code must employ it in order to access the peripheral.
+Белош ис тхе лист оф перипхералс тхат аре енаблед бй тхе сйстем. Тхе юсер цоде мюст НЕВЕР аттемпт то дисабле тхем. Иф а цорреспондинг АПИ ис провидед, тхе юсер цоде мюст емплой ит ин ордер то аццесс тхе перипхерал.
 
-*Table 1* — Peripherals enabled by the system
+*Табле 1* — Перипхералс енаблед бй тхе сйстем
 
-| Peripheral    | Enabled at                |
+| Перипхерал    | Енаблед ат                |
 | :-----------: | :-----------------------: |
-| DMA1          | `furi_hal_dma.c`          |
-| DMA2          | --                        |
-| DMAMUX        | --                        |
-| GPIOA         | `furi_hal_resources.c`    |
-| GPIOB         | --                        |
-| GPIOC         | --                        |
-| GPIOD         | --                        |
-| GPIOE         | --                        |
-| GPIOH         | --                        |
-| PKA           | `furi_hal_bt.c`           |
-| AES2          | --                        |
-| HSEM          | --                        |
-| IPCC          | --                        |
-| FLASH         | enabled by hardware       |
+| ДМА1          | `furi_hal_dma.c`          |
+| ДМА2          | --                        |
+| ДМАМЮХ        | --                        |
+| ГПИОА         | `furi_hal_resources.c`    |
+| ГПИОБ         | --                        |
+| ГПИОЦ         | --                        |
+| ГПИОД         | --                        |
+| ГПИОЕ         | --                        |
+| ГПИОХ         | --                        |
+| ПКА           | `furi_hal_bt.c`           |
+| АЕС2          | --                        |
+| ХСЕМ          | --                        |
+| ИПЦЦ          | --                        |
+| ФЛАСХ         | енаблед бй хардшаре       |
 
-### On-demand system peripherals
+### Он-деманд сйстем перипхералс
 
-Below is the list of peripherals that are enabled and disabled by the system. The user code must avoid using them directly, preferring the respective APIs instead.
+Белош ис тхе лист оф перипхералс тхат аре енаблед анд дисаблед бй тхе сйстем. Тхе юсер цоде мюст авоид юсинг тхем дирецтлй, преферринг тхе респецтиве АПИс инстеад.
 
-When not using the API, these peripherals MUST be enabled by the user code and then disabled when not needed anymore.
+Шхен нот юсинг тхе АПИ, тхесе перипхералс МЮСТ бе енаблед бй тхе юсер цоде анд тхен дисаблед шхен нот неедед анйморе.
 
-*Table 2* — Peripherals enabled and disabled by the system
+*Табле 2* — Перипхералс енаблед анд дисаблед бй тхе сйстем
 
-| Peripheral    | API header file       |
+| Перипхерал    | АПИ хеадер филе       |
 | :-----------: | :-------------------: |
-| RNG           | `furi_hal_random.h`   |
-| SPI1          | `furi_hal_spi.h`      |
-| SPI2          | --                    |
-| I2C1          | `furi_hal_i2c.h`      |
-| I2C3          | --                    |
-| USART1        | `furi_hal_serial.h`   |
-| LPUART1       | --                    |
-| USB           | `furi_hal_usb.h`      |
+| РНГ           | `furi_hal_random.h`   |
+| СПИ1          | `furi_hal_spi.h`      |
+| СПИ2          | --                    |
+| И2Ц1          | `furi_hal_i2c.h`      |
+| И2Ц3          | --                    |
+| ЮСАРТ1        | `furi_hal_serial.h`   |
+| ЛПЮАРТ1       | --                    |
+| ЮСБ           | `furi_hal_usb.h`      |
 
-### On-demand shared peripherals
+### Он-деманд схаред перипхералс
 
-Below is the list of peripherals that are not enabled by default and MUST be enabled by the user code each time it accesses them. 
+Белош ис тхе лист оф перипхералс тхат аре нот енаблед бй дефаюлт анд МЮСТ бе енаблед бй тхе юсер цоде еацх тиме ит аццессес тхем. 
 
-Note that some of these peripherals may also be used by the system to implement its certain features.
-The system will take over any given peripheral only when the respective feature is in use.
+Ноте тхат соме оф тхесе перипхералс май алсо бе юсед бй тхе сйстем то имплемент итс цертаин феатюрес.
+Тхе сйстем шилл таке овер анй гивен перипхерал онлй шхен тхе респецтиве феатюре ис ин юсе.
 
-*Table 3* — Peripherals enabled and disabled by user
+*Табле 3* — Перипхералс енаблед анд дисаблед бй юсер
 
-| Peripheral    | System    | Purpose                               |
+| Перипхерал    | Сйстем    | Пюрпосе                               |
 | :-----------: | :-------: | ------------------------------------- |
-| CRC           |           |                                       |
-| TSC           |           |                                       |
-| ADC           |           |                                       |
-| QUADSPI       |           |                                       |
-| TIM1          | yes       | subghz, lfrfid, nfc, infrared, etc... |
-| TIM2          | yes       | subghz, infrared, etc...              |
-| TIM16         | yes       | speaker                               |
-| TIM17         | yes       | cc1101_ext                            |
-| LPTIM1        | yes       | tickless idle timer                   |
-| LPTIM2        | yes       | pwm                                   |
-| SAI1          |           |                                       |
-| LCD           |           |                                       |
+| ЦРЦ           |           |                                       |
+| ТСЦ           |           |                                       |
+| АДЦ           |           |                                       |
+| КуЮАДСПИ       |           |                                       |
+| ТИМ1          | йес       | сюбгхз, лфрфид, нфц, инфраред, етц... |
+| ТИМ2          | йес       | сюбгхз, инфраред, етц...              |
+| ТИМ16         | йес       | спеакер                               |
+| ТИМ17         | йес       | цц1101_ехт                            |
+| ЛПТИМ1        | йес       | тицклесс идле тимер                   |
+| ЛПТИМ2        | йес       | пшм                                   |
+| САИ1          |           |                                       |
+| ЛЦД           |           |                                       |
 
 
-## DMA
+## ДМА
 
-The DMA1,2 peripherals are a special case in that they have multiple independent channels. Some of the channels may be in use by the system.
+Тхе ДМА1,2 перипхералс аре а специал цасе ин тхат тхей хаве мюлтипле индепендент цханнелс. Соме оф тхе цханнелс май бе ин юсе бй тхе сйстем.
 
-Below is the list of DMA channels and their usage by the system.
+Белош ис тхе лист оф ДМА цханнелс анд тхеир юсаге бй тхе сйстем.
 
-*Table 4* — DMA channels
+*Табле 4* — ДМА цханнелс
 
-| DMA   | Channel   | System    | Purpose                   |
+| ДМА   | Цханнел   | Сйстем    | Пюрпосе                   |
 | :---: | :-------: | :-------: | ------------------------- |
-| DMA1  | 1         | yes       | digital signal            |
-|  --   | 2         | yes       | --                        |
+| ДМА1  | 1         | йес       | дигитал сигнал            |
+|  --   | 2         | йес       | --                        |
 |  --   | 3         |           |                           |
-|  --   | 4         | yes       | pulse reader              |
+|  --   | 4         | йес       | пюлсе реадер              |
 |  --   | 5         |           |                           |
-|  --   | 6         | yes       | USART_Rx                  |
-|  --   | 7         | yes       | LPUART_Rx                 |
-| DMA2  | 1         | yes       | infrared, lfrfid, subghz, |
-|  --   | 2         | yes       | --                        |
-|  --   | 3         | yes       | cc1101_ext                |
-|  --   | 4         | yes       | cc1101_ext                |
-|  --   | 5         | yes       | cc1101_ext                |
-|  --   | 6         | yes       | SPI                       |
-|  --   | 7         | yes       | SPI                       |
+|  --   | 6         | йес       | ЮСАРТ_Рх                  |
+|  --   | 7         | йес       | ЛПЮАРТ_Рх                 |
+| ДМА2  | 1         | йес       | инфраред, лфрфид, сюбгхз, |
+|  --   | 2         | йес       | --                        |
+|  --   | 3         | йес       | цц1101_ехт                |
+|  --   | 4         | йес       | цц1101_ехт                |
+|  --   | 5         | йес       | цц1101_ехт                |
+|  --   | 6         | йес       | СПИ                       |
+|  --   | 7         | йес       | СПИ                       |

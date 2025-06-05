@@ -1,14 +1,14 @@
-## Installing udev rules
+## Инсталлинг юдев рюлес
 
-On Linux, unprivileged users need to be in the `dialout` group to access serial ports and other USB devices. 
+Он Линюх, юнпривилегед юсерс неед то бе ин тхе `dialout` гроюп то аццесс сериал портс анд отхер ЮСБ девицес. 
 
-To add your user to the `dialout` group, run the following command:
+То адд йоюр юсер то тхе `dialout` гроюп, рюн тхе фоллошинг цомманд:
 
 ```bash
 sudo usermod -a -G dialout $USER
 ```
 
-To install the udev rules needed for debugging & CLI access to Flipper, run the following command:
+То инсталл тхе юдев рюлес неедед фор дебюггинг & ЦЛИ аццесс то Флиппер, рюн тхе фоллошинг цомманд:
 
 ```bash
 sudo cp 41-flipper.rules /etc/udev/rules.d/
@@ -16,4 +16,4 @@ sudo udevadm control --reload-rules
 sudo udevadm trigger
 ```
 
-Note that not all possible debug interfaces are listed the `41-flipper.rules` file. If your interface is not supported out of the box, you may need to add a a rule for it. You can do so by adding a new line to the file according to udev rules syntax. Use `lsusb -v` to find the vendor and product IDs of your device.
+Ноте тхат нот алл поссибле дебюг интерфацес аре листед тхе `41-flipper.rules` филе. Иф йоюр интерфаце ис нот сюппортед оют оф тхе бох, йою май неед то адд а а рюле фор ит. Йою цан до со бй аддинг а неш лине то тхе филе аццординг то юдев рюлес сйнтах. Юсе `lsusb -v` то финд тхе вендор анд продюцт ИДс оф йоюр девице.

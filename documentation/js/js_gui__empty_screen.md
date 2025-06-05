@@ -1,6 +1,6 @@
-# Empty Screen GUI view {#js_gui__empty_screen}
+# Емптй Сцреен ГЮИ виеш {#жс_гюи__емптй_сцреен}
 
-Displays an empty screen.
+Дисплайс ан емптй сцреен.
 
 <img src="empty.png" width="200" alt="Sample screenshot of the view" />
 
@@ -10,12 +10,12 @@ let gui = require("gui");
 let emptyView = require("gui/empty_screen");
 ```
 
-This module depends on the `gui` module, which in turn depends on the
-`event_loop` module, so they **must** be imported in this order. It is also
-recommended to conceptualize these modules first before using this one.
+Тхис модюле депендс он тхе `gui` модюле, шхицх ин тюрн депендс он тхе
+`event_loop` модюле, со тхей **мюст** бе импортед ин тхис ордер. Ит ис алсо
+рецоммендед то цонцептюализе тхесе модюлес фирст бефоре юсинг тхис оне.
 
-# Example
-For an example, refer to the GUI example.
+# Ехампле
+Фор ан ехампле, рефер то тхе ГЮИ ехампле.
 
-# View props
-This view does not have any props.
+# Виеш пропс
+Тхис виеш доес нот хаве анй пропс.

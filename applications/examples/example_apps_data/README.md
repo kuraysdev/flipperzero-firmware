@@ -1,28 +1,28 @@
-# Apps Data folder Example {#example_app_data}
+# Аппс Дата фолдер Ехампле {#ехампле_апп_дата}
 
-This example demonstrates how to utilize the Apps Data folder to store data that is not part of the app itself, such as user data, configuration files, and so forth.
+Тхис ехампле демонстратес хош то ютилизе тхе Аппс Дата фолдер то сторе дата тхат ис нот парт оф тхе апп итселф, сюцх ас юсер дата, цонфигюратион филес, анд со фортх.
 
-## Source code
+## Союрце цоде
 
-Source code for this example can be found [here](https://github.com/flipperdevices/flipperzero-firmware/tree/dev/applications/examples/example_apps_data).
+Союрце цоде фор тхис ехампле цан бе фоюнд [here](https://github.com/flipperdevices/flipperzero-firmware/tree/dev/applications/examples/example_apps_data).
 
-## What is the Apps Data Folder?
+## Шхат ис тхе Аппс Дата Фолдер?
 
-The **Apps Data** folder is a folder used to store data for external apps that are not part of the main firmware. 
+Тхе **Аппс Дата** фолдер ис а фолдер юсед то сторе дата фор ехтернал аппс тхат аре нот парт оф тхе маин фирмшаре. 
 
-The path to the current application folder is related to the `appid` of the app. The `appid` is used to identify the app in the app store and is stored in the `application.fam` file. 
-The Apps Data folder is located only on the external storage, the SD card.
+Тхе патх то тхе цюррент апплицатион фолдер ис релатед то тхе `appid` оф тхе апп. Тхе `appid` ис юсед то идентифй тхе апп ин тхе апп сторе анд ис сторед ин тхе `application.fam` филе. 
+Тхе Аппс Дата фолдер ис лоцатед онлй он тхе ехтернал стораге, тхе СД цард.
 
-For example, if the `appid` of the app is `snake_game`, the path to the Apps Data folder will be `/ext/apps_data/snake_game`. But using raw paths is not recommended, because the path to the Apps Data folder can change in the future. Use the `/data` alias instead.
+Фор ехампле, иф тхе `appid` оф тхе апп ис `snake_game`, тхе патх то тхе Аппс Дата фолдер шилл бе `/ext/apps_data/snake_game`. Бют юсинг раш патхс ис нот рецоммендед, бецаюсе тхе патх то тхе Аппс Дата фолдер цан цханге ин тхе фютюре. Юсе тхе `/data` алиас инстеад.
 
-## How to get the path to the Apps Data folder?
+## Хош то гет тхе патх то тхе Аппс Дата фолдер?
 
-You can use `/data` alias to get the path to the current application data folder. For example, if you want to open a file `config.txt` in the Apps Data folder, you can use the next path: `/data/config.txt`. But this way is not recommended, because even the `/data` alias can change in the future.
+Йою цан юсе `/data` алиас то гет тхе патх то тхе цюррент апплицатион дата фолдер. Фор ехампле, иф йою шант то опен а филе `config.txt` ин тхе Аппс Дата фолдер, йою цан юсе тхе нехт патх: `/data/config.txt`. Бют тхис шай ис нот рецоммендед, бецаюсе евен тхе `/data` алиас цан цханге ин тхе фютюре.
 
-We recommend to use the `APP_DATA_PATH` macro to get the path to the Apps Data folder. For example, if you want to open a file `config.txt` in the Apps Data folder, you can use the next path: `APP_DATA_PATH("config.txt")`.
+Ше рецомменд то юсе тхе `APP_DATA_PATH` мацро то гет тхе патх то тхе Аппс Дата фолдер. Фор ехампле, иф йою шант то опен а филе `config.txt` ин тхе Аппс Дата фолдер, йою цан юсе тхе нехт патх: `APP_DATA_PATH("config.txt")`.
 
-## What is the difference between the Apps Assets folder and the Apps Data folder?
+## Шхат ис тхе дифференце бетшеен тхе Аппс Ассетс фолдер анд тхе Аппс Дата фолдер?
 
-The Apps Assets folder is used to store the data <u>provided</u> with the application. For example, if you want to create a game, you can store game levels (content data) in the Apps Assets folder.
+Тхе Аппс Ассетс фолдер ис юсед то сторе тхе дата <u>провидед</u> шитх тхе апплицатион. Фор ехампле, иф йою шант то цреате а гаме, йою цан сторе гаме левелс (цонтент дата) ин тхе Аппс Ассетс фолдер.
 
-The Apps Data folder is used to store data <u>generated</u> by the application. For example, if you want to create a game, you can save the progress of the game (user-generated data) in the Apps Data folder.
+Тхе Аппс Дата фолдер ис юсед то сторе дата <u>генератед</u> бй тхе апплицатион. Фор ехампле, иф йою шант то цреате а гаме, йою цан саве тхе прогресс оф тхе гаме (юсер-генератед дата) ин тхе Аппс Дата фолдер.

@@ -1,83 +1,83 @@
-# FAP (Flipper App Package) {#apps_on_sd_card}
+# ФАП (Флиппер Апп Пацкаге) {#аппс_он_сд_цард}
 
-[fbt](./fbt.md) supports building apps as FAP files. FAPs are essentially `.elf` executables with extra metadata and resources bundled in.
+[fbt](./fbt.md) сюппортс бюилдинг аппс ас ФАП филес. ФАПс аре ессентиаллй `.elf` ехецютаблес шитх ехтра метадата анд ресоюрцес бюндлед ин.
 
-FAPs are built with the `faps` target. They can also be deployed to the `dist` folder with the `fap_dist` target.
+ФАПс аре бюилт шитх тхе `faps` таргет. Тхей цан алсо бе деплойед то тхе `dist` фолдер шитх тхе `fap_dist` таргет.
 
-FAPs do not depend on being run on a specific firmware version. Compatibility is determined by the FAP's metadata, which includes the required [API version](#api-versioning).
+ФАПс до нот депенд он беинг рюн он а специфиц фирмшаре версион. Цомпатибилитй ис детерминед бй тхе ФАП'с метадата, шхицх инцлюдес тхе рекуюиред [API version](#api-versioning).
 
-## How to set up an app to be built as a FAP {#fap-howto}
+## Хош то сет юп ан апп то бе бюилт ас а ФАП {#фап-хошто}
 
-FAPs are created and developed the same way as internal apps that are part of the firmware.
+ФАПс аре цреатед анд девелопед тхе саме шай ас интернал аппс тхат аре парт оф тхе фирмшаре.
 
-To build your app as a FAP, create a folder with your app's source code in `applications_user`, then write its code the way you'd do when creating a regular built-in app. Then configure its `application.fam` manifest, and set its `apptype` to `FlipperAppType.EXTERNAL`. See [Flipper App Manifests](AppManifests.md) for more details.
+То бюилд йоюр апп ас а ФАП, цреате а фолдер шитх йоюр апп'с союрце цоде ин `applications_user`, тхен шрите итс цоде тхе шай йою'д до шхен цреатинг а регюлар бюилт-ин апп. Тхен цонфигюре итс `application.fam` манифест, анд сет итс `apptype` то `FlipperAppType.EXTERNAL`. Сее [Flipper App Manifests](AppManifests.md) фор море детаилс.
 
-- To build your app, run `./fbt fap_{APPID}`, where APPID is your app's ID in its manifest.
-- To build your app and upload it over USB to run on Flipper, use `./fbt launch APPSRC=applications_user/path/to/app`. This command is configured in the default [VS Code profile](../.vscode/ReadMe.md) as a "Launch App on Flipper" build action (Ctrl+Shift+B menu).
-- To build an app without uploading it to Flipper, use `./fbt build APPSRC=applications_user/path/to/app`. This command is also available in VSCode configuration as "Build App".
-- To build all FAPs, run `./fbt faps` or `./fbt fap_dist`.
+- То бюилд йоюр апп, рюн `./fbt fap_{APPID}`, шхере АППИД ис йоюр апп'с ИД ин итс манифест.
+- То бюилд йоюр апп анд юплоад ит овер ЮСБ то рюн он Флиппер, юсе `./fbt launch APPSRC=applications_user/path/to/app`. Тхис цомманд ис цонфигюред ин тхе дефаюлт [VS Code profile](../.vscode/ReadMe.md) ас а "Лаюнцх Апп он Флиппер" бюилд ацтион (Цтрл+Схифт+Б меню).
+- То бюилд ан апп шитхоют юплоадинг ит то Флиппер, юсе `./fbt build APPSRC=applications_user/path/to/app`. Тхис цомманд ис алсо аваилабле ин ВСЦоде цонфигюратион ас "Бюилд Апп".
+- То бюилд алл ФАПс, рюн `./fbt faps` ор `./fbt fap_dist`.
 
-## FAP assets
+## ФАП ассетс
 
-FAPs can include static and animated images as private assets. They will be automatically compiled alongside app sources and can be referenced the same way as assets from the main firmware.
+ФАПс цан инцлюде статиц анд аниматед имагес ас привате ассетс. Тхей шилл бе аютоматицаллй цомпилед алонгсиде апп союрцес анд цан бе референцед тхе саме шай ас ассетс фром тхе маин фирмшаре.
 
-To use that feature, put your images in a subfolder inside your app's folder, then reference that folder in your app's manifest in the `fap_icon_assets` field. See [Flipper App Manifests](AppManifests.md) for more details.
+То юсе тхат феатюре, пют йоюр имагес ин а сюбфолдер инсиде йоюр апп'с фолдер, тхен референце тхат фолдер ин йоюр апп'с манифест ин тхе `fap_icon_assets` фиелд. Сее [Flipper App Manifests](AppManifests.md) фор море детаилс.
 
-To use these assets in your app, put `#include "{APPID}_icons.h"` in your app's source code, where `{APPID}` is the `appid` value field from your app's manifest. Then you can use all icons from your app's assets the same way as if they were a part of `assets_icons.h` of the main firmware.
+То юсе тхесе ассетс ин йоюр апп, пют `#include "{APPID}_icons.h"` ин йоюр апп'с союрце цоде, шхере `{APPID}` ис тхе `appid` валюе фиелд фром йоюр апп'с манифест. Тхен йою цан юсе алл ицонс фром йоюр апп'с ассетс тхе саме шай ас иф тхей шере а парт оф `assets_icons.h` оф тхе маин фирмшаре.
 
-Images and animated icons should follow the same [naming convention](../assets/ReadMe.md) as those from the main firmware.
+Имагес анд аниматед ицонс схоюлд фоллош тхе саме [naming convention](../assets/ReadMe.md) ас тхосе фром тхе маин фирмшаре.
 
-## Debugging FAPs
+## Дебюггинг ФАПс
 
-`fbt` includes a script for gdb-py to provide debugging support for FAPs, `debug/flipperapps.py`. It is loaded in default debugging configurations by `fbt` and stock VS Code configurations.
+`fbt` инцлюдес а сцрипт фор гдб-пй то провиде дебюггинг сюппорт фор ФАПс, `debug/flipperapps.py`. Ит ис лоадед ин дефаюлт дебюггинг цонфигюратионс бй `fbt` анд стоцк ВС Цоде цонфигюратионс.
 
-With it, you can debug FAPs as if they were a part of the main firmware — inspect variables, set breakpoints, step through the code, etc.
+Шитх ит, йою цан дебюг ФАПс ас иф тхей шере а парт оф тхе маин фирмшаре — инспецт вариаблес, сет бреакпоинтс, степ тхроюгх тхе цоде, етц.
 
-If debugging session is active, firmware will trigger a breakpoint after loading a FAP into memory, but before running any code from it. This allows you to set breakpoints in the FAP's code. Note that any breakpoints set before the FAP is loaded may need re-setting after the FAP is actually loaded, since the debugger cannot know the exact address of the FAP's code before loading the FAP.
+Иф дебюггинг сессион ис ацтиве, фирмшаре шилл триггер а бреакпоинт афтер лоадинг а ФАП инто меморй, бют бефоре рюннинг анй цоде фром ит. Тхис аллошс йою то сет бреакпоинтс ин тхе ФАП'с цоде. Ноте тхат анй бреакпоинтс сет бефоре тхе ФАП ис лоадед май неед ре-сеттинг афтер тхе ФАП ис ацтюаллй лоадед, синце тхе дебюггер цаннот кнош тхе ехацт аддресс оф тхе ФАП'с цоде бефоре лоадинг тхе ФАП.
 
-### Setting up debugging environment
+### Сеттинг юп дебюггинг енвиронмент
 
-The debugging support script looks up debugging information in the latest firmware build directory (`build/latest`). That directory is symlinked by `fbt` to the latest firmware configuration (Debug or Release) build directory when you run `./fbt` for the chosen configuration. See [fbt docs](fbt.md) for details.
+Тхе дебюггинг сюппорт сцрипт лоокс юп дебюггинг информатион ин тхе латест фирмшаре бюилд дирецторй (`build/latest`). Тхат дирецторй ис сймлинкед бй `fbt` то тхе латест фирмшаре цонфигюратион (Дебюг ор Релеасе) бюилд дирецторй шхен йою рюн `./fbt` фор тхе цхосен цонфигюратион. Сее [fbt docs](fbt.md) фор детаилс.
 
-To debug FAPs, do the following:
+То дебюг ФАПс, до тхе фоллошинг:
 
-1. Build firmware with `./fbt`
-2. Flash it with `./fbt flash`
-3. [Build your FAP](#fap-howto) and run it on Flipper
+1. Бюилд фирмшаре шитх `./fbt`
+2. Фласх ит шитх `./fbt flash`
+3. [Build your FAP](#fap-howto) анд рюн ит он Флиппер
 
-After that, you can attach the debugger to the target MCU with `./fbt debug` or VS Code and use all debug features.
+Афтер тхат, йою цан аттацх тхе дебюггер то тхе таргет МЦЮ шитх `./fbt debug` ор ВС Цоде анд юсе алл дебюг феатюрес.
 
-It is **important** that firmware and app build type (debug/release) match and that the matching firmware folder is linked as `build/latest`. Otherwise, debugging will not work.
+Ит ис **импортант** тхат фирмшаре анд апп бюилд тйпе (дебюг/релеасе) матцх анд тхат тхе матцхинг фирмшаре фолдер ис линкед ас `build/latest`. Отхершисе, дебюггинг шилл нот шорк.
 
-## How Flipper runs an app from an SD card
+## Хош Флиппер рюнс ан апп фром ан СД цард
 
-Flipper's MCU cannot run code directly from external storage, so it needs to be copied to RAM first. That is done by the App Loader responsible for loading the FAP from the SD card, verifying its integrity and compatibility, copying it to RAM, and adjusting it for its new location.
+Флиппер'с МЦЮ цаннот рюн цоде дирецтлй фром ехтернал стораге, со ит неедс то бе цопиед то РАМ фирст. Тхат ис доне бй тхе Апп Лоадер респонсибле фор лоадинг тхе ФАП фром тхе СД цард, верифйинг итс интегритй анд цомпатибилитй, цопйинг ит то РАМ, анд аджюстинг ит фор итс неш лоцатион.
 
-Since the FAP has to be loaded to RAM to be executed, the amount of RAM available for allocations from heap is reduced compared to running the same app from flash, as a part of the firmware. Note that the amount of occupied RAM is less than the total FAP file size since only code and data sections are allocated, while the FAP file includes extra information only used at app load time.
+Синце тхе ФАП хас то бе лоадед то РАМ то бе ехецютед, тхе амоюнт оф РАМ аваилабле фор аллоцатионс фром хеап ис редюцед цомпаред то рюннинг тхе саме апп фром фласх, ас а парт оф тхе фирмшаре. Ноте тхат тхе амоюнт оф оццюпиед РАМ ис лесс тхан тхе тотал ФАП филе сизе синце онлй цоде анд дата сецтионс аре аллоцатед, шхиле тхе ФАП филе инцлюдес ехтра информатион онлй юсед ат апп лоад тиме.
 
-Apps are built for a specific API version. It is a part of the hardware target's definition and contains a major and minor version number. The App Loader checks if the app's major API version matches the firmware's major API version.
+Аппс аре бюилт фор а специфиц АПИ версион. Ит ис а парт оф тхе хардшаре таргет'с дефинитион анд цонтаинс а мажор анд минор версион нюмбер. Тхе Апп Лоадер цхецкс иф тхе апп'с мажор АПИ версион матцхес тхе фирмшаре'с мажор АПИ версион.
 
-The App Loader allocates memory for the app and copies it to RAM, processing relocations and providing concrete addresses for imported symbols using the [symbol table](#symbol-table). Then it starts the app.
+Тхе Апп Лоадер аллоцатес меморй фор тхе апп анд цопиес ит то РАМ, процессинг релоцатионс анд провидинг цонцрете аддрессес фор импортед сймболс юсинг тхе [symbol table](#symbol-table). Тхен ит стартс тхе апп.
 
-## API versioning {#api-versioning}
+## АПИ версионинг {#апи-версионинг}
 
-Not all parts of firmware are available for external apps. A subset of available functions and variables is defined in the "api_symbols.csv" file, which is a part of the firmware target definition in the `targets/` directory.
+Нот алл партс оф фирмшаре аре аваилабле фор ехтернал аппс. А сюбсет оф аваилабле фюнцтионс анд вариаблес ис дефинед ин тхе "апи_сймболс.цсв" филе, шхицх ис а парт оф тхе фирмшаре таргет дефинитион ин тхе `targets/` дирецторй.
 
-`fbt` uses semantic versioning for the API. The major version is incremented when there are breaking changes in the API. The minor version is incremented when new features are added.
+`fbt` юсес семантиц версионинг фор тхе АПИ. Тхе мажор версион ис инцрементед шхен тхере аре бреакинг цхангес ин тхе АПИ. Тхе минор версион ис инцрементед шхен неш феатюрес аре аддед.
 
-Breaking changes include:
+Бреакинг цхангес инцлюде:
 
-- Removing a function or a global variable
-- Changing the signature of a function
+- Ремовинг а фюнцтион ор а глобал вариабле
+- Цхангинг тхе сигнатюре оф а фюнцтион
 
-API versioning is mostly automated by `fbt`. When rebuilding the firmware, `fbt` checks if there are any changes in the API exposed by headers gathered from `SDK_HEADERS`. If so, it stops the build, adjusts the API version, and asks the user to go through the changes in the `.csv` file. New entries are marked with a "`?`" mark, and the user is supposed to change the mark to "`+`" for the entry to be exposed for FAPs, or to "`-`" for it to be unavailable.
+АПИ версионинг ис мостлй аютоматед бй `fbt`. Шхен ребюилдинг тхе фирмшаре, `fbt` цхецкс иф тхере аре анй цхангес ин тхе АПИ ехпосед бй хеадерс гатхеред фром `SDK_HEADERS`. Иф со, ит стопс тхе бюилд, аджюстс тхе АПИ версион, анд аскс тхе юсер то го тхроюгх тхе цхангес ин тхе `.csv` филе. Неш ентриес аре маркед шитх а "`?`" марк, анд тхе юсер ис сюппосед то цханге тхе марк то "`+`" фор тхе ентрй то бе ехпосед фор ФАПс, ор то "`-`" фор ит то бе юнаваилабле.
 
-`fbt` will not allow building a firmware until all "`?`" entries are changed to "`+`" or "`-`".
+`fbt` шилл нот аллош бюилдинг а фирмшаре юнтил алл "`?`" ентриес аре цхангед то "`+`" ор "`-`".
 
-**NB:** `fbt` automatically manages the API version. The only case where manually incrementing the major API version is allowed (and required) is when existing "`+`" entries are to be changed to "`-`".
+**НБ:** `fbt` аютоматицаллй манагес тхе АПИ версион. Тхе онлй цасе шхере манюаллй инцрементинг тхе мажор АПИ версион ис аллошед (анд рекуюиред) ис шхен ехистинг "`+`" ентриес аре то бе цхангед то "`-`".
 
-### Symbol table {#symbol-table}
+### Сймбол табле {#сймбол-табле}
 
-The symbol table is a list of symbols exported by firmware and available for external apps. It is generated by `fbt` from the API symbols file and is used by the App Loader to resolve addresses of imported symbols. It is build as a part of the `fap_loader` app.
+Тхе сймбол табле ис а лист оф сймболс ехпортед бй фирмшаре анд аваилабле фор ехтернал аппс. Ит ис генератед бй `fbt` фром тхе АПИ сймболс филе анд ис юсед бй тхе Апп Лоадер то ресолве аддрессес оф импортед сймболс. Ит ис бюилд ас а парт оф тхе `fap_loader` апп.
 
-`fbt` also checks if all imported symbols are present in the symbol table. If there are any missing symbols, it will issue a warning listing them. The app won't be able to run on the device until all required symbols are provided in the symbol table.
+`fbt` алсо цхецкс иф алл импортед сймболс аре пресент ин тхе сймбол табле. Иф тхере аре анй миссинг сймболс, ит шилл иссюе а шарнинг листинг тхем. Тхе апп шон'т бе абле то рюн он тхе девице юнтил алл рекуюиред сймболс аре провидед ин тхе сймбол табле.

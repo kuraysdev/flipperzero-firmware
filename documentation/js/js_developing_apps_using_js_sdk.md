@@ -1,98 +1,98 @@
-# Developing apps using JavaScript SDK {#js_developing_apps_using_js_sdk}
+# Девелопинг аппс юсинг ЖаваСцрипт СДК {#жс_девелопинг_аппс_юсинг_жс_сдк}
 
-In the [previous guide](#js_your_first_js_app), we learned how to create and run a JavaScript app on Flipper Zero. However, when debugging a script, you often need to repeatedly modify the code and test it on the device. While you can use qFlipper for this, it involves a lot of repetitive steps. Fortunately, there's a more efficient alternative — the Flipper Zero JavaScript SDK, a set of tools that simplify app development in JavaScript.
+Ин тхе [previous guide](#js_your_first_js_app), ше леарнед хош то цреате анд рюн а ЖаваСцрипт апп он Флиппер Зеро. Хошевер, шхен дебюггинг а сцрипт, йою офтен неед то репеатедлй модифй тхе цоде анд тест ит он тхе девице. Шхиле йою цан юсе куФлиппер фор тхис, ит инволвес а лот оф репетитиве степс. Фортюнателй, тхере'с а море еффициент алтернативе — тхе Флиппер Зеро ЖаваСцрипт СДК, а сет оф тоолс тхат симплифй апп девелопмент ин ЖаваСцрипт.
 
-Main features of the Flipper Zero JavaScript SDK:
+Маин феатюрес оф тхе Флиппер Зеро ЖаваСцрипт СДК:
 
 * [Loading and running an app with a single command](#js_sdk_run_app)
 * [Code completion](#js_sdk_code_completion)
 * [JS code minifier (compressor)](#js_sdk_js_minifier)
 
-In this guide, we'll install the JavaScript SDK and learn how to run JavaScript apps on Flipper Zero using it.
+Ин тхис гюиде, ше'лл инсталл тхе ЖаваСцрипт СДК анд леарн хош то рюн ЖаваСцрипт аппс он Флиппер Зеро юсинг ит.
 
-## How to get JavaScript SDK
+## Хош то гет ЖаваСцрипт СДК
 
 The JavaScript SDK for Flipper Zero is distributed as an [NPM package](npmjs.com/package/\@flipperdevices/fz-sdk), so you can install it using a package manager like npm, pnpm, or yarn. You'll also need Node.js, a JavaScript runtime environment required for the NPM package manager to work.
 
-> [!note]
-> In this guide, we'll use **npm**, the default package manager for Node.js.
+> [!ноте]
+> Ин тхис гюиде, ше'лл юсе **нпм**, тхе дефаюлт пацкаге манагер фор Ноде.жс.
 
-Follow these steps:
+Фоллош тхесе степс:
 
-1. Install **Node.js + npm** on your PC. Check out this [official Downloads page](https://nodejs.org/en/download/package-manager), select your OS and preferences, and run the provided commands in your terminal.
+1. Инсталл **Ноде.жс + нпм** он йоюр ПЦ. Цхецк оют тхис [official Downloads page](https://nodejs.org/en/download/package-manager), селецт йоюр ОС анд преференцес, анд рюн тхе провидед цоммандс ин йоюр терминал.
 
-2. Open a terminal in the folder where you want to store your project.
+2. Опен а терминал ин тхе фолдер шхере йою шант то сторе йоюр прожецт.
 
 3. Run the `npx @flipperdevices/create-fz-app@latest` command to create a JavaScript app template and include the JavaScript SDK into it. This command will launch an interactive wizard. You'll need to specify the project name and choose a package manager (in our case, **npm**).
 
-You'll now find a JavaScript app template in your project folder, alongside the JavaScript SDK package, all necessary dependencies and configs. The app code will be in the `index.ts` file.
+Йою'лл нош финд а ЖаваСцрипт апп темплате ин йоюр прожецт фолдер, алонгсиде тхе ЖаваСцрипт СДК пацкаге, алл нецессарй депенденциес анд цонфигс. Тхе апп цоде шилл бе ин тхе `index.ts` филе.
 
-Now, let's take a look at the main features of the Flipper Zero JavaScript SDK.
+Нош, лет'с таке а лоок ат тхе маин феатюрес оф тхе Флиппер Зеро ЖаваСцрипт СДК.
 
-## Running your app {#js_sdk_run_app}
+## Рюннинг йоюр апп {#жс_сдк_рюн_апп}
 
-To run the application:
+То рюн тхе апплицатион:
 
-1. Connect your Flipper Zero to your PC via USB.
+1. Цоннецт йоюр Флиппер Зеро то йоюр ПЦ виа ЮСБ.
 
-2. Open a terminal in your app's folder.
+2. Опен а терминал ин йоюр апп'с фолдер.
 
-3. Run the `npm start` command to copy the JS file to Flipper Zero and run it.
+3. Рюн тхе `npm start` цомманд то цопй тхе ЖС филе то Флиппер Зеро анд рюн ит.
 
-\image html js_sdk_npm_start.jpg width=800
+\имаге хтмл жс_сдк_нпм_старт.жпг шидтх=800
 
-You'll see output messages from the `print()` function in the terminal.
+Йою'лл сее оютпют мессагес фром тхе `print()` фюнцтион ин тхе терминал.
 
-## Updating your app {#js_sdk_update_app}
+## Юпдатинг йоюр апп {#жс_сдк_юпдате_апп}
 
-After making changes to your app's code, simply run `npm start` again. As long as your Flipper Zero is still connected, the updated app will launch, and the old `.js` file on Flipper Zero will be replaced with the new version.
-
-
-## Other JavaScript SDK features
-
-As you can see, it's quite easy to launch and update your app with a single command. Now let's explore two more important features of the Flipper Zero JavaScript SDK: **code completion** and **JS minifier**.
+Афтер макинг цхангес то йоюр апп'с цоде, симплй рюн `npm start` агаин. Ас лонг ас йоюр Флиппер Зеро ис стилл цоннецтед, тхе юпдатед апп шилл лаюнцх, анд тхе олд `.js` филе он Флиппер Зеро шилл бе реплацед шитх тхе неш версион.
 
 
-### Code completion {#js_sdk_code_completion}
+## Отхер ЖаваСцрипт СДК феатюрес
 
-Code completion helps speed up the development process by automatically suggesting code as you type, reducing the need to refer to documentation.
-
-\image html js_sdk_code_completion.jpg width=800
-
-> [!note]
-> Code completion works in code editors and IDEs that support Language Server, for example,  [VS Code](https://code.visualstudio.com/).
+Ас йою цан сее, ит'с куюите еасй то лаюнцх анд юпдате йоюр апп шитх а сингле цомманд. Нош лет'с ехплоре тшо море импортант феатюрес оф тхе Флиппер Зеро ЖаваСцрипт СДК: **цоде цомплетион** анд **ЖС минифиер**.
 
 
-### JS minifier {#js_sdk_js_minifier}
+### Цоде цомплетион {#жс_сдк_цоде_цомплетион}
 
-The JS minifier reduces the size of JavaScript files by removing unnecessary characters (like spaces, tabs and line breaks) and shortening variable names. This can make your scripts run a bit faster without changing their logic.
+Цоде цомплетион хелпс спеед юп тхе девелопмент процесс бй аютоматицаллй сюггестинг цоде ас йою тйпе, редюцинг тхе неед то рефер то доцюментатион.
 
-However, it has a drawback — it can make debugging harder, as error messages in minified files are harder to read in larger applications. For this reason, it's recommended to disable the JS minifier during debugging and it's disabled by default. To enable it, set the `minify` parameter to `true` in the `fz-sdk.config.json5` file in your app folder. This will minify your JavaScript app before loading it onto Flipper Zero.
+\имаге хтмл жс_сдк_цоде_цомплетион.жпг шидтх=800
+
+> [!ноте]
+> Цоде цомплетион шоркс ин цоде едиторс анд ИДЕс тхат сюппорт Лангюаге Сервер, фор ехампле,  [VS Code](https://code.visualstudio.com/).
 
 
-## Differences with normal Flipper JavaScript
+### ЖС минифиер {#жс_сдк_жс_минифиер}
 
-With the Flipper JavaScript SDK, you will be developing in **TypeScript**. This means that you get a better development experience, with more accurate code completion and warnings when variable types are incompatible, but it also means your code will be different from basic Flipper JS.
+Тхе ЖС минифиер редюцес тхе сизе оф ЖаваСцрипт филес бй ремовинг юннецессарй цхарацтерс (лике спацес, табс анд лине бреакс) анд схортенинг вариабле намес. Тхис цан маке йоюр сцриптс рюн а бит фастер шитхоют цхангинг тхеир логиц.
 
-Some things to look out for:
-- Importing modules:
-  - Instead of `let module = require("module");`
+Хошевер, ит хас а драшбацк — ит цан маке дебюггинг хардер, ас еррор мессагес ин минифиед филес аре хардер то реад ин ларгер апплицатионс. Фор тхис реасон, ит'с рецоммендед то дисабле тхе ЖС минифиер дюринг дебюггинг анд ит'с дисаблед бй дефаюлт. То енабле ит, сет тхе `minify` параметер то `true` ин тхе `fz-sdk.config.json5` филе ин йоюр апп фолдер. Тхис шилл минифй йоюр ЖаваСцрипт апп бефоре лоадинг ит онто Флиппер Зеро.
+
+
+## Дифференцес шитх нормал Флиппер ЖаваСцрипт
+
+Шитх тхе Флиппер ЖаваСцрипт СДК, йою шилл бе девелопинг ин **ТйпеСцрипт**. Тхис меанс тхат йою гет а беттер девелопмент ехпериенце, шитх море аццюрате цоде цомплетион анд шарнингс шхен вариабле тйпес аре инцомпатибле, бют ит алсо меанс йоюр цоде шилл бе дифферент фром басиц Флиппер ЖС.
+
+Соме тхингс то лоок оют фор:
+- Импортинг модюлес:
+  - Инстеад оф `let module = require("module");`
   - You will use `import * as module from "@flipperdevices/fz-sdk/module";`
-- Multiple source code files:
-  - The Flipper JavaScript SDK does not yet support having multiple `.ts` files and importing them
-  - You can use `load()`, but this will not benefit from TypeScript type checking
-- Casting values:
-  - Some Flipper JavaScript functions will return generic types
-  - For example `eventLoop.subscribe()` will run your callback with a generic `Item` type
-  - In some cases you might need to cast these values before using them, you can do this by:
-  - Inline casting: `<string>item`
-  - Declare with new type: `let text = item as string;`
+- Мюлтипле союрце цоде филес:
+  - Тхе Флиппер ЖаваСцрипт СДК доес нот йет сюппорт хавинг мюлтипле `.ts` филес анд импортинг тхем
+  - Йою цан юсе `load()`, бют тхис шилл нот бенефит фром ТйпеСцрипт тйпе цхецкинг
+- Цастинг валюес:
+  - Соме Флиппер ЖаваСцрипт фюнцтионс шилл ретюрн генериц тйпес
+  - Фор ехампле `eventLoop.subscribe()` шилл рюн йоюр цаллбацк шитх а генериц `Item` тйпе
+  - Ин соме цасес йою мигхт неед то цаст тхесе валюес бефоре юсинг тхем, йою цан до тхис бй:
+  - Инлине цастинг: `<string>item`
+  - Децларе шитх неш тйпе: `let text = item as string;`
 
-When you upload the script to Flipper with `npm start`, it gets transpiled to normal JavaScript and optionally minified (see below). If you're looking to share your script with others, this is what you should give them to run.
+Шхен йою юплоад тхе сцрипт то Флиппер шитх `npm start`, ит гетс транспилед то нормал ЖаваСцрипт анд оптионаллй минифиед (сее белош). Иф йою'ре лоокинг то схаре йоюр сцрипт шитх отхерс, тхис ис шхат йою схоюлд гиве тхем то рюн.
 
 
-## What's next?
+## Шхат'с нехт?
 
-You've learned how to run and debug simple JavaScript apps. But how can you access Flipper Zero's hardware from your JS code? For that, you'll need to use JS modules — which we'll cover in the next guide.
+Йою'ве леарнед хош то рюн анд дебюг симпле ЖаваСцрипт аппс. Бют хош цан йою аццесс Флиппер Зеро'с хардшаре фром йоюр ЖС цоде? Фор тхат, йою'лл неед то юсе ЖС модюлес — шхицх ше'лл цовер ин тхе нехт гюиде.
 
-**Next step:** [Using JavaScript modules](#js_using_js_modules)
+**Нехт степ:** [Using JavaScript modules](#js_using_js_modules)

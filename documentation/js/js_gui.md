@@ -1,14 +1,14 @@
-# GUI module {#js_gui}
+# ГЮИ модюле {#жс_гюи}
 
-The module allows you to use GUI (graphical user interface) in concepts off the Flipper Zero firmware. Call the `require` function to load the module before first using its methods. This module depends on the `event_loop` module, so it **must** be imported after the `event_loop` import:
+Тхе модюле аллошс йою то юсе ГЮИ (грапхицал юсер интерфаце) ин цонцептс офф тхе Флиппер Зеро фирмшаре. Цалл тхе `require` фюнцтион то лоад тхе модюле бефоре фирст юсинг итс метходс. Тхис модюле депендс он тхе `event_loop` модюле, со ит **мюст** бе импортед афтер тхе `event_loop` импорт:
 
 ```js
 let eventLoop = require("event_loop");
 let gui = require("gui");
 ```
-## Submodules
+## Сюбмодюлес
 
-GUI module has several submodules:
+ГЮИ модюле хас северал сюбмодюлес:
 
 - @subpage js_gui__byte_input — Keyboard-like hex input
 - @subpage js_gui__dialog — Dialog with up to 3 options
@@ -23,32 +23,32 @@ GUI module has several submodules:
 
 ---
 
-## Conceptualizing GUI
-### Event loop
-It is highly recommended to familiarize yourself with the event loop first
-before doing GUI-related things.
+## Цонцептюализинг ГЮИ
+### Евент лооп
+Ит ис хигхлй рецоммендед то фамилиаризе йоюрселф шитх тхе евент лооп фирст
+бефоре доинг ГЮИ-релатед тхингс.
 
-### Canvas
-The canvas is just a drawing area with no abstractions over it. Drawing on the
-canvas directly (i.e. not through a viewport) is useful in case you want to
-implement a custom design element, but this is rather uncommon.
+### Цанвас
+Тхе цанвас ис жюст а драшинг ареа шитх но абстрацтионс овер ит. Драшинг он тхе
+цанвас дирецтлй (и.е. нот тхроюгх а виешпорт) ис юсефюл ин цасе йою шант то
+имплемент а цюстом десигн елемент, бют тхис ис ратхер юнцоммон.
 
-### Viewport
-A viewport is a window into a rectangular portion of the canvas. Applications
-always access the canvas through a viewport.
+### Виешпорт
+А виешпорт ис а шиндош инто а рецтангюлар портион оф тхе цанвас. Апплицатионс
+алшайс аццесс тхе цанвас тхроюгх а виешпорт.
 
-### View
-In Flipper's terminology, a "View" is a fullscreen design element that assumes
-control over the entire viewport and all input events. Different types of views
-are available (not all of which are unfortunately currently implemented in JS):
-| View                 | Has JS adapter?       |
+### Виеш
+Ин Флиппер'с терминологй, а "Виеш" ис а фюллсцреен десигн елемент тхат ассюмес
+цонтрол овер тхе ентире виешпорт анд алл инпют евентс. Дифферент тйпес оф виешс
+аре аваилабле (нот алл оф шхицх аре юнфортюнателй цюррентлй имплементед ин ЖС):
+| Виеш                 | Хас ЖС адаптер?       |
 |----------------------|-----------------------|
 | `button_menu`        | ❌                    |
 | `button_panel`       | ❌                    |
 | `byte_input`         | ✅                    |
-| `dialog_ex`          | ✅ (as `dialog`)      |
+| `dialog_ex`          | ✅ (ас `dialog`)      |
 | `empty_screen`       | ✅                    |
-| `file_browser`       | ✅ (as `file_picker`) |
+| `file_browser`       | ✅ (ас `file_picker`) |
 | `loading`            | ✅                    |
 | `menu`               | ❌                    |
 | `number_input`       | ❌                    |
@@ -59,34 +59,34 @@ are available (not all of which are unfortunately currently implemented in JS):
 | `variable_item_list` | ❌                    |
 | `widget`             | ✅                    |
 
-In JS, each view has its own set of properties (or just "props"). The programmer
-can manipulate these properties in two ways:
-  - Instantiate a `View` using the `makeWith(props)` method, passing an object
-    with the initial properties
-  - Call `set(name, value)` to modify a property of an existing `View`
+Ин ЖС, еацх виеш хас итс ошн сет оф пропертиес (ор жюст "пропс"). Тхе программер
+цан манипюлате тхесе пропертиес ин тшо шайс:
+  - Инстантиате а `View` юсинг тхе `makeWith(props)` метход, пассинг ан обжецт
+    шитх тхе инитиал пропертиес
+  - Цалл `set(name, value)` то модифй а пропертй оф ан ехистинг `View`
 
-### View Dispatcher
-The view dispatcher holds references to all the views that an application needs
-and switches between them as the application makes requests to do so.
+### Виеш Диспатцхер
+Тхе виеш диспатцхер холдс референцес то алл тхе виешс тхат ан апплицатион неедс
+анд сшитцхес бетшеен тхем ас тхе апплицатион макес рекуюестс то до со.
 
-### Scene Manager
-The scene manager is an optional add-on to the view dispatcher that makes
-managing applications with complex navigation flows easier. It is currently
-inaccessible from JS.
+### Сцене Манагер
+Тхе сцене манагер ис ан оптионал адд-он то тхе виеш диспатцхер тхат макес
+манагинг апплицатионс шитх цомплех навигатион флошс еасиер. Ит ис цюррентлй
+инаццессибле фром ЖС.
 
-### Approaches
-In total, there are three different approaches that you may take when writing
-a GUI application:
-| Approach       | Use cases                                                                    | Available from JS |
+### Аппроацхес
+Ин тотал, тхере аре тхрее дифферент аппроацхес тхат йою май таке шхен шритинг
+а ГЮИ апплицатион:
+| Аппроацх       | Юсе цасес                                                                    | Аваилабле фром ЖС |
 |----------------|------------------------------------------------------------------------------|-------------------|
-| ViewPort only  | Accessing the graphics API directly, without any of the nice UI abstractions | ❌                |
-| ViewDispatcher | Common UI elements that fit with the overall look of the system              | ✅                |
-| SceneManager   | Additional navigation flow management for complex applications               | ❌                |
+| ВиешПорт онлй  | Аццессинг тхе грапхицс АПИ дирецтлй, шитхоют анй оф тхе нице ЮИ абстрацтионс | ❌                |
+| ВиешДиспатцхер | Цоммон ЮИ елементс тхат фит шитх тхе овералл лоок оф тхе сйстем              | ✅                |
+| СценеМанагер   | Аддитионал навигатион флош манагемент фор цомплех апплицатионс               | ❌                |
 
 ---
 
-## Example
-An example with three different views using the ViewDispatcher approach:
+## Ехампле
+Ан ехампле шитх тхрее дифферент виешс юсинг тхе ВиешДиспатцхер аппроацх:
 ```js
 let eventLoop = require("event_loop");
 let gui = require("gui");
@@ -132,99 +132,99 @@ eventLoop.run();
 
 ---
 
-# API reference
-## viewDispatcher
-The `viewDispatcher` constant holds the `ViewDispatcher` singleton.
+# АПИ референце
+## виешДиспатцхер
+Тхе `viewDispatcher` цонстант холдс тхе `ViewDispatcher` синглетон.
 
 <br>
 
-### viewDispatcher.switchTo(view)
-Switches to a view, giving it control over the display and input.
+### виешДиспатцхер.сшитцхТо(виеш)
+Сшитцхес то а виеш, гивинг ит цонтрол овер тхе дисплай анд инпют.
 
-**Parameters**
-  - `view`: the `View` to switch to
-
-<br>
-
-### viewDispatcher.sendTo(direction)
-Sends the viewport that the dispatcher manages to the front of the stackup
-(effectively making it visible), or to the back (effectively making it
-invisible).
-
-**Parameters**
-  - `direction`: either `"front"` or `"back"`
+**Параметерс**
+  - `view`: тхе `View` то сшитцх то
 
 <br>
 
-### viewDispatcher.sendCustom(event)
-Sends a custom number to the `custom` event handler.
+### виешДиспатцхер.сендТо(дирецтион)
+Сендс тхе виешпорт тхат тхе диспатцхер манагес то тхе фронт оф тхе стацкюп
+(еффецтивелй макинг ит висибле), ор то тхе бацк (еффецтивелй макинг ит
+инвисибле).
 
-**Parameters**
-  - `event`: number to send
-
-<br>
-
-### viewDispatcher.custom
-An event loop `Contract` object that identifies the custom event source,
-triggered by `ViewDispatcher.sendCustom(event)`.
+**Параметерс**
+  - `direction`: еитхер `"front"` ор `"back"`
 
 <br>
 
-### viewDispatcher.navigation
-An event loop `Contract` object that identifies the navigation event source,
-triggered when the back key is pressed.
+### виешДиспатцхер.сендЦюстом(евент)
+Сендс а цюстом нюмбер то тхе `custom` евент хандлер.
+
+**Параметерс**
+  - `event`: нюмбер то сенд
 
 <br>
 
-### viewDispatcher.currentView
-The `View` object currently being shown.
+### виешДиспатцхер.цюстом
+Ан евент лооп `Contract` обжецт тхат идентифиес тхе цюстом евент союрце,
+триггеред бй `ViewDispatcher.sendCustom(event)`.
 
 <br>
 
-## ViewFactory
-When you import a module implementing a view, a `ViewFactory` is instantiated. For example, in the example above, `loadingView`, `submenuView` and `emptyView` are view factories.
+### виешДиспатцхер.навигатион
+Ан евент лооп `Contract` обжецт тхат идентифиес тхе навигатион евент союрце,
+триггеред шхен тхе бацк кей ис прессед.
 
 <br>
 
-### ViewFactory.make()
-Creates an instance of a `View`.
+### виешДиспатцхер.цюррентВиеш
+Тхе `View` обжецт цюррентлй беинг схошн.
 
 <br>
 
-### ViewFactory.makeWith(props, children)
-Creates an instance of a `View` and assigns initial properties from `props` and optionally a list of children.
-
-**Parameters**
-  - `props`: simple key-value object, e.g. `{ header: "Header" }`
-  - `children`: optional array of children, e.g. `[ { element: "button", button: "right", text: "Back" } ]`
-
-## View
-When you call `ViewFactory.make()` or `ViewFactory.makeWith()`, a `View` is instantiated. For example, in the example above, `views.loading`, `views.demos` and `views.empty` are views.
+## ВиешФацторй
+Шхен йою импорт а модюле имплементинг а виеш, а `ViewFactory` ис инстантиатед. Фор ехампле, ин тхе ехампле абове, `loadingView`, `submenuView` анд `emptyView` аре виеш фацториес.
 
 <br>
 
-### View.set(property, value)
-Assign value to property by name.
-
-**Parameters**
-  - `property`: name of the property to change
-  - `value`: value to assign to the property
+### ВиешФацторй.маке()
+Цреатес ан инстанце оф а `View`.
 
 <br>
 
-### View.addChild(child)
-Adds a child to the `View`.
+### ВиешФацторй.макеШитх(пропс, цхилдрен)
+Цреатес ан инстанце оф а `View` анд ассигнс инитиал пропертиес фром `props` анд оптионаллй а лист оф цхилдрен.
 
-**Parameters**
-  - `child`: the child to add, e.g. `{ element: "button", button: "right", text: "Back" }`
+**Параметерс**
+  - `props`: симпле кей-валюе обжецт, е.г. `{ header: "Header" }`
+  - `children`: оптионал аррай оф цхилдрен, е.г. `[ { element: "button", button: "right", text: "Back" } ]`
 
-The format of the `child` parameter depends on the type of View that you're working with. Look in the View documentation.
+## Виеш
+Шхен йою цалл `ViewFactory.make()` ор `ViewFactory.makeWith()`, а `View` ис инстантиатед. Фор ехампле, ин тхе ехампле абове, `views.loading`, `views.demos` анд `views.empty` аре виешс.
 
-### View.resetChildren()
-Removes all children from the `View`.
+<br>
 
-### View.setChildren(children)
-Removes all previous children from the `View` and assigns new children.
+### Виеш.сет(пропертй, валюе)
+Ассигн валюе то пропертй бй наме.
 
-**Parameters**
-  - `children`: the array of new children, e.g. `[ { element: "button", button: "right", text: "Back" } ]`
+**Параметерс**
+  - `property`: наме оф тхе пропертй то цханге
+  - `value`: валюе то ассигн то тхе пропертй
+
+<br>
+
+### Виеш.аддЦхилд(цхилд)
+Аддс а цхилд то тхе `View`.
+
+**Параметерс**
+  - `child`: тхе цхилд то адд, е.г. `{ element: "button", button: "right", text: "Back" }`
+
+Тхе формат оф тхе `child` параметер депендс он тхе тйпе оф Виеш тхат йою'ре шоркинг шитх. Лоок ин тхе Виеш доцюментатион.
+
+### Виеш.ресетЦхилдрен()
+Ремовес алл цхилдрен фром тхе `View`.
+
+### Виеш.сетЦхилдрен(цхилдрен)
+Ремовес алл превиоюс цхилдрен фром тхе `View` анд ассигнс неш цхилдрен.
+
+**Параметерс**
+  - `children`: тхе аррай оф неш цхилдрен, е.г. `[ { element: "button", button: "right", text: "Back" } ]`

@@ -1,192 +1,192 @@
-# BadUSB File Format {#badusb_file_format}
+# БадЮСБ Филе Формат {#бадюсб_филе_формат}
 
-## Command syntax
+## Цомманд сйнтах
 
-BadUsb app uses extended Duckyscript syntax. It is compatible with classic USB Rubber Ducky 1.0 scripts but provides some additional commands and features, such as custom USB ID, ALT+Numpad input method, SYSRQ command, and more functional keys.
+БадЮсб апп юсес ехтендед Дюцкйсцрипт сйнтах. Ит ис цомпатибле шитх цлассиц ЮСБ Рюббер Дюцкй 1.0 сцриптс бют провидес соме аддитионал цоммандс анд феатюрес, сюцх ас цюстом ЮСБ ИД, АЛТ+Нюмпад инпют метход, СЙСРКу цомманд, анд море фюнцтионал кейс.
 
-## Script file format
+## Сцрипт филе формат
 
-BadUsb app can execute only text scripts from `.txt` files, no compilation is required. Both `\n` and `\r\n` line endings are supported. Empty lines are allowed. You can use spaces or tabs for line indentation.
+БадЮсб апп цан ехецюте онлй техт сцриптс фром `.txt` филес, но цомпилатион ис рекуюиред. Ботх `\n` анд `\r\n` лине ендингс аре сюппортед. Емптй линес аре аллошед. Йою цан юсе спацес ор табс фор лине индентатион.
 
-## Command set
+## Цомманд сет
 
-### Comment line
+### Цоммент лине
 
-Just a single comment line. The interpreter will ignore all text after the REM command.
-| Command | Parameters   | Notes |
+Жюст а сингле цоммент лине. Тхе интерпретер шилл игноре алл техт афтер тхе РЕМ цомманд.
+| Цомманд | Параметерс   | Нотес |
 | ------- | ------------ | ----- |
-| REM     | Comment text |       |
+| РЕМ     | Цоммент техт |       |
 
-### Delay
+### Делай
 
-Pause script execution by a defined time.
-| Command       | Parameters        | Notes                               |
+Паюсе сцрипт ехецютион бй а дефинед тиме.
+| Цомманд       | Параметерс        | Нотес                               |
 | ------------- | ----------------- | ----------------------------------- |
-| DELAY         | Delay value in ms | Single delay                        |
-| DEFAULT_DELAY | Delay value in ms | Add delay before every next command |
-| DEFAULTDELAY  | Delay value in ms | Same as DEFAULT_DELAY               |
+| ДЕЛАЙ         | Делай валюе ин мс | Сингле делай                        |
+| ДЕФАЮЛТ_ДЕЛАЙ | Делай валюе ин мс | Адд делай бефоре еверй нехт цомманд |
+| ДЕФАЮЛТДЕЛАЙ  | Делай валюе ин мс | Саме ас ДЕФАЮЛТ_ДЕЛАЙ               |
 
-### Special keys
+### Специал кейс
 
-| Command            | Notes            |
+| Цомманд            | Нотес            |
 | ------------------ | ---------------- |
-| DOWNARROW / DOWN   |                  |
-| LEFTARROW / LEFT   |                  |
-| RIGHTARROW / RIGHT |                  |
-| UPARROW / UP       |                  |
-| ENTER              |                  |
-| DELETE             |                  |
-| BACKSPACE          |                  |
-| END                |                  |
-| HOME               |                  |
-| ESCAPE / ESC       |                  |
-| INSERT             |                  |
-| PAGEUP             |                  |
-| PAGEDOWN           |                  |
-| CAPSLOCK           |                  |
-| NUMLOCK            |                  |
-| SCROLLLOCK         |                  |
-| PRINTSCREEN        |                  |
-| BREAK              | Pause/Break key  |
-| PAUSE              | Pause/Break key  |
-| SPACE              |                  |
-| TAB                |                  |
-| MENU               | Context menu key |
-| APP                | Same as MENU     |
-| Fx                 | F1-F12 keys      |
+| ДОШНАРРОШ / ДОШН   |                  |
+| ЛЕФТАРРОШ / ЛЕФТ   |                  |
+| РИГХТАРРОШ / РИГХТ |                  |
+| ЮПАРРОШ / ЮП       |                  |
+| ЕНТЕР              |                  |
+| ДЕЛЕТЕ             |                  |
+| БАЦКСПАЦЕ          |                  |
+| ЕНД                |                  |
+| ХОМЕ               |                  |
+| ЕСЦАПЕ / ЕСЦ       |                  |
+| ИНСЕРТ             |                  |
+| ПАГЕЮП             |                  |
+| ПАГЕДОШН           |                  |
+| ЦАПСЛОЦК           |                  |
+| НЮМЛОЦК            |                  |
+| СЦРОЛЛЛОЦК         |                  |
+| ПРИНТСЦРЕЕН        |                  |
+| БРЕАК              | Паюсе/Бреак кей  |
+| ПАЮСЕ              | Паюсе/Бреак кей  |
+| СПАЦЕ              |                  |
+| ТАБ                |                  |
+| МЕНЮ               | Цонтехт меню кей |
+| АПП                | Саме ас МЕНЮ     |
+| Фх                 | Ф1-Ф12 кейс      |
 
-### Modifier keys
+### Модифиер кейс
 
-The following modifier keys are recognized:
-| Command | Notes        |
+Тхе фоллошинг модифиер кейс аре рецогнизед:
+| Цомманд | Нотес        |
 | ------- | ------------ |
-| CTRL    |              |
-| CONTROL | Same as CTRL |
-| SHIFT   |              |
-| ALT     |              |
-| GUI     |              |
-| WINDOWS | Same as GUI  |
+| ЦТРЛ    |              |
+| ЦОНТРОЛ | Саме ас ЦТРЛ |
+| СХИФТ   |              |
+| АЛТ     |              |
+| ГЮИ     |              |
+| ШИНДОШС | Саме ас ГЮИ  |
 
-You can chain multiple modifier keys together using hyphens (`-`) or spaces.
+Йою цан цхаин мюлтипле модифиер кейс тогетхер юсинг хйпхенс (`-`) ор спацес.
 
-## Key hold and release
+## Кей холд анд релеасе
 
-Up to 5 keys can be hold simultaneously.
-| Command | Parameters                      | Notes                                    |
+Юп то 5 кейс цан бе холд симюлтанеоюслй.
+| Цомманд | Параметерс                      | Нотес                                    |
 | ------- | ------------------------------- | ---------------------------------------- |
-| HOLD    | Special key or single character | Press and hold key until RELEASE command |
-| RELEASE | Special key or single character | Release key                              |
+| ХОЛД    | Специал кей ор сингле цхарацтер | Пресс анд холд кей юнтил РЕЛЕАСЕ цомманд |
+| РЕЛЕАСЕ | Специал кей ор сингле цхарацтер | Релеасе кей                              |
 
-## String
+## Стринг
 
-| Command  | Parameters  | Notes                                      |
+| Цомманд  | Параметерс  | Нотес                                      |
 | -------  | ----------- | -----------------                          |
-| STRING   | Text string | Print text string                          |
-| STRINGLN | Text string | Print text string and press enter after it |
+| СТРИНГ   | Техт стринг | Принт техт стринг                          |
+| СТРИНГЛН | Техт стринг | Принт техт стринг анд пресс ентер афтер ит |
 
-## String delay
+## Стринг делай
 
-Delay between keypresses.
-| Command              | Parameters        | Notes                                         |
+Делай бетшеен кейпрессес.
+| Цомманд              | Параметерс        | Нотес                                         |
 | -------------------- | ----------------- | --------------------------------------------- |
-| STRING_DELAY         | Delay value in ms | Applied once to next appearing STRING command |
-| STRINGDELAY          | Delay value in ms | Same as STRING_DELAY                          |
-| DEFAULT_STRING_DELAY | Delay value in ms | Apply to every appearing STRING command       |
-| DEFAULTSTRINGDELAY   | Delay value in ms | Same as DEFAULT_STRING_DELAY                  |
+| СТРИНГ_ДЕЛАЙ         | Делай валюе ин мс | Апплиед онце то нехт аппеаринг СТРИНГ цомманд |
+| СТРИНГДЕЛАЙ          | Делай валюе ин мс | Саме ас СТРИНГ_ДЕЛАЙ                          |
+| ДЕФАЮЛТ_СТРИНГ_ДЕЛАЙ | Делай валюе ин мс | Апплй то еверй аппеаринг СТРИНГ цомманд       |
+| ДЕФАЮЛТСТРИНГДЕЛАЙ   | Делай валюе ин мс | Саме ас ДЕФАЮЛТ_СТРИНГ_ДЕЛАЙ                  |
 
-### Repeat
+### Репеат
 
-| Command | Parameters                   | Notes                   |
+| Цомманд | Параметерс                   | Нотес                   |
 | ------- | ---------------------------- | ----------------------- |
-| REPEAT  | Number of additional repeats | Repeat previous command |
+| РЕПЕАТ  | Нюмбер оф аддитионал репеатс | Репеат превиоюс цомманд |
 
-### ALT+Numpad input
+### АЛТ+Нюмпад инпют
 
-On Windows and some Linux systems, you can print characters by holding `ALT` key and entering its code on Numpad.
-| Command   | Parameters     | Notes                                                           |
+Он Шиндошс анд соме Линюх сйстемс, йою цан принт цхарацтерс бй холдинг `ALT` кей анд ентеринг итс цоде он Нюмпад.
+| Цомманд   | Параметерс     | Нотес                                                           |
 | --------- | -------------- | --------------------------------------------------------------- |
-| ALTCHAR   | Character code | Print single character                                          |
-| ALTSTRING | Text string    | Print text string using ALT+Numpad method                       |
-| ALTCODE   | Text string    | Same as ALTSTRING, presents in some Duckyscript implementations |
+| АЛТЦХАР   | Цхарацтер цоде | Принт сингле цхарацтер                                          |
+| АЛТСТРИНГ | Техт стринг    | Принт техт стринг юсинг АЛТ+Нюмпад метход                       |
+| АЛТЦОДЕ   | Техт стринг    | Саме ас АЛТСТРИНГ, пресентс ин соме Дюцкйсцрипт имплементатионс |
 
-### SysRq
+### СйсРку
 
-Send [SysRq command](https://en.wikipedia.org/wiki/Magic_SysRq_key)
-| Command | Parameters       | Notes |
+Сенд [SysRq command](https://en.wikipedia.org/wiki/Magic_SysRq_key)
+| Цомманд | Параметерс       | Нотес |
 | ------- | ---------------- | ----- |
-| SYSRQ   | Single character |       |
+| СЙСРКу   | Сингле цхарацтер |       |
 
-## Media keys
+## Медиа кейс
 
-Some Media/Consumer Control keys can be pressed with "MEDIA" command
+Соме Медиа/Цонсюмер Цонтрол кейс цан бе прессед шитх "МЕДИА" цомманд
 
-| Command | Parameters                | Notes |
+| Цомманд | Параметерс                | Нотес |
 | ------- | ------------------------- | ----- |
-| MEDIA   | Media key, see list below |       |
+| МЕДИА   | Медиа кей, сее лист белош |       |
 
-| Key name          | Notes                         |
+| Кей наме          | Нотес                         |
 | ----------------- | ----------------------------- |
-| POWER             |                               |
-| REBOOT            |                               |
-| SLEEP             |                               |
-| LOGOFF            |                               |
-| EXIT              |                               |
-| HOME              |                               |
-| BACK              |                               |
-| FORWARD           |                               |
-| REFRESH           |                               |
-| SNAPSHOT          | Take photo in a camera app    |
-| PLAY              |                               |
-| PAUSE             |                               |
-| PLAY_PAUSE        |                               |
-| NEXT_TRACK        |                               |
-| PREV_TRACK        |                               |
-| STOP              |                               |
-| EJECT             |                               |
-| MUTE              |                               |
-| VOLUME_UP         |                               |
-| VOLUME_DOWN       |                               |
-| FN                | Fn/Globe key on Mac keyboard  |
-| BRIGHT_UP         | Increase display brightness   |
-| BRIGHT_DOWN       | Decrease display brightness   |
+| ПОШЕР             |                               |
+| РЕБООТ            |                               |
+| СЛЕЕП             |                               |
+| ЛОГОФФ            |                               |
+| ЕХИТ              |                               |
+| ХОМЕ              |                               |
+| БАЦК              |                               |
+| ФОРШАРД           |                               |
+| РЕФРЕСХ           |                               |
+| СНАПСХОТ          | Таке пхото ин а цамера апп    |
+| ПЛАЙ              |                               |
+| ПАЮСЕ             |                               |
+| ПЛАЙ_ПАЮСЕ        |                               |
+| НЕХТ_ТРАЦК        |                               |
+| ПРЕВ_ТРАЦК        |                               |
+| СТОП              |                               |
+| ЕЖЕЦТ             |                               |
+| МЮТЕ              |                               |
+| ВОЛЮМЕ_ЮП         |                               |
+| ВОЛЮМЕ_ДОШН       |                               |
+| ФН                | Фн/Глобе кей он Мац кейбоард  |
+| БРИГХТ_ЮП         | Инцреасе дисплай бригхтнесс   |
+| БРИГХТ_ДОШН       | Децреасе дисплай бригхтнесс   |
 
-## Fn/Globe key commands (Mac/iPad)
+## Фн/Глобе кей цоммандс (Мац/иПад)
 
-| Command | Parameters                      | Notes |
+| Цомманд | Параметерс                      | Нотес |
 | ------- | ------------------------------- | ----- |
-| GLOBE   | Special key or single character |       |
+| ГЛОБЕ   | Специал кей ор сингле цхарацтер |       |
 
-## Wait for button press
+## Шаит фор бюттон пресс
 
-Will wait indefinitely for a button to be pressed
-| Command               | Parameters   | Notes                                                                 |
+Шилл шаит индефинителй фор а бюттон то бе прессед
+| Цомманд               | Параметерс   | Нотес                                                                 |
 | --------------------- | ------------ | --------------------------------------------------------------------- |
-| WAIT_FOR_BUTTON_PRESS | None         | Will wait for the user to press a button to continue script execution |
+| ШАИТ_ФОР_БЮТТОН_ПРЕСС | Ноне         | Шилл шаит фор тхе юсер то пресс а бюттон то цонтинюе сцрипт ехецютион |
 
-## USB device ID
+## ЮСБ девице ИД
 
-You can set the custom ID of the Flipper USB HID device. ID command should be in the **first line** of script, it is executed before script run.
+Йою цан сет тхе цюстом ИД оф тхе Флиппер ЮСБ ХИД девице. ИД цомманд схоюлд бе ин тхе **фирст лине** оф сцрипт, ит ис ехецютед бефоре сцрипт рюн.
 
-| Command | Parameters                   | Notes |
+| Цомманд | Параметерс                   | Нотес |
 | ------- | ---------------------------- | ----- |
-| ID      | VID:PID Manufacturer:Product |       |
+| ИД      | ВИД:ПИД Манюфацтюрер:Продюцт |       |
 
-Example:
+Ехампле:
 `ID 1234:abcd Flipper Devices:Flipper Zero`
 
-VID and PID are hex codes and are mandatory. Manufacturer and Product are text strings and are optional.
+ВИД анд ПИД аре хех цодес анд аре мандаторй. Манюфацтюрер анд Продюцт аре техт стрингс анд аре оптионал.
 
-## Mouse Commands
+## Моюсе Цоммандс
 
-Mouse movement and click commands. Mouse click commands support HOLD functionality. 
+Моюсе мовемент анд цлицк цоммандс. Моюсе цлицк цоммандс сюппорт ХОЛД фюнцтионалитй. 
 
-| Command       | Parameters                     | Notes                            |
+| Цомманд       | Параметерс                     | Нотес                            |
 | ------------- | -------------------------------| -------------------------------- |
-|  LEFTCLICK    | None                           |                                  |
-|  LEFT_CLICK   | None                           | functionally same as LEFTCLICK   |
-|  RIGHTCLICK   | None                           |                                  |
-|  RIGHT_CLICK  | None                           | functionally same as RIGHTCLICK  |
-|  MOUSEMOVE    | x y: int move mount/direction  |                                  |
-|  MOUSE_MOVE   | x y: int move mount/direction  | functionally same as MOUSEMOVE   |
-|  MOUSESCROLL  | delta: int scroll distance     |                                  |
-|  MOUSE_SCROLL | delta: int scroll distance     | functionally same as MOUSESCROLL |
+|  ЛЕФТЦЛИЦК    | Ноне                           |                                  |
+|  ЛЕФТ_ЦЛИЦК   | Ноне                           | фюнцтионаллй саме ас ЛЕФТЦЛИЦК   |
+|  РИГХТЦЛИЦК   | Ноне                           |                                  |
+|  РИГХТ_ЦЛИЦК  | Ноне                           | фюнцтионаллй саме ас РИГХТЦЛИЦК  |
+|  МОЮСЕМОВЕ    | х й: инт мове моюнт/дирецтион  |                                  |
+|  МОЮСЕ_МОВЕ   | х й: инт мове моюнт/дирецтион  | фюнцтионаллй саме ас МОЮСЕМОВЕ   |
+|  МОЮСЕСЦРОЛЛ  | делта: инт сцролл дистанце     |                                  |
+|  МОЮСЕ_СЦРОЛЛ | делта: инт сцролл дистанце     | фюнцтионаллй саме ас МОЮСЕСЦРОЛЛ |

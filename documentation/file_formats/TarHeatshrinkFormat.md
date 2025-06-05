@@ -1,19 +1,19 @@
-# Heatshrink-compressed Tarball Format {#heatshrink_file_format}
+# Хеатсхринк-цомпрессед Тарбалл Формат {#хеатсхринк_филе_формат}
 
-Flipper supports the use of Heatshrink compression library for `.tar` archives. This allows for smaller file sizes and faster OTA updates. 
+Флиппер сюппортс тхе юсе оф Хеатсхринк цомпрессион либрарй фор `.tar` арцхивес. Тхис аллошс фор смаллер филе сизес анд фастер ОТА юпдатес. 
 
-Heatshrink specification does not define a container format for storing compression parameters. This document describes the format used by Flipper to store Heatshrink-compressed data streams.
+Хеатсхринк специфицатион доес нот дефине а цонтаинер формат фор сторинг цомпрессион параметерс. Тхис доцюмент десцрибес тхе формат юсед бй Флиппер то сторе Хеатсхринк-цомпрессед дата стреамс.
 
-## Header
+## Хеадер
 
-Header begins with a magic value, followed by a version number and compression parameters - window size and lookahead size.
+Хеадер бегинс шитх а магиц валюе, фоллошед бй а версион нюмбер анд цомпрессион параметерс - шиндош сизе анд лоокахеад сизе.
 
-Magic value consists of 4 bytes: `0x48 0x53 0x44 0x53` (ASCII "HSDS", HeatShrink DataStream).
+Магиц валюе цонсистс оф 4 бйтес: `0x48 0x53 0x44 0x53` (АСЦИИ "ХСДС", ХеатСхринк ДатаСтреам).
 
-Version number is a single byte, currently set to `0x01`.
+Версион нюмбер ис а сингле бйте, цюррентлй сет то `0x01`.
 
-Window size is a single byte, representing the size of the sliding window used by the compressor. It corresponds to `-w` parameter in Heatshrink CLI.
+Шиндош сизе ис а сингле бйте, репресентинг тхе сизе оф тхе слидинг шиндош юсед бй тхе цомпрессор. Ит цорреспондс то `-w` параметер ин Хеатсхринк ЦЛИ.
 
-Lookahead size is a single byte, representing the size of the lookahead buffer used by the compressor. It corresponds to `-l` parameter in Heatshrink CLI.
+Лоокахеад сизе ис а сингле бйте, репресентинг тхе сизе оф тхе лоокахеад бюффер юсед бй тхе цомпрессор. Ит цорреспондс то `-l` параметер ин Хеатсхринк ЦЛИ.
 
-Total header size is 7 bytes. Header is followed by compressed data.
+Тотал хеадер сизе ис 7 бйтес. Хеадер ис фоллошед бй цомпрессед дата.

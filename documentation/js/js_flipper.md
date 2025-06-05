@@ -1,52 +1,52 @@
-# Flipper module {#js_flipper}
+# Флиппер модюле {#жс_флиппер}
 
-The module contains methods and values to query device information and properties. Call the `require` function to load the module before first using its methods:
+Тхе модюле цонтаинс метходс анд валюес то куюерй девице информатион анд пропертиес. Цалл тхе `require` фюнцтион то лоад тхе модюле бефоре фирст юсинг итс метходс:
 
 ```js
 let flipper = require("flipper");
 ```
 
-# Values
+# Валюес
 
-## firmwareVendor
-String representing the firmware installed on the device.
-Original firmware reports `"flipperdevices"`.
-Do **NOT** use this to check the presence or absence of features, refer to [other ways to check SDK compatibility](#js_builtin_sdk_compatibility).
+## фирмшареВендор
+Стринг репресентинг тхе фирмшаре инсталлед он тхе девице.
+Оригинал фирмшаре репортс `"flipperdevices"`.
+До **НОТ** юсе тхис то цхецк тхе пресенце ор абсенце оф феатюрес, рефер то [other ways to check SDK compatibility](#js_builtin_sdk_compatibility).
 
-## jsSdkVersion
-Version of the JavaScript SDK.
-Do **NOT** use this to check the presence or absence of features, refer to [other ways to check SDK compatibility](#js_builtin_sdk_compatibility).
+## жсСдкВерсион
+Версион оф тхе ЖаваСцрипт СДК.
+До **НОТ** юсе тхис то цхецк тхе пресенце ор абсенце оф феатюрес, рефер то [other ways to check SDK compatibility](#js_builtin_sdk_compatibility).
 
 <br>
 
 ---
 
-# Methods
+# Метходс
 
-## getModel()
-Returns the device model.
+## гетМодел()
+Ретюрнс тхе девице модел.
 
-**Example**
+**Ехампле**
 ```js
 flipper.getModel(); // "Flipper Zero"
 ```
 
 <br>
 
-## getName()
-Returns the name of the virtual dolphin.
+## гетНаме()
+Ретюрнс тхе наме оф тхе виртюал долпхин.
 
-**Example**
+**Ехампле**
 ```js
 flipper.getName(); // "Fur1pp44"
 ```
 
 <br>
 
-## getBatteryCharge()
-Returns the battery charge percentage.
+## гетБаттерйЦхарге()
+Ретюрнс тхе баттерй цхарге перцентаге.
 
-**Example**
+**Ехампле**
 ```js
 flipper.getBatteryCharge(); // 100
 ```

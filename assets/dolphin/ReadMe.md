@@ -1,69 +1,69 @@
-# Dolphin assets {#dolphin_assets}
+# Долпхин ассетс {#долпхин_ассетс}
 
-Dolphin assets are split into 3 parts:
+Долпхин ассетс аре сплит инто 3 партс:
 
-- blocking - Essential animations that are used for blocking system notifications. They are packed to `assets_dolphin_blocking.[h,c]`.
-- internal  - Internal animations that are used for idle dolphin animation. Converted to `assets_dolphin_internal.[h,c]`.
-- external  - External animations that are used for idle dolphin animation. Packed to resource folder and placed on SD card.
+- блоцкинг - Ессентиал аниматионс тхат аре юсед фор блоцкинг сйстем нотифицатионс. Тхей аре пацкед то `assets_dolphin_blocking.[h,c]`.
+- интернал  - Интернал аниматионс тхат аре юсед фор идле долпхин аниматион. Цонвертед то `assets_dolphin_internal.[h,c]`.
+- ехтернал  - Ехтернал аниматионс тхат аре юсед фор идле долпхин аниматион. Пацкед то ресоюрце фолдер анд плацед он СД цард.
 
-# Files
+# Филес
 
-- `manifest.txt` - contains animations enumeration that is used for random animation selection. Starting point for Dolphin.
-- `meta.txt`     - contains data that describes how animation is drawn.
-- `frame_X.png`  - animation frame.
+- `manifest.txt` - цонтаинс аниматионс енюмератион тхат ис юсед фор рандом аниматион селецтион. Стартинг поинт фор Долпхин.
+- `meta.txt`     - цонтаинс дата тхат десцрибес хош аниматион ис драшн.
+- `frame_X.png`  - аниматион фраме.
 
-## File manifest.txt
+## Филе манифест.тхт
 
-Flipper Format File with ordered keys.
+Флиппер Формат Филе шитх ордеред кейс.
 
-Header:
+Хеадер:
 
 ```
 Filetype: Flipper Animation Manifest
 Version: 1
 ```
 
-- `Name` - name of animation. Must be exact animation directory name.
-- `Min butthurt`, `Max butthurt` - range of dolphin's butthurt for this animation.
-- `Min level`, `Max level` - range of dolphin's level for this animation. If 0, this animation doesn't participate in random idle animation selection and can only be selected by exact name.
-- `Weight` - chance of this animation to be chosen at random animation selection.
+- `Name` - наме оф аниматион. Мюст бе ехацт аниматион дирецторй наме.
+- `Min butthurt`, `Max butthurt` - ранге оф долпхин'с бюттхюрт фор тхис аниматион.
+- `Min level`, `Max level` - ранге оф долпхин'с левел фор тхис аниматион. Иф 0, тхис аниматион доесн'т партиципате ин рандом идле аниматион селецтион анд цан онлй бе селецтед бй ехацт наме.
+- `Weight` - цханце оф тхис аниматион то бе цхосен ат рандом аниматион селецтион.
 
-Some animations can be excluded from participation in random animation selection, such as `L1_NoSd_128x49`.
+Соме аниматионс цан бе ехцлюдед фром партиципатион ин рандом аниматион селецтион, сюцх ас `L1_NoSd_128x49`.
 
-## File meta.txt
+## Филе мета.тхт
 
-Flipper Format File with ordered keys.
+Флиппер Формат Филе шитх ордеред кейс.
 
-Header:
+Хеадер:
 
 ```
 Filetype: Flipper Animation
 Version: 1
 ```
 
-- `Width` - animation width in px (<= 128)
-- `Height` - animation height in px (<= 64)
-- `Passive frames` - number of bitmap frames for passive animation state
-- `Active frames` - number of bitmap frames for active animation state (can be 0)
-- `Frames order` - order of bitmap frames where first N frames are passive and following M are active. Each X number in order refers to bitmap frame, with name frame\_X.bm. This file must exist. Any X number can be repeated to refer same frame in animation.
-- `Active cycles` - cycles to repeat of N active frames for full active period. E.g. if frames for active cycles are 6 and 7, and active cycles is 3, so full active period plays 6 7 6 7 6 7. Full period of passive + active period are called *total period*.
-- `Frame rate` - number of frames to play for 1 second.
-- `Duration` - total amount of seconds to play 1 animation.
-- `Active cooldown` - amount of seconds (after passive mode) to pass before entering next active mode.
+- `Width` - аниматион шидтх ин пх (<= 128)
+- `Height` - аниматион хеигхт ин пх (<= 64)
+- `Passive frames` - нюмбер оф битмап фрамес фор пассиве аниматион стате
+- `Active frames` - нюмбер оф битмап фрамес фор ацтиве аниматион стате (цан бе 0)
+- `Frames order` - ордер оф битмап фрамес шхере фирст Н фрамес аре пассиве анд фоллошинг М аре ацтиве. Еацх Х нюмбер ин ордер реферс то битмап фраме, шитх наме фраме\_Х.бм. Тхис филе мюст ехист. Анй Х нюмбер цан бе репеатед то рефер саме фраме ин аниматион.
+- `Active cycles` - цйцлес то репеат оф Н ацтиве фрамес фор фюлл ацтиве период. Е.г. иф фрамес фор ацтиве цйцлес аре 6 анд 7, анд ацтиве цйцлес ис 3, со фюлл ацтиве период плайс 6 7 6 7 6 7. Фюлл период оф пассиве + ацтиве период аре цаллед *тотал период*.
+- `Frame rate` - нюмбер оф фрамес то плай фор 1 сецонд.
+- `Duration` - тотал амоюнт оф сецондс то плай 1 аниматион.
+- `Active cooldown` - амоюнт оф сецондс (афтер пассиве моде) то пасс бефоре ентеринг нехт ацтиве моде.
 
-- `Bubble slots` - amount of bubble sequences.
-- Any bubble sequence plays whole sequence during active mode. There can be many bubble sequences and bubbles inside it. Bubbles in 1 bubble sequence have to reside in 1 slot. Bubbles order in 1 bubble sequence is determined by occurrence in file. As soon as frame index goes out of EndFrame index of bubble - next animation bubble is chosen. There can also be free of bubbles frames between 2 bubbles.
+- `Bubble slots` - амоюнт оф бюббле секуюенцес.
+- Анй бюббле секуюенце плайс шхоле секуюенце дюринг ацтиве моде. Тхере цан бе манй бюббле секуюенцес анд бюбблес инсиде ит. Бюбблес ин 1 бюббле секуюенце хаве то ресиде ин 1 слот. Бюбблес ордер ин 1 бюббле секуюенце ис детерминед бй оццюрренце ин филе. Ас соон ас фраме индех гоес оют оф ЕндФраме индех оф бюббле - нехт аниматион бюббле ис цхосен. Тхере цан алсо бе фрее оф бюбблес фрамес бетшеен 2 бюбблес.
 
-- `Slot` - number to unite bubbles for same sequence.
-- `X`, `Y` - are coordinates of left top corner of bubble.
-- `Text` - text in bubble. New line is `\n`
-- `AlignH` - horizontal place of bubble corner (Left, Center, Right)
-- `AlignV` - vertical place of bubble corner (Top, Center, Bottom)
-- `StartFrame`, `EndFrame` - frame index range inside whole period to show bubble.
+- `Slot` - нюмбер то юните бюбблес фор саме секуюенце.
+- `X`, `Y` - аре цоординатес оф лефт топ цорнер оф бюббле.
+- `Text` - техт ин бюббле. Неш лине ис `\n`
+- `AlignH` - хоризонтал плаце оф бюббле цорнер (Лефт, Центер, Ригхт)
+- `AlignV` - вертицал плаце оф бюббле цорнер (Топ, Центер, Боттом)
+- `StartFrame`, `EndFrame` - фраме индех ранге инсиде шхоле период то схош бюббле.
 
-### Understanding of frame indexes
+### Юндерстандинг оф фраме индехес
 
-For example we have
+Фор ехампле ше хаве
 
 ```
 Passive frames: 6
@@ -72,7 +72,7 @@ Frames order: 0 1 2 3 4 5 6 7
 Active cycles: 4
 ```
 
-Then we have indexes
+Тхен ше хаве индехес
 
 ```
                         passive(6)            active (2 * 4)
